@@ -9,76 +9,385 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "banner_zY6kBL": {
+      "type": "banner",
+      "name": "Banner",
+      "settings": {
+        "top_text": "LIVE GOLF COACHING. ANYTIME, ANYWHERE.",
+        "heading": "Built for Golfers Who Want Results and Coaches Who Deliver Them",
+        "description": "<p>Teach or train from anywhere with live video, instant replay, and performance tracking in one app.</p>",
+        "button_text": "Start Now",
+        "button_url": "#",
+        "desktop_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
+        "mobile_image_1": "shopify://shop_images/mobile.png",
+        "mobile_combined_image": "shopify://shop_images/Group_215.png",
+        "app_store_image": "shopify://shop_images/google-play-badge-logo-svgrepo-com.png",
+        "app_store_url": "#",
+        "play_store_image": "shopify://shop_images/google-play-badge-logo-svgrepo-com_1.png",
+        "play_store_url": "#"
+      }
+    },
+    "trusted_by_coaches_XXTeTG": {
+      "type": "trusted-by-coaches",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "player_HytGA3": {
+          "type": "player",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "player_image": "shopify://shop_images/Chris_Como.png",
+            "player_name": "Chris Como"
           }
         },
-        "button": {
-          "type": "buttons",
+        "player_hLi4FC": {
+          "type": "player",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "player_image": "shopify://shop_images/Mark_Blackburn.png",
+            "player_name": "Mark Blackburn"
+          }
+        },
+        "player_JFzkiT": {
+          "type": "player",
+          "settings": {
+            "player_image": "shopify://shop_images/Erika_Larkin.png",
+            "player_name": "Erika Larkin"
+          }
+        },
+        "player_MKXeY7": {
+          "type": "player",
+          "settings": {
+            "player_image": "shopify://shop_images/Mike_Malaska.png",
+            "player_name": "Mike Malaska"
+          }
+        },
+        "player_YH93kM": {
+          "type": "player",
+          "settings": {
+            "player_image": "shopify://shop_images/Colin_McCarthy.png",
+            "player_name": "Colin McCarthy"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "player_HytGA3",
+        "player_hLi4FC",
+        "player_JFzkiT",
+        "player_MKXeY7",
+        "player_YH93kM"
       ],
+      "name": "Trusted by Coaches",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "heading": "Trusted by Top Coaches",
+        "subheading": "From PGA Tour coaches to rising instructors – trusted by the best to deliver world-class instruction.",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "zigzag_section_9PexWn": {
+      "type": "zigzag-section",
+      "blocks": {
+        "heading_dKEcbw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Live Virtual Lessons"
+          }
+        },
+        "paragraph_rzmXRG": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Coach students anywhere with live video."
+          }
+        },
+        "list_jPikaw": {
+          "type": "list",
+          "settings": {
+            "list_content": "No geographic limitations\nInstant replay\n Demo line"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dKEcbw",
+        "paragraph_rzmXRG",
+        "list_jPikaw"
+      ],
+      "name": "Custom Zigzag Row",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
+        "main_h2": "Live Lessons",
+        "heading-bottom-padding": 36,
+        "show_h2": true,
+        "image": "shopify://shop_images/Group_323.png",
+        "layout": "image_first",
+        "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "dual_audience_cards_TEt37K": {
+      "type": "dual-audience-cards",
+      "blocks": {
+        "feature_eJTfKE": {
+          "type": "feature",
+          "settings": {
+            "position": "left",
+            "image": "shopify://shop_images/1.svg",
+            "text": "Coach students in real-time from anywhere with live video and instant replay."
+          }
+        },
+        "feature_fHHyxF": {
+          "type": "feature",
+          "settings": {
+            "position": "left",
+            "image": "shopify://shop_images/2.svg",
+            "text": "Monetize your expertise with live streams, video packages, and on-demand content."
+          }
+        },
+        "feature_fLGBEL": {
+          "type": "feature",
+          "settings": {
+            "position": "left",
+            "image": "shopify://shop_images/3.svg",
+            "text": "Manage bookings, payments, clients, and videos all in one dashboard."
+          }
+        },
+        "feature_VXER87": {
+          "type": "feature",
+          "settings": {
+            "position": "left",
+            "image": "shopify://shop_images/4.svg",
+            "text": "Get discovered by new golfers with built-in lead generation tools."
+          }
+        },
+        "feature_kGDwtE": {
+          "type": "feature",
+          "settings": {
+            "position": "right",
+            "image": "shopify://shop_images/5.svg",
+            "text": "Get feedback on your actual swing, not generic tips"
+          }
+        },
+        "feature_6yEWRq": {
+          "type": "feature",
+          "settings": {
+            "position": "right",
+            "image": "shopify://shop_images/6.svg",
+            "text": "Take lessons or upload swings from home, the range, or anywhere."
+          }
+        },
+        "feature_PxkLmF": {
+          "type": "feature",
+          "settings": {
+            "position": "right",
+            "image": "shopify://shop_images/7.svg",
+            "text": "See every lesson and video saved in one place to track real improvement."
+          }
+        },
+        "feature_GzkWiW": {
+          "type": "feature",
+          "settings": {
+            "position": "right",
+            "image": "shopify://shop_images/8.svg",
+            "text": "Work with PGA-verified coaches who help you play better golf."
+          }
+        }
+      },
+      "block_order": [
+        "feature_eJTfKE",
+        "feature_fHHyxF",
+        "feature_fLGBEL",
+        "feature_VXER87",
+        "feature_kGDwtE",
+        "feature_6yEWRq",
+        "feature_PxkLmF",
+        "feature_GzkWiW"
+      ],
+      "name": "Dual Audience Cards",
+      "settings": {
+        "bg_image_left": "shopify://shop_images/left_card_image.png",
+        "top_label_left": "FOR COACHES",
+        "heading_left": "Built by Coaches for Coaches",
+        "description_left": "Grow your business and reach more golfers. All from one powerful platform.",
+        "button_text_left": "Start Free Trial",
+        "button_url_left": "",
+        "bg_image_right": "shopify://shop_images/right_side_card.png",
+        "top_label_right": "FOR GOLFERS",
+        "heading_right": "Get Real Coaching. See Real Progress.",
+        "description_right": "Personalized instruction from PGA-verified coaches. Train from anywhere, improve faster.",
+        "button_text_right": "Get Free Swing Analysis",
+        "button_url_right": ""
+      }
+    },
+    "video_testimonial_LBDcHx": {
+      "type": "video-testimonial",
+      "blocks": {
+        "slide_G9TP4E": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_9hLxkF": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_tkiG6V": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/3_f16e0410-4848-44af-8ccd-6fe2d9f0c663.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_hK9Pgt": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/4_5b25ec31-32aa-45ff-971c-bb429b12d18e.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_JiMEGz": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_Ga4nfX": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
+            "name": "",
+            "subtitle": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_G9TP4E",
+        "slide_9hLxkF",
+        "slide_tkiG6V",
+        "slide_hK9Pgt",
+        "slide_JiMEGz",
+        "slide_Ga4nfX"
+      ],
+      "name": "Video Testimonials",
+      "settings": {
+        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "highlight_color": "#0a7a28",
+        "show_arrows": true,
+        "golfer_text": "I'M A GOLFER",
+        "golfer_url": "",
+        "coach_text": "I'M A COACH",
+        "coach_url": "",
+        "button_bg": "#0a7a28",
+        "button_text": "#ffffff"
+      }
+    },
+    "faq_golfer_coach_rbLhDK": {
+      "type": "faq-golfer-coach",
+      "blocks": {
+        "golfer_faq_KKnjNM": {
+          "type": "golfer_faq",
+          "settings": {
+            "question": "Is remote coaching actually effective?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        },
+        "golfer_faq_zpx84z": {
+          "type": "golfer_faq",
+          "settings": {
+            "question": "How do I know my coach is qualified?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        },
+        "golfer_faq_Dmp7qR": {
+          "type": "golfer_faq",
+          "settings": {
+            "question": "What if I'm not tech-savvy?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        },
+        "golfer_faq_7dymDM": {
+          "type": "golfer_faq",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        },
+        "coach_faq_WArNbW": {
+          "type": "coach_faq",
+          "settings": {
+            "question": "I already use [CoachNow/Skillest] — why switch?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        },
+        "coach_faq_idCxXM": {
+          "type": "coach_faq",
+          "settings": {
+            "question": "What if most of my business is in-person?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        },
+        "coach_faq_YawrLJ": {
+          "type": "coach_faq",
+          "settings": {
+            "question": "How do I move my existing videos?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        },
+        "coach_faq_YxyLn8": {
+          "type": "coach_faq",
+          "settings": {
+            "question": "Is it worth the investment?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "golfer_faq_KKnjNM",
+        "golfer_faq_zpx84z",
+        "golfer_faq_Dmp7qR",
+        "golfer_faq_7dymDM",
+        "coach_faq_WArNbW",
+        "coach_faq_idCxXM",
+        "coach_faq_YawrLJ",
+        "coach_faq_YxyLn8"
+      ],
+      "name": "FAQ – Golfer / Coach",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "golfers_title": "For Golfers",
+        "coaches_title": "For Coaches"
+      }
+    },
+    "cta_questions_bar_aypLzc": {
+      "type": "cta-questions-bar",
+      "name": "CTA – Still Have Questions?",
+      "settings": {
+        "text": "Still Have Questions?",
+        "background_image": "shopify://shop_images/Mask_group.png",
+        "button_text": "Schedule a Demo",
+        "button_link": "#",
+        "show_arrow": true
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "banner_zY6kBL",
+    "trusted_by_coaches_XXTeTG",
+    "zigzag_section_9PexWn",
+    "dual_audience_cards_TEt37K",
+    "video_testimonial_LBDcHx",
+    "faq_golfer_coach_rbLhDK",
+    "cta_questions_bar_aypLzc"
   ]
 }

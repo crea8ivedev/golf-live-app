@@ -1,0 +1,168 @@
+{% style %}
+  .trusted-coaches {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .trusted-coaches__heading {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .trusted-coaches__subheading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 16px;
+  }
+
+  .trusted-coaches__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .trusted-coaches__card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .trusted-coaches__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .trusted-coaches__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  }
+
+  .trusted-coaches__name {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    .trusted-coaches__subheading {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="trusted-coaches">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="trusted-coaches__heading h1">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <div class="trusted-coaches__subheading rte">
+        {{ section.settings.subheading }}
+      </div>
+    {% endif %}
+
+    <div class="trusted-coaches__grid">
+      {% for block in section.blocks %}
+        <div class="trusted-coaches__card" {{ block.shopify_attributes }}>
+          {% if block.settings.player_image != blank %}
+            <img
+              src="{{ block.settings.player_image | image_url: width: 600 }}"
+              alt="{{ block.settings.player_name | escape }}"
+              class="trusted-coaches__image"
+              loading="lazy"
+              width="600"
+              height="800"
+            >
+          {% endif %}
+
+          {% if block.settings.player_name != blank %}
+            <div class="trusted-coaches__overlay">
+              <p class="trusted-coaches__name">
+                {{ block.settings.player_name }}
+              </p>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trusted by Coaches",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by Top Coaches"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "From PGA Tour coaches to rising instructors – trusted by the best to deliver world-class instruction."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "player",
+      "name": "Player",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "player_image",
+          "label": "Player image"
+        },
+        {
+          "type": "text",
+          "id": "player_name",
+          "label": "Player name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trusted by Coaches",
+      "blocks": [
+        { "type": "player" },
+        { "type": "player" },
+        { "type": "player" },
+        { "type": "player" },
+        { "type": "player" }
+      ]
+    }
+  ]
+}
+{% endschema %}

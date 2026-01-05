@@ -7,7 +7,6 @@
 }
 
 .footer__content-top {
-  padding-bottom: 5rem;
   display: block;
 }
 
@@ -25,17 +24,10 @@
   .footer-block.grid__item:first-child {
     margin-top: 0;
   }
-
-  .footer__content-top {
-    padding-bottom: 3rem;
-    padding-left: calc(4rem / var(--font-body-scale));
-    padding-right: calc(4rem / var(--font-body-scale));
-  }
 }
 
 @media screen and (min-width: 750px) {
   .footer__content-top .grid {
-    row-gap: 6rem;
     margin-bottom: 0;
   }
 }
@@ -146,18 +138,6 @@
   .footer-block--newsletter {
     flex-wrap: nowrap;
     justify-content: center;
-  }
-}
-
-.footer-block__heading {
-  margin-bottom: 2rem;
-  margin-top: 0;
-  font-size: calc(var(--font-heading-scale) * 1.6rem);
-}
-
-@media screen and (min-width: 990px) {
-  .footer-block__heading {
-    font-size: calc(var(--font-heading-scale) * 1.8rem);
   }
 }
 
@@ -331,15 +311,6 @@
   .footer-block:only-child li {
     display: inline;
   }
-
-  .footer-block__details-content > li:not(:last-child) {
-    margin-right: 1.5rem;
-  }
-}
-
-.footer-block__details-content .list-menu__item--link,
-.copyright__content a {
-  color: rgba(var(--color-foreground), 0.75);
 }
 
 .footer-block__details-content .list-menu__item--active {
@@ -348,29 +319,8 @@
 }
 
 @media screen and (min-width: 750px) {
-  .footer-block__details-content .list-menu__item--link:hover,
-  .copyright__content a:hover {
-    color: rgb(var(--color-foreground));
-    text-decoration: underline;
-    text-underline-offset: 0.3rem;
-  }
-
-  .footer-block__details-content .list-menu__item--active:hover {
-    text-decoration-thickness: 0.2rem;
-  }
-}
-
-@media screen and (max-width: 989px) {
-  .footer-block__details-content .list-menu__item--link {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-}
-
-@media screen and (min-width: 750px) {
   .footer-block__details-content .list-menu__item--link {
     display: inline-block;
-    font-size: 1.4rem;
   }
 
   .footer-block__details-content > :first-child .list-menu__item--link {
@@ -448,10 +398,6 @@
   max-width: 20rem;
 }
 
-.copyright__content {
-  font-size: 1.1rem;
-}
-
 .copyright__content a {
   color: currentColor;
   text-decoration: none;
@@ -499,16 +445,6 @@
   @media screen and (max-width: 749px) {
     .footer .grid {
       margin-left: 0;
-    }
-  }
-
-  @media screen and (min-width: 750px) {
-    .footer__content-top .grid {
-      margin-left: -3rem;
-    }
-
-    .footer__content-top .grid__item {
-      padding-left: 3rem;
     }
   }
 }

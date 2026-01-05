@@ -1,0 +1,181 @@
+<div class="ctm-hero-platform-main" style="--overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};">
+  <div class="ctm-hero-inner">
+    <div class="ctm-hero-media">
+      {% if section.settings.bg_image != blank %}
+        <div class="ctm-hero-bg">
+          {{ section.settings.bg_image | image_url: width: 1200 | image_tag }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.phone_image_1 != blank %}
+        <div class="ctm-hero-phone ctm-hero-phone-1">
+          {{ section.settings.phone_image_1 | image_url: width: 500 | image_tag }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.phone_image_2 != blank %}
+        <div class="ctm-hero-phone ctm-hero-phone-2">
+          {{ section.settings.phone_image_2 | image_url: width: 500 | image_tag }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="ctm-hero-content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="ctm-hero-eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="ctm-hero-heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="ctm-hero-subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="ctm-hero-features">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature' %}
+              <li class="ctm-hero-feature" {{ block.shopify_attributes }}>
+                {% if block.settings.icon != blank %}
+                  <span class="ctm-feature-icon">
+                    {{ block.settings.icon | image_url: width: 40 | image_tag }}
+                  </span>
+                {% endif %}
+                <span class="ctm-feature-text">
+                  {{ block.settings.text }}
+                </span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div class="ctm-hero-buttons">
+        {% if section.settings.primary_label != blank %}
+          <a href="{{ section.settings.primary_link }}" class="btn btn-primary">
+            {{ section.settings.primary_label }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.secondary_label != blank %}
+          <a href="{{ section.settings.secondary_link }}" class="btn btn-secondary">
+            {{ section.settings.secondary_label }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.stat_text != blank %}
+        <div class="ctm-hero-stat">
+          {% if section.settings.stat_icon != blank %}
+            {{ section.settings.stat_icon | image_url: width: 24 | image_tag }}
+          {% endif %}
+          <span>{{ section.settings.stat_text }}</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Hero Platform",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Background overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 70
+    },
+    {
+      "type": "image_picker",
+      "id": "phone_image_1",
+      "label": "Phone image (front)"
+    },
+    {
+      "type": "image_picker",
+      "id": "phone_image_2",
+      "label": "Phone image (back)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Top label",
+      "default": "LIVE GOLF COACHING FROM ANYWHERE"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sub heading"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Start Free Trial"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Schedule a Demo"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "stat_icon",
+      "label": "Stat icon"
+    },
+    {
+      "type": "text",
+      "id": "stat_text",
+      "label": "Stat text",
+      "default": "20,000+ Hours of Coaching Delivered"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Feature icon"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Feature text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Platform"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,195 @@
+{% style %}
+  .pricing-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+  }
+  .pricing-card-header-{{ section.id }} {
+    border-radius: 18px 18px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 11rem;
+  }
+  .header-pattern-overlay {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+  }
+  .btn-gradient-{{ section.id }} {
+    background: {{ section.settings.btn_gradient }};
+    transition: transform 0.2s ease, opacity 0.3s ease;
+  }
+  .btn-gradient-{{ section.id }}:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+{% endstyle %}
+
+<section class="pricing-section-{{ section.id }} py-12 px-6">
+  <div class="max-w-full mx-auto">
+    {% if section.settings.heading != blank %}
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 leading-tight">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="flex flex-wrap justify-center gap-8">
+      {% for block in section.blocks %}
+        <div
+          class="flex-1 max-w-[380px] bg-white rounded-[24px] shadow-sm flex flex-col border border-gray-100"
+          {{ block.shopify_attributes }}
+        >
+          <div
+            class="pricing-card-header-{{ section.id }}"
+            style="background-color: {{ block.settings.card_header_color }};"
+          >
+            {% if block.settings.header_image != blank %}
+              <div
+                class="header-pattern-overlay"
+                style="background-image: url('{{ block.settings.header_image | image_url: '600x' }}');"
+              ></div>
+            {% endif %}
+
+            <div class="absolute inset-0 p-6 flex flex-col justify-center text-white">
+              <h3 class="text-2xl font-semibold">{{ block.settings.plan_name }}</h3>
+              <div class="flex items-baseline mt-1">
+                <span class="text-4xl font-bold">${{ block.settings.price }}</span>
+                <span class="text-lg opacity-80">/mo</span>
+              </div>
+              <p class="text-sm mt-1 font-light opacity-90">{{ block.settings.sub_heading }}</p>
+            </div>
+          </div>
+
+          <div class="p-8 flex-grow">
+            <ul class="space-y-4">
+              {%- assign features = block.settings.features_list | newline_to_br | split: '<br />' -%}
+              {% for feature in features %}
+                {% if feature != blank %}
+                  <li class="flex items-center gap-3">
+                    <span class="flex-shrink-0 w-5 h-5">
+                      {% if block.settings.feature_icon != blank %}
+                        <img
+                          src="{{ block.settings.feature_icon | image_url: '40x' }}"
+                          class="w-full h-full object-contain"
+                          alt="icon"
+                          height=""
+                          width=""
+                        >
+                      {% else %}
+                        <svg class="w-full h-full text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      {% endif %}
+                    </span>
+                    <span class="text-gray-700 text-base">{{ feature | strip }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="p-8 pt-0">
+            <a
+              href="{{ block.settings.button_link }}"
+              class="btn-gradient-{{ section.id }} block w-full text-center text-white font-bold py-4 rounded-full uppercase tracking-widest text-sm"
+            >
+              {{ block.settings.button_text }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Coaching Pricing Flex",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Choose the Plan That Fits Your Coaching Business"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#F3F4F6"
+    },
+    {
+      "type": "text",
+      "id": "btn_gradient",
+      "label": "Button Gradient CSS",
+      "default": "linear-gradient(77.87deg, #00511C -24.41%, #187F10 103.64%)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "plan",
+      "name": "Pricing Plan",
+      "settings": [
+        {
+          "type": "color",
+          "id": "card_header_color",
+          "label": "Header Background Color",
+          "default": "#064e3b"
+        },
+        {
+          "type": "image_picker",
+          "id": "header_image",
+          "label": "Header Pattern (Transparent PNG)"
+        },
+        {
+          "type": "text",
+          "id": "plan_name",
+          "label": "Plan Name",
+          "default": "Starter"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "29"
+        },
+        {
+          "type": "text",
+          "id": "sub_heading",
+          "label": "Target Audience",
+          "default": "For solo coaches"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_icon",
+          "label": "List Icon (e.g. Right Sign)"
+        },
+        {
+          "type": "textarea",
+          "id": "features_list",
+          "label": "Features (One per line)",
+          "default": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "CHOOSE PLAN"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coaching Pricing Flex",
+      "blocks": [{ "type": "plan" }, { "type": "plan" }, { "type": "plan" }]
+    }
+  ]
+}
+{% endschema %}

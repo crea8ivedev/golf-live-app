@@ -1,0 +1,295 @@
+<style>
+  .dual-audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .dual-card {
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    position: relative;
+    min-height: 100%;
+  }
+
+  .dual-card__inner {
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 420px;
+  }
+
+  .dual-card__tag {
+    display: inline-block;
+    background: #1a7f37;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .dual-card__heading {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .dual-card__description {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .dual-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .dual-feature img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .dual-card__button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 24px;
+    background: #1a7f37;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .dual-audience-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="dual-audience-section page-width">
+  <div class="dual-audience-grid">
+    <!-- LEFT CARD -->
+    <div
+      class="dual-card dual-card--left"
+      style="
+        {% if section.settings.bg_image_left != blank %}
+          background-image: url('{{ section.settings.bg_image_left | image_url: width: 1600 }}');
+        {% endif %}
+      "
+    >
+      <div class="dual-card__inner">
+        {% if section.settings.top_label_left != blank %}
+          <span class="dual-card__tag">{{ section.settings.top_label_left }}</span>
+        {% endif %}
+
+        {% if section.settings.heading_left != blank %}
+          <h2 class="dual-card__heading">{{ section.settings.heading_left }}</h2>
+        {% endif %}
+
+        {% if section.settings.description_left != blank %}
+          <p class="dual-card__description">
+            {{ section.settings.description_left }}
+          </p>
+        {% endif %}
+
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'left' %}
+            <div class="dual-feature" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 80 }}"
+                  alt="{{ block.settings.text | escape }}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                >
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <span>{{ block.settings.text }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% if section.settings.button_text_left != blank %}
+          <a
+            href="{{ section.settings.button_url_left }}"
+            class="dual-card__button"
+          >
+            {{ section.settings.button_text_left }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div
+      class="dual-card dual-card--right"
+      style="
+        {% if section.settings.bg_image_right != blank %}
+          background-image: url('{{ section.settings.bg_image_right | image_url: width: 1600 }}');
+        {% endif %}
+      "
+    >
+      <div class="dual-card__inner">
+        {% if section.settings.top_label_right != blank %}
+          <span class="dual-card__tag">{{ section.settings.top_label_right }}</span>
+        {% endif %}
+
+        {% if section.settings.heading_right != blank %}
+          <h2 class="dual-card__heading">{{ section.settings.heading_right }}</h2>
+        {% endif %}
+
+        {% if section.settings.description_right != blank %}
+          <p class="dual-card__description">
+            {{ section.settings.description_right }}
+          </p>
+        {% endif %}
+
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'right' %}
+            <div class="dual-feature" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 80 }}"
+                  alt="{{ block.settings.text | escape }}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                >
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <span>{{ block.settings.text }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% if section.settings.button_text_right != blank %}
+          <a
+            href="{{ section.settings.button_url_right }}"
+            class="dual-card__button"
+          >
+            {{ section.settings.button_text_right }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Dual Audience Cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left Side Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_left",
+      "label": "Left background image"
+    },
+    {
+      "type": "text",
+      "id": "top_label_left",
+      "label": "Left top label"
+    },
+    {
+      "type": "text",
+      "id": "heading_left",
+      "label": "Left heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description_left",
+      "label": "Left description"
+    },
+    {
+      "type": "text",
+      "id": "button_text_left",
+      "label": "Left button text"
+    },
+    {
+      "type": "url",
+      "id": "button_url_left",
+      "label": "Left button URL"
+    },
+    {
+      "type": "header",
+      "content": "Right Side Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_right",
+      "label": "Right background image"
+    },
+    {
+      "type": "text",
+      "id": "top_label_right",
+      "label": "Right top label"
+    },
+    {
+      "type": "text",
+      "id": "heading_right",
+      "label": "Right heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description_right",
+      "label": "Right description"
+    },
+    {
+      "type": "text",
+      "id": "button_text_right",
+      "label": "Right button text"
+    },
+    {
+      "type": "url",
+      "id": "button_url_right",
+      "label": "Right button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Image with text",
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Show in",
+          "options": [
+            { "value": "left", "label": "Left card" },
+            { "value": "right", "label": "Right card" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dual Audience Cards"
+    }
+  ]
+}
+{% endschema %}

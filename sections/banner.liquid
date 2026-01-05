@@ -1,0 +1,280 @@
+<style>
+  .golf-app-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .golf-app-hero__top-text {
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .golf-app-hero__heading {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .golf-app-hero__description {
+    margin-bottom: 24px;
+  }
+
+  .golf-app-hero__button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 12px 28px;
+    border-radius: 40px;
+    background: #0a5c1f;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .golf-app-hero__store-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .golf-app-hero__store-buttons img {
+    max-height: 44px;
+  }
+
+  .golf-app-hero__images {
+    position: relative;
+  }
+
+  /* DESKTOP STACK */
+  .golf-app-hero__desktop-stack {
+    position: relative;
+  }
+
+  .golf-app-hero__desktop-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .golf-app-hero__mobile-images {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .golf-app-hero__mobile-images img {
+    max-width: 220px;
+    width: 100%;
+  }
+
+  /* MOBILE COMBINED IMAGE */
+  .golf-app-hero__mobile-combined {
+    display: none;
+  }
+
+  .golf-app-hero__mobile-combined img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* MOBILE */
+  @media screen and (max-width: 768px) {
+    .golf-app-hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .golf-app-hero__desktop-stack {
+      display: none;
+    }
+
+    .golf-app-hero__mobile-combined {
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .golf-app-hero__heading {
+      font-size: 28px;
+    }
+  }
+</style>
+
+<div class="golf-app-hero page-width">
+  <div class="golf-app-hero__grid">
+    <!-- LEFT CONTENT -->
+    <div class="golf-app-hero__content">
+      {% if section.settings.top_text != blank %}
+        <p class="golf-app-hero__top-text">
+          {{ section.settings.top_text }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="golf-app-hero__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="golf-app-hero__description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <a href="{{ section.settings.button_url }}" class="golf-app-hero__button">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+
+      <div class="golf-app-hero__store-buttons">
+        {% if section.settings.app_store_image != blank and section.settings.app_store_url != blank %}
+          <a href="{{ section.settings.app_store_url }}" target="_blank">
+            <img
+              src="{{ section.settings.app_store_image | image_url: width: 300 }}"
+              alt="Download on the App Store"
+              loading="lazy"
+              width="auto"
+              height="auto"
+            >
+          </a>
+        {% endif %}
+
+        {% if section.settings.play_store_image != blank and section.settings.play_store_url != blank %}
+          <a href="{{ section.settings.play_store_url }}" target="_blank">
+            <img
+              src="{{ section.settings.play_store_image | image_url: width: 300 }}"
+              alt="Get it on Google Play"
+              loading="lazy"
+              width="auto"
+              height="auto"
+            >
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- RIGHT IMAGES -->
+    <div class="golf-app-hero__images">
+      <!-- MOBILE COMBINED IMAGE -->
+      {% if section.settings.mobile_combined_image != blank %}
+        <div class="golf-app-hero__mobile-combined">
+          <img
+            src="{{ section.settings.mobile_combined_image | image_url: width: 900 }}"
+            alt="Live virtual golf lessons"
+            loading="lazy"
+            width="auto"
+            height="auto"
+          >
+        </div>
+      {% endif %}
+
+      <!-- DESKTOP IMAGE STACK -->
+      <div class="golf-app-hero__desktop-stack">
+        {% if section.settings.desktop_image != blank %}
+          <div class="golf-app-hero__desktop-image">
+            <img
+              src="{{ section.settings.desktop_image | image_url: width: 1400 }}"
+              alt="Golf player"
+              loading="lazy"
+              width="auto"
+              height="auto"
+            >
+          </div>
+        {% endif %}
+
+        <div class="golf-app-hero__mobile-images">
+          {% if section.settings.mobile_image_1 != blank %}
+            <img
+              src="{{ section.settings.mobile_image_1 | image_url: width: 500 }}"
+              alt="Mobile app preview 1"
+              loading="lazy"
+              width="auto"
+              height="auto"
+            >
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Golf App Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "top_text",
+      "label": "Top Text",
+      "default": "LIVE GOLF COACHING. ANYTIME, ANYWHERE."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built for Golfers Who Want Results and Coaches Who Deliver Them"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Teach or train from anywhere with live video, instant replay, and performance tracking in one app.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Start Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Golf Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image_1",
+      "label": "Mobile App Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_combined_image",
+      "label": "Mobile Combined Image (Golf + Phones)"
+    },
+    {
+      "type": "image_picker",
+      "id": "app_store_image",
+      "label": "App Store Badge Image"
+    },
+    {
+      "type": "url",
+      "id": "app_store_url",
+      "label": "App Store URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "play_store_image",
+      "label": "Google Play Badge Image"
+    },
+    {
+      "type": "url",
+      "id": "play_store_url",
+      "label": "Google Play URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Golf App Banner"
+    }
+  ]
+}
+{% endschema %}

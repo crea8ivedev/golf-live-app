@@ -96,7 +96,7 @@
             {% endfor %}
 
             {{ scheme_classes | prepend: 'body' }} {
-              color: rgba(var(--color-foreground), 0.75);
+              color: rgba(var(--color-foreground));
               background-color: rgb(var(--color-background));
             }
 
@@ -241,23 +241,11 @@
               grid-template-columns: 100%;
               min-height: 100%;
               margin: 0;
-              font-size: 1.5rem;
-              letter-spacing: 0.06rem;
-              line-height: calc(1 + 0.8 / var(--font-body-scale));
-              font-family: var(--font-body-family);
-              font-style: var(--font-body-style);
-              font-weight: var(--font-body-weight);
-            }
-
-            @media screen and (min-width: 750px) {
-              body {
-                font-size: 1.6rem;
-              }
             }
     {% endstyle %}
 
-    {{ 'application.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'application.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -298,12 +286,17 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    >
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"
       integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-      async
     ></script>
     <link
       rel="stylesheet"

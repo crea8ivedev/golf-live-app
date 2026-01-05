@@ -1,0 +1,141 @@
+{% style %}
+  .cta-questions-bar {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+  }
+
+  .cta-questions-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 24px 32px;
+  }
+
+  .cta-questions-bar__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .cta-questions-bar__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cta-questions-bar__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .cta-questions-bar__text {
+    margin: 0;
+  }
+
+  .cta-questions-bar__btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 749px) {
+    .cta-questions-bar__inner {
+      padding: 20px;
+    }
+
+    .cta-questions-bar__content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+{% endstyle %}
+
+<div class="page-width">
+  <div class="cta-questions-bar">
+    {% if section.settings.background_image != blank %}
+      <div class="cta-questions-bar__bg">
+        <img
+          src="{{ section.settings.background_image | image_url: width: 2000 }}"
+          alt=""
+          loading="lazy"
+          width="auto"
+          height="auto"
+        >
+      </div>
+    {% endif %}
+
+    <div class="cta-questions-bar__inner">
+      <div class="cta-questions-bar__content">
+        {% if section.settings.text != blank %}
+          <p class="cta-questions-bar__text">
+            {{ section.settings.text }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+          <a
+            href="{{ section.settings.button_link }}"
+            class="cta-questions-bar__btn"
+          >
+            {{ section.settings.button_text }}
+            {% if section.settings.show_arrow %}
+              <span aria-hidden="true">→</span>
+            {% endif %}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "CTA – Questions Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Still Have Questions?"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background pattern image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Schedule a Demo"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrow",
+      "label": "Show arrow icon in button",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA – Still Have Questions?"
+    }
+  ]
+}
+{% endschema %}

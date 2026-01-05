@@ -1,0 +1,194 @@
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 1024px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_tablet }}px;
+      padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+{% endstyle %}
+<div class="page-width ctm-trusted-pga-main color-{{ section.settings.color_scheme }} {{ section.settings.extra_class }} section-{{ section.id }}-padding">
+  <div class="ctm-trusted-pga-inner {{ section.settings.extra_class }}">
+    <div class="ctm-main-heading">
+      {% if section.settings['pga-main-title'] != blank %}
+        <div class="ctm-inner-heading">
+          <h2 class="ctm-pga-title text-center">{{ section.settings['pga-main-title'] }}</h2>
+        </div>
+      {% endif %}
+    </div>
+    <div class="ctm-main-content flex content-center items-center justify-center">
+      {% for block in section.blocks %}
+        <div class="ctm-inner-content flex items-center flex-col relative">
+          {% if block.settings['trusted-add-image'] != blank %}
+            <div class="ctm-pga-image">
+              <img
+                class="rounded-[50%]"
+                src="{{ block.settings.trusted-add-image | image_url: width: 140, height: 140 }}"
+                alt="{{ block.settings.trusted-add-image.alt | escape }}"
+                width="auto"
+                height="auto"
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+          {% if block.settings.enable_professional != blank %}
+            <div class="ctm-pga-premium-logo absolute right-[15%] top-2/4">
+              {{- 'premium-logo.svg' | inline_asset_content -}}
+            </div>
+          {% endif %}
+          {% if block.settings['pga-name'] != blank %}
+            <div class="ctm-pga-premium-name text-center">
+              <h4>{{ block.settings['pga-name'] }}</h4>
+            </div>
+          {% endif %}
+          {% if block.settings['pga-content'] != blank %}
+            <div class="ctm-pga-premium-desc text-center">
+              <p>{{ block.settings['pga-content'] }}</p>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trusted PGA section",
+  "class": "trusted-people-section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "pga-main-title",
+      "default": "Trusted by PGA Professionals"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Tablet Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "add_pga",
+      "name": "Add PGA",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Add Image",
+          "id": "trusted-add-image"
+        },
+        {
+          "type": "text",
+          "label": "Name",
+          "id": "pga-name"
+        },
+        {
+          "type": "richtext",
+          "label": "Content",
+          "id": "pga-content"
+        },
+        {
+          "type": "checkbox",
+          "label": "Enable Professional",
+          "id": "enable_professional",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trusted PGA section"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,228 @@
+<div class="faq-section page-width" id="faq-{{ section.id }}">
+  {% if section.settings.heading != blank %}
+    <h2 class="faq-heading">
+      {{ section.settings.heading }}
+    </h2>
+  {% endif %}
+
+  <div class="faq-columns">
+    <!-- GOLFERS -->
+    <div class="faq-column" data-column="golfers">
+      <h3 class="faq-column-title">
+        {{ section.settings.golfers_title }}
+      </h3>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'golfer_faq' %}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <button type="button" class="faq-question">
+              <span>{{ block.settings.question }}</span>
+              <span class="faq-icon">⌄</span>
+            </button>
+
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- COACHES -->
+    <div class="faq-column" data-column="coaches">
+      <h3 class="faq-column-title">
+        {{ section.settings.coaches_title }}
+      </h3>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'coach_faq' %}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <button type="button" class="faq-question">
+              <span>{{ block.settings.question }}</span>
+              <span class="faq-icon">⌄</span>
+            </button>
+
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #faq-{{ section.id }} {
+    padding: 60px 0;
+  }
+
+  #faq-{{ section.id }} .faq-heading {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  #faq-{{ section.id }} .faq-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  #faq-{{ section.id }} .faq-column-title {
+    margin-bottom: 24px;
+  }
+
+  #faq-{{ section.id }} .faq-item {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 16px 0;
+  }
+
+  #faq-{{ section.id }} .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  #faq-{{ section.id }} .faq-icon {
+    transition: transform 0.3s ease;
+  }
+
+  #faq-{{ section.id }} .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Dynamic height container */
+  #faq-{{ section.id }} .faq-answer-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+  }
+
+  #faq-{{ section.id }} .faq-answer {
+    padding-top: 12px;
+  }
+
+  @media (max-width: 768px) {
+    #faq-{{ section.id }} .faq-columns {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const section = document.getElementById('faq-{{ section.id }}');
+    if (!section) return;
+
+    section.querySelectorAll('.faq-column').forEach((column) => {
+      const items = column.querySelectorAll('.faq-item');
+
+      items.forEach((item) => {
+        const button = item.querySelector('.faq-question');
+        const wrapper = item.querySelector('.faq-answer-wrapper');
+
+        button.addEventListener('click', () => {
+          const isOpen = item.classList.contains('active');
+
+          // Close all items in this column
+          items.forEach((i) => {
+            i.classList.remove('active');
+            i.querySelector('.faq-answer-wrapper').style.height = '0px';
+          });
+
+          // Open clicked item
+          if (!isOpen) {
+            item.classList.add('active');
+            wrapper.style.height = wrapper.scrollHeight + 'px';
+          }
+        });
+      });
+
+      // Recalculate heights on resize
+      window.addEventListener('resize', () => {
+        items.forEach((item) => {
+          if (item.classList.contains('active')) {
+            const wrapper = item.querySelector('.faq-answer-wrapper');
+            wrapper.style.height = wrapper.scrollHeight + 'px';
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ – Golfers & Coaches",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "golfers_title",
+      "label": "Golfers column title",
+      "default": "For Golfers"
+    },
+    {
+      "type": "text",
+      "id": "coaches_title",
+      "label": "Coaches column title",
+      "default": "For Coaches"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "golfer_faq",
+      "name": "Golfer FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "type": "coach_faq",
+      "name": "Coach FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ – Golfers & Coaches"
+    }
+  ]
+}
+{% endschema %}

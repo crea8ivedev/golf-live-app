@@ -31,6 +31,40 @@
               >
                 {{ block.settings.heading }}
               </h2>
+              <div class="play-apple-img-main">
+                <div class="playstore-block">
+                  {% if section.settings.playstore_url != blank %}
+                    <a href="{{ section.settings.playstore_url }}">
+                  {% endif %}
+                  {% if section.settings.playstore_image != blank %}
+                    <img
+                      src="{{ section.settings.playstore_image | image_url }}"
+                      height="auto"
+                      width="auto"
+                      alt="playstore image"
+                    >
+                  {% endif %}
+                  {% if section.settings.playstore_url != blank %}
+                    </a>
+                  {% endif %}
+                </div>
+                <div class="apple-appstore-block">
+                  {% if section.settings.apple_app_store_url != blank %}
+                    <a href="{{ section.settings.apple_app_store_url }}">
+                  {% endif %}
+                  {% if section.settings.apple_app_store_image != blank %}
+                    <img
+                      src="{{ section.settings.apple_app_store_image | image_url }}"
+                      height="auto"
+                      width="auto"
+                      alt="apple app store image"
+                    >
+                  {% endif %}
+                  {% if section.settings.apple_app_store_url != blank %}
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
             {%- when 'caption' -%}
               <p
                 class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -100,7 +134,7 @@
   "tag": "section",
   "class": "section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": ["header"]
   },
   "settings": [
     {
@@ -178,6 +212,30 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Footer Content"
+    },
+    {
+      "type": "image_picker",
+      "label": "Playstore Image",
+      "id": "playstore_image"
+    },
+    {
+      "type": "url",
+      "label": "Playstore URL",
+      "id": "playstore_url"
+    },
+    {
+      "type": "image_picker",
+      "label": "Apple App Store Image",
+      "id": "apple_app_store_image"
+    },
+    {
+      "type": "url",
+      "label": "Apple App Store URL",
+      "id": "apple_app_store_url"
     }
   ],
   "blocks": [

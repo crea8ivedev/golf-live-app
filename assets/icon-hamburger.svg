@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon icon-hamburger" viewBox="0 0 18 16"><path fill="currentColor" d="M1 .5a.5.5 0 1 0 0 1h15.71a.5.5 0 0 0 0-1zM.5 8a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1A.5.5 0 0 1 .5 8m0 7a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5"/></svg>
+<!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon icon-hamburger" viewBox="0 0 18 16"><path fill="currentColor" d="M1 .5a.5.5 0 1 0 0 1h15.71a.5.5 0 0 0 0-1zM.5 8a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1A.5.5 0 0 1 .5 8m0 7a.5.5 0 0 1 .5-.5h15.71a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5"/></svg> -->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="33" height="22" viewBox="0 0 33 22" fill="none" class="icon icon-hamburger">
+  <path d="M11 1C11 0.447715 11.4477 0 12 0H32C32.5523 0 33 0.447715 33 1C33 1.55228 32.5523 2 32 2H12C11.4477 2 11 1.55228 11 1Z" fill="#232323"/>
+  <path d="M0 11C0 10.4477 0.447715 10 1 10H32C32.5523 10 33 10.4477 33 11C33 11.5523 32.5523 12 32 12H0.999999C0.447714 12 0 11.5523 0 11Z" fill="#232323"/>
+  <path d="M11 21C11 20.4477 11.4477 20 12 20H32C32.5523 20 33 20.4477 33 21C33 21.5523 32.5523 22 32 22H12C11.4477 22 11 21.5523 11 21Z" fill="#232323"/>
+</svg>
