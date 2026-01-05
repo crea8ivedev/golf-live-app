@@ -1,0 +1,43 @@
+{
+	"name": "burlingham-sports",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"format": "prettier --write snippets/ templates/ sections/ layout/ config/ assets/",
+		"lint": "eslint . --ext .js",
+		"prepare": "husky",
+		"build": "npx @tailwindcss/cli -i css/application.css -o assets/application.css.liquid -w -m"
+	},
+	"lint-staged": {
+		"*.js": "eslint --fix",
+		"*.{js,jsx,ts,tsx,css,md,liquid}": "prettier --write"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/crea8ivedev/golf-live-app.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/crea8ivedev/golf-live-app/issues"
+	},
+	"homepage": "https://github.com/crea8ivedev/golf-live-app#readme",
+	"dependencies": {
+		"@tailwindcss/cli": "^4.1.18"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.2",
+		"@shopify/prettier-plugin-liquid": "^1.10.0",
+		"autoprefixer": "^10.4.23",
+		"eslint": "^9.39.2",
+		"globals": "^16.5.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.6",
+		"postcss": "^8.5.6",
+		"prettier": "^3.6.2",
+		"tailwindcss": "^4.1.18"
+	}
+}
