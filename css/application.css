@@ -267,7 +267,15 @@
 }
 
 .footer-connect {
-  @apply max-768:mb-[29px];
+  @apply max-768:mb-[30px];
+}
+
+.footer-social-media {
+  @apply max-768:flex max-768:flex-wrap max-768:gap-x-[40px];
+}
+
+.footer-connect .footer-social-media > * {
+  @apply max-768:flex-[0_0_calc(50%_-_20px)];
 }
 
 /* footer */
