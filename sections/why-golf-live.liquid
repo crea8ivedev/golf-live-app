@@ -1,4 +1,28 @@
-<div class="ctn-golf-live-info-main">
+{% style %}
+  .ctn-golf-live-info-main {
+    background-image: url('{{ section.settings.bg-golf-image | image_url: width: 1200 }}');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 1024px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_tablet }}px;
+      padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+{% endstyle %}
+<div class="ctn-golf-live-info-main {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
   <div class="ctn-golf-live-info-inner">
     <div class="ctn-golf-live-title">
       <h2>{{ section.settings['main-golf-live-title'] }}</h2>
@@ -6,17 +30,18 @@
     <div class="ctn-golf-live-body">
       <div class="ctn-golf-comparison-section">
         <div class="ctn-golf-comparison-wrapper">
-          {% comment %} Left Card {% endcomment %}
-          <div class="ctn-golf-comparison-card ctn-golf-comparison-card--primary">
+          <div class="ctn-golf-left-card ctn-golf-left-card--primary">
             {% if section.settings.left_title != blank %}
               <h3>{{ section.settings.left_title }}</h3>
             {% endif %}
 
-            <ul class="ctn-golf-comparison-list">
+            <ul class="ctn-golf-left-list">
               {% for block in section.blocks %}
-                <li class="ctn-golf-comparison-item">
+                <li class="ctn-golf-left-item">
                   {% if block.settings.left_checked %}
-                    <span class="ctn-golf-comparison-icon">✔</span>
+                    <span class="ctn-golf-left-icon">
+                      {{ 'golf-check-icon.svg' | inline_asset_content }}
+                    </span>
                   {% endif %}
                   <span>{{ block.settings.left_text }}</span>
                 </li>
@@ -24,33 +49,38 @@
             </ul>
           </div>
 
-          {% comment %} Center Card {% endcomment %}
-          <div class="ctn-golf-comparison-card ctn-golf-comparison-card--primary">
+          <div class="ctn-golf-center-card ctn-golf-center-card--primary">
             {% if section.settings.center_title != blank %}
               <h3>{{ section.settings.center_title }}</h3>
             {% endif %}
 
-            <ul class="ctn-golf-comparison-list">
+            <ul class="ctn-golf-center-list">
               {% for block in section.blocks %}
-                <li class="ctn-golf-comparison-item">
+                <li class="ctn-golf-center-item">
                   {% if block.settings.center_checked %}
-                    <span class="ctn-golf-comparison-icon">✔</span>
+                    <span class="ctn-golf-center-icon">
+                      {{ 'golf-check-icon.svg' | inline_asset_content }}
+                    </span>
                   {% endif %}
-                  <span>{{ block.settings.center_checked }}</span>
+                  <span>{{ block.settings.center_text }}</span>
                 </li>
               {% endfor %}
             </ul>
           </div>
 
-          {% comment %} Right Card {% endcomment %}
-          <div class="ctn-golf-comparison-card ctn-golf-comparison-card--secondary">
+          <div class="ctn-golf-right-card ctn-golf-right-card--secondary">
             {% if section.settings.right_title != blank %}
               <h3>{{ section.settings.right_title }}</h3>
             {% endif %}
 
-            <ul class="ctn-golf-comparison-list">
+            <ul class="ctn-golf-right-list">
               {% for block in section.blocks %}
-                <li class="ctn-golf-comparison-item">
+                <li class="ctn-golf-right-item">
+                  {% if block.settings.right_checked %}
+                    <span class="ctn-golf-right-icon">
+                      {{ 'golf-check-icon.svg' | inline_asset_content }}
+                    </span>
+                  {% endif %}
                   <span>{{ block.settings.right_text }}</span>
                 </li>
               {% endfor %}
@@ -79,6 +109,17 @@
       "type": "text",
       "label": "Extra Class",
       "id": "extra_class"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-4"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "bg-golf-image"
     },
     {
       "type": "text",
@@ -111,6 +152,78 @@
       "type": "richtext",
       "label": "Description",
       "id": "main-golf-description"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Tablet Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
     }
   ],
   "blocks": [
@@ -118,6 +231,12 @@
       "type": "feature_row",
       "name": "Feature row",
       "settings": [
+        {
+          "type": "checkbox",
+          "id": "left_checked",
+          "label": "Show check icon on left",
+          "default": true
+        },
         {
           "type": "text",
           "id": "left_text",
@@ -127,14 +246,20 @@
         {
           "type": "checkbox",
           "id": "center_checked",
-          "label": "Show check icon on left",
+          "label": "Show check icon on Center",
           "default": true
         },
         {
           "type": "text",
-          "id": "center_checked",
+          "id": "center_text",
           "label": "Center feature text",
           "default": "Built-in"
+        },
+        {
+          "type": "checkbox",
+          "id": "right_checked",
+          "label": "Show check icon on Right",
+          "default": true
         },
         {
           "type": "text",

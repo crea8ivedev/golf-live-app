@@ -38,60 +38,62 @@
         </div>
       {% endif %}
     </div>
-    <div class="ctm-hero-content">
-      {% if section.settings.eyebrow != blank %}
-        <p class="ctm-hero-eyebrow h5 mb-[15px]">{{ section.settings.eyebrow }}</p>
-      {% endif %}
-
-      {% if section.settings.heading != blank %}
-        <h1 class="ctm-hero-heading h2">{{ section.settings.heading }}</h1>
-      {% endif %}
-
-      {% if section.settings.subheading != blank %}
-        <p class="ctm-hero-subheading ctm-h6">{{ section.settings.subheading }}</p>
-      {% endif %}
-
-      {% if section.blocks.size > 0 %}
-        <ul class="ctm-hero-features">
-          {% for block in section.blocks %}
-            {% if block.type == 'feature' %}
-              <li class="ctm-hero-feature flex items-center gap-[25px]" {{ block.shopify_attributes }}>
-                {% if block.settings.icon != blank %}
-                  <span class="ctm-feature-icon">
-                    {{ block.settings.icon | image_url: width: 40 | image_tag }}
-                  </span>
-                {% endif %}
-                <span class="ctm-feature-text">
-                  {{ block.settings.text }}
-                </span>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      {% endif %}
-
-      <div class="ctm-hero-buttons">
-        {% if section.settings.primary_label != blank %}
-          <a href="{{ section.settings.primary_link }}" class="btn btn-primary ctm-button-free">
-            {{ section.settings.primary_label }}
-          </a>
+    <div class="w-full min-[1440px]:pr-[130px]">
+      <div class="ctm-hero-content">
+        {% if section.settings.eyebrow != blank %}
+          <p class="ctm-hero-eyebrow h5 mb-[15px]">{{ section.settings.eyebrow }}</p>
         {% endif %}
 
-        {% if section.settings.secondary_label != blank %}
-          <a href="{{ section.settings.secondary_link }}" class="btn btn-secondary ctm-button-free">
-            {{ section.settings.secondary_label }}
-          </a>
+        {% if section.settings.heading != blank %}
+          <h1 class="ctm-hero-heading h2">{{ section.settings.heading }}</h1>
+        {% endif %}
+
+        {% if section.settings.subheading != blank %}
+          <p class="ctm-hero-subheading ctm-h6">{{ section.settings.subheading }}</p>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <ul class="ctm-hero-features">
+            {% for block in section.blocks %}
+              {% if block.type == 'feature' %}
+                <li class="ctm-hero-feature flex items-center gap-[25px]" {{ block.shopify_attributes }}>
+                  {% if block.settings.icon != blank %}
+                    <span class="ctm-feature-icon">
+                      {{ block.settings.icon | image_url: width: 40 | image_tag }}
+                    </span>
+                  {% endif %}
+                  <span class="ctm-feature-text">
+                    {{ block.settings.text }}
+                  </span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="ctm-hero-buttons">
+          {% if section.settings.primary_label != blank %}
+            <a href="{{ section.settings.primary_link }}" class="btn btn-primary ctm-button button-green">
+              {{ section.settings.primary_label }}
+            </a>
+          {% endif %}
+
+          {% if section.settings.secondary_label != blank %}
+            <a href="{{ section.settings.secondary_link }}" class="btn btn-secondary ctm-button button-white-outline">
+              {{ section.settings.secondary_label }}
+            </a>
+          {% endif %}
+        </div>
+
+        {% if section.settings.stat_text != blank %}
+          <div class="flex justify-center items-center pt-[16px]">
+            {% if section.settings.stat_icon != blank %}
+              {{ section.settings.stat_icon | image_url: width: 21 | image_tag }}
+            {% endif %}
+            <span class="text-green0 font-bold">{{ section.settings.stat_text }}</span>
+          </div>
         {% endif %}
       </div>
-
-      {% if section.settings.stat_text != blank %}
-        <div class="ctm-hero-stat">
-          {% if section.settings.stat_icon != blank %}
-            {{ section.settings.stat_icon | image_url: width: 24 | image_tag }}
-          {% endif %}
-          <span>{{ section.settings.stat_text }}</span>
-        </div>
-      {% endif %}
     </div>
   </div>
 </div>

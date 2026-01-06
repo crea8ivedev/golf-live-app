@@ -111,6 +111,10 @@
     @apply text-[16px] leading-[25px] tracking-[0.16px] min-[1440px]:text-[19px] min-[1440px]:leading-[29px] min-[1440px]:tracking-[0.19px];
   }
 
+  .text-h6 {
+    @apply text-[15px] leading-[21px] tracking-[0.15px] min-[1440px]:text-[21px] min-[1440px]:leading-[29px] min-[1440px]:tracking-[0.21px];
+  }
+
   img {
     @apply overflow-hidden select-none;
   }
@@ -144,6 +148,9 @@
   }
   .button-green {
     @apply text-white bg-[linear-gradient(78deg,_#00511C_-24.41%,_#187F10_103.64%)] hover:bg-[linear-gradient(-78deg,_#00511C_-24.41%,_#187F10_103.64%)];
+  }
+  .button-white-outline {
+    @apply text-black bg-white border-1 border-solid border-[#D8D8D8] hover:text-white hover:bg-green0 hover:border-green0 normal-case;
   }
   .button-svg {
     @apply gap-[30px];
@@ -296,14 +303,25 @@
 
 .trusted-coaches__card:after {
   @apply content-[''] absolute w-full h-full top-0 left-0 pointer-events-none;
+}
+
+.trusted-coaches__card:after {
   background:
-    linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%),
-    linear-gradient(
-      181deg,
-      #282828 1.23%,
-      #282828 26.23%,
-      rgba(40, 40, 40, 0) 51.05%
-    );
+    linear-gradient(203deg, rgba(0, 0, 0, 0) 57.41%, rgba(0, 0, 0, 0.5) 72.71%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+@media (min-width: 990px) {
+  .trusted-coaches__card:after {
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%),
+      linear-gradient(
+        181deg,
+        #282828 1.23%,
+        #282828 26.23%,
+        rgba(40, 40, 40, 0) 51.05%
+      );
+  }
 }
 
 .trusted-coaches__overlay {

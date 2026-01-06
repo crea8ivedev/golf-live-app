@@ -35,6 +35,7 @@
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Chris_Como.png",
+            "player_image_mobile": "shopify://shop_images/coach-m-1.jpg",
             "player_name": "<p>Chris <br/>Como</p>"
           }
         },
@@ -42,6 +43,7 @@
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Mark_Blackburn.png",
+            "player_image_mobile": "shopify://shop_images/coach-m-2.jpg",
             "player_name": "<p>Mark <br/>Blackburn</p>"
           }
         },
@@ -49,6 +51,7 @@
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Erika_Larkin.png",
+            "player_image_mobile": "shopify://shop_images/coach-m-3.jpg",
             "player_name": "<p>Erika <br/>Larkin</p>"
           }
         },
@@ -56,6 +59,7 @@
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Mike_Malaska.png",
+            "player_image_mobile": "shopify://shop_images/coach-m-4.jpg",
             "player_name": "<p>Mike <br/>Malaska</p>"
           }
         },
@@ -63,6 +67,7 @@
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Colin_McCarthy.png",
+            "player_image_mobile": "shopify://shop_images/coach-m-5.jpg",
             "player_name": "<p>Colin <br/>McCarthy</p>"
           }
         }
@@ -81,6 +86,85 @@
         "subheading": "From PGA Tour coaches to rising instructors – trusted by the best to deliver world-class instruction.",
         "padding_top": 60,
         "padding_bottom": 60
+      }
+    },
+    "video_testimonial_LBDcHx": {
+      "type": "video-testimonial",
+      "blocks": {
+        "slide_G9TP4E": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_9hLxkF": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_tkiG6V": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/3_f16e0410-4848-44af-8ccd-6fe2d9f0c663.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_hK9Pgt": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/4_5b25ec31-32aa-45ff-971c-bb429b12d18e.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_JiMEGz": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_Ga4nfX": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
+            "name": "",
+            "subtitle": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_G9TP4E",
+        "slide_9hLxkF",
+        "slide_tkiG6V",
+        "slide_hK9Pgt",
+        "slide_JiMEGz",
+        "slide_Ga4nfX"
+      ],
+      "name": "Video Testimonials",
+      "settings": {
+        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "highlight_color": "#0a7a28",
+        "show_arrows": true,
+        "golfer_text": "I'M A GOLFER",
+        "golfer_url": "",
+        "coach_text": "I'M A COACH",
+        "coach_url": "",
+        "button_bg": "#0a7a28",
+        "button_text": "#ffffff"
       }
     },
     "zigzag_section_9PexWn": {
@@ -213,85 +297,6 @@
         "description_right": "Personalized instruction from PGA-verified coaches. Train from anywhere, improve faster.",
         "button_text_right": "Get Free Swing Analysis",
         "button_url_right": ""
-      }
-    },
-    "video_testimonial_LBDcHx": {
-      "type": "video-testimonial",
-      "blocks": {
-        "slide_G9TP4E": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_9hLxkF": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_tkiG6V": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/3_f16e0410-4848-44af-8ccd-6fe2d9f0c663.png",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_hK9Pgt": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/4_5b25ec31-32aa-45ff-971c-bb429b12d18e.png",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_JiMEGz": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_Ga4nfX": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
-            "name": "",
-            "subtitle": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_G9TP4E",
-        "slide_9hLxkF",
-        "slide_tkiG6V",
-        "slide_hK9Pgt",
-        "slide_JiMEGz",
-        "slide_Ga4nfX"
-      ],
-      "name": "Video Testimonials",
-      "settings": {
-        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
-        "highlight_color": "#0a7a28",
-        "show_arrows": true,
-        "golfer_text": "I'M A GOLFER",
-        "golfer_url": "",
-        "coach_text": "I'M A COACH",
-        "coach_url": "",
-        "button_bg": "#0a7a28",
-        "button_text": "#ffffff"
       }
     },
     "faq_golfer_coach_rbLhDK": {
@@ -567,18 +572,73 @@
         "enable_slider_desktop": true,
         "enable_slider_mobile": true
       }
+    },
+    "why_golf_live_thfDCf": {
+      "type": "why-golf-live",
+      "blocks": {
+        "feature_row_UHc6jA": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": true,
+            "left_text": "Live virtual lessons with instant replay",
+            "center_checked": false,
+            "center_text": "Built-in",
+            "right_checked": true,
+            "right_text": "Zoom (no replay)"
+          }
+        },
+        "feature_row_DH7mj8": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": true,
+            "left_text": "Live streams",
+            "center_checked": false,
+            "center_text": "Built-in",
+            "right_checked": true,
+            "right_text": "YouTube (no monetization)"
+          }
+        },
+        "feature_row_Dq9MnL": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": true,
+            "left_text": "Content library & monetization",
+            "center_checked": false,
+            "center_text": "Built-in",
+            "right_checked": true,
+            "right_text": "Google Drive (not organized)"
+          }
+        }
+      },
+      "block_order": [
+        "feature_row_UHc6jA",
+        "feature_row_DH7mj8",
+        "feature_row_Dq9MnL"
+      ],
+      "disabled": true,
+      "name": "Why Golf Live",
+      "settings": {
+        "extra_class": "ctm-golf-live-coaches",
+        "main-golf-live-title": "Why Coaches Are Switching to Golf Live",
+        "left_title": "",
+        "center_title": "Golf Live",
+        "right_title": "Your Current Setup",
+        "main-golf-live-subtitle": "The choice is clear: One platform vs. juggling multiple tools.",
+        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>"
+      }
     }
   },
   "order": [
     "banner_zY6kBL",
     "trusted_by_coaches_XXTeTG",
+    "video_testimonial_LBDcHx",
     "zigzag_section_9PexWn",
     "dual_audience_cards_TEt37K",
-    "video_testimonial_LBDcHx",
     "faq_golfer_coach_rbLhDK",
     "cta_questions_bar_aypLzc",
     "golfers_testimonials_dVxtgK",
     "golf_live_comparison_CLjCmx",
-    "golf_features_slider_tACrW6"
+    "golf_features_slider_tACrW6",
+    "why_golf_live_thfDCf"
   ]
 }

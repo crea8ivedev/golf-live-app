@@ -594,6 +594,9 @@
           "settings": {
             "left_checked": true,
             "left_text": "Built-in",
+            "center_checked": false,
+            "center_text": "Built-in",
+            "right_checked": true,
             "right_text": "Zoom (no replay)"
           }
         },
@@ -602,6 +605,9 @@
           "settings": {
             "left_checked": true,
             "left_text": "Unlimited",
+            "center_checked": false,
+            "center_text": "Built-in",
+            "right_checked": true,
             "right_text": "YouTube (no monetization)"
           }
         },
@@ -610,6 +616,9 @@
           "settings": {
             "left_checked": true,
             "left_text": "Sell your content",
+            "center_checked": false,
+            "center_text": "Built-in",
+            "right_checked": true,
             "right_text": "Google Drive (not organized)"
           }
         }
@@ -619,14 +628,84 @@
         "feature_row_EARWWj",
         "feature_row_HdqtUL"
       ],
+      "disabled": true,
       "name": "Why Golf Live",
       "settings": {
         "extra_class": "custom-why-golf-live",
+        "color_scheme": "",
         "main-golf-live-title": "Why Coaches Are Switching to Golf Live",
         "left_title": "Golf Live",
+        "center_title": "Golf Live",
         "right_title": "Your Current Setup",
         "main-golf-live-subtitle": "The choice is clear: One platform vs. juggling multiple tools.",
-        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>"
+        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "why_golf_live_tYKfdE": {
+      "type": "why-golf-live",
+      "blocks": {
+        "feature_row_twW98Y": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "Live virtual lessons with instant replay",
+            "center_checked": true,
+            "center_text": "Built-in",
+            "right_checked": false,
+            "right_text": "Zoom (no replay)"
+          }
+        },
+        "feature_row_6ibUin": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "Live streams",
+            "center_checked": true,
+            "center_text": "Built-in",
+            "right_checked": false,
+            "right_text": "YouTube (no monetization)"
+          }
+        },
+        "feature_row_rKrUdj": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "Content library & monetization",
+            "center_checked": true,
+            "center_text": "Built-in",
+            "right_checked": false,
+            "right_text": "Google Drive (not organized)"
+          }
+        }
+      },
+      "block_order": [
+        "feature_row_twW98Y",
+        "feature_row_6ibUin",
+        "feature_row_rKrUdj"
+      ],
+      "name": "Why Golf Live",
+      "settings": {
+        "extra_class": "ctm-golf-live-coaches",
+        "color_scheme": "scheme-3",
+        "bg-golf-image": "shopify://shop_images/Rectangle_26.png",
+        "main-golf-live-title": "Why Coaches Are Switching to Golf Live",
+        "left_title": "",
+        "center_title": "Golf Live",
+        "right_title": "Your Current Setup",
+        "main-golf-live-subtitle": "The choice is clear: One platform vs. juggling multiple tools.",
+        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
       }
     }
   },
@@ -643,6 +722,7 @@
     "coaching_steps_AbMRCc",
     "free_trial_rA3Ejf",
     "landing_faq_xBdqfQ",
-    "why_golf_live_7CtzFQ"
+    "why_golf_live_7CtzFQ",
+    "why_golf_live_tYKfdE"
   ]
 }

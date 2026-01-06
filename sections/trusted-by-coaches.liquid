@@ -1,16 +1,18 @@
-<section class="trusted-coaches color-{{ section.settings.color_scheme }}">
+<section class="trusted-coaches relative color-{{ section.settings.color_scheme }}">
   <div class="rusted-coaches-inside">
-    {% if section.settings.heading != blank %}
-      <h2 class="trusted-coaches__heading h1">
-        {{ section.settings.heading }}
-      </h2>
-    {% endif %}
+    <div class="trusted-coaches-details max-990:pt-[46px] max-990:pb-[38px] px-[28px] text-center min-990:absolute min-990:top-[50px] min-1440:top-[96px] min-990:left-50p min-990:translate-x-50mp min-990:z-1 min-990:w-full min-990:max-w-[925px]">
+      {% if section.settings.heading != blank %}
+        <h2 class="trusted-coaches__heading mb-[11px] min-990:mb-[18px]">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
 
-    {% if section.settings.subheading != blank %}
-      <div class="trusted-coaches__subheading">
-        {{ section.settings.subheading }}
-      </div>
-    {% endif %}
+      {% if section.settings.subheading != blank %}
+        <div class="trusted-coaches__subheading text-h6 font-medium min-990:font-semibold">
+          {{ section.settings.subheading }}
+        </div>
+      {% endif %}
+    </div>
 
     <div class="trusted-coaches__grid flex flex-wrap">
       {% for block in section.blocks %}
@@ -22,11 +24,20 @@
             <img
               src="{{ block.settings.player_image | image_url }}"
               alt="{{ block.settings.player_name | escape }}"
-              class="trusted-coaches__image"
+              class="trusted-coaches__image w-full h-auto object-cover max-990:aspect-[0.94/1] max-990:hidden"
               loading="lazy"
               width="auto"
               height="auto"
-              class="w-full h-auto object-cover max-990:aspect-[0.94/1]"
+            >
+          {% endif %}
+          {% if block.settings.player_image != blank %}
+            <img
+              src="{{ block.settings.player_image_mobile | image_url }}"
+              alt="{{ block.settings.player_name | escape }}"
+              class="trusted-coaches__image w-full h-auto object-cover max-990:aspect-[0.94/1] min-990:hidden"
+              loading="lazy"
+              width="auto"
+              height="auto"
             >
           {% endif %}
 
@@ -92,6 +103,11 @@
         {
           "type": "image_picker",
           "id": "player_image",
+          "label": "Player image"
+        },
+        {
+          "type": "image_picker",
+          "id": "player_image_mobile",
           "label": "Player image"
         },
         {

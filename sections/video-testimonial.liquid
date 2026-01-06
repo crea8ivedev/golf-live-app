@@ -1,19 +1,4 @@
 <style>
-  .vt-wrapper {
-    padding: 60px 0;
-    text-align: center;
-  }
-
-  .vt-heading {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 40px;
-  }
-
-  .vt-heading span {
-    color: {{ section.settings.highlight_color }};
-  }
-
   .vt-swiper {
     position: relative;
   }
@@ -36,7 +21,6 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    border-radius: 16px;
   }
 
   .vt-poster {
@@ -49,7 +33,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px;
   }
 
   .vt-play-btn {
@@ -65,129 +48,103 @@
     font-size: 28px;
     cursor: pointer;
   }
-
-  .vt-caption {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    color: #fff;
-    text-align: left;
-    z-index: 2;
-  }
-
-  .vt-caption h4 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .vt-caption p {
-    margin: 0;
-    font-size: 14px;
-  }
-
-  .vt-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 32px;
-    flex-wrap: wrap;
-  }
-
-  .vt-btn {
-    padding: 14px 28px;
-    border-radius: 40px;
-    background: {{ section.settings.button_bg }};
-    color: {{ section.settings.button_text }};
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .vt-btn:hover {
-    opacity: 0.9;
-  }
-
-  @media (max-width: 768px) {
-    .vt-heading {
-      font-size: 24px;
-    }
-  }
 </style>
 
-<section class="vt-wrapper page-width">
-  {% if section.settings.heading != blank %}
-    <h2 class="vt-heading">
-      {{ section.settings.heading | replace: '[highlight]', '<span>' | replace: '[/highlight]', '</span>' }}
-    </h2>
-  {% endif %}
+<section class="vt-wrapper">
+  <div class="min-990:px-[42px]">
+    <div>
+      {% if section.settings.heading != blank %}
+        <h2 class="vt-heading">
+          {{ section.settings.heading | replace: '[highlight]', '<span>' | replace: '[/highlight]', '</span>' }}
+        </h2>
+      {% endif %}
+    </div>
 
-  <div class="swiper vt-swiper">
-    <div class="swiper-wrapper">
-      {% for block in section.blocks %}
-        <div class="swiper-slide vt-slide" {{ block.shopify_attributes }}>
-          {% if block.settings.video != blank %}
-            <div class="vt-video-wrapper">
-              {{
-                block.settings.video
-                | video_tag:
-                  controls: true,
-                  autoplay: false,
-                  muted: false,
-                  loop: false,
-                  preload: 'metadata',
-                  class: 'vt-video'
-              }}
+    <div>
+      <div class="swiper vt-swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide vt-slide" {{ block.shopify_attributes }}>
+              {% if block.settings.video != blank %}
+                <div class="vt-video-wrapper">
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      controls: true,
+                      autoplay: false,
+                      muted: false,
+                      loop: false,
+                      preload: 'metadata',
+                      class: 'vt-video'
+                  }}
 
-              {% if block.settings.image != blank %}
-                <div class="vt-poster" data-video-poster>
-                  <img
-                    src="{{ block.settings.image | image_url: width: 800 }}"
-                    alt="{{ block.settings.name | escape }}"
-                    loading="lazy"
-                    width="auto"
-                    height="auto"
-                  >
-                  <button class="vt-play-btn" type="button" aria-label="Play video">▶</button>
+                  {% if block.settings.image != blank %}
+                    <div class="vt-poster" data-video-poster>
+                      <img
+                        src="{{ block.settings.image | image_url: width: 800 }}"
+                        alt="{{ block.settings.name | escape }}"
+                        loading="lazy"
+                        width="auto"
+                        height="auto"
+                      >
+                      <button class="vt-play-btn" type="button" aria-label="Play video">▶</button>
+                    </div>
+                  {% endif %}
+                </div>
+              {% elsif block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 800 }}"
+                  alt="{{ block.settings.name | escape }}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                >
+              {% endif %}
+
+              {% if block.settings.name != blank %}
+                <div class="vt-caption">
+                  harmonious
+                  <h4>{{ block.settings.name }}</h4>
+                  <p>{{ block.settings.subtitle }}</p>
                 </div>
               {% endif %}
             </div>
-          {% elsif block.settings.image != blank %}
-            <img
-              src="{{ block.settings.image | image_url: width: 800 }}"
-              alt="{{ block.settings.name | escape }}"
-              loading="lazy"
-              width="auto"
-              height="auto"
-            >
-          {% endif %}
-
-          {% if block.settings.name != blank %}
-            <div class="vt-caption">
-              harmonious
-              <h4>{{ block.settings.name }}</h4>
-              <p>{{ block.settings.subtitle }}</p>
-            </div>
-          {% endif %}
+          {% endfor %}
         </div>
-      {% endfor %}
+
+        {% if section.settings.show_arrows %}
+          <div class="swiper-button-prev vt-prev"></div>
+          <div class="swiper-button-next vt-next"></div>
+        {% endif %}
+      </div>
     </div>
 
-    {% if section.settings.show_arrows %}
-      <div class="swiper-button-prev vt-prev"></div>
-      <div class="swiper-button-next vt-next"></div>
-    {% endif %}
-  </div>
-
-  <div class="vt-buttons">
-    {% if section.settings.golfer_text != blank %}
-      <a href="{{ section.settings.golfer_url }}" class="vt-btn"> {{ section.settings.golfer_text }} → </a>
-    {% endif %}
-    {% if section.settings.coach_text != blank %}
-      <a href="{{ section.settings.coach_url }}" class="vt-btn"> {{ section.settings.coach_text }} → </a>
-    {% endif %}
+    <div>
+      <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] max-990:mx-[28px] mt-[40px] min-990:mt-[65px]">
+        {% if section.settings.golfer_text != blank %}
+          <a
+            href="{{ section.settings.golfer_url }}"
+            class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[75px] min-990:gap-[42px] pr-[57px] min-990:pr-[56px] min-w-[337px] min-990:min-w-[346px] max-990:mx-auto"
+          >
+            {{ section.settings.golfer_text }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+              <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentcolor" stroke-width="2.5"/>
+            </svg>
+          </a>
+        {% endif %}
+        {% if section.settings.coach_text != blank %}
+          <a
+            href="{{ section.settings.coach_url }}"
+            class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[75px] min-990:gap-[42px] pr-[57px] min-990:pr-[56px] min-w-[337px] min-990:min-w-[346px] max-990:mx-auto"
+          >
+            {{ section.settings.coach_text }}
+            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+              <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentcolor" stroke-width="2.5"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
   </div>
 </section>
 
