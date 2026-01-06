@@ -54,7 +54,7 @@
 }
 /* lp- hero section */
 .ctm-hero-content {
-  @apply w-full h-auto flex flex-col;
+  @apply w-full h-auto flex flex-col max-576:px-[28px] max-1024:px-20 py-10;
 }
 .ctm-hero-eyebrow {
   @apply text-green0;
@@ -63,7 +63,7 @@
   @apply w-full max-1025:pr-20 min-[1025px]:w-8/10 relative;
 }
 .ctm-hero-phone.ctm-hero-phone-2 {
-  @apply absolute -bottom-[8%] right-0 1025:-right-[15%] w-6/10;
+  @apply absolute -bottom-[8%] right-0 1025:-right-[15%] w-fit 1025:w-6/10;
 }
 .ctm-hero-left.ctm-hero-side-img-main img {
   @apply relative object-cover w-full left-0 top-0;
@@ -72,8 +72,11 @@
   @apply font-body font-medium text-[15px] leading-[25px] min-[1024px]:text-[21px] min-[1440px]:leading-[31px] min-[1440px]:tracking-[1%];
 }
 .ctm-hero-features {
-  @apply flex flex-col gap-[24px] py-[25px] px-[40px] min-[1440px]:px-[65px];
+  @apply flex flex-col gap-[24px] py-[25px] 576:px-[40px] min-[1440px]:px-[65px];
 }
 .ctm-hero-buttons {
-  @apply flex justify-center gap-[14px];
+  @apply flex max-576:flex-col max-576:items-center justify-center gap-[14px];
+}
+.ctm-text-pga {
+  @apply text-[15px] leading-[18px] tracking-[0.15px] min-[768px]:text-[18px] min-[768px]:leading-[20px] min-[1440px]:text-[23px] min-[1440px]:leading-[28px] min-[1440px]:tracking-[0.23px];
 }

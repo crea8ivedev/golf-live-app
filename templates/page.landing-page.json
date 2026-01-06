@@ -667,7 +667,7 @@
             "left_checked": false,
             "left_text": "Live streams",
             "center_checked": true,
-            "center_text": "Built-in",
+            "center_text": "Unlimited",
             "right_checked": false,
             "right_text": "YouTube (no monetization)"
           }
@@ -678,16 +678,76 @@
             "left_checked": false,
             "left_text": "Content library & monetization",
             "center_checked": true,
-            "center_text": "Built-in",
+            "center_text": "Sell your content",
             "right_checked": false,
             "right_text": "Google Drive (not organized)"
+          }
+        },
+        "feature_row_zHQ7yJ": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "Built-in payments",
+            "center_checked": true,
+            "center_text": "Automatic",
+            "right_checked": false,
+            "right_text": "Venmo (manual)"
+          }
+        },
+        "feature_row_6crWNm": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "Scheduling & booking",
+            "center_checked": true,
+            "center_text": "Automatic",
+            "right_checked": false,
+            "right_text": "Calendly (separate login)"
+          }
+        },
+        "feature_row_WpdjpK": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "Lead generation",
+            "center_checked": true,
+            "center_text": "Built-in network",
+            "right_checked": false,
+            "right_text": "Instagram (hit or miss)"
+          }
+        },
+        "feature_row_FjqFRm": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "Unlimited video storage",
+            "center_checked": true,
+            "center_text": "Forever",
+            "right_checked": false,
+            "right_text": "Phone storage (runs out)"
+          }
+        },
+        "feature_row_JJbDYk": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": false,
+            "left_text": "All-in-one dashboard",
+            "center_checked": true,
+            "center_text": "Everything",
+            "right_checked": false,
+            "right_text": "5+ different apps"
           }
         }
       },
       "block_order": [
         "feature_row_twW98Y",
         "feature_row_6ibUin",
-        "feature_row_rKrUdj"
+        "feature_row_rKrUdj",
+        "feature_row_zHQ7yJ",
+        "feature_row_6crWNm",
+        "feature_row_WpdjpK",
+        "feature_row_FjqFRm",
+        "feature_row_JJbDYk"
       ],
       "name": "Why Golf Live",
       "settings": {

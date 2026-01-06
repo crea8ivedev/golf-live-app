@@ -39,22 +39,16 @@
     position: absolute;
     inset: 0;
     margin: auto;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
     border: none;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    font-size: 28px;
     cursor: pointer;
   }
 </style>
 
-<section class="vt-wrapper">
+<section class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-[72px] min-990:pb-[98px]">
   <div class="min-990:px-[42px]">
     <div>
       {% if section.settings.heading != blank %}
-        <h2 class="vt-heading">
+        <h2 class="vt-heading text-center max-990:px-[28px] max-w-[380px] min-768:max-w-[700px] min-990:max-w-[700px] min-1440:max-w-[800px] min-1582:max-w-[1069px] mx-auto mb-[31px] min-990:mb-[54px]">
           {{ section.settings.heading | replace: '[highlight]', '<span>' | replace: '[/highlight]', '</span>' }}
         </h2>
       {% endif %}
@@ -87,7 +81,16 @@
                         width="auto"
                         height="auto"
                       >
-                      <button class="vt-play-btn" type="button" aria-label="Play video">▶</button>
+                      <button
+                        class="vt-play-btn"
+                        type="button"
+                        aria-label="Play video"
+                        class="flex justify-center items-center"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="54" height="67" viewBox="0 0 54 67" fill="none">
+                          <path d="M48.3556 22.2282L21.9884 2.69733C19.9289 1.17397 17.4921 0.256425 14.9481 0.0464009C12.404 -0.163623 9.85206 0.342078 7.5751 1.50745C5.29813 2.67282 3.3851 4.45234 2.04803 6.64876C0.710967 8.84519 0.00210415 11.3727 1.66803e-05 13.9512V53.0325C-0.00395442 55.6135 0.701202 58.1449 2.03699 60.3451C3.37278 62.5453 5.2868 64.3279 7.566 65.4944C9.84519 66.6609 12.4001 67.1656 14.9464 66.9523C17.4927 66.739 19.9305 65.8161 21.9884 64.2863L48.3556 44.7555C50.1052 43.4585 51.5278 41.7636 52.5084 39.808C53.489 37.8524 54 35.691 54 33.4988C54 31.3066 53.489 29.1453 52.5084 27.1897C51.5278 25.234 50.1052 23.5392 48.3556 22.2422V22.2282Z" fill="white"/>
+                        </svg>
+                      </button>
                     </div>
                   {% endif %}
                 </div>

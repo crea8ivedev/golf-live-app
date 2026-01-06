@@ -333,3 +333,11 @@
 }
 
 /* trust-coach */
+
+/* testimonial-video */
+
+.vt-heading span {
+  @apply min-990:text-green0;
+}
+
+/* testimonial-video */
