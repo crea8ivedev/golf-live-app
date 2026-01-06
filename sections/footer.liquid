@@ -69,7 +69,7 @@
           <div class="strore-icons-start flex flex-wrap justify-center items-center gap-y-[18px] gap-x-[18px] min-990:gap-x-[32px] mt-[56px] min-990:mt-[95px]">
             <div class="playstore-block flex-[0_0_133px] min-768:flex-[0_0_230px]">
               {% if section.settings.playstore_url != blank %}
-                <a href="{{ section.settings.playstore_url }}">
+                <a href="{{ section.settings.playstore_url }}" target="_blank" class="footer-playstore-btn">
               {% endif %}
               {% if section.settings.playstore_image != blank %}
                 <img
@@ -85,7 +85,7 @@
             </div>
             <div class="apple-appstore-block flex-[0_0_133px] min-768:flex-[0_0_230px]">
               {% if section.settings.apple_app_store_url != blank %}
-                <a href="{{ section.settings.apple_app_store_url }}">
+                <a href="{{ section.settings.apple_app_store_url }}" target="_blank" class="footer-app-btn">
               {% endif %}
               {% if section.settings.apple_app_store_image != blank %}
                 <img

@@ -7,14 +7,18 @@
     overflow: hidden;
     position: relative;
     height: 11rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .header-pattern-overlay {
+  .header-pattern-overlay-{{ section.id }} {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
-    opacity: 0.4;
-    mix-blend-mode: multiply;
+    background-repeat: no-repeat;
+    mix-blend-mode: overlay;
+    pointer-events: none;
   }
   .btn-gradient-{{ section.id }} {
     background: {{ section.settings.btn_gradient }};
@@ -37,7 +41,7 @@
     <div class="flex flex-wrap justify-center gap-8">
       {% for block in section.blocks %}
         <div
-          class="flex-1 max-w-[380px] bg-white rounded-[24px] shadow-sm flex flex-col border border-gray-100"
+          class="flex-1 min-w-[300px] max-w-[300px] bg-white rounded-[24px] shadow-sm flex flex-col border border-gray-100"
           {{ block.shopify_attributes }}
         >
           <div
@@ -46,12 +50,12 @@
           >
             {% if block.settings.header_image != blank %}
               <div
-                class="header-pattern-overlay"
-                style="background-image: url('{{ block.settings.header_image | image_url: '600x' }}');"
+                class="header-pattern-overlay-{{ section.id }}"
+                style="background-image: url('{{ block.settings.header_image |  image_url  }}'); opacity: {{ block.settings.pattern_opacity | divided_by: 100.0 }};"
               ></div>
             {% endif %}
 
-            <div class="absolute inset-0 p-6 flex flex-col justify-center text-white">
+            <div class="relative p-6 text-white z-10">
               <h3 class="text-2xl font-semibold">{{ block.settings.plan_name }}</h3>
               <div class="flex items-baseline mt-1">
                 <span class="text-4xl font-bold">${{ block.settings.price }}</span>
@@ -70,7 +74,7 @@
                     <span class="flex-shrink-0 w-5 h-5">
                       {% if block.settings.feature_icon != blank %}
                         <img
-                          src="{{ block.settings.feature_icon | image_url: '40x' }}"
+                          src="{{ block.settings.feature_icon | image_url }}"
                           class="w-full h-full object-contain"
                           alt="icon"
                           height=""
@@ -140,7 +144,17 @@
         {
           "type": "image_picker",
           "id": "header_image",
-          "label": "Header Pattern (Transparent PNG)"
+          "label": "Header Pattern Image"
+        },
+        {
+          "type": "range",
+          "id": "pattern_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "label": "Pattern Visibility",
+          "default": 40
         },
         {
           "type": "text",

@@ -60,6 +60,12 @@
   p {
     @apply font-[inherit] text-[inherit] leading-[inherit] tracking-[inherit] m-0;
   }
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
   h1,
   h2,
   h3,
@@ -69,7 +75,7 @@
     @apply m-0 outline-0! font-body font-bold tracking-normal;
   }
   h1 {
-    @apply text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[36px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.43px] min-[1582px]:text-[43px] min-[1582px]:leading-[52px];
+    @apply text-[24px] min-393:text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[36px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.43px] min-[1582px]:text-[43px] min-[1582px]:leading-[52px];
   }
   h2 {
     @apply text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[34px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.45px] min-[1582px]:text-[45px] min-[1582px]:leading-[54px];
@@ -87,7 +93,7 @@
     @apply text-[16px] leading-[25px] tracking-[0.16px] min-[1440px]:text-[19px] min-[1440px]:leading-[29px] min-[1440px]:tracking-[0.19px];
   }
   .h1 {
-    @apply text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[36px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.43px] min-[1582px]:text-[43px] min-[1582px]:leading-[52px];
+    @apply text-[24px] min-393:text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[36px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.43px] min-[1582px]:text-[43px] min-[1582px]:leading-[52px];
   }
   .h2 {
     @apply text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[34px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.45px] min-[1582px]:text-[45px] min-[1582px]:leading-[54px];
@@ -134,13 +140,19 @@
 @layer components {
   .button,
   .ctm-button {
-    @apply cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold uppercase w-fit text-center text-[18px] min-1440:text-[21px] leading-100p tracking-[0.18px] min-1440:tracking-[0.21px] flex justify-center items-center px-[20px] py-[24px] rounded-[82px];
+    @apply cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold uppercase w-fit text-center text-[18px] min-1440:text-[21px] leading-100p tracking-[0.18px] min-1440:tracking-[0.21px] flex justify-center items-center px-[20px] py-[18px] min-990:py-[24px] rounded-[82px];
   }
   .button-green {
     @apply text-white bg-[linear-gradient(78deg,_#00511C_-24.41%,_#187F10_103.64%)] hover:bg-[linear-gradient(-78deg,_#00511C_-24.41%,_#187F10_103.64%)];
   }
   .button-svg {
     @apply gap-[30px];
+  }
+  .button-svg svg {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .button-svg:hover svg {
+    @apply translate-x-[5px];
   }
 }
 
@@ -161,7 +173,7 @@
 /* header */
 
 .header .list-menu {
-  @apply flex flex-col min-990:flex-row gap-y-[20px] gap-x-[40px] min-1440:gap-x-[67px] items-start min-990:items-center;
+  @apply flex flex-col min-990:flex-row gap-y-[20px] gap-x-[30px] min-1440:gap-x-[40px] min-1440:gap-x-[67px] items-start min-990:items-center;
 }
 
 .header {
@@ -279,3 +291,27 @@
 }
 
 /* footer */
+
+/* trust-coach */
+
+.trusted-coaches__card:after {
+  @apply content-[''] absolute w-full h-full top-0 left-0 pointer-events-none;
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%),
+    linear-gradient(
+      181deg,
+      #282828 1.23%,
+      #282828 26.23%,
+      rgba(40, 40, 40, 0) 51.05%
+    );
+}
+
+.trusted-coaches__overlay {
+  @apply absolute left-[15px] min-990:left-0 bottom-[14px] min-990:bottom-[40px] min-1440:bottom-[80px] max-w-[calc(100%_-_20px)] w-fit min-990:pl-[30px] min-990:pr-[43px] min-990:py-[10px] z-1 min-990:bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/coach-name-bg.png?v=1767700251')] min-990:bg-no-repeat min-990:bg-[length:100%_100%];
+}
+
+.trusted-coaches__name {
+  @apply font-body font-extrabold uppercase italic text-[18px] leading-[20px] tracking-[0.18px] min-1440:tracking-[0.29px] min-1440:text-[29px] min-1440:leading-[32px];
+}
+
+/* trust-coach */

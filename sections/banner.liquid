@@ -1,138 +1,44 @@
-<style>
-  .golf-app-hero__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-  }
-
-  .golf-app-hero__top-text {
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .golf-app-hero__heading {
-    font-size: 40px;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-
-  .golf-app-hero__description {
-    margin-bottom: 24px;
-  }
-
-  .golf-app-hero__button {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 12px 28px;
-    border-radius: 40px;
-    background: #0a5c1f;
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .golf-app-hero__store-buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .golf-app-hero__store-buttons img {
-    max-height: 44px;
-  }
-
-  .golf-app-hero__images {
-    position: relative;
-  }
-
-  /* DESKTOP STACK */
-  .golf-app-hero__desktop-stack {
-    position: relative;
-  }
-
-  .golf-app-hero__desktop-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .golf-app-hero__mobile-images {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    gap: 16px;
-  }
-
-  .golf-app-hero__mobile-images img {
-    max-width: 220px;
-    width: 100%;
-  }
-
-  /* MOBILE COMBINED IMAGE */
-  .golf-app-hero__mobile-combined {
-    display: none;
-  }
-
-  .golf-app-hero__mobile-combined img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* MOBILE */
-  @media screen and (max-width: 768px) {
-    .golf-app-hero__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .golf-app-hero__desktop-stack {
-      display: none;
-    }
-
-    .golf-app-hero__mobile-combined {
-      display: block;
-      margin-bottom: 24px;
-    }
-
-    .golf-app-hero__heading {
-      font-size: 28px;
-    }
-  }
-</style>
-
-<div class="golf-app-hero page-width">
-  <div class="golf-app-hero__grid">
+<div class="golf-app-hero">
+  <div class="golf-app-hero__grid flex flex-col-reverse min-990:flex-row">
     <!-- LEFT CONTENT -->
-    <div class="golf-app-hero__content">
+    <div class="golf-app-hero__content min-990:flex-[0_0_56.64%] px-[28px] min-768:px-[30px] min-990:pl-[30px] min-1440:pl-[135px] min-990:pr-[100px] min-1440:pr-[189px] pt-[36px] pb-[54px] min-990:pt-[70px] min-990:pb-[58px] min-990:flex min-990:flex-col min-990:justify-center">
       {% if section.settings.top_text != blank %}
-        <p class="golf-app-hero__top-text">
+        <p class="golf-app-hero__top-text h5 uppercase mb-[8px] min-990:mb-[15px] text-green0 max-990:text-center">
           {{ section.settings.top_text }}
         </p>
       {% endif %}
 
       {% if section.settings.heading != blank %}
-        <h2 class="golf-app-hero__heading">
+        <div class="golf-app-hero__heading h1 mb-[20px] min-990:mb-[14px] max-990:text-center">
           {{ section.settings.heading }}
-        </h2>
+        </div>
       {% endif %}
 
       {% if section.settings.description != blank %}
-        <div class="golf-app-hero__description">
+        <div class="golf-app-hero__description font-medium text-[15px] leading-[22px] tracking-[0.15px] min-990:text-[19px] min-990:leading-[30px] min-990:tracking-[0.19px] max-w-[337px] min-990:max-w-[465px] mb-[39px] min-990:mb-[57px] max-990:text-center max-990:mx-auto">
           {{ section.settings.description }}
         </div>
       {% endif %}
 
       {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-        <a href="{{ section.settings.button_url }}" class="golf-app-hero__button">
+        <a
+          href="{{ section.settings.button_url }}"
+          class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[28px] min-990:gap-[85px] pr-[30px] min-990:pr-[38px] min-w-[246px] min-990:min-w-[362px] max-990:mx-auto"
+        >
           {{ section.settings.button_text }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+            <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentcolor" stroke-width="2.5"/>
+          </svg>
         </a>
       {% endif %}
 
-      <div class="golf-app-hero__store-buttons">
+      <div class="golf-app-hero__store-buttons flex flex-wrap gap-[21px] mt-[30px] min-990:mt-[48px] max-990:justify-center">
         {% if section.settings.app_store_image != blank and section.settings.app_store_url != blank %}
-          <a href="{{ section.settings.app_store_url }}" target="_blank">
+          <a
+            href="{{ section.settings.app_store_url }}"
+            target="_blank"
+            class="inline-block flex-[0_0_calc(50%_-_11px)] min-393:flex-[0_0_158px] min-990:flex-[0_0_165px]"
+          >
             <img
               src="{{ section.settings.app_store_image | image_url: width: 300 }}"
               alt="Download on the App Store"
@@ -144,7 +50,11 @@
         {% endif %}
 
         {% if section.settings.play_store_image != blank and section.settings.play_store_url != blank %}
-          <a href="{{ section.settings.play_store_url }}" target="_blank">
+          <a
+            href="{{ section.settings.play_store_url }}"
+            target="_blank"
+            class="inline-block flex-[0_0_calc(50%_-_11px)] min-393:flex-[0_0_158px] min-990:flex-[0_0_165px]"
+          >
             <img
               src="{{ section.settings.play_store_image | image_url: width: 300 }}"
               alt="Get it on Google Play"
@@ -158,42 +68,64 @@
     </div>
 
     <!-- RIGHT IMAGES -->
-    <div class="golf-app-hero__images">
+    <div class="golf-app-hero__images min-990:flex-[0_0_43.36%]">
       <!-- MOBILE COMBINED IMAGE -->
-      {% if section.settings.mobile_combined_image != blank %}
-        <div class="golf-app-hero__mobile-combined">
-          <img
-            src="{{ section.settings.mobile_combined_image | image_url: width: 900 }}"
-            alt="Live virtual golf lessons"
-            loading="lazy"
-            width="auto"
-            height="auto"
-          >
-        </div>
-      {% endif %}
-
-      <!-- DESKTOP IMAGE STACK -->
-      <div class="golf-app-hero__desktop-stack">
-        {% if section.settings.desktop_image != blank %}
-          <div class="golf-app-hero__desktop-image">
+      {% comment %}
+        {% if section.settings.mobile_combined_image != blank %}
+          <div class="golf-app-hero__mobile-combined">
             <img
-              src="{{ section.settings.desktop_image | image_url: width: 1400 }}"
-              alt="Golf player"
+              src="{{ section.settings.mobile_combined_image | image_url }}"
+              alt="Live virtual golf lessons"
               loading="lazy"
               width="auto"
               height="auto"
             >
           </div>
         {% endif %}
+      {% endcomment %}
 
-        <div class="golf-app-hero__mobile-images">
+      <!-- DESKTOP IMAGE STACK -->
+      <div class="golf-app-hero__desktop-stack relative max-990:overflow-hidden min-990:h-full">
+        {% if section.settings.desktop_image != blank %}
+          <div class="golf-app-hero__desktop-image min-990:h-full">
+            <img
+              src="{{ section.settings.desktop_image | image_url }}"
+              alt="Golf player"
+              loading="lazy"
+              width="auto"
+              height="auto"
+              class="w-full h-auto min-990:min-h-full aspect-[1.04/1] object-cover max-990:hidden"
+            >
+            <img
+              src="{{ section.settings.main_mobile_image | image_url }}"
+              alt="Golf player"
+              loading="lazy"
+              width="auto"
+              height="auto"
+              class="w-full h-auto aspect-[1.17/1] object-cover min-990:hidden"
+            >
+          </div>
+        {% endif %}
+
+        <div class="golf-app-hero__mobile-images absolute max-w-full w-[379px] min-990:w-[653px] bottom-0 left-0 min-393:left-[11px] min-990:left-[-100px] min-1440:left-[-189px]">
           {% if section.settings.mobile_image_1 != blank %}
             <img
-              src="{{ section.settings.mobile_image_1 | image_url: width: 500 }}"
+              src="{{ section.settings.mobile_image_1 | image_url }}"
               alt="Mobile app preview 1"
               loading="lazy"
               width="auto"
               height="auto"
+              class="w-full h-auto object-cover max-990:hidden"
+            >
+          {% endif %}
+          {% if section.settings.mobile_combined_image != blank %}
+            <img
+              src="{{ section.settings.mobile_combined_image | image_url }}"
+              alt="Live virtual golf lessons"
+              loading="lazy"
+              width="auto"
+              height="auto"
+              class="w-full h-auto object-cover min-990:hidden"
             >
           {% endif %}
         </div>
@@ -213,10 +145,9 @@
       "default": "LIVE GOLF COACHING. ANYTIME, ANYWHERE."
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "heading",
-      "label": "Heading",
-      "default": "Built for Golfers Who Want Results and Coaches Who Deliver Them"
+      "label": "Heading"
     },
     {
       "type": "richtext",
@@ -239,6 +170,11 @@
       "type": "image_picker",
       "id": "desktop_image",
       "label": "Desktop Golf Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_mobile_image",
+      "label": "Mobile Golf Image"
     },
     {
       "type": "image_picker",

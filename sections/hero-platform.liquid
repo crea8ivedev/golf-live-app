@@ -1,14 +1,33 @@
-<div class="ctm-hero-platform-main" style="--overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};">
-  <div class="ctm-hero-inner">
-    <div class="ctm-hero-media">
-      {% if section.settings.bg_image != blank %}
-        <div class="ctm-hero-bg">
-          {{ section.settings.bg_image | image_url: width: 1200 | image_tag }}
-        </div>
-      {% endif %}
+{% style %}
+  .ctm-hero-platform-main .ctm-hero-inner {
+    background-image: url('{{ section.settings.bg_image | image_url: width: 1200 }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 1024px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_tablet }}px;
+      padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+{% endstyle %}
 
+<div class="ctm-hero-platform-main {{ section.settings.extra-class }} section-{{ section.id }}-padding">
+  <div class="ctm-hero-inner w-full flex max-[1025px]:flex-col items-center justify-center max-[1025px]:gap-[20px] gap-[100px]">
+    <div class="ctm-hero-media">
       {% if section.settings.phone_image_1 != blank %}
-        <div class="ctm-hero-phone ctm-hero-phone-1">
+        <div class="ctm-hero-left ctm-hero-side-img-main">
           {{ section.settings.phone_image_1 | image_url: width: 500 | image_tag }}
         </div>
       {% endif %}
@@ -21,22 +40,22 @@
     </div>
     <div class="ctm-hero-content">
       {% if section.settings.eyebrow != blank %}
-        <p class="ctm-hero-eyebrow">{{ section.settings.eyebrow }}</p>
+        <p class="ctm-hero-eyebrow h5 mb-[15px]">{{ section.settings.eyebrow }}</p>
       {% endif %}
 
       {% if section.settings.heading != blank %}
-        <h1 class="ctm-hero-heading">{{ section.settings.heading }}</h1>
+        <h1 class="ctm-hero-heading h2">{{ section.settings.heading }}</h1>
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <p class="ctm-hero-subheading">{{ section.settings.subheading }}</p>
+        <p class="ctm-hero-subheading ctm-h6">{{ section.settings.subheading }}</p>
       {% endif %}
 
       {% if section.blocks.size > 0 %}
         <ul class="ctm-hero-features">
           {% for block in section.blocks %}
             {% if block.type == 'feature' %}
-              <li class="ctm-hero-feature" {{ block.shopify_attributes }}>
+              <li class="ctm-hero-feature flex items-center gap-[25px]" {{ block.shopify_attributes }}>
                 {% if block.settings.icon != blank %}
                   <span class="ctm-feature-icon">
                     {{ block.settings.icon | image_url: width: 40 | image_tag }}
@@ -53,13 +72,13 @@
 
       <div class="ctm-hero-buttons">
         {% if section.settings.primary_label != blank %}
-          <a href="{{ section.settings.primary_link }}" class="btn btn-primary">
+          <a href="{{ section.settings.primary_link }}" class="btn btn-primary ctm-button-free">
             {{ section.settings.primary_label }}
           </a>
         {% endif %}
 
         {% if section.settings.secondary_label != blank %}
-          <a href="{{ section.settings.secondary_link }}" class="btn btn-secondary">
+          <a href="{{ section.settings.secondary_link }}" class="btn btn-secondary ctm-button-free">
             {{ section.settings.secondary_label }}
           </a>
         {% endif %}
@@ -80,6 +99,11 @@
 {
   "name": "Hero Platform",
   "settings": [
+    {
+      "type": "text",
+      "id": "extra-class",
+      "label": "Extra Class"
+    },
     {
       "type": "image_picker",
       "id": "bg_image",
@@ -111,7 +135,7 @@
       "default": "LIVE GOLF COACHING FROM ANYWHERE"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "heading",
       "label": "Main heading"
     },
@@ -152,6 +176,78 @@
       "id": "stat_text",
       "label": "Stat text",
       "default": "20,000+ Hours of Coaching Delivered"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Tablet Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
     }
   ],
   "blocks": [

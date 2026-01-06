@@ -52,3 +52,28 @@
 .ctm-img-with-text .image-with-text a:hover {
   @apply border-green3 text-black bg-white border border-solid;
 }
+/* lp- hero section */
+.ctm-hero-content {
+  @apply w-full h-auto flex flex-col;
+}
+.ctm-hero-eyebrow {
+  @apply text-green0;
+}
+.ctm-hero-media {
+  @apply w-8/10 relative;
+}
+.ctm-hero-phone.ctm-hero-phone-2 {
+  @apply absolute -bottom-[8%] -right-[15%] w-6/10;
+}
+.ctm-hero-left.ctm-hero-side-img-main img {
+  @apply relative object-cover w-full left-0 top-0;
+}
+.ctm-h6 {
+  @apply font-body font-medium text-[15px] leading-[25px] min-[1024px]:text-[21px] min-[1440px]:leading-[31px] min-[1440px]:tracking-[1%];
+}
+.ctm-hero-features {
+  @apply flex flex-col gap-[24px] py-[25px] px-[65px];
+}
+.ctm-button-free {
+  @apply cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold uppercase w-fit text-white text-center text-[18px] min-1440:text-[21px] leading-100p tracking-[0.18px] min-1440:tracking-[0.21px] flex justify-center items-center px-[20px] py-[18px] min-990:py-[24px] rounded-[82px];
+}

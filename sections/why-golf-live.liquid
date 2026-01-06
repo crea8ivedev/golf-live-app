@@ -1,0 +1,154 @@
+<div class="ctn-golf-live-info-main">
+  <div class="ctn-golf-live-info-inner">
+    <div class="ctn-golf-live-title">
+      <h2>{{ section.settings['main-golf-live-title'] }}</h2>
+    </div>
+    <div class="ctn-golf-live-body">
+      <div class="ctn-golf-comparison-section">
+        <div class="ctn-golf-comparison-wrapper">
+          {% comment %} Left Card {% endcomment %}
+          <div class="ctn-golf-comparison-card ctn-golf-comparison-card--primary">
+            {% if section.settings.left_title != blank %}
+              <h3>{{ section.settings.left_title }}</h3>
+            {% endif %}
+
+            <ul class="ctn-golf-comparison-list">
+              {% for block in section.blocks %}
+                <li class="ctn-golf-comparison-item">
+                  {% if block.settings.left_checked %}
+                    <span class="ctn-golf-comparison-icon">✔</span>
+                  {% endif %}
+                  <span>{{ block.settings.left_text }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          {% comment %} Center Card {% endcomment %}
+          <div class="ctn-golf-comparison-card ctn-golf-comparison-card--primary">
+            {% if section.settings.center_title != blank %}
+              <h3>{{ section.settings.center_title }}</h3>
+            {% endif %}
+
+            <ul class="ctn-golf-comparison-list">
+              {% for block in section.blocks %}
+                <li class="ctn-golf-comparison-item">
+                  {% if block.settings.center_checked %}
+                    <span class="ctn-golf-comparison-icon">✔</span>
+                  {% endif %}
+                  <span>{{ block.settings.center_checked }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          {% comment %} Right Card {% endcomment %}
+          <div class="ctn-golf-comparison-card ctn-golf-comparison-card--secondary">
+            {% if section.settings.right_title != blank %}
+              <h3>{{ section.settings.right_title }}</h3>
+            {% endif %}
+
+            <ul class="ctn-golf-comparison-list">
+              {% for block in section.blocks %}
+                <li class="ctn-golf-comparison-item">
+                  <span>{{ block.settings.right_text }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ctn-golf-live-footer">
+      <div class="ctn-golf-live-subtitle">
+        <h3>{{ section.settings['main-golf-live-subtitle'] }}</h3>
+      </div>
+      <div class="ctn-golf-live-description">
+        <h3>{{ section.settings['main-golf-description'] }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Golf Live",
+  "class": "why-golf-live-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "main-golf-live-title"
+    },
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Left card title"
+    },
+    {
+      "type": "text",
+      "id": "center_title",
+      "label": "Center card title",
+      "default": "Golf Live"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Right card title",
+      "default": "Your Current Setup"
+    },
+    {
+      "type": "text",
+      "label": "SubTitle",
+      "id": "main-golf-live-subtitle"
+    },
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "main-golf-description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_row",
+      "name": "Feature row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "left_text",
+          "label": "Left feature text",
+          "default": "Built-in"
+        },
+        {
+          "type": "checkbox",
+          "id": "center_checked",
+          "label": "Show check icon on left",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "center_checked",
+          "label": "Center feature text",
+          "default": "Built-in"
+        },
+        {
+          "type": "text",
+          "id": "right_text",
+          "label": "Right feature text",
+          "default": "Zoom (no replay)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Golf Live"
+    }
+  ]
+}
+{% endschema %}

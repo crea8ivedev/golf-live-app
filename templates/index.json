@@ -14,17 +14,18 @@
       "name": "Banner",
       "settings": {
         "top_text": "LIVE GOLF COACHING. ANYTIME, ANYWHERE.",
-        "heading": "Built for Golfers Who Want Results and Coaches Who Deliver Them",
-        "description": "<p>Teach or train from anywhere with live video, instant replay, and performance tracking in one app.</p>",
+        "heading": "<p>Built for Golfers Who <br/>Want Results and Coaches <br/>Who Deliver Them</p>",
+        "description": "<p>Golf Live makes it easy to teach or train from anywhere with live video, instant replay, and performance tracking all in one app.</p>",
         "button_text": "Start Now",
         "button_url": "#",
         "desktop_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
-        "mobile_image_1": "shopify://shop_images/mobile.png",
-        "mobile_combined_image": "shopify://shop_images/Group_215.png",
+        "main_mobile_image": "shopify://shop_images/banner-golf-mobile.jpg",
+        "mobile_image_1": "shopify://shop_images/banner-mobile-desktop.png",
+        "mobile_combined_image": "shopify://shop_images/banner-mobile-mobile.png",
         "app_store_image": "shopify://shop_images/google-play-badge-logo-svgrepo-com.png",
-        "app_store_url": "#",
+        "app_store_url": "https://apps.apple.com/us/app/golf-live-virtual-lessons/id6475585606",
         "play_store_image": "shopify://shop_images/google-play-badge-logo-svgrepo-com_1.png",
-        "play_store_url": "#"
+        "play_store_url": "https://play.google.com/store/apps/details?id=com.golfliveapp.app"
       }
     },
     "trusted_by_coaches_XXTeTG": {
@@ -34,35 +35,35 @@
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Chris_Como.png",
-            "player_name": "Chris Como"
+            "player_name": "<p>Chris <br/>Como</p>"
           }
         },
         "player_hLi4FC": {
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Mark_Blackburn.png",
-            "player_name": "Mark Blackburn"
+            "player_name": "<p>Mark <br/>Blackburn</p>"
           }
         },
         "player_JFzkiT": {
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Erika_Larkin.png",
-            "player_name": "Erika Larkin"
+            "player_name": "<p>Erika <br/>Larkin</p>"
           }
         },
         "player_MKXeY7": {
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Mike_Malaska.png",
-            "player_name": "Mike Malaska"
+            "player_name": "<p>Mike <br/>Malaska</p>"
           }
         },
         "player_YH93kM": {
           "type": "player",
           "settings": {
             "player_image": "shopify://shop_images/Colin_McCarthy.png",
-            "player_name": "Colin McCarthy"
+            "player_name": "<p>Colin <br/>McCarthy</p>"
           }
         }
       },
@@ -75,6 +76,7 @@
       ],
       "name": "Trusted by Coaches",
       "settings": {
+        "color_scheme": "scheme-d3babac5-047a-4696-a270-d66a4d5c303e",
         "heading": "Trusted by Top Coaches",
         "subheading": "From PGA Tour coaches to rising instructors – trusted by the best to deliver world-class instruction.",
         "padding_top": 60,
@@ -379,6 +381,192 @@
         "button_link": "#",
         "show_arrow": true
       }
+    },
+    "golfers_testimonials_dVxtgK": {
+      "type": "golfers-testimonials",
+      "blocks": {
+        "testimonial_nD6Tca": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
+            "name": "Chris Como",
+            "designation": "Golf Digest #2 Ranked Coach",
+            "image": "shopify://shop_images/Group_218.png"
+          }
+        },
+        "testimonial_gKUgfX": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"My swing has improved tremendously in just a couple months. You can even review your lessons anytime since they're all recorded.\"",
+            "name": "Greg",
+            "designation": "Golf Live Golfer",
+            "image": "shopify://shop_images/Group_218_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_nD6Tca",
+        "testimonial_gKUgfX"
+      ],
+      "name": "Golfers Testimonials",
+      "settings": {
+        "extra_class": "",
+        "heading": "What Coaches and Golfers Are Saying"
+      }
+    },
+    "golf_live_comparison_CLjCmx": {
+      "type": "golf-live-comparison",
+      "blocks": {
+        "with_item_khj49K": {
+          "type": "with_item",
+          "settings": {
+            "text": "Review swings together in real-time"
+          }
+        },
+        "with_item_kYGjRP": {
+          "type": "with_item",
+          "settings": {
+            "text": "Find the right coach or student instantly"
+          }
+        },
+        "with_item_JLnwCi": {
+          "type": "with_item",
+          "settings": {
+            "text": "All your lessons organized and saved"
+          }
+        },
+        "with_item_G7Pg7B": {
+          "type": "with_item",
+          "settings": {
+            "text": "Book, pay, and chat without switching apps"
+          }
+        },
+        "with_item_MeiDMj": {
+          "type": "with_item",
+          "settings": {
+            "text": "Keep every video forever"
+          }
+        },
+        "without_item_Bp4JFH": {
+          "type": "without_item",
+          "settings": {
+            "text": "You lose lesson momentum between sessions"
+          }
+        },
+        "without_item_eGLRki": {
+          "type": "without_item",
+          "settings": {
+            "text": "No way to organize lessons, drills, or lesson history in one place"
+          }
+        },
+        "without_item_cFQP7X": {
+          "type": "without_item",
+          "settings": {
+            "text": "You’re stuck using 4+ apps just to run one lesson"
+          }
+        },
+        "without_item_7kb8Yx": {
+          "type": "without_item",
+          "settings": {
+            "text": "You're juggling Venmo, Calendly, Zoom, and iMessage"
+          }
+        },
+        "without_item_qQpwW9": {
+          "type": "without_item",
+          "settings": {
+            "text": "You run out of storage or pay extra for cloud space"
+          }
+        }
+      },
+      "block_order": [
+        "with_item_khj49K",
+        "with_item_kYGjRP",
+        "with_item_JLnwCi",
+        "with_item_G7Pg7B",
+        "with_item_MeiDMj",
+        "without_item_Bp4JFH",
+        "without_item_eGLRki",
+        "without_item_cFQP7X",
+        "without_item_7kb8Yx",
+        "without_item_qQpwW9"
+      ],
+      "name": "Golf Live Comparison",
+      "settings": {
+        "heading": "Why Golf Live Beats the Competition",
+        "subheading": "The only app that combines live coaching, video analysis, content monetization, and business tools in one seamless experience.",
+        "green_bg": "shopify://shop_images/Rectangle_12.png",
+        "green_phone": "shopify://shop_images/Group_59.png",
+        "green_title": "With Golf Live",
+        "grey_bg": "shopify://shop_images/Rectangle_12_1.png",
+        "grey_phone": "shopify://shop_images/Group_285.png",
+        "grey_title": "Without Golf Live"
+      }
+    },
+    "golf_features_slider_tACrW6": {
+      "type": "golf-features-slider",
+      "blocks": {
+        "feature_HYxDmx": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/mobile_1.png",
+            "title": "Live Replay Technology",
+            "description": "<p>See Swings Together in Real-Time</p>",
+            "coach_text": "For Coaches",
+            "coach_description": "Instantly replay and analyze swings during live sessions - no need to stop, record, and explain later.",
+            "golfer_text": "For Golfers",
+            "golfer_description": "Watch your swing side-by-side with your coach's feedback - see exactly what needs to change."
+          }
+        },
+        "feature_WBa3fN": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/mobile_2.png",
+            "title": "Video Analysis Tools",
+            "description": "<p>Break Down Every Swing Frame-by-Frame</p>",
+            "coach_text": "For Coaches",
+            "coach_description": "Use drawing tools, slow motion, and side-by-side comparison to deliver precise feedback your students can actually understand.",
+            "golfer_text": "For Golfers",
+            "golfer_description": "Get detailed video breakdowns with visual markup showing exactly what's working and what's not."
+          }
+        },
+        "feature_7YTA6r": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/mobile_3.png",
+            "title": "Organised Video Library",
+            "description": "<p>Never Lose a Lesson’s Recording Again</p>",
+            "coach_text": "For Coaches",
+            "coach_description": "Every student's videos automatically saved and organised - no more searching through your camera roll.",
+            "golfer_text": "For Golfers",
+            "golfer_description": "Access every lesson, drill, and tip from your coach anytime - all saved in one place to track your progress."
+          }
+        },
+        "feature_qhABji": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify://shop_images/mobile_4.png",
+            "title": "Live Streams & Group Clinics",
+            "description": "<p>Host Live Clinics or Learn from Top Coaches</p>",
+            "coach_text": "For Coaches",
+            "coach_description": "Scale your coaching with live streams - teach dozens of students at once and monetize your expertise beyond 1-on-1 lessons.",
+            "golfer_text": "For Golfers",
+            "golfer_description": "Join live group sessions with top instructors, ask questions in real-time, and learn alongside other golfers."
+          }
+        }
+      },
+      "block_order": [
+        "feature_HYxDmx",
+        "feature_WBa3fN",
+        "feature_7YTA6r",
+        "feature_qhABji"
+      ],
+      "name": "Golf Features Slider",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "enable_slider_desktop": true,
+        "enable_slider_mobile": true
+      }
     }
   },
   "order": [
@@ -388,6 +576,9 @@
     "dual_audience_cards_TEt37K",
     "video_testimonial_LBDcHx",
     "faq_golfer_coach_rbLhDK",
-    "cta_questions_bar_aypLzc"
+    "cta_questions_bar_aypLzc",
+    "golfers_testimonials_dVxtgK",
+    "golf_live_comparison_CLjCmx",
+    "golf_features_slider_tACrW6"
   ]
 }

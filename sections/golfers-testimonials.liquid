@@ -1,0 +1,174 @@
+<style>
+  .cg-testimonials {
+    padding: 80px 0;
+  }
+
+  .cg-testimonials__heading {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .cg-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .cg-testimonial {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px;
+    border-radius: 20px;
+    background: radial-gradient(circle at top left, #1f6f3f, #0b0b0b);
+  }
+
+  .cg-testimonial__content {
+    max-width: 60%;
+  }
+
+  .cg-testimonial__quote {
+    margin-bottom: 24px;
+  }
+
+  .cg-testimonial__author span {
+    display: block;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+
+  .cg-testimonial__image img {
+    max-width: 160px;
+    border-radius: 16px;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 749px) {
+    .cg-testimonials {
+      padding: 60px 0;
+    }
+
+    .cg-testimonials__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cg-testimonial {
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .cg-testimonial__content {
+      max-width: 100%;
+    }
+
+    .cg-testimonial__image img {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<div class="cg-testimonials page-width {{ section.settings.extra_class }}">
+  {% if section.settings.heading != blank %}
+    <h2 class="cg-testimonials__heading">
+      {{ section.settings.heading }}
+    </h2>
+  {% endif %}
+
+  <div class="cg-testimonials__grid">
+    {% for block in section.blocks %}
+      <div class="cg-testimonial" {{ block.shopify_attributes }}>
+        <div class="cg-testimonial__content">
+          {% if block.settings.quote != blank %}
+            <p class="cg-testimonial__quote">“{{ block.settings.quote }}”</p>
+          {% endif %}
+
+          <div class="cg-testimonial__stars">
+            {% render 'golfers-stars' %}
+          </div>
+          <div class="cg-testimonial__author">
+            {% if block.settings.name != blank %}
+              <strong>{{ block.settings.name }}</strong>
+            {% endif %}
+            {% if block.settings.designation != blank %}
+              <span>{{ block.settings.designation }}</span>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if block.settings.image != blank %}
+          <div class="cg-testimonial__image">
+            <img
+              src="{{ block.settings.image | image_url: width: 500 }}"
+              alt="{{ block.settings.name | escape }}"
+              loading="lazy"
+              width="auto"
+              height="auto"
+            >
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Golfers Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "extra_class",
+      "label": "Extra Class"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "What Coaches and Golfers Are Saying"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "Designation / Subtitle"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Profile Image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Golfers Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

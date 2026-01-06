@@ -1,65 +1,5 @@
-{% style %}
-  .trusted-coaches {
-    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
-  }
-
-  .trusted-coaches__heading {
-    text-align: center;
-    margin-bottom: 12px;
-  }
-
-  .trusted-coaches__subheading {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 40px;
-    font-size: 16px;
-  }
-
-  .trusted-coaches__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-  }
-
-  .trusted-coaches__card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-
-  .trusted-coaches__image {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-  }
-
-  .trusted-coaches__overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 12px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
-  }
-
-  .trusted-coaches__name {
-    margin: 0;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #ffffff;
-  }
-
-  @media (max-width: 768px) {
-    .trusted-coaches__subheading {
-      font-size: 14px;
-    }
-  }
-{% endstyle %}
-
-<section class="trusted-coaches">
-  <div class="page-width">
+<section class="trusted-coaches color-{{ section.settings.color_scheme }}">
+  <div class="rusted-coaches-inside">
     {% if section.settings.heading != blank %}
       <h2 class="trusted-coaches__heading h1">
         {{ section.settings.heading }}
@@ -67,30 +7,34 @@
     {% endif %}
 
     {% if section.settings.subheading != blank %}
-      <div class="trusted-coaches__subheading rte">
+      <div class="trusted-coaches__subheading">
         {{ section.settings.subheading }}
       </div>
     {% endif %}
 
-    <div class="trusted-coaches__grid">
+    <div class="trusted-coaches__grid flex flex-wrap">
       {% for block in section.blocks %}
-        <div class="trusted-coaches__card" {{ block.shopify_attributes }}>
+        <div
+          class="trusted-coaches__card relative flex-[0_0_50%] min-768:flex-[0_0_33.33%] min-990:flex-[0_0_20%] min-990:flex min-990:flex-col min-990:justify-end min-990:pt-[90px]"
+          {{ block.shopify_attributes }}
+        >
           {% if block.settings.player_image != blank %}
             <img
-              src="{{ block.settings.player_image | image_url: width: 600 }}"
+              src="{{ block.settings.player_image | image_url }}"
               alt="{{ block.settings.player_name | escape }}"
               class="trusted-coaches__image"
               loading="lazy"
-              width="600"
-              height="800"
+              width="auto"
+              height="auto"
+              class="w-full h-auto object-cover max-990:aspect-[0.94/1]"
             >
           {% endif %}
 
           {% if block.settings.player_name != blank %}
             <div class="trusted-coaches__overlay">
-              <p class="trusted-coaches__name">
+              <div class="trusted-coaches__name">
                 {{ block.settings.player_name }}
-              </p>
+              </div>
             </div>
           {% endif %}
         </div>
@@ -103,6 +47,12 @@
 {
   "name": "Trusted by Coaches",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Schema",
+      "default": "scheme-1"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -145,7 +95,7 @@
           "label": "Player image"
         },
         {
-          "type": "text",
+          "type": "richtext",
           "id": "player_name",
           "label": "Player name"
         }

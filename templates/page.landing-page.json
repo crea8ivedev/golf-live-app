@@ -56,19 +56,26 @@
       ],
       "name": "Hero Platform",
       "settings": {
+        "extra-class": "",
         "bg_image": "shopify://shop_images/Rectangle_2_1.png",
         "overlay_opacity": 70,
-        "phone_image_1": "shopify://shop_images/Rectangle_2.png",
-        "phone_image_2": "shopify://shop_images/mobile-ball.png",
+        "phone_image_1": "shopify://shop_images/Rectangle_2_a829f600-2854-46b0-a9bd-fedcdb3e8b69.png",
+        "phone_image_2": "shopify://shop_images/Group_122.png",
         "eyebrow": "Live Golf Coaching From Anywhere",
-        "heading": "Reach More Students, \nSave Time, Earn More Revenue.",
+        "heading": "<p>Reach More Students,<br/>Save Time, Earn More Revenue.</p>",
         "subheading": "The all-in-one platform built by coaches, for coaches.",
         "primary_label": "Start Free Trial",
         "primary_link": "#",
         "secondary_label": "Schedule a Demo",
         "secondary_link": "#",
         "stat_icon": "shopify://shop_images/Vector_6.svg",
-        "stat_text": "20,000+ Hours of Coaching Delivered"
+        "stat_text": "20,000+ Hours of Coaching Delivered",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
       }
     },
     "trusted_professional_Mr4PtT": {
@@ -382,10 +389,11 @@
           "settings": {
             "card_header_color": "#064e3b",
             "header_image": "shopify://shop_images/Rectangle_48_1.png",
+            "pattern_opacity": 65,
             "plan_name": "Starter",
             "price": "29",
             "sub_heading": "For solo coaches",
-            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage\nLive lessons\nVideo analysis\nPayment processing\nUnlimited storage",
+            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage\nLive lessons",
             "button_text": "CHOOSE PLAN",
             "button_link": ""
           }
@@ -395,6 +403,7 @@
           "settings": {
             "card_header_color": "#064e3b",
             "header_image": "shopify://shop_images/Rectangle_48.png",
+            "pattern_opacity": 65,
             "plan_name": "Starter",
             "price": "29",
             "sub_heading": "For solo coaches",
@@ -406,8 +415,9 @@
         "plan_4EAYyF": {
           "type": "plan",
           "settings": {
-            "card_header_color": "#064e3b",
+            "card_header_color": "#1e6955",
             "header_image": "shopify://shop_images/Rectangle_48.png",
+            "pattern_opacity": 65,
             "plan_name": "Starter",
             "price": "29",
             "sub_heading": "For solo coaches",
@@ -435,14 +445,7 @@
         "step_QgLQwD": {
           "type": "step",
           "settings": {
-            "step_label": "Step 1",
-            "title": "Set Up Your Profile",
-            "description": "Add your bio, credentials, services, and rates."
-          }
-        },
-        "step_tRamtV": {
-          "type": "step",
-          "settings": {
+            "image": "shopify://shop_images/Rectangle_33.png",
             "step_label": "Step 1",
             "title": "Set Up Your Profile",
             "description": "Add your bio, credentials, services, and rates."
@@ -451,7 +454,16 @@
         "step_4xr6D8": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/0efc03d29e05058fb715da8becb414539dc65a60.png",
+            "image": "shopify://shop_images/Rectangle_34.png",
+            "step_label": "Step 1",
+            "title": "Set Up Your Profile",
+            "description": "Add your bio, credentials, services, and rates."
+          }
+        },
+        "step_tRamtV": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_35.png",
             "step_label": "Step 1",
             "title": "Set Up Your Profile",
             "description": "Add your bio, credentials, services, and rates."
@@ -460,6 +472,7 @@
         "step_FRdNrd": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/Rectangle_36.png",
             "step_label": "Step 1",
             "title": "Set Up Your Profile",
             "description": "Add your bio, credentials, services, and rates."
@@ -468,8 +481,8 @@
       },
       "block_order": [
         "step_QgLQwD",
-        "step_tRamtV",
         "step_4xr6D8",
+        "step_tRamtV",
         "step_FRdNrd"
       ],
       "name": "Coaching Steps (Tailwind)",
@@ -481,6 +494,139 @@
         "padding_bottom": 80,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
+      }
+    },
+    "free_trial_rA3Ejf": {
+      "type": "free-trial",
+      "blocks": {
+        "list_item_KmfebB": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Live virtual lessons with instant replay"
+          }
+        },
+        "list_item_EBbWkT": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Offer on-demand content and reviews"
+          }
+        },
+        "list_item_cUPBRx": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Manage bookings, payments, and clients"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_KmfebB",
+        "list_item_EBbWkT",
+        "list_item_cUPBRx"
+      ],
+      "name": "Feature Mobile Section",
+      "settings": {
+        "bg_color": "#000000",
+        "btn_color": "#064e3b",
+        "image_round": "shopify://shop_images/Ellipse_13.png",
+        "image": "shopify://shop_images/Mask_group_1.png",
+        "heading": "Start Coaching Smarter, Not Harder",
+        "subtext": "Reach more students, monetize your expertise, and streamline your coaching business, all from one platform.",
+        "btn_text": "START FREE TRIAL",
+        "btn_link": "",
+        "btn_text_2": "Schedule a Demo",
+        "btn_link_2": ""
+      }
+    },
+    "landing_faq_xBdqfQ": {
+      "type": "landing-faq",
+      "blocks": {
+        "faq_item_9444Px": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        },
+        "faq_item_UkjKjD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        },
+        "faq_item_4Yax9g": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        },
+        "faq_item_HdpmQg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does it work?",
+            "answer": "<p>Your answer goes here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_9444Px",
+        "faq_item_UkjKjD",
+        "faq_item_4Yax9g",
+        "faq_item_HdpmQg"
+      ],
+      "name": "FAQ Tailwind",
+      "settings": {
+        "heading": "Common Questions from Coaches",
+        "icon_style": "plus",
+        "show_buttons": true,
+        "btn_1_text": "START FREE TRIAL",
+        "btn_1_link": "",
+        "btn_2_text": "Schedule a Demo",
+        "btn_2_link": ""
+      }
+    },
+    "why_golf_live_7CtzFQ": {
+      "type": "why-golf-live",
+      "blocks": {
+        "feature_row_M6VmjT": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": true,
+            "left_text": "Built-in",
+            "right_text": "Zoom (no replay)"
+          }
+        },
+        "feature_row_EARWWj": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": true,
+            "left_text": "Unlimited",
+            "right_text": "YouTube (no monetization)"
+          }
+        },
+        "feature_row_HdqtUL": {
+          "type": "feature_row",
+          "settings": {
+            "left_checked": true,
+            "left_text": "Sell your content",
+            "right_text": "Google Drive (not organized)"
+          }
+        }
+      },
+      "block_order": [
+        "feature_row_M6VmjT",
+        "feature_row_EARWWj",
+        "feature_row_HdqtUL"
+      ],
+      "name": "Why Golf Live",
+      "settings": {
+        "extra_class": "custom-why-golf-live",
+        "main-golf-live-title": "Why Coaches Are Switching to Golf Live",
+        "left_title": "Golf Live",
+        "right_title": "Your Current Setup",
+        "main-golf-live-subtitle": "The choice is clear: One platform vs. juggling multiple tools.",
+        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>"
       }
     }
   },
@@ -494,6 +640,9 @@
     "zigzag_section_Gtb6DU",
     "image_with_text_dLqjQV",
     "pricing_plans_qDJtdE",
-    "coaching_steps_AbMRCc"
+    "coaching_steps_AbMRCc",
+    "free_trial_rA3Ejf",
+    "landing_faq_xBdqfQ",
+    "why_golf_live_7CtzFQ"
   ]
 }

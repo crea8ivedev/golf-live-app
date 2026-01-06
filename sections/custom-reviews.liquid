@@ -1,0 +1,247 @@
+{% style %}
+  .ctm-reviews-slide-inner {
+    background-image: url('{{ section.settings.bg-card-image | image_url: width: 1200 }}');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 1024px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_tablet }}px;
+      padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ctm-review-slider-main color-{{ section.settings.color_scheme }} {{ section.settings.extra_class_reviews }} section-{{ section.id }}-padding">
+  <div class="page-width ctm-review-slider-inner swiper">
+    {% if section.settings['review-main-title'] != blank %}
+      <div class="ctm-review-slider-heading text-center">
+        <h2>{{ section.settings['review-main-title'] }}</h2>
+      </div>
+    {% endif %}
+    <div class="ctm-review-slider-wrapper swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="ctm-reviews-slide-inner swiper-slide">
+          <div class="ctm-reviews-content">
+            {{ block.settings['ctm-add-review'] }}
+          </div>
+          {% if block.settings['enable-rating'] %}
+            <div class="ctm-reviews-rating">
+              {{- 'rating-star.svg' | inline_asset_content -}}
+            </div>
+          {% endif %}
+          <div class="ctm-reviews-cust-info">
+            <div class="ctm-reviews-cust-img">
+              <img
+                class="rounded-[50%]"
+                src="{{ block.settings.customer_image | image_url: width: 57, height: 57 }}"
+                alt="{{ block.settings.customer_image.alt | escape }}"
+                width="auto"
+                height="auto"
+                loading="lazy"
+              >
+            </div>
+            <div class="ctm-reviews-cust-name">
+              {{ block.settings.customer_name }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+
+    {% if section.settings['review-btn-link'] != blank %}
+      <div class="ctm-review-cta">
+        <a href="{{ section.settings.review-btn-link }}" class="ctm-review-btn">
+          {{ section.settings['review-btn-title'] }}
+          {{- 'right-arrow-btn.svg' | inline_asset_content -}}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Review",
+  "class": "ctm-review-slider-hero",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class_reviews"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "review-main-title"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "bg-card-image"
+    },
+    {
+      "type": "text",
+      "label": "Button Title",
+      "id": "review-btn-title"
+    },
+    {
+      "type": "url",
+      "label": "Button Link",
+      "id": "review-btn-link"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Tablet Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "richtext",
+          "label": "Review",
+          "id": "ctm-add-review"
+        },
+        {
+          "type": "checkbox",
+          "label": "Enable Rating ",
+          "id": "enable-rating",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "label": "Customer Image",
+          "id": "customer_image"
+        },
+        {
+          "type": "richtext",
+          "label": "Customer Name",
+          "id": "customer_name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Review"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  var swiper = new Swiper('.ctm-review-slider-inner', {
+    loop: true,
+    autoplay: {
+      delay: 6000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 16,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 24,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 24,
+      },
+    },
+  });
+</script>
