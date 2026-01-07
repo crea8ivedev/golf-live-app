@@ -171,7 +171,7 @@
 }
 .custom-container,
 .page-width {
-  @apply px-[28px] min-[768px]:px-[30px] min-[1440px]:px-[135px] !max-w-full;
+  @apply px-[28px] min-[768px]:px-[30px] min-[1440px]:px-[136px] !max-w-full;
 }
 .container-136 {
   @apply px-[28px] min-[768px]:px-[30px] min-[1440px]:px-[136px] !max-w-full;
@@ -340,4 +340,32 @@
   @apply min-990:text-green0;
 }
 
+.vt-arrow {
+  @apply !w-[56px] !h-[56px] !flex !justify-center !items-center !transition-all !duration-300 !ease-in-out hover:!opacity-50 max-990:!hidden;
+}
+
+.vt-arrow.vt-prev {
+  @apply left-[-34px];
+}
+
+.vt-arrow.vt-next {
+  @apply right-[-34px];
+}
+
+.vt-play-btn svg {
+  @apply max-990:w-[38px];
+}
+
 /* testimonial-video */
+
+/* audience */
+
+.dual-audience-grid {
+  display: grid;
+}
+
+.dual-card__inner-above {
+  @apply bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/audience-card-above-bg.png?v=1767767313')] bg-no-repeat bg-cover text-center;
+}
+
+/* audience */

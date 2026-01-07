@@ -269,13 +269,13 @@
         "paragraph_7AEKfP": {
           "type": "paragraph",
           "settings": {
-            "text": "Coach students anywhere with live video."
+            "text": "Coach students anywhere with live video and instant replay.\n\nExpand your reach beyond your local range. Deliver real-time feedback with Golf Live's patented Live Replay Technology — students see their swing instantly while you're coaching them."
           }
         },
         "list_TaizbD": {
           "type": "list",
           "settings": {
-            "list_content": "No geographic limitations\nInstant replay\n Demo line"
+            "list_content": "Coach more students without adding hours to your day\nNo geographic limitations\nEvery lesson automatically recorded for student review"
           }
         }
       },
@@ -286,10 +286,10 @@
       ],
       "name": "Custom Zigzag Row",
       "settings": {
-        "main_h2": "Live Lessons",
+        "main_h2": "Everything You Need to Scale Your Coaching Business",
         "heading-bottom-padding": 36,
         "show_h2": true,
-        "image": "shopify://shop_images/Group_323.png",
+        "image": "shopify://shop_images/Group_157.png",
         "layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 0
@@ -301,19 +301,19 @@
         "heading_EpCWkU": {
           "type": "heading",
           "settings": {
-            "heading": "Live Virtual Lessons"
+            "heading": "Live Streaming"
           }
         },
         "paragraph_RQ6AAk": {
           "type": "paragraph",
           "settings": {
-            "text": "Coach students anywhere with live video."
+            "text": "It’s like going live on social, only smarter. Live Stream on Golf Live to run group sessions with Golfers or Coaches, add a co-host, and break down swings in real time using video replay and drawing tools. These sessions help you build your brand, create content that lasts, and turn engagement into income."
           }
         },
         "list_NUTHJG": {
           "type": "list",
           "settings": {
-            "list_content": "No geographic limitations\nInstant replay\n Demo line"
+            "list_content": "Monetize your expertise at scale\nBuild evergreen content\nEngage with your community in real-time"
           }
         }
       },
@@ -326,8 +326,47 @@
       "settings": {
         "main_h2": "Live Lessons",
         "heading-bottom-padding": 36,
-        "show_h2": true,
+        "show_h2": false,
+        "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
         "layout": "text_first",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "zigzag_section_G3kYAg": {
+      "type": "zigzag-section",
+      "blocks": {
+        "heading_8jHBxt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Video Analysis Tools"
+          }
+        },
+        "paragraph_bWqBc8": {
+          "type": "paragraph",
+          "settings": {
+            "text": "It’s like going live on social, only smarter. Live Stream on Golf Live to run group sessions with Golfers or Coaches, add a co-host, and break down swings in real time using video replay and drawing tools. These sessions help you build your brand, create content that lasts, and turn engagement into income."
+          }
+        },
+        "list_LEAdfP": {
+          "type": "list",
+          "settings": {
+            "list_content": "Monetize your expertise at scale\nBuild evergreen content\nEngage with your community in real-time"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8jHBxt",
+        "paragraph_bWqBc8",
+        "list_LEAdfP"
+      ],
+      "name": "Custom Zigzag Row",
+      "settings": {
+        "main_h2": "Live Lessons",
+        "heading-bottom-padding": 36,
+        "show_h2": false,
+        "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
+        "layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -756,6 +795,7 @@
         "bg-golf-image": "shopify://shop_images/Rectangle_26.png",
         "main-golf-live-title": "Why Coaches Are Switching to Golf Live",
         "left_title": "",
+        "golf-center-icon": "shopify://shop_images/Vector_90ff3af2-ef7d-45a9-90ab-df7f3a540c26.png",
         "center_title": "Golf Live",
         "right_title": "Your Current Setup",
         "main-golf-live-subtitle": "The choice is clear: One platform vs. juggling multiple tools.",
@@ -777,6 +817,7 @@
     "growth_challenges_MDBf77",
     "zigzag_section_6TF6mn",
     "zigzag_section_Gtb6DU",
+    "zigzag_section_G3kYAg",
     "image_with_text_dLqjQV",
     "pricing_plans_qDJtdE",
     "coaching_steps_AbMRCc",

@@ -5,8 +5,8 @@
   }
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
     }
   }
 {%- endstyle -%}
@@ -87,6 +87,12 @@
       "default": "Live Lessons"
     },
     {
+      "type": "checkbox",
+      "id": "show_h2",
+      "label": "Show Section Title",
+      "default": true
+    },
+    {
       "type": "range",
       "id": "heading-bottom-padding",
       "min": 0,
@@ -97,12 +103,6 @@
       "default": 36
     },
     {
-      "type": "checkbox",
-      "id": "show_h2",
-      "label": "Show Section Title",
-      "default": true
-    },
-    {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
@@ -111,35 +111,59 @@
       "type": "select",
       "id": "layout",
       "options": [
-        { "value": "image_first", "label": "Image first" },
-        { "value": "text_first", "label": "Text first" }
+        { "value": "image_first", "label": "Left" },
+        { "value": "text_first", "label": "Right" }
       ],
       "default": "image_first",
-      "label": "Desktop Layout (Zigzag Toggle)"
+      "label": "Image Position"
     },
     {
       "type": "header",
-      "content": "Spacing"
+      "content": "Desktop Padding"
     },
     {
       "type": "range",
       "id": "padding_top",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
-      "label": "Padding Top",
-      "default": 36
+      "label": "Padding Top Desktop",
+      "default": 40
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
-      "label": "Padding Bottom",
-      "default": 36
+      "label": "Padding Bottom Desktop",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 52
     }
   ],
   "blocks": [

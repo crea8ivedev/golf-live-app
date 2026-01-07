@@ -47,7 +47,7 @@
     margin: 12px 0 6px;
   }
 
-  /* Grid fallback (non-slider) */
+  /* Grid fallback */
   .golf-features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -57,6 +57,41 @@
   @media (max-width: 749px) {
     .golf-features-grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  /* Slider wrapper */
+  .golf-features-slider-wrapper {
+    position: relative;
+  }
+
+  /* Arrows outside slider */
+  .golf-features-arrows {
+    position: absolute;
+    top: 50%;
+    left: -56px;
+    right: -56px;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .golf-features-arrows button {
+    pointer-events: all;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  @media (max-width: 749px) {
+    .golf-features-arrows {
+      left: -12px;
+      right: -12px;
     }
   }
 {% endstylesheet %}
@@ -74,65 +109,66 @@
   {% assign desktop_slider = section.settings.enable_slider_desktop %}
   {% assign mobile_slider = section.settings.enable_slider_mobile %}
 
-  <div
-    class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"
-    data-desktop-slider="{{ desktop_slider }}"
-    data-mobile-slider="{{ mobile_slider }}"
-  >
+  <div class="golf-features-slider-wrapper">
+    {% if desktop_slider or mobile_slider %}
+      <div class="golf-features-arrows">
+        <button class="golf-features-prev swiper-button-prev" type="button">
+          {% render 'slider-arrow-golf-pre' %}
+        </button>
+        <button class="golf-features-next swiper-button-next" type="button">
+          {% render 'slider-arrow-golf-next' %}
+        </button>
+      </div>
+    {% endif %}
+
     <div
-      class="
-        {% if desktop_slider or mobile_slider %}
-          swiper-wrapper
-        {% else %}
-          golf-features-grid
-        {% endif %}
-      "
+      class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"
+      data-desktop-slider="{{ desktop_slider }}"
+      data-mobile-slider="{{ mobile_slider }}"
     >
-      {% for block in section.blocks %}
-        <div
-          class="{% if desktop_slider or mobile_slider %}swiper-slide{% else %}golf-feature-card{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          <div class="golf-feature-card">
-            <div class="golf-feature-image">
-              {% if block.settings.image != blank %}
-                <img
-                  src="{{ block.settings.image | image_url: width: 600 }}"
-                  alt="{{ block.settings.title | escape }}"
-                  loading="lazy"
-                  width="auto"
-                  height="auto"
-                >
-              {% endif %}
-            </div>
+      <div class="{% if desktop_slider or mobile_slider %}swiper-wrapper{% else %}golf-features-grid{% endif %}">
+        {% for block in section.blocks %}
+          <div
+            class="{% if desktop_slider or mobile_slider %}swiper-slide{% else %}golf-feature-card{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="golf-feature-card">
+              <div class="golf-feature-image">
+                {% if block.settings.image != blank %}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 600 }}"
+                    alt="{{ block.settings.title | escape }}"
+                    loading="lazy"
+                    width="auto"
+                    height="auto"
+                  >
+                {% endif %}
+              </div>
 
-            <div class="golf-feature-content">
-              {% if block.settings.title != blank %}
-                <h3>{{ block.settings.title }}</h3>
-              {% endif %}
+              <div class="golf-feature-content">
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
 
-              {% if block.settings.description != blank %}
-                {{ block.settings.description }}
-              {% endif %}
+                {% if block.settings.description != blank %}
+                  {{ block.settings.description }}
+                {% endif %}
 
-              {% if block.settings.coach_description != blank %}
-                <span class="golf-pill">{{ block.settings.coach_text }}</span>
-                <p>{{ block.settings.coach_description }}</p>
-              {% endif %}
+                {% if block.settings.coach_description != blank %}
+                  <span class="golf-pill">{{ block.settings.coach_text }}</span>
+                  <p>{{ block.settings.coach_description }}</p>
+                {% endif %}
 
-              {% if block.settings.golfer_description != blank %}
-                <span class="golf-pill">{{ block.settings.golfer_text }}</span>
-                <p>{{ block.settings.golfer_description }}</p>
-              {% endif %}
+                {% if block.settings.golfer_description != blank %}
+                  <span class="golf-pill">{{ block.settings.golfer_text }}</span>
+                  <p>{{ block.settings.golfer_description }}</p>
+                {% endif %}
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-
-    {% if desktop_slider or mobile_slider %}
-      <div class="golf-swiper-pagination"></div>
-    {% endif %}
   </div>
 </div>
 
@@ -142,7 +178,7 @@
     if (!section) return;
 
     const swiperEl = section.querySelector('.golf-features-swiper');
-    if (!swiperEl) return;
+    if (!swiperEl || typeof Swiper === 'undefined') return;
 
     const enableDesktop = swiperEl.dataset.desktopSlider === 'true';
     const enableMobile = swiperEl.dataset.mobileSlider === 'true';
@@ -153,9 +189,9 @@
         new Swiper(swiperEl, {
           slidesPerView: isMobile ? 1.1 : 3,
           spaceBetween: 24,
-          pagination: {
-            el: swiperEl.querySelector('.golf-swiper-pagination'),
-            clickable: true,
+          navigation: {
+            nextEl: section.querySelector('.golf-features-next'),
+            prevEl: section.querySelector('.golf-features-prev'),
           },
         });
       }
@@ -165,7 +201,7 @@
 
 {% schema %}
 {
-  "name": "Golf Features Slider",
+  "name": "Golf Features",
   "settings": [
     {
       "type": "text",
@@ -193,7 +229,7 @@
   "blocks": [
     {
       "type": "feature",
-      "name": "Feature Card",
+      "name": "Feature",
       "settings": [
         {
           "type": "image_picker",
@@ -213,32 +249,31 @@
         {
           "type": "text",
           "id": "coach_text",
-          "label": "Coach Label",
-          "default": "For Coaches"
+          "label": "Coach pill text",
+          "default": "Coach"
         },
         {
           "type": "textarea",
           "id": "coach_description",
-          "label": "Coach Description"
+          "label": "Coach description"
         },
         {
           "type": "text",
           "id": "golfer_text",
-          "label": "Golfer Label",
-          "default": "For Golfers"
+          "label": "Golfer pill text",
+          "default": "Golfer"
         },
         {
           "type": "textarea",
           "id": "golfer_description",
-          "label": "Golfer Description"
+          "label": "Golfer description"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Golf Features Slider",
-      "blocks": [{ "type": "feature" }, { "type": "feature" }, { "type": "feature" }]
+      "name": "Golf Features"
     }
   ]
 }

@@ -20,12 +20,12 @@
   <div class="ctm-trusted-pga-inner {{ section.settings.extra_class }}">
     <div class="ctm-main-heading">
       {% if section.settings['pga-main-title'] != blank %}
-        <div class="ctm-inner-heading">
-          <h2 class="ctm-pga-title text-center ">{{ section.settings['pga-main-title'] }}</h2>
+        <div class="ctm-inner-heading mb-[32px]">
+          <h2 class="ctm-pga-title ctm-text-pga text-center text-green0 ">{{ section.settings['pga-main-title'] }}</h2>
         </div>
       {% endif %}
     </div>
-    <div class="ctm-main-content flex content-center items-center justify-center">
+    <div class="ctm-main-content flex items-center justify-between">
       {% for block in section.blocks %}
         <div class="ctm-inner-content flex items-center flex-col relative">
           {% if block.settings['trusted-add-image'] != blank %}

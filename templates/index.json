@@ -194,6 +194,7 @@
         "paragraph_rzmXRG",
         "list_jPikaw"
       ],
+      "disabled": true,
       "name": "Custom Zigzag Row",
       "settings": {
         "main_h2": "Live Lessons",
@@ -285,13 +286,15 @@
       ],
       "name": "Dual Audience Cards",
       "settings": {
-        "bg_image_left": "shopify://shop_images/left_card_image.png",
+        "bg_image_left": "shopify://shop_images/audience-desktop-1.png",
+        "bg_image_left_mobile": "shopify://shop_images/audience-mobile-1.png",
         "top_label_left": "FOR COACHES",
         "heading_left": "Built by Coaches for Coaches",
         "description_left": "Grow your business and reach more golfers. All from one powerful platform.",
         "button_text_left": "Start Free Trial",
         "button_url_left": "",
-        "bg_image_right": "shopify://shop_images/right_side_card.png",
+        "bg_image_right": "shopify://shop_images/audience-desktop-2.png",
+        "bg_image_right_mobile": "shopify://shop_images/audience-mobile-2.png",
         "top_label_right": "FOR GOLFERS",
         "heading_right": "Get Real Coaching. See Real Progress.",
         "description_right": "Personalized instruction from PGA-verified coaches. Train from anywhere, improve faster.",
@@ -567,8 +570,8 @@
       ],
       "name": "Golf Features Slider",
       "settings": {
-        "heading": "",
-        "subheading": "",
+        "heading": "Everything You Need to Coach or Improve At Golf - All in One App",
+        "subheading": "See how Golf Live makes coaching and learning faster, easier, and more effective.",
         "enable_slider_desktop": true,
         "enable_slider_mobile": true
       }
@@ -619,12 +622,19 @@
       "name": "Why Golf Live",
       "settings": {
         "extra_class": "ctm-golf-live-coaches",
+        "color_scheme": "",
         "main-golf-live-title": "Why Coaches Are Switching to Golf Live",
         "left_title": "",
         "center_title": "Golf Live",
         "right_title": "Your Current Setup",
         "main-golf-live-subtitle": "The choice is clear: One platform vs. juggling multiple tools.",
-        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>"
+        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
       }
     }
   },
