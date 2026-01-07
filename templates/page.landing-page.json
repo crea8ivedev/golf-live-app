@@ -306,6 +306,7 @@
       ],
       "name": "Coaching Steps (Tailwind)",
       "settings": {
+        "extra-class": "",
         "heading": "Start Coaching Smarter in 4 Simple Steps",
         "bg_color": "#f3f4f6",
         "text_color": "#000000",
@@ -344,6 +345,7 @@
       ],
       "name": "Custom Zigzag Row",
       "settings": {
+        "extra-class-zigzag": "",
         "main_h2": "Everything You Need to Scale Your Coaching Business",
         "show_h2": true,
         "heading-bottom-padding": 36,
@@ -384,6 +386,7 @@
       ],
       "name": "Custom Zigzag Row",
       "settings": {
+        "extra-class-zigzag": "",
         "main_h2": "Live Lessons",
         "show_h2": false,
         "heading-bottom-padding": 36,
@@ -424,6 +427,7 @@
       ],
       "name": "Custom Zigzag Row",
       "settings": {
+        "extra-class-zigzag": "",
         "main_h2": "Live Lessons",
         "show_h2": false,
         "heading-bottom-padding": 36,
@@ -464,6 +468,7 @@
       ],
       "name": "Custom Zigzag Row",
       "settings": {
+        "extra-class-zigzag": "",
         "main_h2": "Live Lessons",
         "show_h2": false,
         "heading-bottom-padding": 36,
@@ -504,6 +509,7 @@
       ],
       "name": "Custom Zigzag Row",
       "settings": {
+        "extra-class-zigzag": "",
         "main_h2": "Live Lessons",
         "show_h2": false,
         "heading-bottom-padding": 36,
@@ -544,6 +550,7 @@
       ],
       "name": "Custom Zigzag Row",
       "settings": {
+        "extra-class-zigzag": "",
         "main_h2": "Live Lessons",
         "show_h2": false,
         "heading-bottom-padding": 36,
@@ -997,13 +1004,20 @@
       ],
       "name": "FAQ Tailwind",
       "settings": {
+        "extra-class": "",
         "heading": "Common Questions from Coaches",
         "icon_style": "plus",
         "show_buttons": true,
         "btn_1_text": "START FREE TRIAL",
         "btn_1_link": "#",
         "btn_2_text": "Schedule a Demo",
-        "btn_2_link": "#"
+        "btn_2_link": "#",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_top_tablet": 39,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 39,
+        "padding_bottom_mobile": 52
       }
     }
   },

@@ -158,3 +158,11 @@
 .ctm-rev-section .bgc-img-icon img {
   @apply max-w-[50px] max-h-[50px];
 }
+
+.ctm-rev-section .ctm_bgc_heading_main .section-heading h6 {
+  @apply text-[17px] leading-[25px] tracking-[0.16px] min-[1440px]:text-[21px] min-[1440px]:leading-[29px] min-[1440px]:tracking-[0.19px] max-w-[825px] mx-auto pt-[27px];
+}
+
+.ctm-rev-section .ctm_bgc_heading_main .section-heading-center h6 {
+  @apply pt-[14px];
+}
