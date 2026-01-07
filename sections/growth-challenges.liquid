@@ -16,21 +16,23 @@
     }
   }
 {% endstyle %}
-<div class="page-width ctm_business_growth_challenges color-{{ section.settings.color_scheme }} {{ section.settings.extra_class }} section-{{ section.id }}-padding">
+
+<div class="ctm_business_growth_challenges color-{{ section.settings.color_scheme }} {{ section.settings.extra_class }} section-{{ section.id }}-padding">
+  {% comment %}show_announcement{% endcomment %}
   {% if section.settings.show_announcement %}
-    <div class="w-full bg-green-700 relative">
-      <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 px-4 py-4">
+    <div class="ctm-green-container w-full bg-green-700 relative">
+      <div class="max-w-full mx-auto flex items-center justify-center gap-3 px-4 py-4">
         {% if section.settings.icon_image != blank %}
           <span class="flex-shrink-0">
             {{
               section.settings.icon_image
-              | image_url: width: 40
-              | image_tag: loading: 'lazy', alt: section.settings.icon_image.alt, class: 'w-8 h-8'
+              | image_url: width: 72
+              | image_tag: loading: 'lazy', alt: section.settings.icon_image.alt, class: 'w-[72px] h-[72px]'
             }}
           </span>
         {% endif %}
         {% if section.settings.text != blank %}
-          <p class="text-white text-sm md:text-base font-semibold uppercase tracking-wider text-center">
+          <p class="text-white text-[18px] lg:text-[27px] font-semibold uppercase tracking-wider text-center">
             {{ section.settings.text }}
           </p>
         {% endif %}
@@ -38,10 +40,10 @@
       {% if section.settings.show_pointer %}
         <span
           class="
-            absolute left-1/2 -bottom-3 transform -translate-x-1/2 w-0 h-0
-            border-l-[12px] border-l-transparent
-            border-r-[12px] border-r-transparent
-            border-t-[12px] border-t-green-700
+            absolute left-1/2 -bottom-[26px] transform -translate-x-1/2 w-0 h-0
+            border-l-[28px] border-l-transparent
+            border-r-[28px] border-r-transparent
+            border-t-[28px] border-t-green-700
           "
         >
         </span>
@@ -49,18 +51,28 @@
     </div>
   {% endif %}
 
-  <div class="ctm_bgc_heading_main">
+  {% if section.settings.side_image != blank %}
+    <div class="challenges-side-image w-full h-full block md:hidden">
+      {{
+        section.settings.side_image
+        | image_url: width: 800
+        | image_tag: class: 'challenges-image', loading: 'lazy', alt: section.settings.side_image.alt
+      }}
+    </div>
+  {% endif %}
+
+  <div class="page-width ctm_bgc_heading_main">
     {% if section.settings.bgc_heading != blank %}
       <div class="section-heading text-center">
         {{ section.settings.bgc_heading }}
       </div>
     {% endif %}
 
-    <div class="ctm_challenges_wrapper flex max-md:flex-col-reverse items-center gap-[30px] lg:gap-[50px] justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %}">
+    <div class="ctm_challenges_wrapper flex max-990:flex-col-reverse items-center gap-[30px] lg:gap-[50px] max-768:pt-[25px] justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %}">
       <div class="ctm_challenges_list w-full h-full">
         {% for block in section.blocks %}
           <div
-            class="ctm_challenges_inner_list flex gap-[18px] lg:gap-[25px] items-center px-[15px] py-[18px] lg:px-[35px] lg:py-[20px] justify-center rounded-[22px]"
+            class="ctm_challenges_inner_list flex gap-[18px] lg:gap-[25px] items-start justify-center max-768:rounded-0 rounded-[22px]"
             style="{% if block.settings.bg_color != blank %}background: {{ block.settings.bg_color }}; {% endif %}"
           >
             {% if block.settings['bgc-img-icon'] != blank %}
@@ -98,11 +110,14 @@
       {% endif %}
 
       {% if section.settings.side_image != blank %}
-        <div class="challenges-side-image w-full h-full">
+        <div class="challenges-side-image w-full h-full !hidden md:!block">
           {{
             section.settings.side_image
             | image_url: width: 800
-            | image_tag: class: 'challenges-image rounded-[22px]', loading: 'lazy', alt: section.settings.side_image.alt
+            | image_tag:
+              class: 'challenges-image rounded-[22px] mx-auto',
+              loading: 'lazy',
+              alt: section.settings.side_image.alt
           }}
         </div>
       {% endif %}

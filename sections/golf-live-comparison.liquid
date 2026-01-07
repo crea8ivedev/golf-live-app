@@ -3,25 +3,26 @@
   Theme: Dawn
 {% endcomment %}
 
-<section class="golf-live-compare page-width" id="section-{{ section.id }}">
-  {% if section.settings.heading != blank %}
-    <h2 class="glc-heading">{{ section.settings.heading }}</h2>
-  {% endif %}
+<section class="golf-live-compare" id="section-{{ section.id }}">
+  <div class="container-136 max-sm:!px-0">
+    <div class=" max-sm:!px-[24px]">
+      {% if section.settings.heading != blank %}
+        <h2 class="glc-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
 
-  {% if section.settings.subheading != blank %}
-    <p class="glc-subheading">{{ section.settings.subheading }}</p>
-  {% endif %}
-
-  <div class="container-136">
-    <div class="glc-grid flex items-start gap-11 max-990:flex-wrap">
+      {% if section.settings.subheading != blank %}
+        <p class="glc-subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+    <div class="glc-grid flex items-stretch gap-[44px] max-xl:gap-[30px] max-sm:gap-0 max-990:flex-wrap">
       <!-- WITH GOLF LIVE -->
       <div
-        class="glc-card glc-green 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pr-9 py-12 pl-0 rounded-[28px]"
+        class="glc-card glc-green 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pr-9 py-14 pl-0 rounded-[28px]"
         style="{% if section.settings.green_bg != blank %}background-image:url({{ section.settings.green_bg | image_url }});{% endif %}"
       >
-        <div class="flex items-center gap-[23px]">
+        <div class="flex items-center gap-[23px] w-full">
           {% if section.settings.green_phone != blank %}
-            <div class="glc-phone w-[45%]">
+            <div class="glc-phone w-[45%] max-sm:w-1/2">
               <img
                 src="{{ section.settings.green_phone | image_url: width: 600 }}"
                 alt="With Golf Live App"
@@ -32,7 +33,7 @@
             </div>
           {% endif %}
 
-          <div class="flex flex-col w-3/5 text-white text-left mt-[80px] min-[1660px]:mt-[100px]">
+          <div class="flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] min-1520:mt-[80px] min-[1660px]:mt-[100px] max-sm:mt-[20px]">
             <h3 class="glc-card-title text-white">{{ section.settings.green_title }}</h3>
 
             <div class="glc-shape mt-[20px]">
@@ -41,7 +42,7 @@
               </svg>
             </div>
 
-            <ul class="glc-list mt-[32px]">
+            <ul class="glc-list mt-[32px] max-[1660px]:max-w-[277px]">
               {% for block in section.blocks %}
                 {% if block.type == 'with_item' %}
                   <li class="glc-item glc-item--check text-white text-left" {{ block.shopify_attributes }}>
@@ -66,11 +67,11 @@
 
       <!-- WITHOUT GOLF LIVE -->
       <div
-        class="glc-card glc-grey 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pl-9 py-12 pr-0 rounded-[28px]"
+        class="glc-card glc-grey 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pl-[50px] max-xl:pl-[22px] py-12 pr-0 rounded-[28px]"
         style="{% if section.settings.grey_bg != blank %}background-image:url({{ section.settings.grey_bg | image_url }});{% endif %}"
       >
-        <div class="flex items-center gap-[23px]">
-          <div class="flex flex-col w-3/5 text-white text-left mt-[80px] min-[1660px]:mt-[100px]">
+        <div class="flex items-center gap-[23px] w-full max-sm:items-center">
+          <div class="flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] min-1520:mt-[80px] min-[1660px]:mt-[100px] max-sm:mt-[20px]">
             <h3 class="glc-card-title text-black">{{ section.settings.grey_title }}</h3>
 
             <div class="glc-shape mt-[20px]">
@@ -93,7 +94,7 @@
                         width="auto"
                       >
                     {% endif %}
-                    <span>{{ block.settings.text }}</span>
+                    <span class="text-black">{{ block.settings.text }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
@@ -101,7 +102,7 @@
           </div>
 
           {% if section.settings.grey_phone != blank %}
-            <div class="glc-phone w-[45%]">
+            <div class="glc-phone w-[45%] max-sm:w-1/2">
               <img
                 src="{{ section.settings.grey_phone | image_url: width: 600 }}"
                 alt="Without Golf Live"
@@ -116,55 +117,6 @@
     </div>
   </div>
 </section>
-
-<style>
-  .golf-live-compare {
-    padding: 80px 0;
-    text-align: center;
-  }
-
-  .glc-subheading {
-    max-width: 720px;
-    margin: 0 auto 48px;
-  }
-
-  .glc-green .glc-phone img {
-    max-width: 253px;
-    width: 100%;
-  }
-
-  .glc-green .glc-grey img {
-    max-width: 183px;
-    width: 100%;
-  }
-
-  .glc-list {
-    list-style: none;
-  }
-
-  .glc-item {
-    display: flex;
-    align-items: center;
-    gap: 23px;
-    margin-bottom: 25px;
-    font-size: 17px;
-    line-height: 1.5;
-    font-weight: 600;
-  }
-
-  .glc-item-icon {
-    width: 42px;
-    height: 42px;
-    flex-shrink: 0;
-    margin-top: 3px;
-  }
-
-  @media (max-width: 768px) {
-    .glc-phone img {
-      max-width: 180px;
-    }
-  }
-</style>
 
 {% schema %}
 {

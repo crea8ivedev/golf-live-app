@@ -69,14 +69,15 @@
                       muted: false,
                       loop: false,
                       preload: 'metadata',
-                      class: 'vt-video'
+                      class: 'vt-video',
+                      aria_label: 'Product demonstration video showing key features'
                   }}
 
                   {% if block.settings.image != blank %}
                     <div class="vt-poster" data-video-poster>
                       <img
                         src="{{ block.settings.image | image_url: width: 800 }}"
-                        alt="{{ block.settings.name | escape }}"
+                        alt="{{ block.settings.name | escape | default: 'vt-video-banner' }}"
                         loading="lazy"
                         width="auto"
                         height="auto"
@@ -319,3 +320,14 @@
   ]
 }
 {% endschema %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.vt-video').forEach(function (video) {
+      const posterImg = video.querySelector('img');
+
+      if (posterImg && !posterImg.hasAttribute('alt')) {
+        posterImg.setAttribute('alt', video.getAttribute('aria-label') || 'Product demonstration video');
+      }
+    });
+  });
+</script>

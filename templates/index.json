@@ -197,6 +197,7 @@
       "disabled": true,
       "name": "Custom Zigzag Row",
       "settings": {
+        "extra-class-zigzag": "",
         "main_h2": "Live Lessons",
         "show_h2": true,
         "heading-bottom-padding": 36,
@@ -358,7 +359,7 @@
         "feature_HYxDmx": {
           "type": "feature",
           "settings": {
-            "image": "shopify://shop_images/mobile_1.png",
+            "image": "shopify://shop_images/golf-feature-card-1.png",
             "title": "Live Replay Technology",
             "description": "<p>See Swings Together in Real-Time</p>",
             "coach_text": "For Coaches",
@@ -370,7 +371,7 @@
         "feature_WBa3fN": {
           "type": "feature",
           "settings": {
-            "image": "shopify://shop_images/mobile_2.png",
+            "image": "shopify://shop_images/golf-feature-card-2.png",
             "title": "Video Analysis Tools",
             "description": "<p>Break Down Every Swing Frame-by-Frame</p>",
             "coach_text": "For Coaches",
@@ -382,7 +383,7 @@
         "feature_7YTA6r": {
           "type": "feature",
           "settings": {
-            "image": "shopify://shop_images/mobile_3.png",
+            "image": "shopify://shop_images/golf-feature-card-3.png",
             "title": "Organised Video Library",
             "description": "<p>Never Lose a Lesson’s Recording Again</p>",
             "coach_text": "For Coaches",
@@ -412,6 +413,8 @@
       ],
       "name": "Golf Features Slider",
       "settings": {
+        "desktop_bg": "shopify://shop_images/golf-feature-d-bg-lines.png",
+        "mobile_bg": "shopify://shop_images/lines-bg-mobile-grey.png",
         "heading": "Everything You Need to Coach or Improve At Golf - All in One App",
         "subheading": "See how Golf Live makes coaching and learning faster, easier, and more effective.",
         "enable_slider_desktop": true,
@@ -522,6 +525,8 @@
       "settings": {
         "text": "Still Have Questions?",
         "background_image": "shopify://shop_images/Mask_group.png",
+        "mobile_background_up": "shopify://shop_images/Group_87.png",
+        "mobile_background_down": "shopify://shop_images/Group_88.png",
         "button_text": "Schedule a Demo",
         "button_link": "#",
         "show_arrow": true

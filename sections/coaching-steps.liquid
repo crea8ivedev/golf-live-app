@@ -19,7 +19,7 @@
   }
 {%- endstyle -%}
 
-<div id="section-{{ section.id }}" class="coaching-steps-wrapper">
+<div id="section-{{ section.id }}" class="coaching-steps-wrapper {{ section.settings.extra-class }}">
   <div class="coaching-steps-container">
     {%- if section.settings.heading != blank -%}
       <h2 class="coaching-steps-title">{{ section.settings.heading }}</h2>
@@ -53,8 +53,9 @@
   "max_blocks": 4,
   "settings": [
     {
-      "type": "header",
-      "content": "Content & Colors"
+      "type": "text",
+      "id": "extra-class",
+      "label": "Extra Class"
     },
     {
       "type": "text",

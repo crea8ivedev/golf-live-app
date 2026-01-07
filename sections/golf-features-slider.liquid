@@ -1,174 +1,114 @@
-{% stylesheet %}
-  .golf-features-section {
-    padding: 80px 0;
-    text-align: center;
-  }
-
-  .golf-features-heading {
-    max-width: 800px;
-    margin: 0 auto 48px;
-  }
-
-  .golf-feature-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    text-align: left;
-    height: 100%;
-  }
-
-  .golf-feature-image {
-    background: radial-gradient(circle at center, #0d3b2e 0%, #000 100%);
-    padding: 24px;
-  }
-
-  .golf-feature-image img {
-    width: 100%;
-    display: block;
-    border-radius: 12px;
-  }
-
-  .golf-feature-content {
-    padding: 24px;
-  }
-
-  .golf-feature-content h3 {
-    margin-bottom: 12px;
-  }
-
-  .golf-pill {
-    display: inline-block;
-    background: #1e7f4d;
-    color: #fff;
-    border-radius: 999px;
-    padding: 4px 12px;
-    font-size: 12px;
-    margin: 12px 0 6px;
-  }
-
-  /* Grid fallback */
-  .golf-features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-
-  @media (max-width: 749px) {
-    .golf-features-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Slider wrapper */
-  .golf-features-slider-wrapper {
-    position: relative;
-  }
-
-  /* Arrows outside slider */
-  .golf-features-arrows {
-    position: absolute;
-    top: 50%;
-    left: -56px;
-    right: -56px;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  .golf-features-arrows button {
-    pointer-events: all;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-  @media (max-width: 749px) {
-    .golf-features-arrows {
-      left: -12px;
-      right: -12px;
-    }
-  }
-{% endstylesheet %}
-
-<div class="golf-features-section page-width">
-  <div class="golf-features-heading">
-    {% if section.settings.heading != blank %}
-      <h2>{{ section.settings.heading }}</h2>
-    {% endif %}
-    {% if section.settings.subheading != blank %}
-      <p>{{ section.settings.subheading }}</p>
-    {% endif %}
-  </div>
-
-  {% assign desktop_slider = section.settings.enable_slider_desktop %}
-  {% assign mobile_slider = section.settings.enable_slider_mobile %}
-
-  <div class="golf-features-slider-wrapper">
-    {% comment %}
-      {% if desktop_slider or mobile_slider %}
-        <div class="golf-features-arrows">
-          <button class="golf-features-prev swiper-button-prev" type="button">
-            {% render 'slider-arrow-golf-pre' %}
-          </button>
-          <button class="golf-features-next swiper-button-next" type="button">
-            {% render 'slider-arrow-golf-next' %}
-          </button>
-        </div>
-      {% endif %}
-    {% endcomment %}
-
-    <div
-      class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"
-      data-desktop-slider="{{ desktop_slider }}"
-      data-mobile-slider="{{ mobile_slider }}"
+<div class="golf-features-section bg-[#EFEFEF] relative page-width pt-[46px] min-990:pt-[68px] pb-[65px] min-990:pb-[96px]">
+  {% if section.settings.desktop_bg != blank %}
+    <img
+      src="{{ section.settings.desktop_bg | image_url }}"
+      alt="Lines"
+      loading="lazy"
+      width="auto"
+      height="auto"
+      class="absolute w-full h-full top-0 left-0 pointer-events-none"
     >
-      <div class="{% if desktop_slider or mobile_slider %}swiper-wrapper{% else %}golf-features-grid{% endif %}">
-        {% for block in section.blocks %}
-          <div
-            class="{% if desktop_slider or mobile_slider %}swiper-slide{% else %}golf-feature-card{% endif %}"
-            {{ block.shopify_attributes }}
-          >
-            <div class="golf-feature-card">
-              <div class="golf-feature-image">
-                {% if block.settings.image != blank %}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 600 }}"
-                    alt="{{ block.settings.title | escape }}"
-                    loading="lazy"
-                    width="auto"
-                    height="auto"
-                  >
-                {% endif %}
-              </div>
+  {% endif %}
+  {% if section.settings.mobile_bg_bg != blank %}
+    <img
+      src="{{ section.settings.mobile_bg | image_url }}"
+      alt="Lines"
+      loading="lazy"
+      width="auto"
+      height="auto"
+      class="absolute w-full h-full top-0 left-0 pointer-events-none"
+    >
+  {% endif %}
+  <div class="relative z-1">
+    <div class="golf-features-heading text-center">
+      {% if section.settings.heading != blank %}
+        <h2 class="max-w-[337px] min-1440:max-w-[937px] mx-auto">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="text-h6 font-medium min-990:font-semibold min-990:max-w-[620px] mx-auto mt-[13px] min-990:mt-[24px]">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+    </div>
 
-              <div class="golf-feature-content">
-                {% if block.settings.title != blank %}
-                  <h3>{{ block.settings.title }}</h3>
-                {% endif %}
+    {% assign desktop_slider = section.settings.enable_slider_desktop %}
+    {% assign mobile_slider = section.settings.enable_slider_mobile %}
 
-                {% if block.settings.description != blank %}
-                  {{ block.settings.description }}
-                {% endif %}
+    <div class="golf-features-slider-wrapper relative mt-[35px] min-990:mt-[66px]">
+      {% if desktop_slider or mobile_slider %}
+        <button
+          class="golf-features-arrow-common golf-features-prev swiper-button-prev !left-[-24px] min-1582:!left-[-70px]"
+          type="button"
+        >
+          {% render 'slider-arrow-golf-pre' %}
+        </button>
+        <button
+          class="golf-features-arrow-common golf-features-next swiper-button-next !right-[-24px] min-1582:!right-[-70px]"
+          type="button"
+        >
+          {% render 'slider-arrow-golf-next' %}
+        </button>
+      {% endif %}
 
-                {% if block.settings.coach_description != blank %}
-                  <span class="golf-pill">{{ block.settings.coach_text }}</span>
-                  <p>{{ block.settings.coach_description }}</p>
-                {% endif %}
+      <div
+        class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"
+        data-desktop-slider="{{ desktop_slider }}"
+        data-mobile-slider="{{ mobile_slider }}"
+      >
+        <div class="{% if desktop_slider or mobile_slider %}swiper-wrapper{% else %}golf-features-grid{% endif %}">
+          {% for block in section.blocks %}
+            <div
+              class="{% if desktop_slider or mobile_slider %}swiper-slide !h-auto{% else %}golf-feature-card{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="golf-feature-card bg-white rounded-[22px] h-full">
+                <div class="golf-feature-image">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url }}"
+                      alt="{{ block.settings.title | escape }}"
+                      loading="lazy"
+                      width="auto"
+                      height="auto"
+                    >
+                  {% endif %}
+                </div>
 
-                {% if block.settings.golfer_description != blank %}
-                  <span class="golf-pill">{{ block.settings.golfer_text }}</span>
-                  <p>{{ block.settings.golfer_description }}</p>
-                {% endif %}
+                <div class="golf-feature-content rounded-b-[22px]">
+                  <div class="pt-[29px] min-990:pt-[43px] pb-0 pl-[28px] pr-[24px] min-990:px-[38px]">
+                    {% if block.settings.title != blank %}
+                      <h4>{{ block.settings.title }}</h4>
+                    {% endif %}
+
+                    {% if block.settings.description != blank %}
+                      <div class="font-semibold text-[17px] leading-[26px] tracking-[0.17px] min-990:text-[19px] min-990:leading-[29px] min-990:tracking-[0.19px] mt-[6px] min-990:mt-[9px]">
+                        {{ block.settings.description }}
+                      </div>
+                    {% endif %}
+                  </div>
+
+                  <div class="pt-[15px] min-990:pt-[25px] pb-[27px] min-990:pb-[23px] pl-[28px] pr-[24px] min-990:px-[38px] border-b-[1px] border-solid border-[#DFDFDF]">
+                    {% if block.settings.coach_description != blank %}
+                      <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[5px]">
+                        {{- block.settings.coach_text -}}
+                      </span>
+                      <p class="min-990:text-black2">{{ block.settings.coach_description }}</p>
+                    {% endif %}
+                  </div>
+
+                  <div class="pt-[21px] min-990:pt-[19px] pb-[32px] min-990:pb-[35px] pl-[28px] pr-[24px] min-990:px-[38px]">
+                    {% if block.settings.golfer_description != blank %}
+                      <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[8px]">
+                        {{- block.settings.golfer_text -}}
+                      </span>
+                      <p class="min-990:text-black2">{{ block.settings.golfer_description }}</p>
+                    {% endif %}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
@@ -184,20 +124,46 @@
 
     const enableDesktop = swiperEl.dataset.desktopSlider === 'true';
     const enableMobile = swiperEl.dataset.mobileSlider === 'true';
-    const isMobile = window.matchMedia('(max-width: 749px)').matches;
 
-    if ((isMobile && enableMobile) || (!isMobile && enableDesktop)) {
-      if (!swiperEl.classList.contains('swiper-initialized')) {
-        new Swiper(swiperEl, {
-          slidesPerView: isMobile ? 1.1 : 3,
-          spaceBetween: 24,
-          navigation: {
-            nextEl: section.querySelector('.golf-features-next'),
-            prevEl: section.querySelector('.golf-features-prev'),
-          },
-        });
+    let swiperInstance = null;
+
+    function init() {
+      const isMobile = window.matchMedia('(max-width: 639px)').matches;
+
+      // reset class every time
+      section.classList.remove('swiper-disabled');
+
+      // SHOULD swiper run?
+      const shouldEnable = (isMobile && enableMobile) || (!isMobile && enableDesktop);
+
+      if (shouldEnable) {
+        if (!swiperInstance) {
+          swiperInstance = new Swiper(swiperEl, {
+            spaceBetween: 46,
+            loop: true,
+            navigation: {
+              nextEl: section.querySelector('.golf-features-arrow-common.golf-features-next'),
+              prevEl: section.querySelector('.golf-features-arrow-common.golf-features-prev'),
+            },
+            breakpoints: {
+              0: { slidesPerView: 1.5, spaceBetween: 30 },
+              990: { slidesPerView: 2 },
+              1280: { slidesPerView: 3 },
+            },
+          });
+        }
+      } else {
+        // DESTROY swiper + add class
+        if (swiperInstance) {
+          swiperInstance.destroy(true, true);
+          swiperInstance = null;
+        }
+        section.classList.add('swiper-disabled');
       }
     }
+
+    init();
+    window.addEventListener('resize', init);
   })();
 {% endjavascript %}
 
@@ -205,6 +171,16 @@
 {
   "name": "Golf Features",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_bg",
+      "label": "Desktop BG"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg",
+      "label": "Mobile BG"
+    },
     {
       "type": "text",
       "id": "heading",

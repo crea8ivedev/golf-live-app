@@ -130,3 +130,31 @@
 .faq-item button h6 {
   @apply font-semibold;
 }
+.ctm_business_growth_challenges .ctm-green-container img {
+  @apply max-md:w-[80px] max-md:h-[80px];
+}
+.ctm-rev-section {
+  @apply flex flex-col;
+}
+.ctm-rev-section .ctm-green-container {
+  @apply max-md:order-1;
+}
+.ctm-rev-section .ctm_bgc_heading_main {
+  @apply max-md:order-2;
+}
+.ctm-rev-section .challenges-side-image {
+  @apply max-md:order-3;
+}
+
+.ctm-rev-section .section-heading.text-center h2 {
+  @apply pt-[36px];
+}
+.ctm_challenges_inner_list {
+  @apply px-[15px] py-[18px] lg:px-[35px] lg:py-[20px];
+}
+.ctm-rev-section .ctm_challenges_inner_list {
+  @apply px-[0px] py-[0px] max-990:pb-[20px];
+}
+.ctm-rev-section .bgc-img-icon img {
+  @apply max-w-[50px] max-h-[50px];
+}

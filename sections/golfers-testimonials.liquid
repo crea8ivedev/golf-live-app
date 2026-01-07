@@ -62,21 +62,27 @@
         >
           <div class="cg-testimonial-inside">
             <div class="cg-testimonial__content">
-              {% if block.settings.quote != blank %}
-                <p class="cg-testimonial__quote">“{{ block.settings.quote }}”</p>
-              {% endif %}
-
-              <div class="cg-testimonial__stars">
-                {% render 'golfers-stars' %}
+              <div>
+                <div class="cg-testimonial__stars min-990:hidden">
+                  {% render 'golfers-stars' %}
+                </div>
+                {% if block.settings.quote != blank %}
+                  <p class="cg-testimonial__quote">{{ block.settings.quote }}</p>
+                {% endif %}
               </div>
 
-              <div class="cg-testimonial__author">
-                {% if block.settings.name != blank %}
-                  <strong>{{ block.settings.name }}</strong>
-                {% endif %}
-                {% if block.settings.designation != blank %}
-                  <span>{{ block.settings.designation }}</span>
-                {% endif %}
+              <div>
+                <div class="cg-testimonial__stars max-990:hidden">
+                  {% render 'golfers-stars' %}
+                </div>
+                <div class="cg-testimonial__author">
+                  {% if block.settings.name != blank %}
+                    <strong>{{ block.settings.name }}</strong>
+                  {% endif %}
+                  {% if block.settings.designation != blank %}
+                    <span>{{ block.settings.designation }}</span>
+                  {% endif %}
+                </div>
               </div>
             </div>
 
@@ -159,7 +165,7 @@
             } else {
               if (swiperInstance) swiperInstance.destroy(true, true);
               swiperInstance = null;
-              section.classList.add('is-desktop-grid');
+              section.classList.add('is-mobile-stack');
             }
           }
         }

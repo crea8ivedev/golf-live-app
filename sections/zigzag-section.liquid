@@ -11,7 +11,7 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding max-w-[1264px] mx-auto border-b border-[#DBDBDB]">
+<div class="section-{{ section.id }}-padding max-w-[1264px] mx-auto border-b border-[#DBDBDB] {{ section.settings.extra-class-zigzag }}">
   {%- if section.settings.show_h2 and section.settings.main_h2 != blank -%}
     <h2
       class="h2 text-center min-[1440px]:!px-[200px] text-gray-900"
@@ -80,6 +80,11 @@
 {
   "name": "Zigzag Section",
   "settings": [
+    {
+      "type": "text",
+      "id": "extra-class-zigzag",
+      "label": "Extra Class"
+    },
     {
       "type": "text",
       "id": "main_h2",

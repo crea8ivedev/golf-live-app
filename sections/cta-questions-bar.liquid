@@ -1,99 +1,92 @@
 {% style %}
-  .cta-questions-bar {
-    position: relative;
-    border-radius: 40px;
-    overflow: hidden;
-  }
-
-  .cta-questions-bar__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 24px 32px;
-  }
-
-  .cta-questions-bar__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  .cta-questions-bar__bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .cta-questions-bar__content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 20px;
-  }
-
-  .cta-questions-bar__text {
-    margin: 0;
-  }
-
   .cta-questions-bar__btn {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     padding: 12px 24px;
     border-radius: 999px;
     white-space: nowrap;
   }
 
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 990px) {
     .cta-questions-bar__inner {
-      padding: 20px;
+      padding: 45px 20px;
     }
 
     .cta-questions-bar__content {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      gap: 20px;
     }
   }
 {% endstyle %}
 
-<div class="page-width">
-  <div class="cta-questions-bar">
-    {% if section.settings.background_image != blank %}
-      <div class="cta-questions-bar__bg">
-        <img
-          src="{{ section.settings.background_image | image_url: width: 2000 }}"
-          alt=""
-          loading="lazy"
-          width="auto"
-          height="auto"
-        >
-      </div>
-    {% endif %}
-
-    <div class="cta-questions-bar__inner">
-      <div class="cta-questions-bar__content">
-        {% if section.settings.text != blank %}
-          <p class="cta-questions-bar__text">
-            {{ section.settings.text }}
-          </p>
-        {% endif %}
-
-        {% if section.settings.button_text != blank and section.settings.button_link != blank %}
-          <a
-            href="{{ section.settings.button_link }}"
-            class="cta-questions-bar__btn"
+<div class="cta-questions-bar">
+  <div class="page-width">
+    <div class="cta-questions-bar-inner bg-gray3 relative rounded-[22px] overflow-hidden">
+      {% if section.settings.background_image != blank %}
+        <div class="cta-questions-bar__bg 990:!block hidden">
+          <img
+            src="{{ section.settings.background_image | image_url: width: 2000 }}"
+            alt=""
+            loading="lazy"
+            width="auto"
+            height="auto"
           >
-            {{ section.settings.button_text }}
-            {% if section.settings.show_arrow %}
-              <span aria-hidden="true">→</span>
-            {% endif %}
-          </a>
-        {% endif %}
+        </div>
+      {% endif %}
+
+      {% if section.settings.mobile_background_up != blank %}
+        <div class="cta-questions-bar__bg 990:hidden block absolute top-0 left-0">
+          <img
+            src="{{ section.settings.mobile_background_up | image_url: width: 2000 }}"
+            alt=""
+            class="!w-auto !h-auto"
+            loading="lazy"
+            width="auto"
+            height="auto"
+          >
+        </div>
+      {% endif %}
+
+      {% if section.settings.mobile_background_down != blank %}
+        <div class="cta-questions-bar__bg 990:hidden block absolute bottom-0 right-0">
+          <img
+            src="{{ section.settings.mobile_background_down | image_url: width: 2000 }}"
+            alt=""
+            class="!w-auto !h-auto"
+            loading="lazy"
+            width="auto"
+            height="auto"
+          >
+        </div>
+      {% endif %}
+
+      <div class="cta-questions-bar__inner">
+        <div class="cta-questions-bar__content max-990:flex-col">
+          {% if section.settings.text != blank %}
+            <p class="cta-questions-bar__text text-[26px] max-990:text-[20px] leading-120p font-bold text-black tracking-[0.3px] text-center">
+              {{ section.settings.text }}
+            </p>
+          {% endif %}
+
+          {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+            <a
+              href="{{ section.settings.button_link }}"
+              class="cta-questions-bar__btn ctm-button button-green 990:absolute right-0"
+            >
+              {{ section.settings.button_text }}
+              {% if section.settings.show_arrow %}
+                <span aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+                    <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentcolor" stroke-width="2.5"/>
+                  </svg>
+                </span>
+              {% endif %}
+            </a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
@@ -113,6 +106,16 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background pattern image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_up",
+      "label": "Background UP pattern image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_down",
+      "label": "Background down pattern image"
     },
     {
       "type": "text",

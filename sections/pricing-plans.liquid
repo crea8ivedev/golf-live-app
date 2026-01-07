@@ -74,8 +74,7 @@
             <div class="pricing-plan-header-content relative p-6 text-white z-10">
               <h3 class="header-pricing-plan-name text-2xl font-semibold">{{ block.settings.plan_name }}</h3>
               <div class="header-pricing-plan-price flex items-baseline mt-1">
-                <span class="text-4xl font-bold">${{ block.settings.price }}</span>
-                <span class="text-lg opacity-80">/mo</span>
+                {{ block.settings.pricing_price }}
               </div>
               <p class="header-pricing-plan-subheading text-sm mt-1 font-light opacity-90">
                 {{ block.settings.sub_heading }}
@@ -141,10 +140,9 @@
       "label": "Extra Class"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "heading",
-      "label": "Section Heading",
-      "default": "Choose the Plan That Fits Your Coaching Business"
+      "label": "Section Heading"
     },
     {
       "type": "color",
@@ -258,10 +256,9 @@
           "default": "Starter"
         },
         {
-          "type": "text",
-          "id": "price",
-          "label": "Price",
-          "default": "29"
+          "type": "richtext",
+          "id": "pricing_price",
+          "label": "Price"
         },
         {
           "type": "text",
