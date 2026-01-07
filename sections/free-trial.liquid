@@ -1,37 +1,49 @@
 <style>
-  /* Semi-circle crop effect */
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 1024px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_tablet }}px;
+      padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
   .half-round-crop-{{ section.id }} {
     clip-path: inset(0 0 50% 0);
     margin-bottom: -250px;
   }
-
   @media (max-width: 1023px) {
     .half-round-crop-{{ section.id }} {
       margin-bottom: -160px;
     }
   }
-
-  /* Dynamic Button Color */
   .custom-btn-{{ section.id }} {
     background-color: {{ section.settings.btn_color }};
-    color: #fff; /* White text for contrast */
+    color: #fff;
   }
-
   .custom-btn-{{ section.id }}:hover {
     filter: brightness(110%);
   }
-
-  /* Icon Color */
   .icon-color-{{ section.id }} {
     color: {{ section.settings.btn_color }};
   }
 </style>
 
-<section class="relative overflow-hidden py-12 lg:py-24" style="background-color: {{ section.settings.bg_color }};">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-16 items-center">
-      <div class="relative flex justify-center lg:justify-start min-h-[350px] sm:min-h-[450px] lg:min-h-[600px] w-full lg:w-1/2">
-        <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[500px] lg:h-[500px] rounded-full self-end lg:ml-[-120px] overflow-hidden half-round-crop-{{ section.id }}">
+<div
+  class="free-trial-main-box faq-section relative overflow-hidden py-12 lg:py-24 section-{{ section.id }}-padding"
+  style="background-color: {{ section.settings.bg_color }};"
+>
+  <div class="free-trial-inner-main-box max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="free-trial-inner-wrapper flex flex-col lg:flex-row gap-16 items-center">
+      <div class="free-trial-img-box relative flex justify-center lg:justify-start min-h-[350px] sm:min-h-[450px] lg:min-h-[600px] w-full lg:w-1/2">
+        <div class="free-trial-img-back relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[500px] lg:h-[500px] rounded-full self-end lg:ml-[-120px] overflow-hidden half-round-crop-{{ section.id }}">
           {% if section.settings.image_round != blank %}
             {{
               section.settings.image_round
@@ -39,11 +51,14 @@
               | image_tag: loading: 'lazy', class: 'w-full h-full object-cover', widths: '375, 550, 750, 1000'
             }}
           {% else %}
-            <div class="w-full h-full opacity-50" style="background-color: {{ section.settings.btn_color }};"></div>
+            <div
+              class="free-trial-img-back-color w-full h-full opacity-50"
+              style="background-color: {{ section.settings.btn_color }};"
+            ></div>
           {% endif %}
         </div>
 
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 lg:left-12 lg:translate-x-0 w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[480px]">
+        <div class="free-trial-img-mobile absolute top-0 left-1/2 -translate-x-1/2 lg:left-12 lg:translate-x-0 w-full max-w-[280px] sm:max-w-[350px] lg:max-w-[480px]">
           {% if section.settings.image != blank %}
             {{
               section.settings.image
@@ -62,50 +77,52 @@
         </div>
       </div>
 
-      <div class="flex flex-col text-white w-full lg:w-1/2">
+      <div class="free-trial-main-content flex flex-col text-white w-full lg:w-1/2">
         {%- if section.settings.heading != blank -%}
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+          <h2 class="free-trial-content-title text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
             {{ section.settings.heading | escape }}
           </h2>
         {%- endif -%}
 
         {%- if section.settings.subtext != blank -%}
-          <p class="text-gray-300 text-lg mb-8 max-w-xl">
+          <p class="free-trial-content-subtext text-gray-300 text-lg mb-8 max-w-xl">
             {{ section.settings.subtext }}
           </p>
         {%- endif -%}
 
         {%- if section.blocks.size > 0 -%}
-          <ul class="space-y-4 mb-10">
+          <ul class="free-trial-content-wrapper space-y-4 mb-10">
             {%- for block in section.blocks -%}
               {%- if block.settings.list_text != blank -%}
-                <li class="flex items-start gap-3" {{ block.shopify_attributes }}>
-                  <span class="mt-1 flex-shrink-0 icon-color-{{ section.id }}">
+                <li class="free-trial-content-slide flex items-start gap-3" {{ block.shopify_attributes }}>
+                  <span class="free-trial-content-svg mt-1 flex-shrink-0 icon-color-{{ section.id }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                   </span>
-                  <span class="text-gray-200 text-base lg:text-lg">{{ block.settings.list_text }}</span>
+                  <span class="free-trial-list-text text-gray-200 text-base lg:text-lg">
+                    {{- block.settings.list_text -}}
+                  </span>
                 </li>
               {%- endif -%}
             {%- endfor -%}
           </ul>
         {%- endif -%}
 
-        <div class="flex flex-wrap gap-4 items-center">
-          {%- if section.settings.btn_text != blank -%}
+        <div class="free-trial-btn-group flex flex-wrap gap-4 items-center">
+          {%- if section.settings.btn_link != blank -%}
             <a
               href="{{ section.settings.btn_link | default: '#' }}"
-              class="inline-block px-8 py-4 text-sm lg:text-base font-bold uppercase tracking-widest rounded-full transition-all custom-btn-{{ section.id }}"
+              class="free-trial-btn-one inline-block px-8 py-4 text-sm lg:text-base font-bold uppercase tracking-widest rounded-full transition-all custom-btn-{{ section.id }}"
             >
               {{ section.settings.btn_text }}
             </a>
           {%- endif -%}
 
-          {%- if section.settings.btn_text_2 != blank -%}
+          {%- if section.settings.btn_link_2 != blank -%}
             <a
               href="{{ section.settings.btn_link_2 | default: '#' }}"
-              class="inline-block px-8 py-4 text-sm lg:text-base font-bold rounded-full text-black bg-white transition-all hover:bg-gray-100"
+              class="free-trial-btn-two inline-block px-8 py-4 text-sm lg:text-base font-bold rounded-full text-black bg-white transition-all hover:bg-gray-100"
             >
               {{ section.settings.btn_text_2 }}
             </a>
@@ -114,7 +131,7 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 {% schema %}
 {
   "name": "Free Trial Half Round",
@@ -182,6 +199,78 @@
       "type": "url",
       "id": "btn_link_2",
       "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Tablet Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
     }
   ],
   "blocks": [

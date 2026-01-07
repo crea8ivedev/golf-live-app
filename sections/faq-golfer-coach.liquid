@@ -11,7 +11,7 @@
   #faq-{{ section.id }} .faq-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 180px;
   }
 
   #faq-{{ section.id }} .faq-column-title {
@@ -40,6 +40,9 @@
   }
 
   #faq-{{ section.id }} .faq-item.active .faq-icon {
+    transform: rotate(0deg);
+  }
+   #faq-{{ section.id }} .faq-item .faq-icon {
     transform: rotate(180deg);
   }
 
@@ -60,6 +63,14 @@
     #faq-{{ section.id }} .faq-columns {
       grid-template-columns: 1fr;
       gap: 40px;
+    }
+    #faq-{{ section.id }} .faq-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    #faq-{{ section.id }} .faq-column-title {
+    margin-bottom: 14px;
+    font-size: 19px;
     }
   }
 </style>
@@ -84,7 +95,7 @@
             <div class="faq-golfer-block flex">
               <button type="button" class="faq-question gap-[13.5px]">
                 <span class="faq-icon">{% render 'faq-arrows' %}</span>
-                <span>{{ block.settings.question }}</span>
+                <h6>{{ block.settings.question }}</h6>
               </button>
             </div>
 
@@ -109,7 +120,7 @@
           <div class="faq-item" {{ block.shopify_attributes }}>
             <button type="button" class="faq-question gap-[13.5px]">
               <span class="faq-icon">{% render 'faq-arrows' %}</span>
-              <span>{{ block.settings.question }}</span>
+              <h6>{{ block.settings.question }}</h6>
             </button>
 
             <div class="faq-answer-wrapper">

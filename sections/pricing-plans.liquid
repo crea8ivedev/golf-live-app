@@ -21,96 +21,125 @@
     pointer-events: none;
   }
   .btn-gradient-{{ section.id }} {
-    background: {{ section.settings.btn_gradient }};
+    background: linear-gradient(77.87deg, #00511C -24.41%, #187F10 103.64%);
     transition: transform 0.2s ease, opacity 0.3s ease;
   }
   .btn-gradient-{{ section.id }}:hover {
     opacity: 0.9;
     transform: scale(1.02);
   }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  @media screen and (max-width: 1024px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_tablet }}px;
+      padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
 {% endstyle %}
 
-<section class="pricing-section-{{ section.id }} py-12 px-6">
-  <div class="max-w-full mx-auto">
+<div class="pricing-plan-main-box page-width pricing-section-{{ section.id }} section-{{ section.id }}-padding py-12 px-6 {{ section.settings.extra-class }}">
+  <div class="pricing-plan-inner-box max-w-full mx-auto">
     {% if section.settings.heading != blank %}
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 leading-tight">
+      <h2 class="pricing-plan-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 leading-tight">
         {{ section.settings.heading }}
       </h2>
     {% endif %}
 
-    <div class="flex flex-wrap justify-center gap-8">
+    <div class="pricing-plan-box-wrapper flex flex-wrap justify-center gap-8">
       {% for block in section.blocks %}
         <div
-          class="flex-1 min-w-[300px] max-w-[300px] bg-white rounded-[24px] shadow-sm flex flex-col border border-gray-100"
+          class="pricing-plan-box-slides flex-1 min-w-[300px] max-w-[300px] bg-white rounded-[24px] shadow-sm flex flex-col border border-gray-100"
           {{ block.shopify_attributes }}
         >
           <div
-            class="pricing-card-header-{{ section.id }}"
+            class="pricing-plan-inner-slide pricing-card-header-{{ section.id }}"
             style="background-color: {{ block.settings.card_header_color }};"
           >
             {% if block.settings.header_image != blank %}
               <div
-                class="header-pattern-overlay-{{ section.id }}"
+                class="pricing-plan-header-overlay header-pattern-overlay-{{ section.id }}"
                 style="background-image: url('{{ block.settings.header_image |  image_url  }}'); opacity: {{ block.settings.pattern_opacity | divided_by: 100.0 }};"
               ></div>
             {% endif %}
 
-            <div class="relative p-6 text-white z-10">
-              <h3 class="text-2xl font-semibold">{{ block.settings.plan_name }}</h3>
-              <div class="flex items-baseline mt-1">
+            <div class="pricing-plan-header-content relative p-6 text-white z-10">
+              <h3 class="header-pricing-plan-name text-2xl font-semibold">{{ block.settings.plan_name }}</h3>
+              <div class="header-pricing-plan-price flex items-baseline mt-1">
                 <span class="text-4xl font-bold">${{ block.settings.price }}</span>
                 <span class="text-lg opacity-80">/mo</span>
               </div>
-              <p class="text-sm mt-1 font-light opacity-90">{{ block.settings.sub_heading }}</p>
+              <p class="header-pricing-plan-subheading text-sm mt-1 font-light opacity-90">
+                {{ block.settings.sub_heading }}
+              </p>
             </div>
           </div>
 
-          <div class="p-8 flex-grow">
-            <ul class="space-y-4">
+          <div class="feature-pricing-plan-main p-8 flex-grow">
+            <ul class="feature-pricing-plan-wrapper space-y-4">
               {%- assign features = block.settings.features_list | newline_to_br | split: '<br />' -%}
               {% for feature in features %}
                 {% if feature != blank %}
-                  <li class="flex items-center gap-3">
-                    <span class="flex-shrink-0 w-5 h-5">
+                  <li class="feature-pricing-plan-slide flex items-center gap-3">
+                    <span class="feature-pricing-plan-inner flex-shrink-0 w-5 h-5">
                       {% if block.settings.feature_icon != blank %}
                         <img
                           src="{{ block.settings.feature_icon | image_url }}"
-                          class="w-full h-full object-contain"
+                          class="feature-pricing-plan-img w-full h-full object-contain"
                           alt="icon"
                           height=""
                           width=""
                         >
                       {% else %}
-                        <svg class="w-full h-full text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg
+                          class="feature-pricing-plan-svg w-full h-full text-green-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
                         </svg>
                       {% endif %}
                     </span>
-                    <span class="text-gray-700 text-base">{{ feature | strip }}</span>
+                    <span class="feature-pricing-plan-text text-gray-700 text-base">{{ feature | strip }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
             </ul>
           </div>
-
-          <div class="p-8 pt-0">
-            <a
-              href="{{ block.settings.button_link }}"
-              class="btn-gradient-{{ section.id }} block w-full text-center text-white font-bold py-4 rounded-full uppercase tracking-widest text-sm"
-            >
-              {{ block.settings.button_text }}
-            </a>
-          </div>
+          {% if block.settings.button_link != blank %}
+            <div class="feature-pricing-plan-btn p-8 pt-0">
+              <a
+                href="{{ block.settings.button_link }}"
+                class="feature-pricing-plan-anchor btn-gradient-{{ section.id }} block w-full text-center text-white font-bold py-4 rounded-full uppercase tracking-widest text-sm"
+              >
+                {{ block.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
   "name": "Coaching Pricing Flex",
   "settings": [
+    {
+      "type": "text",
+      "id": "extra-class",
+      "label": "Extra Class"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -124,10 +153,76 @@
       "default": "#F3F4F6"
     },
     {
-      "type": "text",
-      "id": "btn_gradient",
-      "label": "Button Gradient CSS",
-      "default": "linear-gradient(77.87deg, #00511C -24.41%, #187F10 103.64%)"
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Desktop",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Desktop",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Tablet Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Tablet",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Tablet",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 52
     }
   ],
   "blocks": [

@@ -1,131 +1,207 @@
-<style>
-  .cg-testimonials {
-    padding: 80px 0;
-  }
-
-  .cg-testimonials__heading {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .cg-testimonials__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
-
-  .cg-testimonial {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 32px;
-    border-radius: 20px;
-    background: radial-gradient(circle at top left, #1f6f3f, #0b0b0b);
-  }
-
-  .cg-testimonial__content {
-    max-width: 60%;
-  }
-
-  .cg-testimonial__quote {
-    margin-bottom: 24px;
-  }
-
-  .cg-testimonial__author span {
-    display: block;
-    opacity: 0.8;
-    margin-top: 4px;
-  }
-
-  .cg-testimonial__image img {
-    max-width: 160px;
-    border-radius: 16px;
-  }
-
-  /* Mobile */
-  @media screen and (max-width: 749px) {
-    .cg-testimonials {
-      padding: 60px 0;
-    }
-
-    .cg-testimonials__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .cg-testimonial {
-      flex-direction: column;
-      text-align: left;
-    }
-
-    .cg-testimonial__content {
-      max-width: 100%;
-    }
-
-    .cg-testimonial__image img {
-      max-width: 100%;
-    }
-  }
-</style>
-
-<div class="cg-testimonials page-width {{ section.settings.extra_class }}">
+<div
+  class="cg-testimonials page-width pt-[45px] min-990:pt-[71px] pb-[59px] min-990:pb-[113px] {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }}"
+  data-desktop-slider="{{ section.settings.enable_desktop_slider }}"
+  data-mobile-slider="{{ section.settings.enable_mobile_slider }}"
+>
   {% if section.settings.heading != blank %}
-    <h2 class="cg-testimonials__heading">
+    <div class="cg-testimonials__heading h2 text-center mb-[37px] min-990:mb-[68px]">
       {{ section.settings.heading }}
-    </h2>
+    </div>
   {% endif %}
 
-  <div class="cg-testimonials__grid">
-    {% for block in section.blocks %}
-      <div class="cg-testimonial" {{ block.shopify_attributes }}>
-        <div class="cg-testimonial__content">
-          {% if block.settings.quote != blank %}
-            <p class="cg-testimonial__quote">“{{ block.settings.quote }}”</p>
-          {% endif %}
+  <div class="cg-testimonials__wrapper relative">
+    <button class="golfers-arrow golfers-prev swiper-button-prev" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <g>
+          <circle cx="28" cy="28" r="28" transform="matrix(-1 0 0 1 60 0)" fill="white"/>
+        </g>
+        <path d="M37 17L25 29L37 41" stroke="black" stroke-width="2"/>
+        <defs>
+          <filter x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_328_3049"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_328_3049" result="shape"/>
+          </filter>
+        </defs>
+      </svg>
+    </button>
+    <button class="golfers-arrow golfers-next swiper-button-next" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <g>
+          <circle cx="32" cy="28" r="28" fill="white"/>
+        </g>
+        <path d="M27 17L39 29L27 41" stroke="black" stroke-width="2"/>
+        <defs>
+          <filter x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dy="4"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_328_3046"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_328_3046" result="shape"/>
+          </filter>
+        </defs>
+      </svg>
+    </button>
+    <div class="cg-testimonials__grid{% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider == 'true' %} cg-swiper swiper{% endif %}">
+      {% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %}
+        <div class="swiper-wrapper">
+      {% endif %}
 
-          <div class="cg-testimonial__stars">
-            {% render 'golfers-stars' %}
-          </div>
-          <div class="cg-testimonial__author">
-            {% if block.settings.name != blank %}
-              <strong>{{ block.settings.name }}</strong>
-            {% endif %}
-            {% if block.settings.designation != blank %}
-              <span>{{ block.settings.designation }}</span>
+      {% for block in section.blocks %}
+        <div
+          class="cg-testimonial {{ block.settings.extra_class_slide }}{% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %} swiper-slide{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="cg-testimonial-inside">
+            <div class="cg-testimonial__content">
+              {% if block.settings.quote != blank %}
+                <p class="cg-testimonial__quote">“{{ block.settings.quote }}”</p>
+              {% endif %}
+
+              <div class="cg-testimonial__stars">
+                {% render 'golfers-stars' %}
+              </div>
+
+              <div class="cg-testimonial__author">
+                {% if block.settings.name != blank %}
+                  <strong>{{ block.settings.name }}</strong>
+                {% endif %}
+                {% if block.settings.designation != blank %}
+                  <span>{{ block.settings.designation }}</span>
+                {% endif %}
+              </div>
+            </div>
+
+            {% if block.settings.image != blank %}
+              <div class="cg-testimonial__image">
+                <img
+                  src="{{ block.settings.image | image_url }}"
+                  alt="{{ block.settings.name | escape }}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                >
+              </div>
             {% endif %}
           </div>
         </div>
+      {% endfor %}
 
-        {% if block.settings.image != blank %}
-          <div class="cg-testimonial__image">
-            <img
-              src="{{ block.settings.image | image_url: width: 500 }}"
-              alt="{{ block.settings.name | escape }}"
-              loading="lazy"
-              width="auto"
-              height="auto"
-            >
-          </div>
-        {% endif %}
-      </div>
-    {% endfor %}
+      {% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </div>
+
+{% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Swiper === 'undefined') return;
+
+      document.querySelectorAll('.cg-testimonials').forEach(function (section) {
+        const enableDesktop = section.dataset.desktopSlider === 'true';
+        const enableMobile = section.dataset.mobileSlider === 'true';
+
+        let swiperInstance = null;
+
+        function initSwiper() {
+          const isMobile = window.innerWidth <= 989;
+
+          section.classList.remove('is-desktop-grid', 'is-mobile-stack');
+
+          if (isMobile) {
+            if (enableMobile) {
+              if (!swiperInstance) {
+                swiperInstance = new Swiper(section.querySelector('.cg-swiper'), {
+                  slidesPerView: 1.1,
+                  spaceBetween: 23,
+                  loop: true,
+                  navigation: {
+                    nextEl: section.querySelector('.golfers-arrow.golfers-next'),
+                    prevEl: section.querySelector('.golfers-arrow.golfers-prev'),
+                  },
+                });
+              }
+            } else {
+              if (swiperInstance) swiperInstance.destroy(true, true);
+              swiperInstance = null;
+              section.classList.add('is-mobile-stack');
+            }
+          } else {
+            if (enableDesktop) {
+              if (!swiperInstance) {
+                swiperInstance = new Swiper(section.querySelector('.cg-swiper'), {
+                  spaceBetween: 53,
+                  loop: true,
+                  navigation: {
+                    nextEl: section.querySelector('.golfers-arrow.golfers-next'),
+                    prevEl: section.querySelector('.golfers-arrow.golfers-prev'),
+                  },
+                  breakpoints: {
+                    990: {
+                      slidesPerView: 1.5,
+                    },
+                    1440: {
+                      slidesPerView: 2,
+                    },
+                  },
+                });
+              }
+            } else {
+              if (swiperInstance) swiperInstance.destroy(true, true);
+              swiperInstance = null;
+              section.classList.add('is-desktop-grid');
+            }
+          }
+        }
+
+        initSwiper();
+        window.addEventListener('resize', initSwiper);
+      });
+    });
+  </script>
+{% endif %}
 
 {% schema %}
 {
   "name": "Golfers Testimonials",
   "settings": [
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
       "type": "text",
       "id": "extra_class",
       "label": "Extra Class"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "heading",
-      "label": "Section Heading",
-      "default": "What Coaches and Golfers Are Saying"
+      "label": "Section Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_desktop_slider",
+      "label": "Enable slider on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_slider",
+      "label": "Enable slider on mobile",
+      "default": true
     }
   ],
   "blocks": [
@@ -133,6 +209,11 @@
       "type": "testimonial",
       "name": "Testimonial",
       "settings": [
+        {
+          "type": "text",
+          "id": "extra_class_slide",
+          "label": "Extra Class"
+        },
         {
           "type": "textarea",
           "id": "quote",
@@ -160,14 +241,7 @@
   "presets": [
     {
       "name": "Golfers Testimonials",
-      "blocks": [
-        {
-          "type": "testimonial"
-        },
-        {
-          "type": "testimonial"
-        }
-      ]
+      "blocks": [{ "type": "testimonial" }, { "type": "testimonial" }]
     }
   ]
 }

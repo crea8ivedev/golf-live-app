@@ -19,7 +19,7 @@
           "settings": {
             "extra_class_links": "footer-contact",
             "heading": "Contact",
-            "subtext": "<p class=\"nav-sales-main-footer\">\n<span>Sales</span>\n<a href=\"mailto:sales@golfliveapp.com\">sales@golfliveapp.com</a>\n</p>\n<p class=\"nav-general-main-footer\">\n<span>General Inquirie and Press</span>\n<a href=\"mailto:contact@golfliveapp.com\">contact@golfliveapp.com</a>\n</p>\n<p class=\"nav-golf-main-footer\">\n<span>Golf Live Caddie</span>\n<a href=\"#\">Message Support</a>\n</p>",
+            "subtext": "<p class=\"nav-sales-main-footer\">\n<span>Sales</span>\n<a href=\"mailto:sales@golfliveapp.com\">sales@golfliveapp.com</a>\n</p>\n<p class=\"nav-general-main-footer\">\n<span>General Inquirie and Press</span>\n<a href=\"mailto:contact@golfliveapp.com\">contact@golfliveapp.com</a>\n</p>\n<p class=\"nav-golf-main-footer\">\n<span>Golf Live Caddie</span>\n<a href=\"https://golflivehelp.zendesk.com/hc/en-us\" target=\"_blank\">Message Support</a>\n</p>",
             "instagram": "",
             "instagram_url": "",
             "facebook": "",
@@ -39,15 +39,15 @@
             "heading": "Connect with Us",
             "subtext": "",
             "instagram": "Instagram",
-            "instagram_url": "#",
+            "instagram_url": "https://www.instagram.com/golfliveapp/",
             "facebook": "Facebook",
-            "facebook_url": "#",
+            "facebook_url": "https://www.facebook.com/golfliveapp/",
             "linkedin": "Linkedin",
-            "linkedin_url": "#",
+            "linkedin_url": "https://www.linkedin.com/company/golf-live/",
             "youtube": "Youtube",
-            "youtube_url": "#",
+            "youtube_url": "https://www.youtube.com/@golfliveapp",
             "tiktok": "TikTok",
-            "tiktok_url": "#"
+            "tiktok_url": "https://www.tiktok.com/@golfliveapp"
           }
         },
         "link_list_3R3Tt8": {

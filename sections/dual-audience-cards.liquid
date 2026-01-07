@@ -1,5 +1,5 @@
 <div class="dual-audience-section">
-  <div class="dual-audience-grid grid-cols-1 min-768:grid-cols-2">
+  <div class="dual-audience-grid grid-cols-1 min-990:grid-cols-2">
     <!-- LEFT CARD -->
     <div
       class="dual-card dual-card--left relative"
@@ -26,49 +26,54 @@
           >
         {% endif %}
       </div>
-      <div class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[576px] min-990:mx-auto min-990:pt-[303px] min-990:pb-[100px]">
-        <div class="dual-card__inner-start px-[28px] pt-[26px] pb-[66px] bg-white rounded-[22px]">
-          <div class="dual-card__inner-above px-[36px] pt-[26px] pb-[38px] rounded-[25px]">
+      <div class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[632px] min-990:mx-auto pt-[276px] min-990:pt-[303px] pb-[60px] min-990:pb-[100px]">
+        <div class="dual-card__inner-start px-[17px] min-990:px-[28px] pt-[15px] min-990:pt-[26px] pb-[27px] min-990:pb-[66px] bg-white rounded-[22px]">
+          <div class="dual-card__inner-above px-[32px] min-990:px-[32px] pt-[30px] min-990:pt-[26px] pb-[35px] min-990:pb-[38px] rounded-[10px] min-990:rounded-[25px]">
             {% if section.settings.top_label_left != blank %}
               <span class="dual-card__tag">{{ section.settings.top_label_left }}</span>
             {% endif %}
 
             {% if section.settings.heading_left != blank %}
-              <h2 class="dual-card__heading">{{ section.settings.heading_left }}</h2>
+              <div class="dual-card__heading h3">{{ section.settings.heading_left }}</div>
             {% endif %}
 
             {% if section.settings.description_left != blank %}
-              <p class="dual-card__description">
+              <p class="dual-card__description text-h6">
                 {{ section.settings.description_left }}
               </p>
             {% endif %}
           </div>
 
-          {% for block in section.blocks %}
-            {% if block.settings.position == 'left' %}
-              <div class="dual-feature" {{ block.shopify_attributes }}>
-                {% if block.settings.image != blank %}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 80 }}"
-                    alt="{{ block.settings.text | escape }}"
-                    loading="lazy"
-                    width="auto"
-                    height="auto"
-                  >
-                {% endif %}
-                {% if block.settings.text != blank %}
-                  <span>{{ block.settings.text }}</span>
-                {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
+          <div class="dual-features">
+            {% for block in section.blocks %}
+              {% if block.settings.position == 'left' %}
+                <div class="dual-feature" {{ block.shopify_attributes }}>
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url }}"
+                      alt="{{ block.settings.text | escape }}"
+                      loading="lazy"
+                      width="auto"
+                      height="auto"
+                    >
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <span>{{ block.settings.text }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
 
           {% if section.settings.button_text_left != blank %}
             <a
               href="{{ section.settings.button_url_left }}"
-              class="dual-card__button"
+              class="dual-card__button ctm-button button-green button-svg justify-end gap-[28px] min-1440:gap-[62px] pr-[30px] min-1440:pr-[73px] min-w-[246px] min-1440:min-w-[441px] mx-auto mt-[33px] max-768:hidden"
             >
               {{ section.settings.button_text_left }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+                <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentcolor" stroke-width="2.5"/>
+              </svg>
             </a>
           {% endif %}
         </div>
@@ -101,49 +106,54 @@
           >
         {% endif %}
       </div>
-      <div class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[576px] min-990:mx-auto min-990:pt-[303px] min-990:pb-[100px]">
-        <div class="dual-card__inner-start px-[28px] pt-[26px] pb-[66px] bg-white rounded-[22px]">
-          <div class="dual-card__inner-above px-[36px] pt-[26px] pb-[38px] rounded-[25px]">
+      <div class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[632px] min-990:mx-auto pt-[276px] min-990:pt-[303px] pb-[60px] min-990:pb-[100px]">
+        <div class="dual-card__inner-start px-[17px] min-990:px-[28px] pt-[15px] min-990:pt-[26px] pb-[27px] min-990:pb-[66px] bg-white rounded-[22px]">
+          <div class="dual-card__inner-above px-[32px] min-990:px-[32px] pt-[30px] min-990:pt-[26px] pb-[35px] min-990:pb-[38px] rounded-[10px] min-990:rounded-[25px]">
             {% if section.settings.top_label_right != blank %}
               <span class="dual-card__tag">{{ section.settings.top_label_right }}</span>
             {% endif %}
 
             {% if section.settings.heading_right != blank %}
-              <h2 class="dual-card__heading">{{ section.settings.heading_right }}</h2>
+              <div class="dual-card__heading h3">{{ section.settings.heading_right }}</div>
             {% endif %}
 
             {% if section.settings.description_right != blank %}
-              <p class="dual-card__description">
+              <p class="dual-card__description text-h6">
                 {{ section.settings.description_right }}
               </p>
             {% endif %}
           </div>
 
-          {% for block in section.blocks %}
-            {% if block.settings.position == 'right' %}
-              <div class="dual-feature" {{ block.shopify_attributes }}>
-                {% if block.settings.image != blank %}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 80 }}"
-                    alt="{{ block.settings.text | escape }}"
-                    loading="lazy"
-                    width="auto"
-                    height="auto"
-                  >
-                {% endif %}
-                {% if block.settings.text != blank %}
-                  <span>{{ block.settings.text }}</span>
-                {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
+          <div class="dual-features">
+            {% for block in section.blocks %}
+              {% if block.settings.position == 'right' %}
+                <div class="dual-feature" {{ block.shopify_attributes }}>
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url }}"
+                      alt="{{ block.settings.text | escape }}"
+                      loading="lazy"
+                      width="auto"
+                      height="auto"
+                    >
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <span>{{ block.settings.text }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
 
           {% if section.settings.button_text_right != blank %}
             <a
               href="{{ section.settings.button_url_right }}"
-              class="dual-card__button"
+              class="dual-card__button ctm-button button-green button-svg justify-end gap-[23px] pr-[30px] min-1440:pr-[42px] min-w-[246px] min-1440:min-w-[441px] mx-auto mt-[33px] max-768:hidden"
             >
               {{ section.settings.button_text_right }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+                <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentcolor" stroke-width="2.5"/>
+              </svg>
             </a>
           {% endif %}
         </div>
@@ -176,7 +186,7 @@
       "label": "Left top label"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "heading_left",
       "label": "Left heading"
     },
@@ -215,7 +225,7 @@
       "label": "Right top label"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "heading_right",
       "label": "Right heading"
     },

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./custom.css";
+@import "./style.css";
 
 @theme {
   /* Color */
@@ -356,6 +357,10 @@
   @apply max-990:w-[38px];
 }
 
+.vt-swiper .swiper-slide {
+  @apply h-auto aspect-[0.6/1];
+}
+
 /* testimonial-video */
 
 /* audience */
@@ -365,7 +370,85 @@
 }
 
 .dual-card__inner-above {
-  @apply bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/audience-card-above-bg.png?v=1767767313')] bg-no-repeat bg-cover text-center;
+  @apply bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/audience-card-above-bg.png?v=1767767313')] bg-no-repeat bg-cover text-center text-white;
+}
+
+.dual-card__tag {
+  @apply font-bold text-[16px] leading-[20px] tracking-[0.165px] min-[768px]:text-[18px] min-[768px]:leading-[20px] min-[1440px]:text-[23px] min-[1440px]:leading-[28px] min-[1440px]:tracking-[0.23px] uppercase px-[12px] min-990:px-[18px] py-[2px] bg-green2 rounded-[30px] min-990:rounded-[43px] block w-fit mx-auto mb-[19px] min-990:mb-[13px];
+}
+
+.dual-card__description {
+  @apply mt-[6px] min-990:mt-[11px];
+}
+
+.dual-features {
+  @apply mt-[28px] flex flex-col gap-[28px] min-1440:pl-[26px];
+}
+
+.dual-feature {
+  @apply flex gap-[15px] min-990:gap-[30px] items-center;
+}
+
+.dual-feature img {
+  @apply flex-[0_0_52px] w-[52px] h-auto aspect-square object-contain;
+}
+
+.dual-feature span {
+  @apply tracking-[0.15px] min-990:tracking-[0.17px] font-medium min-990:max-w-[372px];
 }
 
 /* audience */
+
+/* golfers */
+
+.cg-testimonial-inside {
+  @apply flex flex-col min-990:flex-row gap-y-[80px] bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/full-golfer-border-bg.png?v=1767781412')] bg-no-repeat bg-[length:100%_100%] min-990:h-full;
+}
+
+.cg-testimonial-inside .cg-testimonial__image {
+  @apply min-990:flex-[0_0_304] min-990:mr-[1px];
+}
+
+.cg-testimonial-inside .cg-testimonial__image img {
+  @apply min-990:w-full min-990:h-auto min-990:aspect-[0.69/1] min-990:object-contain min-990:object-bottom-right min-990:rounded-[22px] min-990:bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/glofers-img-bg.png?v=1767781141')] min-990:bg-no-repeat min-990:bg-[length:100%_100%] min-990:mt-[-1px] min-990:min-h-full;
+}
+
+.cg-testimonial__content {
+  @apply py-[30px] min-990:py-[50px] pl-[28px] min-1582:pl-[50px] pr-[28px] min-1582:pr-[5px];
+}
+
+.cg-testimonial {
+  @apply rounded-[22px] min-990:!h-auto;
+}
+
+.cg-testimonial__quote {
+  @apply font-medium text-[15px] leading-[20px] tracking-[0.15px] min-990:text-[20px] min-990:leading-[24px] min-990:tracking-[0.20px] min-990:text-[22px] min-990:leading-[30px] min-990:tracking-[0.22px] min-990:mb-[58px];
+}
+
+.cg-testimonial__stars {
+  @apply mb-[15px];
+}
+
+.cg-testimonial__author strong {
+  @apply font-semibold text-[18px] leading-[25px] tracking-[0.18px] min-990:text-[20px] min-990:leading-[24px] min-990:tracking-[0.20px] min-990:text-[22px] min-990:leading-[30px] min-990:tracking-[0.22px] block mb-[7px] min-990:mb-[2px];
+}
+
+.golfers-arrow {
+  @apply !w-[56px] !h-[56px] !flex !justify-center !items-center !transition-all !duration-300 !ease-in-out hover:!opacity-50 max-990:!hidden;
+}
+
+.golfers-arrow.golfers-prev {
+  @apply left-[-28px];
+}
+
+.golfers-arrow.golfers-next {
+  @apply right-[-28px];
+}
+
+.cg-testimonial.test-gradient-1 {
+  background: linear-gradient(204deg, #3bca6c -18.12%, #000 45.65%);
+}
+
+.cg-testimonial.test-gradient-2 {
+  background: linear-gradient(326deg, #007f2c -18.12%, #000 45.65%);
+}

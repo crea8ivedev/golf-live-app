@@ -56,10 +56,13 @@
       </div>
     {% endif %}
 
-    <div class="ctm_challenges_wrapper flex items-center justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %}">
-      <div class="ctm_challenges_list">
+    <div class="ctm_challenges_wrapper flex max-md:flex-col-reverse items-center gap-[30px] lg:gap-[50px] justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %}">
+      <div class="ctm_challenges_list w-full h-full">
         {% for block in section.blocks %}
-          <div class="ctm_challenges_inner_list flex items-center justify-center gap-[33px] {%- if block.settings.bg_color -%}bg-[{{ block.settings.bg_color }}]{%- endif -%}">
+          <div
+            class="ctm_challenges_inner_list flex gap-[18px] lg:gap-[25px] items-center px-[15px] py-[18px] lg:px-[35px] lg:py-[20px] justify-center rounded-[22px]"
+            style="{% if block.settings.bg_color != blank %}background: {{ block.settings.bg_color }}; {% endif %}"
+          >
             {% if block.settings['bgc-img-icon'] != blank %}
               <div class="bgc-img-icon">
                 <img
@@ -74,9 +77,9 @@
             {% endif %}
             <div class="challenge-item" {{ block.shopify_attributes }}>
               {% if block.settings.title != blank %}
-                <h3 class="challenge-title">
+                <h4 class="challenge-title ctm-text-pga">
                   {{ block.settings.title }}
-                </h3>
+                </h4>
               {% endif %}
               {% if block.settings.description != blank %}
                 <p class="challenge-description">
@@ -87,8 +90,15 @@
           </div>
         {% endfor %}
       </div>
+
+      {% if section.settings.bgc_heading != blank %}
+        <div class="section-heading-center text-center block md:hidden">
+          {{ section.settings.bgc_heading }}
+        </div>
+      {% endif %}
+
       {% if section.settings.side_image != blank %}
-        <div class="challenges-side-image">
+        <div class="challenges-side-image w-full h-full">
           {{
             section.settings.side_image
             | image_url: width: 800

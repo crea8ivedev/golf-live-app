@@ -12,73 +12,107 @@
     <p class="glc-subheading">{{ section.settings.subheading }}</p>
   {% endif %}
 
-  <div class="glc-grid">
-    <!-- WITH GOLF LIVE -->
-    <div
-      class="glc-card glc-green"
-      style="
-        {% if section.settings.green_bg != blank %}
-          background-image: url({{ section.settings.green_bg | image_url }});
-        {% endif %}
-      "
-    >
-      {% if section.settings.green_phone != blank %}
-        <div class="glc-phone">
-          <img
-            src="{{ section.settings.green_phone | image_url: width: 600 }}"
-            alt="With Golf Live App"
-            loading="lazy"
-            width="auto"
-            height="auto"
-          >
-        </div>
-      {% endif %}
-
-      <h3 class="glc-card-title">{{ section.settings.green_title }}</h3>
-
-      <ul class="glc-list">
-        {% for block in section.blocks %}
-          {% if block.type == 'with_item' %}
-            <li class="glc-item glc-item--check" {{ block.shopify_attributes }}>
-              {{ block.settings.text }}
-            </li>
+  <div class="container-136">
+    <div class="glc-grid flex items-start gap-11 max-990:flex-wrap">
+      <!-- WITH GOLF LIVE -->
+      <div
+        class="glc-card glc-green 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pr-9 py-12 pl-0 rounded-[28px]"
+        style="{% if section.settings.green_bg != blank %}background-image:url({{ section.settings.green_bg | image_url }});{% endif %}"
+      >
+        <div class="flex items-center gap-[23px]">
+          {% if section.settings.green_phone != blank %}
+            <div class="glc-phone w-[45%]">
+              <img
+                src="{{ section.settings.green_phone | image_url: width: 600 }}"
+                alt="With Golf Live App"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              >
+            </div>
           {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
 
-    <!-- WITHOUT GOLF LIVE -->
-    <div
-      class="glc-card glc-grey"
-      style="
-        {% if section.settings.grey_bg != blank %}
-          background-image: url({{ section.settings.grey_bg | image_url }});
-        {% endif %}
-      "
-    >
-      {% if section.settings.grey_phone != blank %}
-        <div class="glc-phone">
-          <img
-            src="{{ section.settings.grey_phone | image_url: width: 600 }}"
-            alt="Without Golf Live"
-            loading="lazy"
-            width="auto"
-            height="auto"
-          >
+          <div class="flex flex-col w-3/5 text-white text-left mt-[80px] min-[1660px]:mt-[100px]">
+            <h3 class="glc-card-title text-white">{{ section.settings.green_title }}</h3>
+
+            <div class="glc-shape mt-[20px]">
+              <svg width="171" height="8" viewBox="0 0 171 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M170.359 3.77954C166.136 -0.59314 159.128 -0.593143 154.905 3.77954C150.681 8.15222 143.674 8.15222 139.45 3.77954C135.227 -0.593141 128.219 -0.593141 123.996 3.77954C119.772 8.15222 112.765 8.15222 108.541 3.77954C104.318 -0.593142 97.3102 -0.593142 93.0866 3.77954C88.863 8.15222 81.8557 8.15222 77.6321 3.77954C73.4085 -0.593142 66.4012 -0.593142 62.1775 3.77954C57.9539 8.15222 50.9466 8.15222 46.723 3.77954C42.4994 -0.593142 35.4921 -0.593141 31.2685 3.77954C27.0448 8.15222 20.0375 8.15222 15.8139 3.77954C11.5903 -0.593141 4.58299 -0.593142 0.359375 3.77954" stroke="white"/>
+              </svg>
+            </div>
+
+            <ul class="glc-list mt-[32px]">
+              {% for block in section.blocks %}
+                {% if block.type == 'with_item' %}
+                  <li class="glc-item glc-item--check text-white text-left" {{ block.shopify_attributes }}>
+                    {% if block.settings.icon != blank %}
+                      <img
+                        src="{{ block.settings.icon | image_url: width: 40 }}"
+                        alt=""
+                        class="glc-item-icon"
+                        loading="lazy"
+                        height="auto"
+                        width="auto"
+                      >
+                    {% endif %}
+                    <span>{{ block.settings.text }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-      {% endif %}
+      </div>
 
-      <h3 class="glc-card-title">{{ section.settings.grey_title }}</h3>
+      <!-- WITHOUT GOLF LIVE -->
+      <div
+        class="glc-card glc-grey 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pl-9 py-12 pr-0 rounded-[28px]"
+        style="{% if section.settings.grey_bg != blank %}background-image:url({{ section.settings.grey_bg | image_url }});{% endif %}"
+      >
+        <div class="flex items-center gap-[23px]">
+          <div class="flex flex-col w-3/5 text-white text-left mt-[80px] min-[1660px]:mt-[100px]">
+            <h3 class="glc-card-title text-black">{{ section.settings.grey_title }}</h3>
 
-      <ul class="glc-list">
-        {% for block in section.blocks %}
-          {% if block.type == 'without_item' %}
-            <li class="glc-item glc-item--cross" {{ block.shopify_attributes }}>
-              {{ block.settings.text }}
-            </li>
+            <div class="glc-shape mt-[20px]">
+              <svg width="171" height="8" viewBox="0 0 171 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M170.359 3.77954C166.136 -0.59314 159.128 -0.593143 154.905 3.77954C150.681 8.15222 143.674 8.15222 139.45 3.77954C135.227 -0.593141 128.219 -0.593141 123.996 3.77954C119.772 8.15222 112.765 8.15222 108.541 3.77954C104.318 -0.593142 97.3102 -0.593142 93.0866 3.77954C88.863 8.15222 81.8557 8.15222 77.6321 3.77954C73.4085 -0.593142 66.4012 -0.593142 62.1775 3.77954C57.9539 8.15222 50.9466 8.15222 46.723 3.77954C42.4994 -0.593142 35.4921 -0.593141 31.2685 3.77954C27.0448 8.15222 20.0375 8.15222 15.8139 3.77954C11.5903 -0.593141 4.58299 -0.593142 0.359375 3.77954" stroke="#646764"/>
+              </svg>
+            </div>
+
+            <ul class="glc-list mt-[32px]">
+              {% for block in section.blocks %}
+                {% if block.type == 'without_item' %}
+                  <li class="glc-item glc-item--cross" {{ block.shopify_attributes }}>
+                    {% if block.settings.icon != blank %}
+                      <img
+                        src="{{ block.settings.icon | image_url: width: 40 }}"
+                        alt=""
+                        class="glc-item-icon"
+                        loading="lazy"
+                        height="auto"
+                        width="auto"
+                      >
+                    {% endif %}
+                    <span>{{ block.settings.text }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+
+          {% if section.settings.grey_phone != blank %}
+            <div class="glc-phone w-[45%]">
+              <img
+                src="{{ section.settings.grey_phone | image_url: width: 600 }}"
+                alt="Without Golf Live"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              >
+            </div>
           {% endif %}
-        {% endfor %}
-      </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -94,87 +128,38 @@
     margin: 0 auto 48px;
   }
 
-  .glc-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
-  .glc-card {
-    position: relative;
-    border-radius: 28px;
-    padding: 48px 36px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-align: left;
-    overflow: hidden;
-  }
-
-  .glc-phone {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-
-  .glc-phone img {
-    max-width: 220px;
+  .glc-green .glc-phone img {
+    max-width: 253px;
     width: 100%;
-    height: auto;
   }
 
-  .glc-card-title {
-    margin-bottom: 28px;
+  .glc-green .glc-grey img {
+    max-width: 183px;
+    width: 100%;
   }
 
   .glc-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
   }
 
   .glc-item {
-    position: relative;
-    padding-left: 44px;
-    margin-bottom: 18px;
-    line-height: 1.5;
-  }
-
-  .glc-item--check::before,
-  .glc-item--cross::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 2px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-weight: bold;
+    gap: 23px;
+    margin-bottom: 25px;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 600;
   }
 
-  .glc-item--check::before {
-    content: '✓';
-    background: #0f6a2d;
-    color: #fff;
-  }
-
-  .glc-item--cross::before {
-    content: '✕';
-    background: #000;
-    color: #fff;
+  .glc-item-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    margin-top: 3px;
   }
 
   @media (max-width: 768px) {
-    .glc-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .glc-card {
-      padding: 36px 24px;
-    }
-
     .glc-phone img {
       max-width: 180px;
     }
@@ -196,7 +181,6 @@
       "id": "subheading",
       "label": "Section Subheading"
     },
-
     {
       "type": "image_picker",
       "id": "green_bg",
@@ -213,7 +197,6 @@
       "label": "Green Column Title",
       "default": "With Golf Live"
     },
-
     {
       "type": "image_picker",
       "id": "grey_bg",
@@ -237,6 +220,11 @@
       "name": "With Golf Live Item",
       "settings": [
         {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "List Icon Image"
+        },
+        {
           "type": "text",
           "id": "text",
           "label": "Text"
@@ -247,6 +235,11 @@
       "type": "without_item",
       "name": "Without Golf Live Item",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "List Icon Image"
+        },
         {
           "type": "text",
           "id": "text",

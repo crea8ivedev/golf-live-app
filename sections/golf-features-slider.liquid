@@ -110,16 +110,18 @@
   {% assign mobile_slider = section.settings.enable_slider_mobile %}
 
   <div class="golf-features-slider-wrapper">
-    {% if desktop_slider or mobile_slider %}
-      <div class="golf-features-arrows">
-        <button class="golf-features-prev swiper-button-prev" type="button">
-          {% render 'slider-arrow-golf-pre' %}
-        </button>
-        <button class="golf-features-next swiper-button-next" type="button">
-          {% render 'slider-arrow-golf-next' %}
-        </button>
-      </div>
-    {% endif %}
+    {% comment %}
+      {% if desktop_slider or mobile_slider %}
+        <div class="golf-features-arrows">
+          <button class="golf-features-prev swiper-button-prev" type="button">
+            {% render 'slider-arrow-golf-pre' %}
+          </button>
+          <button class="golf-features-next swiper-button-next" type="button">
+            {% render 'slider-arrow-golf-next' %}
+          </button>
+        </div>
+      {% endif %}
+    {% endcomment %}
 
     <div
       class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"

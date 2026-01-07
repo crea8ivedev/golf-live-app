@@ -156,7 +156,7 @@
             "bgc-img-icon": "shopify://shop_images/Vector.svg",
             "title": "Stuck on the Lesson Tee",
             "description": "You can only coach as many students as you have hours in the day - there's no way to scale.",
-            "bg_color": ""
+            "bg_color": "#ffffff"
           }
         },
         "challenge_eYcjhg": {
@@ -165,7 +165,7 @@
             "bgc-img-icon": "shopify://shop_images/Vector_4_09cf089d-d341-4e7c-b0f0-b9a6c6087da2.svg",
             "title": "Juggling Multiple Apps",
             "description": "You're managing bookings, payments, video calls, and video storage across different platforms and it's exhausting.",
-            "bg_color": ""
+            "bg_color": "#ffffff"
           }
         },
         "challenge_ta7Yr9": {
@@ -174,7 +174,7 @@
             "bgc-img-icon": "shopify://shop_images/Vector_5.svg",
             "title": "No Lead Generation",
             "description": "You're posting on social media hoping someone books a lesson but you have no real system to attract new students.",
-            "bg_color": ""
+            "bg_color": "#ffffff"
           }
         }
       },
@@ -186,7 +186,7 @@
       "name": "Growth Challenges",
       "settings": {
         "extra_class": "",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "bgc_heading": "<p><strong>You're Grinding on the Range All Day -</strong><br/>But Your Business Isn't Growing As It Should</p>",
         "side_image": "shopify://shop_images/b24bab3016e1429bc4cd3f79eee000b5180e815f.png",
         "pga_image_position": "right",
@@ -211,7 +211,7 @@
             "bgc-img-icon": "shopify://shop_images/Vector_1.svg",
             "title": "Coach From Anywhere",
             "description": "Live virtual lessons with instant replay technology let you coach students in real-time from your phone, no matter where they are.",
-            "bg_color": "#0a7a28"
+            "bg_color": "rgba(0,0,0,0)"
           }
         },
         "challenge_fNj4nD": {
@@ -220,7 +220,7 @@
             "bgc-img-icon": "shopify://shop_images/Group_168.svg",
             "title": "Multiple Revenue Streams",
             "description": "Beyond 1-on-1 lessons: host live streams, sell video packages, monetize your content library, and build recurring income.",
-            "bg_color": "#121212"
+            "bg_color": "rgba(0,0,0,0)"
           }
         },
         "challenge_XAxbeC": {
@@ -229,7 +229,7 @@
             "bgc-img-icon": "shopify://shop_images/Vector_2.svg",
             "title": "Business Tools Built-In",
             "description": "Scheduling, payment processing, client messaging, video storage, and lead generation - all in one dashboard.",
-            "bg_color": "#334fb4"
+            "bg_color": "rgba(0,0,0,0)"
           }
         }
       },
@@ -255,227 +255,6 @@
         "padding_bottom_tablet": 50,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 52
-      }
-    },
-    "zigzag_section_6TF6mn": {
-      "type": "zigzag-section",
-      "blocks": {
-        "heading_DDLhHN": {
-          "type": "heading",
-          "settings": {
-            "heading": "Live Virtual Lessons"
-          }
-        },
-        "paragraph_7AEKfP": {
-          "type": "paragraph",
-          "settings": {
-            "text": "Coach students anywhere with live video and instant replay.\n\nExpand your reach beyond your local range. Deliver real-time feedback with Golf Live's patented Live Replay Technology — students see their swing instantly while you're coaching them."
-          }
-        },
-        "list_TaizbD": {
-          "type": "list",
-          "settings": {
-            "list_content": "Coach more students without adding hours to your day\nNo geographic limitations\nEvery lesson automatically recorded for student review"
-          }
-        }
-      },
-      "block_order": [
-        "heading_DDLhHN",
-        "paragraph_7AEKfP",
-        "list_TaizbD"
-      ],
-      "name": "Custom Zigzag Row",
-      "settings": {
-        "main_h2": "Everything You Need to Scale Your Coaching Business",
-        "heading-bottom-padding": 36,
-        "show_h2": true,
-        "image": "shopify://shop_images/Group_157.png",
-        "layout": "image_first",
-        "padding_top": 36,
-        "padding_bottom": 0
-      }
-    },
-    "zigzag_section_Gtb6DU": {
-      "type": "zigzag-section",
-      "blocks": {
-        "heading_EpCWkU": {
-          "type": "heading",
-          "settings": {
-            "heading": "Live Streaming"
-          }
-        },
-        "paragraph_RQ6AAk": {
-          "type": "paragraph",
-          "settings": {
-            "text": "It’s like going live on social, only smarter. Live Stream on Golf Live to run group sessions with Golfers or Coaches, add a co-host, and break down swings in real time using video replay and drawing tools. These sessions help you build your brand, create content that lasts, and turn engagement into income."
-          }
-        },
-        "list_NUTHJG": {
-          "type": "list",
-          "settings": {
-            "list_content": "Monetize your expertise at scale\nBuild evergreen content\nEngage with your community in real-time"
-          }
-        }
-      },
-      "block_order": [
-        "heading_EpCWkU",
-        "paragraph_RQ6AAk",
-        "list_NUTHJG"
-      ],
-      "name": "Custom Zigzag Row",
-      "settings": {
-        "main_h2": "Live Lessons",
-        "heading-bottom-padding": 36,
-        "show_h2": false,
-        "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
-        "layout": "text_first",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "zigzag_section_G3kYAg": {
-      "type": "zigzag-section",
-      "blocks": {
-        "heading_8jHBxt": {
-          "type": "heading",
-          "settings": {
-            "heading": "Video Analysis Tools"
-          }
-        },
-        "paragraph_bWqBc8": {
-          "type": "paragraph",
-          "settings": {
-            "text": "It’s like going live on social, only smarter. Live Stream on Golf Live to run group sessions with Golfers or Coaches, add a co-host, and break down swings in real time using video replay and drawing tools. These sessions help you build your brand, create content that lasts, and turn engagement into income."
-          }
-        },
-        "list_LEAdfP": {
-          "type": "list",
-          "settings": {
-            "list_content": "Monetize your expertise at scale\nBuild evergreen content\nEngage with your community in real-time"
-          }
-        }
-      },
-      "block_order": [
-        "heading_8jHBxt",
-        "paragraph_bWqBc8",
-        "list_LEAdfP"
-      ],
-      "name": "Custom Zigzag Row",
-      "settings": {
-        "main_h2": "Live Lessons",
-        "heading-bottom-padding": 36,
-        "show_h2": false,
-        "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
-        "layout": "image_first",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "image_with_text_dLqjQV": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_hinM3Y": {
-          "type": "heading",
-          "settings": {
-            "heading": "Built by Coaches Who Understand Your Struggle",
-            "heading_size": "h1"
-          }
-        },
-        "text_384zQi": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Golf Live was founded by a PGA coach with over 30 years of experience who got tired of juggling multiple apps, chasing payments, and watching great coaches limit their impact because they couldn't scale beyond in-person lessons.<br/><br/>We built Golf Live to solve one simple problem: Give coaches the tools to grow their business without working more hours.<br/><br/>Today, thousands of coaches use Golf Live to reach more students, earn more revenue, and spend less time on admin work — so they can focus on what they love: coaching golf.<br/></p>",
-            "text_style": "body"
-          }
-        },
-        "button_q7MKbJ": {
-          "type": "button",
-          "settings": {
-            "button_label": "Join the Movement",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_hinM3Y",
-        "text_384zQi",
-        "button_q7MKbJ"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "extra_class": "ctm-img-with-text",
-        "image": "shopify://shop_images/Rectangle_37.png",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "pricing_plans_qDJtdE": {
-      "type": "pricing-plans",
-      "blocks": {
-        "plan_AKaLYN": {
-          "type": "plan",
-          "settings": {
-            "card_header_color": "#064e3b",
-            "header_image": "shopify://shop_images/Rectangle_48_1.png",
-            "pattern_opacity": 65,
-            "plan_name": "Starter",
-            "price": "29",
-            "sub_heading": "For solo coaches",
-            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage\nLive lessons",
-            "button_text": "CHOOSE PLAN",
-            "button_link": ""
-          }
-        },
-        "plan_CfaHeK": {
-          "type": "plan",
-          "settings": {
-            "card_header_color": "#064e3b",
-            "header_image": "shopify://shop_images/Rectangle_48.png",
-            "pattern_opacity": 65,
-            "plan_name": "Starter",
-            "price": "29",
-            "sub_heading": "For solo coaches",
-            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage",
-            "button_text": "CHOOSE PLAN",
-            "button_link": ""
-          }
-        },
-        "plan_4EAYyF": {
-          "type": "plan",
-          "settings": {
-            "card_header_color": "#1e6955",
-            "header_image": "shopify://shop_images/Rectangle_48.png",
-            "pattern_opacity": 65,
-            "plan_name": "Starter",
-            "price": "29",
-            "sub_heading": "For solo coaches",
-            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage",
-            "button_text": "CHOOSE PLAN",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "plan_AKaLYN",
-        "plan_CfaHeK",
-        "plan_4EAYyF"
-      ],
-      "name": "Coaching Pricing Flex",
-      "settings": {
-        "heading": "Choose the Plan That Fits Your Coaching Business",
-        "bg_color": "#f3f4f6",
-        "btn_gradient": "linear-gradient(77.87deg, #00511C -24.41%, #187F10 103.64%)"
       }
     },
     "coaching_steps_AbMRCc": {
@@ -535,149 +314,300 @@
         "padding_bottom_mobile": 40
       }
     },
-    "free_trial_rA3Ejf": {
-      "type": "free-trial",
+    "zigzag_section_6TF6mn": {
+      "type": "zigzag-section",
       "blocks": {
-        "list_item_KmfebB": {
-          "type": "list_item",
+        "heading_DDLhHN": {
+          "type": "heading",
           "settings": {
-            "list_text": "Live virtual lessons with instant replay"
+            "heading": "Live Virtual Lessons"
           }
         },
-        "list_item_EBbWkT": {
-          "type": "list_item",
+        "paragraph_7AEKfP": {
+          "type": "paragraph",
           "settings": {
-            "list_text": "Offer on-demand content and reviews"
+            "text": "Coach students anywhere with live video and instant replay.\n\nExpand your reach beyond your local range. Deliver real-time feedback with Golf Live's patented Live Replay Technology — students see their swing instantly while you're coaching them."
           }
         },
-        "list_item_cUPBRx": {
-          "type": "list_item",
+        "list_TaizbD": {
+          "type": "list",
           "settings": {
-            "list_text": "Manage bookings, payments, and clients"
+            "list_content": "Coach more students without adding hours to your day\nNo geographic limitations\nEvery lesson automatically recorded for student review"
           }
         }
       },
       "block_order": [
-        "list_item_KmfebB",
-        "list_item_EBbWkT",
-        "list_item_cUPBRx"
+        "heading_DDLhHN",
+        "paragraph_7AEKfP",
+        "list_TaizbD"
       ],
-      "name": "Feature Mobile Section",
+      "name": "Custom Zigzag Row",
       "settings": {
-        "bg_color": "#000000",
-        "btn_color": "#064e3b",
-        "image_round": "shopify://shop_images/Ellipse_13.png",
-        "image": "shopify://shop_images/Mask_group_1.png",
-        "heading": "Start Coaching Smarter, Not Harder",
-        "subtext": "Reach more students, monetize your expertise, and streamline your coaching business, all from one platform.",
-        "btn_text": "START FREE TRIAL",
-        "btn_link": "",
-        "btn_text_2": "Schedule a Demo",
-        "btn_link_2": ""
+        "main_h2": "Everything You Need to Scale Your Coaching Business",
+        "show_h2": true,
+        "heading-bottom-padding": 36,
+        "image": "shopify://shop_images/Group_157.png",
+        "layout": "image_first",
+        "padding_top": 36,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
       }
     },
-    "landing_faq_xBdqfQ": {
-      "type": "landing-faq",
+    "zigzag_section_Gtb6DU": {
+      "type": "zigzag-section",
       "blocks": {
-        "faq_item_9444Px": {
-          "type": "faq_item",
+        "heading_EpCWkU": {
+          "type": "heading",
           "settings": {
-            "question": "How does it work?",
-            "answer": "<p>Your answer goes here.</p>"
+            "heading": "Live Streaming"
           }
         },
-        "faq_item_UkjKjD": {
-          "type": "faq_item",
+        "paragraph_RQ6AAk": {
+          "type": "paragraph",
           "settings": {
-            "question": "How does it work?",
-            "answer": "<p>Your answer goes here.</p>"
+            "text": "It’s like going live on social, only smarter. Live Stream on Golf Live to run group sessions with Golfers or Coaches, add a co-host, and break down swings in real time using video replay and drawing tools. These sessions help you build your brand, create content that lasts, and turn engagement into income."
           }
         },
-        "faq_item_4Yax9g": {
-          "type": "faq_item",
+        "list_NUTHJG": {
+          "type": "list",
           "settings": {
-            "question": "How does it work?",
-            "answer": "<p>Your answer goes here.</p>"
-          }
-        },
-        "faq_item_HdpmQg": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How does it work?",
-            "answer": "<p>Your answer goes here.</p>"
+            "list_content": "Monetize your expertise at scale\nBuild evergreen content\nEngage with your community in real-time"
           }
         }
       },
       "block_order": [
-        "faq_item_9444Px",
-        "faq_item_UkjKjD",
-        "faq_item_4Yax9g",
-        "faq_item_HdpmQg"
+        "heading_EpCWkU",
+        "paragraph_RQ6AAk",
+        "list_NUTHJG"
       ],
-      "name": "FAQ Tailwind",
+      "name": "Custom Zigzag Row",
       "settings": {
-        "heading": "Common Questions from Coaches",
-        "icon_style": "plus",
-        "show_buttons": true,
-        "btn_1_text": "START FREE TRIAL",
-        "btn_1_link": "",
-        "btn_2_text": "Schedule a Demo",
-        "btn_2_link": ""
+        "main_h2": "Live Lessons",
+        "show_h2": false,
+        "heading-bottom-padding": 36,
+        "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
+        "layout": "text_first",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
       }
     },
-    "why_golf_live_7CtzFQ": {
-      "type": "why-golf-live",
+    "zigzag_section_G3kYAg": {
+      "type": "zigzag-section",
       "blocks": {
-        "feature_row_M6VmjT": {
-          "type": "feature_row",
+        "heading_8jHBxt": {
+          "type": "heading",
           "settings": {
-            "left_checked": true,
-            "left_text": "Built-in",
-            "center_checked": false,
-            "center_text": "Built-in",
-            "right_checked": true,
-            "right_text": "Zoom (no replay)"
+            "heading": "Video Analysis Tools"
           }
         },
-        "feature_row_EARWWj": {
-          "type": "feature_row",
+        "paragraph_bWqBc8": {
+          "type": "paragraph",
           "settings": {
-            "left_checked": true,
-            "left_text": "Unlimited",
-            "center_checked": false,
-            "center_text": "Built-in",
-            "right_checked": true,
-            "right_text": "YouTube (no monetization)"
+            "text": "Deliver feedback students can actually understand.\n\nWhether coaching in-person or remotely, use professional drawing tools, side-by-side comparison, slow motion, and voice-over to break down swings frame-by-frame."
           }
         },
-        "feature_row_HdqtUL": {
-          "type": "feature_row",
+        "list_LEAdfP": {
+          "type": "list",
           "settings": {
-            "left_checked": true,
-            "left_text": "Sell your content",
-            "center_checked": false,
-            "center_text": "Built-in",
-            "right_checked": true,
-            "right_text": "Google Drive (not organized)"
+            "list_content": "Students improve faster with visual feedback\nWorks for both live and async coaching\nAll analysis saved to their library"
           }
         }
       },
       "block_order": [
-        "feature_row_M6VmjT",
-        "feature_row_EARWWj",
-        "feature_row_HdqtUL"
+        "heading_8jHBxt",
+        "paragraph_bWqBc8",
+        "list_LEAdfP"
       ],
-      "disabled": true,
-      "name": "Why Golf Live",
+      "name": "Custom Zigzag Row",
       "settings": {
-        "extra_class": "custom-why-golf-live",
-        "color_scheme": "",
-        "main-golf-live-title": "Why Coaches Are Switching to Golf Live",
-        "left_title": "Golf Live",
-        "center_title": "Golf Live",
-        "right_title": "Your Current Setup",
-        "main-golf-live-subtitle": "The choice is clear: One platform vs. juggling multiple tools.",
-        "main-golf-description": "<p>The only platform that combines live coaching, business management, and content monetization in one seamless experience.</p>",
+        "main_h2": "Live Lessons",
+        "show_h2": false,
+        "heading-bottom-padding": 36,
+        "image": "shopify://shop_images/Group_157_1.png",
+        "layout": "image_first",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "zigzag_section_3UeJce": {
+      "type": "zigzag-section",
+      "blocks": {
+        "heading_AAK76q": {
+          "type": "heading",
+          "settings": {
+            "heading": "Content Monetization (My Library)"
+          }
+        },
+        "paragraph_qjVVBi": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Turn your knowledge into recurring revenue.\n\nBuild a private library of drills, tips, and swing fundamentals. Sell access to students, offer subscription packages, or include it with lesson bundles — your content, your pricing."
+          }
+        },
+        "list_EaMeyc": {
+          "type": "list",
+          "settings": {
+            "list_content": "Create income from your expertise\nStudents access your content anytime\nManage everything in one platform"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AAK76q",
+        "paragraph_qjVVBi",
+        "list_EaMeyc"
+      ],
+      "name": "Custom Zigzag Row",
+      "settings": {
+        "main_h2": "Live Lessons",
+        "show_h2": false,
+        "heading-bottom-padding": 36,
+        "image": "shopify://shop_images/Mask_group_1_a379e477-c672-42cd-bcdc-b4c277a72578.png",
+        "layout": "text_first",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "zigzag_section_gCTnJY": {
+      "type": "zigzag-section",
+      "blocks": {
+        "heading_eaJLzJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "All-in-One Business Dashboard"
+          }
+        },
+        "paragraph_WcJrqz": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Run your entire business from one app.\n\nGolf Live handles scheduling, payment processing, client messaging, and video storage — all in one seamless platform."
+          }
+        },
+        "list_p7JBXd": {
+          "type": "list",
+          "settings": {
+            "list_content": "Manage your business from one dashboard\nNever chase payments or double-book again\nFocus on coaching, not managing apps"
+          }
+        }
+      },
+      "block_order": [
+        "heading_eaJLzJ",
+        "paragraph_WcJrqz",
+        "list_p7JBXd"
+      ],
+      "name": "Custom Zigzag Row",
+      "settings": {
+        "main_h2": "Live Lessons",
+        "show_h2": false,
+        "heading-bottom-padding": 36,
+        "image": "shopify://shop_images/Group_157_3.png",
+        "layout": "image_first",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "zigzag_section_RrpX3w": {
+      "type": "zigzag-section",
+      "blocks": {
+        "heading_kKPQV3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lead Generation & Marketing Tools"
+          }
+        },
+        "paragraph_VUXFkM": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Get discovered by golfers looking for a coach.\n\nYour profile is searchable by golfers in our verified coach network. With built-in reviews, credentials display, and booking integration, new students can find and book you instantly."
+          }
+        },
+        "list_PkajJP": {
+          "type": "list",
+          "settings": {
+            "list_content": "Stop hustling on social media for students\nLet golfers come to you\nBuilt-in tools to nurture leads"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kKPQV3",
+        "paragraph_VUXFkM",
+        "list_PkajJP"
+      ],
+      "name": "Custom Zigzag Row",
+      "settings": {
+        "main_h2": "Live Lessons",
+        "show_h2": false,
+        "heading-bottom-padding": 36,
+        "image": "shopify://shop_images/Mask_group_2.png",
+        "layout": "text_first",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "custom_reviews_iYN6rM": {
+      "type": "custom-reviews",
+      "blocks": {
+        "review_gW4dzi": {
+          "type": "review",
+          "settings": {
+            "ctm-add-review": "<p>“Golf Live has saved me time while boosting my income. It has accelerated student progress and broadened my coaching reach..”</p>",
+            "enable-rating": true,
+            "customer_image": "shopify://shop_images/d939c7b411bb36f75ab949df449a4338f1c246ea.png",
+            "customer_name": "<p><strong>Brian Newman<br/></strong>Golf Live Coach</p>"
+          }
+        },
+        "review_3mWxnp": {
+          "type": "review",
+          "settings": {
+            "ctm-add-review": "<p>“Golf Live has saved me time while boosting my income. It has accelerated student progress and broadened my coaching reach..”</p>",
+            "enable-rating": true,
+            "customer_image": "shopify://shop_images/819f001fffe0324ae89622785d7d9e5e88c7d1b7_1.png",
+            "customer_name": "<p><strong>Drew<br/></strong>Golf Live User</p>"
+          }
+        },
+        "review_EjGQGh": {
+          "type": "review",
+          "settings": {
+            "ctm-add-review": "<p>“Live streaming and side-by-side analysis allow me to coach with pinpoint precision and help students make immediate improvements..”</p>",
+            "enable-rating": true,
+            "customer_image": "shopify://shop_images/70c67474330fe6d68d2fb0571e20cea514d8c77b.png",
+            "customer_name": "<p><strong>Caleb Scorsone<br/></strong>Golf Live Coach</p>"
+          }
+        },
+        "review_CVtram": {
+          "type": "review",
+          "settings": {
+            "ctm-add-review": "<p>“Started playing a couple months ago and my swing has improved tremendously working with the instructors on this app..”<br/></p>",
+            "enable-rating": true,
+            "customer_image": "shopify://shop_images/819f001fffe0324ae89622785d7d9e5e88c7d1b7_1.png",
+            "customer_name": "<p><strong>Greg<br/></strong>Golf Live User</p>"
+          }
+        }
+      },
+      "block_order": [
+        "review_gW4dzi",
+        "review_3mWxnp",
+        "review_EjGQGh",
+        "review_CVtram"
+      ],
+      "name": "Custom Review",
+      "settings": {
+        "extra_class_reviews": "custom-review-slider",
+        "color_scheme": "scheme-1",
+        "review-main-title": "What Users Are Saying",
+        "bg-card-image": "shopify://shop_images/Rectangle_15.png",
+        "review-btn-title": "Start Free Trial",
+        "review-btn-link": "#",
         "padding_top": 40,
         "padding_bottom": 52,
         "padding_top_tablet": 50,
@@ -807,6 +737,265 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 52
       }
+    },
+    "pricing_plans_qDJtdE": {
+      "type": "pricing-plans",
+      "blocks": {
+        "plan_AKaLYN": {
+          "type": "plan",
+          "settings": {
+            "card_header_color": "#064e3b",
+            "header_image": "shopify://shop_images/Rectangle_48_1.png",
+            "pattern_opacity": 65,
+            "plan_name": "Starter",
+            "price": "29",
+            "sub_heading": "For solo coaches",
+            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage\nLive lessons",
+            "button_text": "Choose Plan",
+            "button_link": "#"
+          }
+        },
+        "plan_CfaHeK": {
+          "type": "plan",
+          "settings": {
+            "card_header_color": "#064e3b",
+            "header_image": "shopify://shop_images/Rectangle_48.png",
+            "pattern_opacity": 65,
+            "plan_name": "Starter",
+            "price": "29",
+            "sub_heading": "For solo coaches",
+            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage",
+            "button_text": "Choose Plan",
+            "button_link": "#"
+          }
+        },
+        "plan_4EAYyF": {
+          "type": "plan",
+          "settings": {
+            "card_header_color": "#1e6955",
+            "header_image": "shopify://shop_images/Rectangle_48.png",
+            "pattern_opacity": 65,
+            "plan_name": "Starter",
+            "price": "29",
+            "sub_heading": "For solo coaches",
+            "features_list": "Live lessons\nVideo analysis\nPayment processing\nUnlimited storage",
+            "button_text": "Choose Plan",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "plan_AKaLYN",
+        "plan_CfaHeK",
+        "plan_4EAYyF"
+      ],
+      "name": "Coaching Pricing Flex",
+      "settings": {
+        "extra-class": "",
+        "heading": "Choose the Plan That Fits Your Coaching Business",
+        "bg_color": "#f3f4f6",
+        "padding_top": 47,
+        "padding_bottom": 52,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "image_with_text_dLqjQV": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_hinM3Y": {
+          "type": "heading",
+          "settings": {
+            "heading": "Built by Coaches Who Understand Your Struggle",
+            "heading_size": "h1"
+          }
+        },
+        "text_384zQi": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Golf Live was founded by a PGA coach with over 30 years of experience who got tired of juggling multiple apps, chasing payments, and watching great coaches limit their impact because they couldn't scale beyond in-person lessons.<br/><br/>We built Golf Live to solve one simple problem: Give coaches the tools to grow their business without working more hours.<br/><br/>Today, thousands of coaches use Golf Live to reach more students, earn more revenue, and spend less time on admin work — so they can focus on what they love: coaching golf.<br/></p>",
+            "text_style": "body"
+          }
+        },
+        "button_q7MKbJ": {
+          "type": "button",
+          "settings": {
+            "button_label": "Join the Movement",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_hinM3Y",
+        "text_384zQi",
+        "button_q7MKbJ"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "extra_class": "ctm-img-with-text",
+        "image": "shopify://shop_images/Rectangle_37.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "free_trial_rA3Ejf": {
+      "type": "free-trial",
+      "blocks": {
+        "list_item_KmfebB": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Live virtual lessons with instant replay"
+          }
+        },
+        "list_item_EBbWkT": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Offer on-demand content and reviews"
+          }
+        },
+        "list_item_cUPBRx": {
+          "type": "list_item",
+          "settings": {
+            "list_text": "Manage bookings, payments, and clients"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_KmfebB",
+        "list_item_EBbWkT",
+        "list_item_cUPBRx"
+      ],
+      "name": "Feature Mobile Section",
+      "settings": {
+        "bg_color": "#000000",
+        "btn_color": "#064e3b",
+        "image_round": "shopify://shop_images/Ellipse_13.png",
+        "image": "shopify://shop_images/Mask_group_1.png",
+        "heading": "Start Coaching Smarter, Not Harder",
+        "subtext": "Reach more students, monetize your expertise, and streamline your coaching business, all from one platform.",
+        "btn_text": "START FREE TRIAL",
+        "btn_link": "#",
+        "btn_text_2": "Schedule a Demo",
+        "btn_link_2": "#",
+        "padding_top": 70,
+        "padding_bottom": 52,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 52
+      }
+    },
+    "landing_faq_xBdqfQ": {
+      "type": "landing-faq",
+      "blocks": {
+        "faq_item_9444Px": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Most of my business is in-person — why do I need this?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_abCd8P": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will my students actually use it?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_UkjKjD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it worth the cost?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_4Yax9g": {
+          "type": "faq_item",
+          "settings": {
+            "question": "I already use another coaching app — why should I switch?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_HdpmQg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if most of my coaching is in-person?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_CmVAp6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I move my existing videos and students?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_cPzgAk": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does setup take?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_JxwxUi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do my students need to download the app?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        },
+        "faq_item_EtjB3i": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I try it before committing?",
+            "answer": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_9444Px",
+        "faq_item_abCd8P",
+        "faq_item_UkjKjD",
+        "faq_item_4Yax9g",
+        "faq_item_HdpmQg",
+        "faq_item_CmVAp6",
+        "faq_item_cPzgAk",
+        "faq_item_JxwxUi",
+        "faq_item_EtjB3i"
+      ],
+      "name": "FAQ Tailwind",
+      "settings": {
+        "heading": "Common Questions from Coaches",
+        "icon_style": "plus",
+        "show_buttons": true,
+        "btn_1_text": "START FREE TRIAL",
+        "btn_1_link": "#",
+        "btn_2_text": "Schedule a Demo",
+        "btn_2_link": "#",
+        "padding_top": 20,
+        "padding_bottom": 52,
+        "padding_top_tablet": 50,
+        "padding_bottom_tablet": 50,
+        "padding_top_mobile": 42,
+        "padding_bottom_mobile": 52
+      }
     }
   },
   "order": [
@@ -815,15 +1004,18 @@
     "trusted_professional_Mr4PtT",
     "growth_challenges_HC3REj",
     "growth_challenges_MDBf77",
+    "coaching_steps_AbMRCc",
     "zigzag_section_6TF6mn",
     "zigzag_section_Gtb6DU",
     "zigzag_section_G3kYAg",
-    "image_with_text_dLqjQV",
+    "zigzag_section_3UeJce",
+    "zigzag_section_gCTnJY",
+    "zigzag_section_RrpX3w",
+    "custom_reviews_iYN6rM",
+    "why_golf_live_tYKfdE",
     "pricing_plans_qDJtdE",
-    "coaching_steps_AbMRCc",
+    "image_with_text_dLqjQV",
     "free_trial_rA3Ejf",
-    "landing_faq_xBdqfQ",
-    "why_golf_live_7CtzFQ",
-    "why_golf_live_tYKfdE"
+    "landing_faq_xBdqfQ"
   ]
 }

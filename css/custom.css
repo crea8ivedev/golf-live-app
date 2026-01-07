@@ -87,5 +87,46 @@
   @apply max-w-[40px] max-h-[40px];
 }
 .ctm-text-pga {
-  @apply text-[15px] leading-[18px] tracking-[0.15px] min-[768px]:text-[18px] min-[768px]:leading-[20px] min-[1440px]:text-[25px] min-[1440px]:leading-[28px] min-[1440px]:tracking-[0.23px];
+  @apply text-[17px] leading-[18px] tracking-[0.15px] min-[768px]:text-[19px] min-[768px]:leading-[28px] min-[1440px]:text-[25px] min-[1440px]:leading-[38px] tracking-[0.23px];
+}
+
+.ctm-grid-container {
+  @apply grid grid-cols-[repeat(5,1fr)] gap-[16px] justify-items-center;
+}
+@media (max-width: 576px) {
+  .ctm-grid-container {
+    @apply grid-cols-[repeat(2,1fr)];
+  }
+  .ctm-inner-content:last-child {
+    @apply col-[span_2];
+  }
+}
+
+/* growth-challeng */
+.ctm_bgc_heading_main .section-heading.text-center p {
+  @apply text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[34px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.45px] min-[1582px]:text-[45px] min-[1582px]:leading-[54px];
+}
+.ctm_bgc_heading_main .section-heading.text-center {
+  @apply pb-[16px] pb-[80px] hidden md:block;
+}
+
+.ctm_challenges_list {
+  @apply flex flex-col gap-[15px] lg:gap-[25px];
+}
+.bgc-img-icon img {
+  @apply max-w-[40px] max-h-[40px];
+}
+
+/* home page faq */
+.faq-columns.page-width .faq-column {
+  @apply w-full;
+}
+.faq-column .faq-item {
+  @apply max-[769px]:border-b border-gray last:border-b-0;
+}
+.faq-answer p {
+  @apply md:pr-3;
+}
+.faq-item button h6 {
+  @apply font-semibold;
 }

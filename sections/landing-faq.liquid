@@ -1,21 +1,21 @@
-<div class="faq-section py-16 px-4 md:px-0 max-w-3xl mx-auto" id="faq-{{ section.id }}">
+<div class="landing-faq-main-box faq-section py-16 px-4 md:px-0 max-w-3xl mx-auto" id="faq-{{ section.id }}">
   {% if section.settings.heading != blank %}
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+    <h2 class="landing-faq-main-title text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
       {{ section.settings.heading }}
     </h2>
   {% endif %}
 
-  <div class="flex flex-col gap-10">
-    <div class="faq-list border-t border-gray-200">
+  <div class="landing-faq-inner-wrapper flex flex-col gap-10">
+    <div class="landing-faq-list faq-list border-t border-gray-200">
       {% for block in section.blocks %}
         {% if block.type == 'faq_item' %}
-          <div class="faq-item border-b border-gray-200" {{ block.shopify_attributes }}>
+          <div class="landing-faq-item faq-item border-b border-gray-200" {{ block.shopify_attributes }}>
             <button
               type="button"
-              class="faq-question w-full flex items-center py-5 text-left group focus:outline-none"
+              class="landing-faq-question faq-question w-full flex items-center py-5 text-left group focus:outline-none"
               aria-expanded="false"
             >
-              <span class="faq-icon-container mr-4 flex-shrink-0 transition-transform duration-300 text-gray-500 group-hover:text-gray-800">
+              <span class="landing-faq-container faq-icon-container mr-4 flex-shrink-0 transition-transform duration-300 text-gray-500 group-hover:text-gray-800">
                 {% if section.settings.icon_style == 'plus' %}
                   <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -36,7 +36,9 @@
                 {% endif %}
               </span>
 
-              <span class="text-lg font-medium text-gray-800">{{ block.settings.question }}</span>
+              <span class="landing-faq-question-text text-lg font-medium text-gray-800">
+                {{- block.settings.question -}}
+              </span>
             </button>
 
             <div class="faq-answer-wrapper overflow-hidden h-0 transition-[height] duration-350 ease-out">
@@ -50,11 +52,11 @@
     </div>
 
     {% if section.settings.show_buttons %}
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
+      <div class="landing-faq-btn-group flex flex-col sm:flex-row justify-center items-center gap-4 mt-4">
         {% if section.settings.btn_1_text != blank %}
           <a
             href="{{ section.settings.btn_1_link }}"
-            class="w-full sm:w-auto px-8 py-4 bg-[#1a5119] hover:bg-[#123a11] text-white font-bold rounded-full text-center transition duration-300 uppercase tracking-wide"
+            class="landing-faq-btn-one w-full sm:w-auto px-8 py-4 bg-[#1a5119] hover:bg-[#123a11] text-white font-bold rounded-full text-center transition duration-300 uppercase tracking-wide"
           >
             {{ section.settings.btn_1_text }}
           </a>
@@ -62,7 +64,7 @@
         {% if section.settings.btn_2_text != blank %}
           <a
             href="{{ section.settings.btn_2_link }}"
-            class="w-full sm:w-auto px-8 py-4 bg-white border border-gray-300 hover:bg-gray-50 text-gray-900 font-semibold rounded-full text-center transition duration-300"
+            class="landing-faq-btn-two w-full sm:w-auto px-8 py-4 bg-white border border-gray-300 hover:bg-gray-50 text-gray-900 font-semibold rounded-full text-center transition duration-300"
           >
             {{ section.settings.btn_2_text }}
           </a>

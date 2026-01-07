@@ -25,11 +25,12 @@
         </div>
       {% endif %}
     </div>
-    <div class="ctm-main-content flex items-center justify-between">
+
+    <div class="ctm-main-content ctm-grid-container">
       {% for block in section.blocks %}
-        <div class="ctm-inner-content flex items-center flex-col relative">
-          {% if block.settings['trusted-add-image'] != blank %}
-            <div class="ctm-pga-image">
+        <div class="ctm-inner-content flex items-center flex-col relative w-full">
+          <div class="ctm-pga-image relative inline-block">
+            {% if block.settings['trusted-add-image'] != blank %}
               <img
                 class="rounded-[50%]"
                 src="{{ block.settings.trusted-add-image | image_url: width: 140, height: 140 }}"
@@ -38,16 +39,18 @@
                 height="auto"
                 loading="lazy"
               >
-            </div>
-          {% endif %}
-          {% if block.settings.enable_professional != blank %}
-            <div class="ctm-pga-premium-logo absolute right-[15%] top-2/4">
-              {{- 'premium-logo.svg' | inline_asset_content -}}
-            </div>
-          {% endif %}
+            {% endif %}
+
+            {% if block.settings.enable_professional != blank %}
+              <div class="ctm-pga-premium-logo absolute" style="right: 0; bottom: 0;">
+                {{- 'premium-logo.svg' | inline_asset_content -}}
+              </div>
+            {% endif %}
+          </div>
+
           {% if block.settings['pga-name'] != blank %}
-            <div class="ctm-pga-premium-name text-center">
-              <h4>{{ block.settings['pga-name'] }}</h4>
+            <div class="ctm-pga-premium-name text-center mt-4">
+              <h4 class="ctm-text-pga">{{ block.settings['pga-name'] }}</h4>
             </div>
           {% endif %}
           {% if block.settings['pga-content'] != blank %}

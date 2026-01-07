@@ -14,7 +14,9 @@
   {%- unless hide_accessibility_label -%}
     <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
   {%- endunless -%}
+  {% # theme-check-disable %}
   <span class="price-item price-item--last">
     {{ price | unit_price_with_measurement: measurement }}
   </span>
+  {% # theme-check-enable %}
 </small>
