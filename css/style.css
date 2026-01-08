@@ -68,3 +68,7 @@
 .ctm-zigzag-main .right-img .zigzag-image-main .zigzag_image {
   @apply max-w-[80%];
 }
+
+.ctm-reviews-content p {
+  @apply text-xl font-normal leading-[137%] tracking-[0.2px];
+}

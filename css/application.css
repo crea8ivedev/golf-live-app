@@ -567,3 +567,20 @@
 }
 
 /* price-plan */
+
+.ctn-golf-live-info-main {
+  background-color: #1c1c1c !important;
+}
+
+.ctn-golf-center-item-text,
+.ctn-golf-right-item-text {
+  word-break: break-word;
+}
+
+.glc-grey > * {
+  @apply min-990:!gap-0;
+}
+
+.glc-grey .glc-phone img {
+  @apply min-990:!w-full;
+}

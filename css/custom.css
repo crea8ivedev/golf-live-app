@@ -79,12 +79,9 @@
 }
 
 .ctm-grid-container {
-  @apply grid grid-cols-[repeat(5,1fr)] gap-[16px] justify-items-center;
+  @apply grid grid-cols-5 max-1200:grid-cols-4 max-990:grid-cols-3 max-768:grid-cols-2 gap-[16px] max-990:gap-6.75  justify-items-center;
 }
 @media (max-width: 576px) {
-  .ctm-grid-container {
-    @apply grid-cols-[repeat(2,1fr)];
-  }
   .ctm-inner-content:last-child {
     @apply col-[span_2];
   }
@@ -101,8 +98,8 @@
 .ctm_challenges_list {
   @apply flex flex-col gap-[15px] lg:gap-[25px];
 }
-.bgc-img-icon img {
-  @apply max-w-[40px] max-h-[40px];
+.ctm-range-growth .bgc-img-icon img {
+  @apply max-w-[75px] max-h-[75px] min-h-[75px] min-w-[75px] max-990:min-w-[45px] max-990:min-h-[45px] max-990:max-w-[45px] max-990:max-h-[45px];
 }
 
 /* home page faq */
@@ -135,7 +132,7 @@
 }
 
 .ctm-rev-section .section-heading h2 {
-  @apply pt-[36px];
+  @apply md:pt-[50px];
 }
 .ctm_challenges_inner_list {
   @apply px-[15px] py-[18px] lg:px-[35px] lg:py-[20px];
@@ -144,7 +141,7 @@
   @apply px-[0px] py-[0px] max-990:pb-[20px];
 }
 .ctm-rev-section .bgc-img-icon img {
-  @apply max-w-[50px] max-h-[50px];
+  @apply max-w-[80px] max-h-[80px] min-h-[80px] min-w-[80px] max-990:min-w-[60px] max-990:min-h-[60px] max-990:max-w-[60px] max-990:max-h-[60px];
 }
 
 .ctm-rev-section .ctm_bgc_heading_main .section-heading h6 {
@@ -153,4 +150,29 @@
 
 .ctm-rev-section .ctm_bgc_heading_main .section-heading-center h6 {
   @apply pt-[14px];
+}
+
+.ctm-range-growth .ctm_bgc_heading_wrapper .section-heading,
+.ctm-rev-section .ctm_bgc_heading_wrapper {
+  @apply lg:pb-[80px] pb-10;
+}
+.ctm-range-growth .ctm-bgc-title-mobile div p {
+  @apply text-[25px] leading-[30px] tracking-[0.3px] font-medium;
+}
+.ctm-rev-section .page-width.ctm_bgc_heading_main {
+  @apply max-768:bg-[#E2E2DD];
+}
+.ctm-rev-section .section-heading-center p {
+  @apply !pt-[20px] max-w-[825px] mx-auto;
+}
+
+.ctm-rev-section .ctm_challenges_list {
+  @apply flex flex-col gap-[15px] lg:gap-[35px];
+}
+.ctm-rev-section .ctm_challenges_list .challenge-item {
+  @apply lg:pr-[50px];
+}
+
+.challenges-side-image {
+  @apply w-full h-auto;
 }

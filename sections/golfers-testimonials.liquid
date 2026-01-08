@@ -1,3 +1,18 @@
+{% style %}
+  .cg-testimonial__image--mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .cg-testimonial__image--desktop {
+      display: none;
+    }
+
+    .cg-testimonial__image--mobile {
+      display: block;
+    }
+  }
+{% endstyle %}
 <div
   class="cg-testimonials page-width pt-[45px] min-990:pt-[71px] pb-[59px] min-990:pb-[113px] {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }}"
   data-desktop-slider="{{ section.settings.enable_desktop_slider }}"
@@ -87,9 +102,20 @@
             </div>
 
             {% if block.settings.image != blank %}
-              <div class="cg-testimonial__image">
+              <div class="cg-testimonial__image cg-testimonial__image--desktop">
                 <img
                   src="{{ block.settings.image | image_url }}"
+                  alt="{{ block.settings.name | escape }}"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                >
+              </div>
+            {% endif %}
+            {% if block.settings.mobile_image != blank %}
+              <div class="cg-testimonial__image cg-testimonial__image--mobile">
+                <img
+                  src="{{ block.settings.mobile_image | image_url }}"
                   alt="{{ block.settings.name | escape }}"
                   loading="lazy"
                   width="auto"
@@ -238,7 +264,12 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Profile Image"
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
         }
       ]
     }

@@ -144,7 +144,7 @@
         "padding_bottom": 52,
         "padding_top_tablet": 50,
         "padding_bottom_tablet": 50,
-        "padding_top_mobile": 52,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 52
       }
     },
@@ -354,10 +354,10 @@
         "image": "shopify://shop_images/Group_157.png",
         "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "image_first",
-        "padding_top": 36,
-        "padding_bottom": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
         "padding_top_mobile": 40,
-        "padding_bottom_mobile": 52
+        "padding_bottom_mobile": 40
       }
     },
     "zigzag_section_Gtb6DU": {

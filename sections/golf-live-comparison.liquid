@@ -2,7 +2,32 @@
   Section: Golf Live Comparison
   Theme: Dawn
 {% endcomment %}
+<style>
+  /* =========================
+    Golf Live Comparison
+    Phone Image Visibility
+    ========================= */
 
+  /* Desktop (default) */
+  .golf-live-compare .glc-phone--mobile {
+    display: none;
+  }
+
+  .golf-live-compare .glc-phone--desktop {
+    display: block;
+  }
+
+  /* Mobile */
+  @media (max-width: 749px) {
+    .golf-live-compare .glc-phone--desktop {
+      display: none;
+    }
+
+    .golf-live-compare .glc-phone--mobile {
+      display: block;
+    }
+  }
+</style>
 <section class="golf-live-compare" id="section-{{ section.id }}">
   <div class="container-136 max-sm:!px-0">
     <div class=" max-sm:!px-[24px]">
@@ -22,9 +47,20 @@
       >
         <div class="flex items-center gap-[23px] w-full">
           {% if section.settings.green_phone != blank %}
-            <div class="glc-phone w-[45%] max-sm:w-1/2">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2">
               <img
                 src="{{ section.settings.green_phone | image_url: width: 600 }}"
+                alt="With Golf Live App"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              >
+            </div>
+          {% endif %}
+          {% if section.settings.green_phone_mobile != blank %}
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2">
+              <img
+                src="{{ section.settings.green_phone_mobile | image_url: width: 600 }}"
                 alt="With Golf Live App"
                 loading="lazy"
                 height="auto"
@@ -102,9 +138,20 @@
           </div>
 
           {% if section.settings.grey_phone != blank %}
-            <div class="glc-phone w-[45%] max-sm:w-1/2">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2">
               <img
                 src="{{ section.settings.grey_phone | image_url: width: 600 }}"
+                alt="Without Golf Live"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              >
+            </div>
+          {% endif %}
+          {% if section.settings.grey_phone_mobile != blank %}
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2">
+              <img
+                src="{{ section.settings.grey_phone_mobile | image_url: width: 600 }}"
                 alt="Without Golf Live"
                 loading="lazy"
                 height="auto"
@@ -144,6 +191,11 @@
       "label": "Green Phone Image"
     },
     {
+      "type": "image_picker",
+      "id": "green_phone_mobile",
+      "label": "Green Phone Image (Mobile)"
+    },
+    {
       "type": "text",
       "id": "green_title",
       "label": "Green Column Title",
@@ -158,6 +210,11 @@
       "type": "image_picker",
       "id": "grey_phone",
       "label": "Grey Phone Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "grey_phone_mobile",
+      "label": "Grey Phone Image (Mobile)"
     },
     {
       "type": "text",

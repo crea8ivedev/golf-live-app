@@ -22,8 +22,8 @@
     }
   }
 {% endstyle %}
-<div class="ctn-golf-live-info-main {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
-  <div class="ctn-golf-live-info-inner px-[28px] max-w-[1148px] mx-auto">
+<div class="ctn-golf-live-info-main {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding !py-[50px] min-990:!py-[80px]">
+  <div class="ctn-golf-live-info-inner px-[28px] max-w-[1148px] max-w-[1148px] mx-auto">
     <div class="ctn-golf-live-title text-center">
       <h2 class="mb-[29px] min-990:mb-[56px]">{{ section.settings['main-golf-live-title'] }}</h2>
     </div>
@@ -31,8 +31,8 @@
       <div class="ctn-golf-comparison-section">
         <div class="ctn-golf-comparison-wrapper">
           <div class="ctn-golf-left-card ctn-golf-card-title">
-            <div class="flex gap-[12px] min-990:gap-[39px]">
-              <div class="ctm-left-heading-icon flex justify-center items-center flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
+            <div class="flex items-end gap-[12px] min-990:gap-[39px]">
+              <div class="ctm-left-heading-icon flex justify-center items-center flex-[0_0_calc(33.33%_-_8px)] min-990:flex-[0_0_calc(33.33%_-_26px)]">
                 {% if section.settings['golf-left-icon'] != blank %}
                   <div class="ctm-left-icon">
                     <img
@@ -51,7 +51,7 @@
                   </div>
                 {% endif %}
               </div>
-              <div class="ctm-center-heading-icon flex flex-col min-990:flex-row gap-x-[12px] gap-y-[6px] items-center flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)] min-990:pl-[26px]">
+              <div class="ctm-center-heading-icon flex flex-col min-990:flex-row gap-x-[12px] gap-y-[6px] items-center flex-[0_0_calc(33.33%_-_8px)] min-990:flex-[0_0_calc(33.33%_-_26px)] min-990:pl-[26px] pt-[14px] pb-[8px] min-990:pt-[34px] min-990:pb-[27px] bg-green0 rounded-t-[22px]">
                 {% if section.settings['golf-center-icon'] != blank %}
                   <div class="ctm-center-icon">
                     <img
@@ -72,7 +72,7 @@
                   </div>
                 {% endif %}
               </div>
-              <div class="ctm-right-heading-icon flex justify-center items-center flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
+              <div class="ctm-right-heading-icon flex items-center max-990:justify-center flex-[0_0_calc(33.33%_-_8px)] min-990:flex-[0_0_calc(33.33%_-_26px)] min-990:pl-[20px] pt-[21px] pb-[16px] min-990:py-[30px] min-990:bg-[#DDD] min-990:rounded-t-[22px]">
                 {% if section.settings['golf-right-icon'] != blank %}
                   <div class="ctm-right-icon">
                     <img
@@ -87,7 +87,7 @@
                 {% endif %}
                 {% if section.settings.right_title != blank %}
                   <div class="ctm-center-heading">
-                    <h3 class="font-semibold text-[16px] leading-[110%] tracking-[0.16px] min-990:text-[19px] min-990:tracking-[0.19px]">
+                    <h3 class="font-semibold text-[16px] leading-[110%] tracking-[0.16px] min-990:text-[19px] min-990:tracking-[0.19px] min-990:text-black max-990:text-center">
                       {{ section.settings.right_title }}
                     </h3>
                   </div>
@@ -97,30 +97,40 @@
 
             <ul class="ctn-golf-left-list">
               {% for block in section.blocks %}
-                <li class="ctn-golf-left-item flex gap-[12px] min-990:gap-[39px]">
-                  <div class="flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
+                <li class="ctn-golf-left-item flex gap-[12px] min-990:gap-[39px] group relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:border-b-[1px] after:border-dashed after:border-[rgba(255,_255,_255,_0.3)] last:after:content-none">
+                  <div class="flex-[0_0_calc(33.33%_-_8px)] min-990:flex-[0_0_calc(33.33%_-_26px)] py-[14px]">
                     {% if block.settings.left_checked %}
                       <span class="ctn-golf-left-icon">
                         {{ 'golf-check-icon.svg' | inline_asset_content }}
                       </span>
                     {% endif %}
-                    <span>{{ block.settings.left_text }}</span>
+                    <span class="text-[16px] leading-120p tracking-[0.16px] min-990:text-[20px] min-990:tracking-[0.20px] max-w-[192px] block">
+                      {{- block.settings.left_text -}}
+                    </span>
                   </div>
-                  <div class="ctn-golf-center-item flex flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
-                    {% if block.settings.center_checked %}
-                      <span class="ctn-golf-center-icon">
-                        {{ 'golf-check-icon.svg' | inline_asset_content }}
+                  <div class="ctn-golf-center-item flex-[0_0_calc(33.33%_-_8px)] min-990:flex-[0_0_calc(33.33%_-_26px)] px-[6px] min-990:px-[20px] bg-[#00511C] group-last:pb-[6px] group-last:min-990:pb-[20px] group-last:rounded-b-[22px] relative z-1">
+                    <div class="h-full flex items-center gap-x-[16px] gap-y-[8px] flex-col min-990:flex-row py-[14px] px-[12px] min-1400:px-[22px] group-odd:bg-[#EFEFEF] group-even:bg-white group-first:rounded-t-[22px] group-last:rounded-b-[22px]">
+                      {% if block.settings.center_checked %}
+                        <span class="ctn-golf-center-icon max-990:*:w-[20px] max-990:*:h-[20px]">
+                          {{ 'golf-check-icon.svg' | inline_asset_content }}
+                        </span>
+                      {% endif %}
+                      <span class="ctn-golf-center-item-text block text-[15px] leading-120p tracking-[0.15px] min-990:text-[18px] min-990:tracking-[0.18px] font-semibold text-black max-990:text-center">
+                        {{- block.settings.center_text -}}
                       </span>
-                    {% endif %}
-                    <span>{{ block.settings.center_text }}</span>
+                    </div>
                   </div>
-                  <div class="ctn-golf-right-item flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
-                    {% if block.settings.right_checked %}
-                      <span class="ctn-golf-right-icon">
-                        {{ 'golf-check-icon.svg' | inline_asset_content }}
+                  <div class="ctn-golf-right-item flex-[0_0_calc(33.33%_-_8px)] min-990:flex-[0_0_calc(33.33%_-_26px)] min-990:px-[20px] min-990:bg-[#DDDDDD] group-last:min-990:pb-[20px] group-last:rounded-b-[22px] relative z-1">
+                    <div class="h-full flex max-990:justify-center items-center py-[14px] px-[10px] min-1400:px-[25px] group-odd:bg-[#EFEFEF] group-even:bg-white group-first:rounded-t-[22px] group-last:rounded-b-[22px]">
+                      {% if block.settings.right_checked %}
+                        <span class="ctn-golf-right-icon">
+                          {{ 'golf-check-icon.svg' | inline_asset_content }}
+                        </span>
+                      {% endif %}
+                      <span class="ctn-golf-right-item-text text-black max-990:text-center">
+                        {{- block.settings.right_text -}}
                       </span>
-                    {% endif %}
-                    <span>{{ block.settings.right_text }}</span>
+                    </div>
                   </div>
                 </li>
               {% endfor %}
@@ -201,12 +211,12 @@
         </div>
       </div>
     </div>
-    <div class="ctn-golf-live-footer">
-      <div class="ctn-golf-live-subtitle text-center">
-        <h3>{{ section.settings['main-golf-live-subtitle'] }}</h3>
+    <div class="ctn-golf-live-footer mt-[31px] min-990:mt-[67px]">
+      <div class="ctn-golf-live-subtitle text-center text-[18px] min-768:text-[24px] min-1400:text-[29px] leading-120p tracking-[0.18px] min-768:tracking-[0.24px] min-1400:tracking-[0.29px] mb-[12px]">
+        <p>{{ section.settings['main-golf-live-subtitle'] }}</p>
       </div>
-      <div class="ctn-golf-live-description text-center">
-        <h3>{{ section.settings['main-golf-description'] }}</h3>
+      <div class="ctn-golf-live-description text-center font-medium min-1440:max-w-[658px] mx-auto">
+        <p>{{ section.settings['main-golf-description'] }}</p>
       </div>
     </div>
   </div>

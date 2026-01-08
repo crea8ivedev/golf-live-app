@@ -520,7 +520,11 @@
         "green_title": "With Golf Live",
         "grey_bg": "shopify://shop_images/Rectangle_12_1.png",
         "grey_phone": "shopify://shop_images/Group_285_21020915-480e-4fc5-91e8-2c343e97ebaf.png",
-        "grey_title": "Without Golf Live"
+        "grey_title": "Without Golf Live",
+        "green_bg_mobile": "shopify://shop_images/Rectangle_12.png",
+        "green_phone_mobile": "shopify://shop_images/mobile_11.png",
+        "grey_bg_mobile": "shopify://shop_images/Rectangle_12_1.png",
+        "grey_phone_mobile": "shopify://shop_images/mobile_22.png"
       }
     },
     "cta_questions_bar_aypLzc": {
@@ -608,6 +612,7 @@
       ],
       "name": "FAQ – Golfer / Coach",
       "settings": {
+        "extra-class": "",
         "heading": "Frequently Asked Questions",
         "golfers_title": "For Golfers",
         "coaches_title": "For Coaches"
