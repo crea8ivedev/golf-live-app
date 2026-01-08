@@ -186,7 +186,7 @@
       ],
       "name": "Growth Challenges",
       "settings": {
-        "extra_class": "",
+        "extra_class": "ctm-range-growth",
         "color_scheme": "scheme-2",
         "bgc_heading": "<p><strong>You're Grinding on the Range All Day -</strong><br/>But Your Business Isn't Growing As It Should</p>",
         "bgc_heading_sub": "",

@@ -12,15 +12,15 @@
 }
 
 .coaching-steps-grid {
-  @apply !grid grid-cols-4 max-1400:grid-cols-3 max-[769px]:grid-cols-2 max-576:grid-cols-1 gap-7.5;
+  @apply !grid grid-cols-4 max-1400:grid-cols-3 max-[769px]:grid-cols-2 max-576:grid-cols-1 gap-7.5 max-576:gap-5.5;
 }
 
 .coaching-step-image-wrap {
-  @apply 576:w-full aspect-[4/5] md:aspect-square overflow-hidden rounded-[2rem] md:mb-6 mb-4 flex-shrink-0;
+  @apply 576:w-full 576:aspect-[4/5] md:aspect-square overflow-hidden rounded-[2rem] md:mb-6 mb-4 flex-shrink-0 max-576:w-2/5 max-576:rounded-[13px];
 }
 
 .coaching-step-image-wrap img {
-  @apply w-full h-full object-cover transition-transform duration-500 hover:scale-105;
+  @apply w-full 576:h-full h-auto object-cover transition-transform duration-500 hover:scale-105;
 }
 
 .coaching-step-content {
@@ -28,7 +28,7 @@
 }
 
 .coaching-step-badge {
-  @apply inline-block px-4 max-990:px-3 py-2 max-990:py-1 rounded-full text-[22px] max-990:text-base font-bold text-white mb-3 w-fit capitalize tracking-wider;
+  @apply inline-block px-4 max-990:px-3 py-2 max-990:py-1 rounded-full text-[22px] max-576:leading-normal max-990:text-base font-bold text-white 576:mb-3 w-fit capitalize tracking-wider;
   background-color: #0b4a1f; /* Your specific branding green */
 }
 
@@ -154,7 +154,3 @@
 .ctm-rev-section .ctm_bgc_heading_main .section-heading-center h6 {
   @apply pt-[14px];
 }
-/* 
-.section-heading-center p strong{
-  @apply font-body font
-} */

@@ -27,7 +27,7 @@
 
     <div class="coaching-steps-grid">
       {%- for block in section.blocks -%}
-        <div class="coaching-step-card max-576:flex" {{ block.shopify_attributes }}>
+        <div class="coaching-step-card max-576:flex max-576:gap-5" {{ block.shopify_attributes }}>
           <div class="coaching-step-image-wrap">
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
@@ -38,8 +38,8 @@
 
           <div class="coaching-step-content">
             <span class="coaching-step-badge">{{ block.settings.step_label }}</span>
-            <h4 class="coaching-step-heading">{{ block.settings.title }}</h4>
-            <p class="coaching-step-desc font-medium tracking-[0.2px] leading-[158%] text">
+            <h4 class="coaching-step-heading max-576:text-[17px]">{{ block.settings.title }}</h4>
+            <p class="coaching-step-desc font-medium tracking-[0.2px] leading-[158%] max-576:text-sm">
               {{ block.settings.description }}
             </p>
           </div>
