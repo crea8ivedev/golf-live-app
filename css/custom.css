@@ -163,7 +163,7 @@
   @apply max-768:bg-[#E2E2DD];
 }
 .ctm-rev-section .section-heading-center p {
-  @apply !pt-[20px] max-w-[825px] mx-auto;
+  @apply !pt-[20px] max-w-[825px] mx-auto font-semibold;
 }
 
 .ctm-rev-section .ctm_challenges_list {
@@ -172,7 +172,13 @@
 .ctm-rev-section .ctm_challenges_list .challenge-item {
   @apply lg:pr-[50px];
 }
+.ctm_challenges_list .challenge-item p {
+  @apply font-medium;
+}
 
 .challenges-side-image {
   @apply w-full h-auto;
+}
+.challenges-side-image img {
+  @apply h-full object-cover;
 }

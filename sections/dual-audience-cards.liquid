@@ -162,6 +162,37 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const equalizeHeadings = () => {
+      const cards = document.querySelectorAll('.dual-card__inner-start');
+      if (!cards.length) return;
+
+      // reset
+      cards.forEach((card) => {
+        card.style.height = 'auto';
+      });
+
+      // calculate max height
+      let maxHeight = 0;
+      cards.forEach((card) => {
+        maxHeight = Math.max(maxHeight, card.offsetHeight);
+      });
+
+      // apply
+      cards.forEach((card) => {
+        card.style.height = `${maxHeight}px`;
+      });
+    };
+
+    // run on load
+    equalizeHeadings();
+
+    // run on resize
+    window.addEventListener('resize', equalizeHeadings);
+  });
+</script>
+
 {% schema %}
 {
   "name": "Dual Audience Cards",

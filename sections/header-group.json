@@ -30,7 +30,7 @@
         "show_cart": false,
         "login_text": "Login",
         "login_url": "/account",
-        "signup_text": "Signup",
+        "signup_text": "Sign up",
         "signup_url": "/account",
         "margin_bottom": 0,
         "padding_top": 12,

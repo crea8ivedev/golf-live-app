@@ -41,7 +41,9 @@
     <div class="w-full min-[1440px]:pr-[130px]">
       <div class="ctm-hero-content">
         {% if section.settings.eyebrow != blank %}
-          <p class="ctm-hero-eyebrow h5 mb-[10px] 576:mb-[15px] max-576:text-center">{{ section.settings.eyebrow }}</p>
+          <p class="ctm-hero-eyebrow  h5 mb-[10px] 576:mb-[15px] max-576:text-center">
+            {{ section.settings.eyebrow | upcase }}
+          </p>
         {% endif %}
 
         {% if section.settings.heading != blank %}

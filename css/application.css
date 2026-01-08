@@ -32,6 +32,7 @@
   /* Custom neccessary Breakpoints */
   --breakpoint-393: 393px;
   --breakpoint-576: 576px;
+  --breakpoint-640: 640px;
   --breakpoint-768: 768px;
   --breakpoint-990: 990px;
   --breakpoint-1024: 1024px;
@@ -583,4 +584,12 @@
 
 .glc-grey .glc-phone img {
   @apply min-990:!w-full;
+}
+
+.glc-card.glc-green {
+  @apply max-640:!pr-[15px];
+}
+
+.glc-card.glc-green > * {
+  @apply max-640:!gap-0 max-640:!items-end;
 }

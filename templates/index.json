@@ -319,7 +319,8 @@
             "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
             "name": "Chris Como",
             "designation": "Golf Digest #2 Ranked Coach",
-            "image": "shopify://shop_images/golfer-d-1.png"
+            "image": "shopify://shop_images/golfer-d-1.png",
+            "mobile_image": "shopify://shop_images/freepik__background__68165_1.png"
           }
         },
         "testimonial_gKUgfX": {
@@ -329,7 +330,8 @@
             "quote": "\"My swing has improved tremendously in just a couple months. You can even review your lessons anytime since they're all recorded.\"",
             "name": "Greg",
             "designation": "Golf Live Golfer",
-            "image": "shopify://shop_images/golfer-d-2.png"
+            "image": "shopify://shop_images/golfer-d-2.png",
+            "mobile_image": "shopify://shop_images/freepik__background__68165_1_1.png"
           }
         },
         "testimonial_TGKdiz": {
@@ -339,7 +341,8 @@
             "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
             "name": "Chris Como",
             "designation": "Golf Digest #2 Ranked Coach",
-            "image": "shopify://shop_images/golfer-d-1.png"
+            "image": "shopify://shop_images/golfer-d-1.png",
+            "mobile_image": "shopify://shop_images/freepik__background__68165_1.png"
           }
         }
       },
@@ -517,14 +520,12 @@
         "subheading": "The only app that combines live coaching, video analysis, content monetization, and business tools in one seamless experience.",
         "green_bg": "shopify://shop_images/Rectangle_12.png",
         "green_phone": "shopify://shop_images/Group_59.png",
+        "green_phone_mobile": "shopify://shop_images/mobile_11.png",
         "green_title": "With Golf Live",
         "grey_bg": "shopify://shop_images/Rectangle_12_1.png",
-        "grey_phone": "shopify://shop_images/Group_285_21020915-480e-4fc5-91e8-2c343e97ebaf.png",
-        "grey_title": "Without Golf Live",
-        "green_bg_mobile": "shopify://shop_images/Rectangle_12.png",
-        "green_phone_mobile": "shopify://shop_images/mobile_11.png",
-        "grey_bg_mobile": "shopify://shop_images/Rectangle_12_1.png",
-        "grey_phone_mobile": "shopify://shop_images/mobile_22.png"
+        "grey_phone": "shopify://shop_images/phone-grey.png",
+        "grey_phone_mobile": "shopify://shop_images/mobile_22.png",
+        "grey_title": "Without Golf Live"
       }
     },
     "cta_questions_bar_aypLzc": {

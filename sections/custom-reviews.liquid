@@ -3,12 +3,10 @@
     background-image: url('{{ section.settings.bg-card-image | image_url: width: 1200 }}');
     background-size: cover;
     width: 304px;
-    height: 424px;
     background-position: top;
     background-repeat: no-repeat;
     background-color: #ffffff;
     border-radius: 24px;
-    padding: 32px 28px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -45,22 +43,22 @@
 <div class="ctm-review-slider-main page-width color-{{ section.settings.color_scheme }} {{ section.settings.extra_class_reviews }} section-{{ section.id }}-padding">
   <div class="page-width ctm-review-slider-inner swiper">
     {% if section.settings['review-main-title'] != blank %}
-      <div class="ctm-review-slider-heading text-center">
+      <div class="ctm-review-slider-heading text-center mb-13">
         <h2>{{ section.settings['review-main-title'] }}</h2>
       </div>
     {% endif %}
-    <div class="ctm-review-slider-wrapper swiper-wrapper">
+    <div class="ctm-review-slider-wrapper swiper-wrapper !h-auto">
       {% for block in section.blocks %}
-        <div class="ctm-reviews-slide-inner swiper-slide">
-          <div class="ctm-reviews-content">
+        <div class="ctm-reviews-slide-inner swiper-slide !h-auto p-8.5 min-h-[424px]">
+          <div class="ctm-reviews-content mt-10">
             {{ block.settings['ctm-add-review'] }}
+            {% if block.settings['enable-rating'] %}
+              <div class="ctm-reviews-rating mt-5">
+                {{- 'rating-star.svg' | inline_asset_content -}}
+              </div>
+            {% endif %}
           </div>
-          {% if block.settings['enable-rating'] %}
-            <div class="ctm-reviews-rating">
-              {{- 'rating-star.svg' | inline_asset_content -}}
-            </div>
-          {% endif %}
-          <div class="ctm-reviews-cust-info">
+          <div class="ctm-reviews-cust-info flex items-center gap-5">
             <div class="ctm-reviews-cust-img">
               <img
                 class="rounded-[50%]"
@@ -81,7 +79,7 @@
     <div class="swiper-pagination"></div>
 
     {% if section.settings['review-btn-link'] != blank %}
-      <div class="ctm-review-cta justify-center flex mt-12">
+      <div class="ctm-review-cta justify-center flex mt-12 max-990:mt-16">
         <a href="{{ section.settings.review-btn-link }}" class="ctm-review-btn ctm-button button-green gap-10">
           {{ section.settings['review-btn-title'] }}
           {{- 'right-arrow-btn.svg' | inline_asset_content -}}
@@ -240,10 +238,10 @@
 <script>
   var swiper = new Swiper('.ctm-review-slider-inner', {
     loop: true,
-    autoplay: {
+    {% comment %} autoplay: {
       delay: 6000,
       disableOnInteraction: false,
-    },
+    }, {% endcomment %}
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -254,10 +252,14 @@
         spaceBetween: 16,
       },
       768: {
-        slidesPerView: 3,
-        spaceBetween: 24,
+        slidesPerView: 2,
+        spaceBetween: 20,
       },
-      1024: {
+      990: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      1660: {
         slidesPerView: 4,
         spaceBetween: 24,
       },
