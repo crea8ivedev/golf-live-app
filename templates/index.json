@@ -13,6 +13,8 @@
       "type": "banner",
       "name": "Banner",
       "settings": {
+        "desktop_bg": "shopify://shop_images/home-banner-bg-desktop.png",
+        "mobile_bg": "shopify://shop_images/home-banner-bg-mobile.png",
         "top_text": "LIVE GOLF COACHING. ANYTIME, ANYWHERE.",
         "heading": "<p>Built for Golfers Who <br/>Want Results and Coaches <br/>Who Deliver Them</p>",
         "description": "<p>Golf Live makes it easy to teach or train from anywhere with live video, instant replay, and performance tracking all in one app.</p>",
@@ -129,6 +131,7 @@
         },
         "slide_JiMEGz": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/BigBuckBunny.mp4",
             "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
@@ -138,6 +141,7 @@
         },
         "slide_Ga4nfX": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/BigBuckBunny.mp4",
             "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
@@ -373,7 +377,7 @@
           "settings": {
             "image": "shopify://shop_images/golf-feature-card-2.png",
             "title": "Video Analysis Tools",
-            "description": "<p>Break Down Every Swing Frame-by-Frame</p>",
+            "description": "<p>Break Down Every Swing <br/>Frame-by-Frame</p>",
             "coach_text": "For Coaches",
             "coach_description": "Use drawing tools, slow motion, and side-by-side comparison to deliver precise feedback your students can actually understand.",
             "golfer_text": "For Golfers",
@@ -463,7 +467,7 @@
           "type": "without_item",
           "settings": {
             "icon": "shopify://shop_images/Group_60_767c5dfa-2e73-456a-a0f9-88d7a3d1cb25.png",
-            "text": "You lose lesson momentum between sessions"
+            "text": "You lose lesson momentum between sessions with no follow-up system"
           }
         },
         "without_item_eGLRki": {

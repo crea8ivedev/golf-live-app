@@ -91,12 +91,12 @@
             "enable_professional": true
           }
         },
-        "add_pga_cJciwM": {
+        "add_pga_JNH9Eq": {
           "type": "add_pga",
           "settings": {
-            "trusted-add-image": "shopify://shop_images/934d987215affe22949ba6c59b9ef2e529039a4c.jpg",
-            "pga-name": "Colin McCarthy",
-            "pga-content": "<p>PGA Golf Coach</p>",
+            "trusted-add-image": "shopify://shop_images/12d233baaa803b8455bc3f6f8a654451dda35cba.png",
+            "pga-name": "Mark Blackburn",
+            "pga-content": "<p>Top 50 Coach in America</p>",
             "enable_professional": true
           }
         },
@@ -118,22 +118,22 @@
             "enable_professional": true
           }
         },
-        "add_pga_JNH9Eq": {
+        "add_pga_cJciwM": {
           "type": "add_pga",
           "settings": {
-            "trusted-add-image": "shopify://shop_images/12d233baaa803b8455bc3f6f8a654451dda35cba.png",
-            "pga-name": "Mark Blackburn",
-            "pga-content": "<p>Top 50 Coach in America</p>",
+            "trusted-add-image": "shopify://shop_images/934d987215affe22949ba6c59b9ef2e529039a4c.jpg",
+            "pga-name": "Colin McCarthy",
+            "pga-content": "<p>PGA Golf Coach</p>",
             "enable_professional": true
           }
         }
       },
       "block_order": [
         "add_pga_dchdAR",
-        "add_pga_cJciwM",
+        "add_pga_JNH9Eq",
         "add_pga_qHPin3",
         "add_pga_7J3e8K",
-        "add_pga_JNH9Eq"
+        "add_pga_cJciwM"
       ],
       "name": "Trusted PGA section",
       "settings": {
@@ -189,6 +189,7 @@
         "extra_class": "",
         "color_scheme": "scheme-2",
         "bgc_heading": "<p><strong>You're Grinding on the Range All Day -</strong><br/>But Your Business Isn't Growing As It Should</p>",
+        "bgc_heading_sub": "",
         "side_image": "shopify://shop_images/b24bab3016e1429bc4cd3f79eee000b5180e815f.png",
         "pga_image_position": "right",
         "show_announcement": false,
@@ -243,7 +244,8 @@
       "settings": {
         "extra_class": "ctm-rev-section",
         "color_scheme": "scheme-1",
-        "bgc_heading": "<h2>One Platform. <br/>Your Entire Coaching Business.<br/></h2><h6>Golf Live gives you everything you need to coach better, reach more students, and grow your revenue, all from one seamless app.<br/></h6>",
+        "bgc_heading": "<h2>One Platform. <br/>Your Entire Coaching Business.</h2>",
+        "bgc_heading_sub": "<p>Golf Live gives you everything you need to coach better, reach more students, and grow your revenue, all from one seamless app.<br/></p>",
         "side_image": "shopify://shop_images/0efc03d29e05058fb715da8becb414539dc65a60.png",
         "pga_image_position": "left",
         "show_announcement": true,
@@ -350,6 +352,7 @@
         "show_h2": true,
         "heading-bottom-padding": 36,
         "image": "shopify://shop_images/Group_157.png",
+        "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 0,
@@ -391,6 +394,7 @@
         "show_h2": false,
         "heading-bottom-padding": 36,
         "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
+        "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "text_first",
         "padding_top": 36,
         "padding_bottom": 36,
@@ -432,6 +436,7 @@
         "show_h2": false,
         "heading-bottom-padding": 36,
         "image": "shopify://shop_images/Group_157_1.png",
+        "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 36,
@@ -473,6 +478,7 @@
         "show_h2": false,
         "heading-bottom-padding": 36,
         "image": "shopify://shop_images/Mask_group_1_a379e477-c672-42cd-bcdc-b4c277a72578.png",
+        "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "text_first",
         "padding_top": 36,
         "padding_bottom": 36,
@@ -514,6 +520,7 @@
         "show_h2": false,
         "heading-bottom-padding": 36,
         "image": "shopify://shop_images/Group_157_3.png",
+        "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 36,
@@ -555,6 +562,7 @@
         "show_h2": false,
         "heading-bottom-padding": 36,
         "image": "shopify://shop_images/Mask_group_2.png",
+        "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "text_first",
         "padding_top": 36,
         "padding_bottom": 36,
@@ -752,9 +760,10 @@
         "plan_AKaLYN": {
           "type": "plan",
           "settings": {
-            "card_header_color": "#064e3b",
+            "extra_class_card": "plan-card-1",
+            "card_header_color": "#00511c",
             "header_image": "shopify://shop_images/Rectangle_48_1.png",
-            "pattern_opacity": 65,
+            "pattern_opacity": 100,
             "plan_name": "Starter",
             "pricing_price": "<p><strong>$29</strong>/mo</p>",
             "sub_heading": "For solo coaches",
@@ -766,9 +775,10 @@
         "plan_CfaHeK": {
           "type": "plan",
           "settings": {
-            "card_header_color": "#064e3b",
+            "extra_class_card": "plan-card-2",
+            "card_header_color": "#004719",
             "header_image": "shopify://shop_images/Rectangle_48.png",
-            "pattern_opacity": 65,
+            "pattern_opacity": 100,
             "plan_name": "Complete",
             "pricing_price": "<p><strong>$39</strong>/mo</p>",
             "sub_heading": "For growing coaches",
@@ -780,9 +790,10 @@
         "plan_4EAYyF": {
           "type": "plan",
           "settings": {
-            "card_header_color": "#1e6955",
-            "header_image": "shopify://shop_images/Rectangle_48.png",
-            "pattern_opacity": 65,
+            "extra_class_card": "plan-card-3",
+            "card_header_color": "#177839",
+            "header_image": "shopify://shop_images/Rectangle_26.png",
+            "pattern_opacity": 100,
             "plan_name": "Elite",
             "pricing_price": "<p><strong>$49</strong>/mo</p>",
             "sub_heading": "For multi coach teams",
@@ -800,14 +811,14 @@
       "name": "Coaching Pricing Flex",
       "settings": {
         "extra-class": "",
-        "heading": "<p><strong>Choose the Plan That Fits Your <br/>Coaching Business</strong></p>",
-        "bg_color": "#f3f4f6",
-        "padding_top": 47,
-        "padding_bottom": 52,
+        "heading": "<p>Choose the Plan That Fits Your Coaching Business</p>",
+        "bg_color": "#efefef",
+        "padding_top": 88,
+        "padding_bottom": 100,
         "padding_top_tablet": 50,
-        "padding_bottom_tablet": 50,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 52
+        "padding_bottom_tablet": 65,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 65
       }
     },
     "image_with_text_dLqjQV": {
@@ -817,7 +828,7 @@
           "type": "heading",
           "settings": {
             "heading": "Built by Coaches Who Understand Your Struggle",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text_384zQi": {
@@ -843,8 +854,8 @@
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "extra_class": "ctm-img-with-text",
-        "image": "shopify://shop_images/Rectangle_37.png",
+        "extra_class": "ctm-img-with-text-coaches",
+        "image": "shopify://shop_images/image-text-coaches-img.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -855,12 +866,12 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
         "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_tablet": 50,
-        "padding_bottom_tablet": 50,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 52
+        "padding_top": 100,
+        "padding_bottom": 97,
+        "padding_top_tablet": 0,
+        "padding_bottom_tablet": 67,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 67
       }
     },
     "free_trial_rA3Ejf": {
@@ -909,6 +920,7 @@
         "bg_color": "#000000",
         "btn_color": "#064e3b",
         "image_round": "shopify://shop_images/Ellipse_13.png",
+        "image_round_mobile": "shopify://shop_images/Mask_group_50842e9a-384a-4090-8c48-fab3e7d4f94b.png",
         "image": "shopify://shop_images/Mask_group_1.png",
         "heading": "Start Coaching Smarter, Not Harder",
         "subtext": "Reach more students, monetize your expertise, and streamline your coaching business, all from one platform.",
@@ -916,12 +928,12 @@
         "btn_link": "#",
         "btn_text_2": "Schedule a Demo",
         "btn_link_2": "#",
-        "padding_top": 70,
-        "padding_bottom": 52,
-        "padding_top_tablet": 50,
-        "padding_bottom_tablet": 50,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 52
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_tablet": 0,
+        "padding_bottom_tablet": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
       }
     },
     "landing_faq_xBdqfQ": {
@@ -1012,12 +1024,12 @@
         "btn_1_link": "#",
         "btn_2_text": "Schedule a Demo",
         "btn_2_link": "#",
-        "padding_top": 40,
-        "padding_bottom": 52,
+        "padding_top": 72,
+        "padding_bottom": 84,
         "padding_top_tablet": 39,
-        "padding_bottom_tablet": 50,
+        "padding_bottom_tablet": 39,
         "padding_top_mobile": 39,
-        "padding_bottom_mobile": 52
+        "padding_bottom_mobile": 39
       }
     }
   },

@@ -11,67 +11,87 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding max-w-[1264px] mx-auto border-b border-[#DBDBDB] {{ section.settings.extra-class-zigzag }}">
-  {%- if section.settings.show_h2 and section.settings.main_h2 != blank -%}
-    <h2
-      class="h2 text-center min-[1440px]:!px-[200px] text-gray-900"
-      style="margin-bottom: {{ section.settings.heading-bottom-padding }}px;"
-    >
-      {{ section.settings.main_h2 }}
-    </h2>
-  {%- endif -%}
+<div class="section-{{ section.id }}-padding {{ section.settings.extra-class-zigzag }}">
+  <div class="container-136 max-990:border-b max-990:border-[#DBDBDB]">
+    <div class="ctm-zigzag-main">
+      {%- if section.settings.show_h2 and section.settings.main_h2 != blank -%}
+        <h2
+          class="h2 text-center text-gray-900 pb-[50px] max-w-[804px] mx-auto"
+          style="margin-bottom: {{ section.settings.heading-bottom-padding }}px;"
+        >
+          {{ section.settings.main_h2 }}
+        </h2>
+      {%- endif -%}
 
-  <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 {% if section.settings.layout == 'text_first' %}lg:flex-row-reverse{% endif %}">
-    <div class="w-full lg:w-1/2">
-      <div class="overflow-hidden">
-        {%- if section.settings.image != blank -%}
-          {{ section.settings.image | image_url: width: 1800 | image_tag: class: 'w-full h-full', loading: 'lazy' }}
-        {%- else -%}
-          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'w-full h-full bg-gray-200' }}
-        {%- endif -%}
-      </div>
-    </div>
-
-    <div class="w-full lg:w-1/2 flex flex-col gap-6">
-      {%- for block in section.blocks -%}
-        {% case block.type %}
-          {%- when 'heading' -%}
-            <h3 class="font-body font-bold" {{ block.shopify_attributes }}>
-              {{ block.settings.heading }}
-            </h3>
-
-          {%- when 'paragraph' -%}
-            <div class="space-y-4" {{ block.shopify_attributes }}>
-              {% assign para_lines = block.settings.text | newline_to_br | split: '<br />' %}
-              {% for line in para_lines %}
-                <p class="text-lg text-gray-600 leading-relaxed">{{ line | strip }}</p>
-              {% endfor %}
+      <div class="flex flex-col-reverse 990:flex-row items-center min-990:max-[1199px]:items-end gap-10 990:gap-20 990:border-b border-[#DBDBDB] {% if section.settings.layout == 'text_first' %}right-img 990:flex-row-reverse{% endif %}">
+        <div class="w-full 990:w-1/2">
+          <div class="zigzag-image-main relative mt-[20%]">
+            <div class="zigzag_image absolute bottom-0 mx-auto left-1/2 -translate-x-1/2 w-full max-w-[65%]">
+              {%- if section.settings.image != blank -%}
+                {{
+                  section.settings.image
+                  | image_url: width: 1800
+                  | image_tag: class: 'w-full h-full', loading: 'lazy'
+                }}
+              {%- endif -%}
             </div>
+            <div class="round_img">
+              {%- if section.settings.round_image != blank -%}
+                {{
+                  section.settings.round_image
+                  | image_url: width: 1800
+                  | image_tag: class: 'w-full h-full', loading: 'lazy'
+                }}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
 
-          {%- when 'list' -%}
-            <ul class="flex flex-col gap-4 mt-2" {{ block.shopify_attributes }}>
-              {% assign list_items = block.settings.list_content | newline_to_br | split: '<br />' %}
-              {% for item in list_items %}
-                {% if item != blank %}
-                  <li class="flex items-center gap-3">
-                    <span class="mt-1 flex-shrink-0 bg-green1 rounded-full p-1">
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        stroke-width="4"
-                      >
-                        <path d="M5 13l4 4L19 7"></path>
-                      </svg>
-                    </span>
-                    <span class="font-body">{{ item | strip }}</span>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-        {%- endcase -%}
-      {%- endfor -%}
+        <div class="w-full 990:w-1/2 990:py-5">
+          <div class="990:max-w-[535px] max-w-full flex flex-col gap-[21px]">
+            {%- for block in section.blocks -%}
+              {% case block.type %}
+                {%- when 'heading' -%}
+                  <h3 class="font-body font-bold 1582:text-[34px]" {{ block.shopify_attributes }}>
+                    {{ block.settings.heading }}
+                  </h3>
+
+                {%- when 'paragraph' -%}
+                  <div class="space-y-5" {{ block.shopify_attributes }}>
+                    {% assign para_lines = block.settings.text | newline_to_br | split: '<br />' %}
+                    {% for line in para_lines %}
+                      <p class="leading-normal">{{ line | strip }}</p>
+                    {% endfor %}
+                  </div>
+
+                {%- when 'list' -%}
+                  <ul class="flex flex-col gap-4" {{ block.shopify_attributes }}>
+                    {% assign list_items = block.settings.list_content | newline_to_br | split: '<br />' %}
+                    {% for item in list_items %}
+                      {% if item != blank %}
+                        <li class="flex items-center gap-3">
+                          <span class="mt-1 flex-shrink-0">
+                            <svg
+                              width="26"
+                              height="26"
+                              viewBox="0 0 26 26"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <circle cx="13" cy="13" r="13" fill="#187F00" fill-opacity="0.941176"/>
+                              <path d="M6 12.5L11 17.5L20.5 8" stroke="white" stroke-width="3"/>
+                            </svg>
+                          </span>
+                          <span class="font-body font-medium">{{ item | strip }}</span>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -111,6 +131,11 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "round_image",
+      "label": "Round Image"
     },
     {
       "type": "select",
@@ -207,7 +232,7 @@
   ],
   "presets": [
     {
-      "name": "Custom Zigzag Row",
+      "name": "Zigzag Section",
       "blocks": [{ "type": "heading" }, { "type": "paragraph" }, { "type": "list" }]
     }
   ]

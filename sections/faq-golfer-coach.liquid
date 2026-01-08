@@ -67,6 +67,7 @@
     #faq-{{ section.id }} .faq-heading {
       text-align: center;
       margin-bottom: 40px;
+      padding-inline: 65px;
     }
     #faq-{{ section.id }} .faq-column-title {
     margin-bottom: 14px;
@@ -75,7 +76,7 @@
   }
 </style>
 
-<div class="faq-section page-width" id="faq-{{ section.id }}">
+<div class="faq-section page-width {{ section.settings.extra-class }}" id="faq-{{ section.id }}">
   {% if section.settings.heading != blank %}
     <h2 class="faq-heading">
       {{ section.settings.heading }}
@@ -109,7 +110,6 @@
       {% endfor %}
     </div>
 
-    <!-- COACHES -->
     <div class="faq-column" data-column="coaches">
       <h3 class="faq-column-title">
         {{ section.settings.coaches_title }}
@@ -140,7 +140,9 @@
     const section = document.getElementById('faq-{{ section.id }}');
     if (!section) return;
 
-    section.querySelectorAll('.faq-column').forEach((column) => {
+    const columns = section.querySelectorAll('.faq-column');
+
+    columns.forEach((column, columnIndex) => {
       const items = column.querySelectorAll('.faq-item');
 
       items.forEach((item) => {
@@ -164,6 +166,14 @@
         });
       });
 
+      /* ✅ Open only FIRST column's first accordion */
+      if (columnIndex === 0 && items.length) {
+        const firstItem = items[0];
+        const firstWrapper = firstItem.querySelector('.faq-answer-wrapper');
+        firstItem.classList.add('active');
+        firstWrapper.style.height = firstWrapper.scrollHeight + 'px';
+      }
+
       // Recalculate heights on resize
       window.addEventListener('resize', () => {
         items.forEach((item) => {
@@ -181,6 +191,11 @@
 {
   "name": "FAQ – Golfers & Coaches",
   "settings": [
+    {
+      "type": "text",
+      "id": "extra-class",
+      "label": "Extra Class"
+    },
     {
       "type": "text",
       "id": "heading",

@@ -37,13 +37,13 @@
     <div class="golf-features-slider-wrapper relative mt-[35px] min-990:mt-[66px]">
       {% if desktop_slider or mobile_slider %}
         <button
-          class="golf-features-arrow-common golf-features-prev swiper-button-prev !left-[-24px] min-1582:!left-[-70px]"
+          class="golf-features-arrow-common golf-features-prev swiper-button-prev !left-[-24px] min-1440:!left-[-70px]"
           type="button"
         >
           {% render 'slider-arrow-golf-pre' %}
         </button>
         <button
-          class="golf-features-arrow-common golf-features-next swiper-button-next !right-[-24px] min-1582:!right-[-70px]"
+          class="golf-features-arrow-common golf-features-next swiper-button-next !right-[-24px] min-1440:!right-[-70px]"
           type="button"
         >
           {% render 'slider-arrow-golf-next' %}
@@ -81,7 +81,7 @@
                     {% endif %}
 
                     {% if block.settings.description != blank %}
-                      <div class="font-semibold text-[17px] leading-[26px] tracking-[0.17px] min-990:text-[19px] min-990:leading-[29px] min-990:tracking-[0.19px] mt-[6px] min-990:mt-[9px]">
+                      <div class="golf-feature-content-subtitle font-semibold text-[17px] leading-[26px] tracking-[0.17px] min-990:text-[19px] min-990:leading-[29px] min-990:tracking-[0.19px] mt-[6px] min-990:mt-[9px]">
                         {{ block.settings.description }}
                       </div>
                     {% endif %}
@@ -92,7 +92,7 @@
                       <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[5px]">
                         {{- block.settings.coach_text -}}
                       </span>
-                      <p class="min-990:text-black2">{{ block.settings.coach_description }}</p>
+                      <p class="min-990:text-black2 font-medium">{{ block.settings.coach_description }}</p>
                     {% endif %}
                   </div>
 
@@ -101,7 +101,7 @@
                       <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[8px]">
                         {{- block.settings.golfer_text -}}
                       </span>
-                      <p class="min-990:text-black2">{{ block.settings.golfer_description }}</p>
+                      <p class="min-990:text-black2 font-medium">{{ block.settings.golfer_description }}</p>
                     {% endif %}
                   </div>
                 </div>

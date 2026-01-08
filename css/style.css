@@ -64,3 +64,7 @@
 .cta-questions-bar__btn {
   @apply no-underline inline-flex items-center gap-5 whitespace-nowrap px-6 py-3 rounded-[999px];
 }
+
+.ctm-zigzag-main .right-img .zigzag-image-main .zigzag_image {
+  @apply max-w-[80%];
+}

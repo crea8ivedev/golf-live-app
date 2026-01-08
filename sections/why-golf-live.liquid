@@ -23,117 +23,177 @@
   }
 {% endstyle %}
 <div class="ctn-golf-live-info-main {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
-  <div class="ctn-golf-live-info-inner">
+  <div class="ctn-golf-live-info-inner px-[28px] max-w-[1148px] mx-auto">
     <div class="ctn-golf-live-title text-center">
-      <h2>{{ section.settings['main-golf-live-title'] }}</h2>
+      <h2 class="mb-[29px] min-990:mb-[56px]">{{ section.settings['main-golf-live-title'] }}</h2>
     </div>
     <div class="ctn-golf-live-body">
       <div class="ctn-golf-comparison-section">
-        <div class="ctn-golf-comparison-wrapper flex items-center justify-center">
+        <div class="ctn-golf-comparison-wrapper">
           <div class="ctn-golf-left-card ctn-golf-card-title">
-            <div class="ctm-left-heading-icon flex justify-center items-center">
-              {% if section.settings['golf-left-icon'] != blank %}
-                <div class="ctm-left-icon">
-                  <img
-                    class="rounded-[50%]"
-                    src="{{ section.settings.golf-left-icon | image_url: width: 51, height: 51 }}"
-                    alt="{{ section.settings.golf-left-icon.alt | escape }}"
-                    width="auto"
-                    height="auto"
-                    loading="lazy"
-                  >
-                </div>
-              {% endif %}
-              {% if section.settings.left_title != blank %}
-                <div class="ctm-left-heading">
-                  <h3>{{ section.settings.left_title }}</h3>
-                </div>
-              {% endif %}
+            <div class="flex gap-[12px] min-990:gap-[39px]">
+              <div class="ctm-left-heading-icon flex justify-center items-center flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
+                {% if section.settings['golf-left-icon'] != blank %}
+                  <div class="ctm-left-icon">
+                    <img
+                      class="rounded-[50%]"
+                      src="{{ section.settings.golf-left-icon | image_url: width: 51, height: 51 }}"
+                      alt="{{ section.settings.golf-left-icon.alt | escape }}"
+                      width="auto"
+                      height="auto"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% if section.settings.left_title != blank %}
+                  <div class="ctm-left-heading">
+                    <h3>{{ section.settings.left_title }}</h3>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="ctm-center-heading-icon flex justify-center items-center flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
+                {% if section.settings['golf-center-icon'] != blank %}
+                  <div class="ctm-center-icon">
+                    <img
+                      class="rounded-[50%]"
+                      src="{{ section.settings.golf-center-icon | image_url: width: 51, height: 51 }}"
+                      alt="{{ section.settings.golf-center-icon.alt | escape }}"
+                      width="auto"
+                      height="auto"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% if section.settings.center_title != blank %}
+                  <div class="ctm-center-heading">
+                    <h3>{{ section.settings.center_title }}</h3>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="ctm-right-heading-icon flex justify-center items-center flex-[0_0_calc(33.33%_-_4px)] min-990:flex-[0_0_calc(33.33%_-_13px)]">
+                {% if section.settings['golf-right-icon'] != blank %}
+                  <div class="ctm-right-icon">
+                    <img
+                      class="rounded-[50%]"
+                      src="{{ section.settings.golf-right-icon | image_url: width: 51, height: 51 }}"
+                      alt="{{ section.settings.golf-right-icon.alt | escape }}"
+                      width="auto"
+                      height="auto"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% if section.settings.right_title != blank %}
+                  <div class="ctm-center-heading">
+                    <h3>{{ section.settings.right_title }}</h3>
+                  </div>
+                {% endif %}
+              </div>
             </div>
 
             <ul class="ctn-golf-left-list">
               {% for block in section.blocks %}
                 <li class="ctn-golf-left-item">
-                  {% if block.settings.left_checked %}
-                    <span class="ctn-golf-left-icon">
-                      {{ 'golf-check-icon.svg' | inline_asset_content }}
-                    </span>
-                  {% endif %}
-                  <span>{{ block.settings.left_text }}</span>
+                  <div>
+                    {% if block.settings.left_checked %}
+                      <span class="ctn-golf-left-icon">
+                        {{ 'golf-check-icon.svg' | inline_asset_content }}
+                      </span>
+                    {% endif %}
+                    <span>{{ block.settings.left_text }}</span>
+                  </div>
+                  <div class="ctn-golf-center-item flex">
+                    {% if block.settings.center_checked %}
+                      <span class="ctn-golf-center-icon">
+                        {{ 'golf-check-icon.svg' | inline_asset_content }}
+                      </span>
+                    {% endif %}
+                    <span>{{ block.settings.center_text }}</span>
+                  </div>
+                  <div class="ctn-golf-right-item">
+                    {% if block.settings.right_checked %}
+                      <span class="ctn-golf-right-icon">
+                        {{ 'golf-check-icon.svg' | inline_asset_content }}
+                      </span>
+                    {% endif %}
+                    <span>{{ block.settings.right_text }}</span>
+                  </div>
                 </li>
               {% endfor %}
             </ul>
           </div>
 
-          <div class="ctn-golf-center-card ctn-golf-card-title">
-            <div class="ctm-center-heading-icon flex justify-center items-center">
-              {% if section.settings['golf-center-icon'] != blank %}
-                <div class="ctm-center-icon">
-                  <img
-                    class="rounded-[50%]"
-                    src="{{ section.settings.golf-center-icon | image_url: width: 51, height: 51 }}"
-                    alt="{{ section.settings.golf-center-icon.alt | escape }}"
-                    width="auto"
-                    height="auto"
-                    loading="lazy"
-                  >
-                </div>
-              {% endif %}
-              {% if section.settings.center_title != blank %}
-                <div class="ctm-center-heading">
-                  <h3>{{ section.settings.center_title }}</h3>
-                </div>
-              {% endif %}
+          {% comment %}
+            <div class="ctn-golf-center-card ctn-golf-card-title">
+              <div class="ctm-center-heading-icon flex justify-center items-center">
+                {% if section.settings['golf-center-icon'] != blank %}
+                  <div class="ctm-center-icon">
+                    <img
+                      class="rounded-[50%]"
+                      src="{{ section.settings.golf-center-icon | image_url: width: 51, height: 51 }}"
+                      alt="{{ section.settings.golf-center-icon.alt | escape }}"
+                      width="auto"
+                      height="auto"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% if section.settings.center_title != blank %}
+                  <div class="ctm-center-heading">
+                    <h3>{{ section.settings.center_title }}</h3>
+                  </div>
+                {% endif %}
+              </div>
+
+              <ul class="ctn-golf-center-list">
+                {% for block in section.blocks %}
+                  <li class="ctn-golf-center-item flex">
+                    {% if block.settings.center_checked %}
+                      <span class="ctn-golf-center-icon">
+                        {{ 'golf-check-icon.svg' | inline_asset_content }}
+                      </span>
+                    {% endif %}
+                    <span>{{ block.settings.center_text }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
             </div>
 
-            <ul class="ctn-golf-center-list">
-              {% for block in section.blocks %}
-                <li class="ctn-golf-center-item flex">
-                  {% if block.settings.center_checked %}
-                    <span class="ctn-golf-center-icon">
-                      {{ 'golf-check-icon.svg' | inline_asset_content }}
-                    </span>
-                  {% endif %}
-                  <span>{{ block.settings.center_text }}</span>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+            <div class="ctn-golf-right-card ctn-golf-card-title">
+              <div class="ctm-right-heading-icon flex justify-center items-center">
+                {% if section.settings['golf-right-icon'] != blank %}
+                  <div class="ctm-right-icon">
+                    <img
+                      class="rounded-[50%]"
+                      src="{{ section.settings.golf-right-icon | image_url: width: 51, height: 51 }}"
+                      alt="{{ section.settings.golf-right-icon.alt | escape }}"
+                      width="auto"
+                      height="auto"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% if section.settings.right_title != blank %}
+                  <div class="ctm-center-heading">
+                    <h3>{{ section.settings.right_title }}</h3>
+                  </div>
+                {% endif %}
+              </div>
 
-          <div class="ctn-golf-right-card ctn-golf-card-title">
-            <div class="ctm-right-heading-icon flex justify-center items-center">
-              {% if section.settings['golf-right-icon'] != blank %}
-                <div class="ctm-right-icon">
-                  <img
-                    class="rounded-[50%]"
-                    src="{{ section.settings.golf-right-icon | image_url: width: 51, height: 51 }}"
-                    alt="{{ section.settings.golf-right-icon.alt | escape }}"
-                    width="auto"
-                    height="auto"
-                    loading="lazy"
-                  >
-                </div>
-              {% endif %}
-              {% if section.settings.right_title != blank %}
-                <div class="ctm-center-heading">
-                  <h3>{{ section.settings.right_title }}</h3>
-                </div>
-              {% endif %}
+              <ul class="ctn-golf-right-list">
+                {% for block in section.blocks %}
+                  <li class="ctn-golf-right-item">
+                    {% if block.settings.right_checked %}
+                      <span class="ctn-golf-right-icon">
+                        {{ 'golf-check-icon.svg' | inline_asset_content }}
+                      </span>
+                    {% endif %}
+                    <span>{{ block.settings.right_text }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
             </div>
-
-            <ul class="ctn-golf-right-list">
-              {% for block in section.blocks %}
-                <li class="ctn-golf-right-item">
-                  {% if block.settings.right_checked %}
-                    <span class="ctn-golf-right-icon">
-                      {{ 'golf-check-icon.svg' | inline_asset_content }}
-                    </span>
-                  {% endif %}
-                  <span>{{ block.settings.right_text }}</span>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+          {% endcomment %}
         </div>
       </div>
     </div>

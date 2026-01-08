@@ -3,10 +3,8 @@
     background-color: {{ section.settings.bg_color }};
   }
   .pricing-card-header-{{ section.id }} {
-    border-radius: 18px 18px 0 0;
     overflow: hidden;
     position: relative;
-    height: 11rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,20 +17,21 @@
     background-repeat: no-repeat;
     mix-blend-mode: overlay;
     pointer-events: none;
+    border-radius: 18px;
   }
-  .btn-gradient-{{ section.id }} {
+  /* .btn-gradient-{{ section.id }} {
     background: linear-gradient(77.87deg, #00511C -24.41%, #187F10 103.64%);
     transition: transform 0.2s ease, opacity 0.3s ease;
   }
   .btn-gradient-{{ section.id }}:hover {
     opacity: 0.9;
     transform: scale(1.02);
-  }
+  } */
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 989px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top_tablet }}px;
       padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
@@ -46,79 +45,84 @@
   }
 {% endstyle %}
 
-<div class="pricing-plan-main-box page-width pricing-section-{{ section.id }} section-{{ section.id }}-padding py-12 px-6 {{ section.settings.extra-class }}">
+<div class="pricing-plan-main-box page-width min-1582:!px-[183px] pricing-section-{{ section.id }} section-{{ section.id }}-padding {{ section.settings.extra-class }}">
   <div class="pricing-plan-inner-box max-w-full mx-auto">
     {% if section.settings.heading != blank %}
-      <h2 class="pricing-plan-heading text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 leading-tight">
+      <h2 class="pricing-plan-heading text-center mb-[20px] min-990:mb-[65px] max-w-[300px] min-990:max-w-[450px] min-1440:max-w-[600px] min-1582:max-w-[670px] mx-auto">
         {{ section.settings.heading }}
       </h2>
     {% endif %}
 
-    <div class="pricing-plan-box-wrapper flex flex-wrap justify-center gap-8">
+    <div class="pricing-plan-box-wrapper grid-cols-1 min-768:grid-cols-2 min-1280:grid-cols-3 gap-x-[39px] gap-y-[20px]">
       {% for block in section.blocks %}
         <div
-          class="pricing-plan-box-slides flex-1 min-w-[300px] max-w-[300px] bg-white rounded-[24px] shadow-sm flex flex-col border border-gray-100"
+          class="pricing-plan-box-slides {{ block.settings.extra_class_card }} px-[18px] pt-[17px] pb-[24px] min-990:pb-[35px] bg-white rounded-[22px] flex flex-col justify-between gap-y-[24px] min-990:gap-y-[36px]"
           {{ block.shopify_attributes }}
         >
-          <div
-            class="pricing-plan-inner-slide pricing-card-header-{{ section.id }}"
-            style="background-color: {{ block.settings.card_header_color }};"
-          >
-            {% if block.settings.header_image != blank %}
-              <div
-                class="pricing-plan-header-overlay header-pattern-overlay-{{ section.id }}"
-                style="background-image: url('{{ block.settings.header_image |  image_url  }}'); opacity: {{ block.settings.pattern_opacity | divided_by: 100.0 }};"
-              ></div>
-            {% endif %}
+          <div>
+            <div
+              class="pricing-plan-inner-slide pricing-card-header-{{ section.id }} rounded-[18px]"
+              style="background-color: {{ block.settings.card_header_color }};"
+            >
+              {% if block.settings.header_image != blank %}
+                <div
+                  class="pricing-plan-header-overlay header-pattern-overlay-{{ section.id }}"
+                  style="background-image: url('{{ block.settings.header_image |  image_url  }}'); opacity: {{ block.settings.pattern_opacity | divided_by: 100.0 }};"
+                ></div>
+              {% endif %}
 
-            <div class="pricing-plan-header-content relative p-6 text-white z-10">
-              <h3 class="header-pricing-plan-name text-2xl font-semibold">{{ block.settings.plan_name }}</h3>
-              <div class="header-pricing-plan-price flex items-baseline mt-1">
-                {{ block.settings.pricing_price }}
+              <div class="pricing-plan-header-content text-white px-[24px] min-990:px-[30px] py-[18px] min-990:py-[24px] rounded-[18px]">
+                <h3 class="header-pricing-plan-name text-[24px] leading-[29px] tracking-[0.24px] min-990:text-[26px] min-990:leading-[31px] min-990:tracking-[0.26px] mb-[15px] min-990:mb-[33px]">
+                  {{ block.settings.plan_name }}
+                </h3>
+                <div class="header-pricing-plan-price text-[22px] leading-[42px] tracking-[0.22px] min-990:text-[24px] min-990:leading-[45px] min-990:tracking-[0.24px] mb-[4px] min-990:mb-[1px]">
+                  {{ block.settings.pricing_price }}
+                </div>
+                <p class="header-pricing-plan-subheading font-medium text-[16px] leading-[18px] tracking-[0.16px] min-990:text-[18px] min-990:leading-[21px] min-990:tracking-[0.18px]">
+                  {{ block.settings.sub_heading }}
+                </p>
               </div>
-              <p class="header-pricing-plan-subheading text-sm mt-1 font-light opacity-90">
-                {{ block.settings.sub_heading }}
-              </p>
+            </div>
+            <div class="feature-pricing-plan-main">
+              <ul class="feature-pricing-plan-wrapper mt-[20px] min-990:mt-[25px] flex flex-col gap-y-[6px]">
+                {%- assign features = block.settings.features_list | newline_to_br | split: '<br />' -%}
+                {% for feature in features %}
+                  {% if feature != blank %}
+                    <li class="feature-pricing-plan-slide flex items-center gap-[14px]">
+                      <span class="feature-pricing-plan-inner flex-shrink-0 w-[14px]">
+                        {% if block.settings.feature_icon != blank %}
+                          <img
+                            src="{{ block.settings.feature_icon | image_url }}"
+                            class="feature-pricing-plan-img w-full h-full object-contain"
+                            alt="icon"
+                            height=""
+                            width=""
+                          >
+                        {% else %}
+                          <svg
+                            class="feature-pricing-plan-svg w-full h-full text-[#05BB44]"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        {% endif %}
+                      </span>
+                      <span class="feature-pricing-plan-text font-medium text-[15px] leading-[25px] tracking-[0.15px] min-990:text-[16px] min-990:leading-[27px] min-990:tracking-[0.16px]">
+                        {{- feature | strip -}}
+                      </span>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
             </div>
           </div>
-
-          <div class="feature-pricing-plan-main p-8 flex-grow">
-            <ul class="feature-pricing-plan-wrapper space-y-4">
-              {%- assign features = block.settings.features_list | newline_to_br | split: '<br />' -%}
-              {% for feature in features %}
-                {% if feature != blank %}
-                  <li class="feature-pricing-plan-slide flex items-center gap-3">
-                    <span class="feature-pricing-plan-inner flex-shrink-0 w-5 h-5">
-                      {% if block.settings.feature_icon != blank %}
-                        <img
-                          src="{{ block.settings.feature_icon | image_url }}"
-                          class="feature-pricing-plan-img w-full h-full object-contain"
-                          alt="icon"
-                          height=""
-                          width=""
-                        >
-                      {% else %}
-                        <svg
-                          class="feature-pricing-plan-svg w-full h-full text-green-500"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                      {% endif %}
-                    </span>
-                    <span class="feature-pricing-plan-text text-gray-700 text-base">{{ feature | strip }}</span>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </div>
           {% if block.settings.button_link != blank %}
-            <div class="feature-pricing-plan-btn p-8 pt-0">
+            <div class="feature-pricing-plan-btn">
               <a
                 href="{{ block.settings.button_link }}"
-                class="feature-pricing-plan-anchor btn-gradient-{{ section.id }} block w-full text-center text-white font-bold py-4 rounded-full uppercase tracking-widest text-sm"
+                class="feature-pricing-plan-anchor ctm-button button-green px-[74px] min-990:px-[51px] py-[19px]"
               >
                 {{ block.settings.button_text }}
               </a>
@@ -228,6 +232,11 @@
       "type": "plan",
       "name": "Pricing Plan",
       "settings": [
+        {
+          "type": "text",
+          "id": "extra_class_card",
+          "label": "Extra Class"
+        },
         {
           "type": "color",
           "id": "card_header_color",

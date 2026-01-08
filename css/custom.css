@@ -8,19 +8,15 @@
 }
 
 .coaching-steps-title {
-  @apply text-center text-3xl md:text-5xl font-bold mb-10 md:mb-16 leading-tight tracking-tight;
+  @apply text-center font-bold mb-10 md:mb-16 leading-tight;
 }
 
 .coaching-steps-grid {
-  @apply flex flex-col md:flex-row flex-wrap gap-8 md:gap-6 justify-center;
-}
-
-.coaching-step-card {
-  @apply flex flex-row md:flex-col items-start gap-5 md:gap-0 flex-1 min-w-full md:min-w-[22%];
+  @apply !grid grid-cols-4 max-1400:grid-cols-3 max-[769px]:grid-cols-2 max-576:grid-cols-1 gap-7.5;
 }
 
 .coaching-step-image-wrap {
-  @apply w-1/3 md:w-full aspect-[4/5] md:aspect-square overflow-hidden rounded-[2rem] md:mb-6 flex-shrink-0;
+  @apply 576:w-full aspect-[4/5] md:aspect-square overflow-hidden rounded-[2rem] md:mb-6 mb-4 flex-shrink-0;
 }
 
 .coaching-step-image-wrap img {
@@ -28,20 +24,12 @@
 }
 
 .coaching-step-content {
-  @apply flex-1 flex flex-col justify-start pt-1 md:pt-0;
+  @apply flex-1 flex flex-col gap-3 justify-start pt-1 md:pt-0 w-full;
 }
 
 .coaching-step-badge {
-  @apply inline-block px-4 py-1.5 rounded-full text-xs md:text-sm font-bold text-white mb-3 w-fit uppercase tracking-wider;
+  @apply inline-block px-4 max-990:px-3 py-2 max-990:py-1 rounded-full text-[22px] max-990:text-base font-bold text-white mb-3 w-fit capitalize tracking-wider;
   background-color: #0b4a1f; /* Your specific branding green */
-}
-
-.coaching-step-heading {
-  @apply text-lg md:text-xl font-extrabold mb-2 leading-snug;
-}
-
-.coaching-step-desc {
-  @apply text-sm md:text-base leading-relaxed opacity-75;
 }
 
 .ctm-img-with-text .image-with-text a {
@@ -81,7 +69,7 @@
   @apply max-576:w-full;
 }
 .ctm-hero-phone.ctm-hero-phone-2 img {
-  @apply max-sm:max-w-[246px];
+  @apply max-sm:max-w-[236px];
 }
 .ctm-feature-icon img {
   @apply max-w-[40px] max-h-[40px];
@@ -103,11 +91,11 @@
 }
 
 /* growth-challeng */
-.ctm_bgc_heading_main .section-heading.text-center p {
+.ctm_bgc_heading_main .section-heading p {
   @apply text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[34px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.45px] min-[1582px]:text-[45px] min-[1582px]:leading-[54px];
 }
-.ctm_bgc_heading_main .section-heading.text-center {
-  @apply pb-[16px] pb-[80px] hidden md:block;
+.ctm_bgc_heading_main .section-heading {
+  @apply hidden md:block;
 }
 
 .ctm_challenges_list {
@@ -146,7 +134,7 @@
   @apply max-md:order-3;
 }
 
-.ctm-rev-section .section-heading.text-center h2 {
+.ctm-rev-section .section-heading h2 {
   @apply pt-[36px];
 }
 .ctm_challenges_inner_list {
@@ -166,3 +154,7 @@
 .ctm-rev-section .ctm_bgc_heading_main .section-heading-center h6 {
   @apply pt-[14px];
 }
+/* 
+.section-heading-center p strong{
+  @apply font-body font
+} */

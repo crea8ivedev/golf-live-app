@@ -5,7 +5,7 @@
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 989px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top_tablet }}px;
       padding-bottom: {{ section.settings.padding_bottom_tablet }}px;
@@ -97,7 +97,7 @@
                       {% else %}
                         href="{{ block.settings.button_link }}"
                       {% endif %}
-                      class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                      class="ctm-button button-green"
                       {{ block.shopify_attributes }}
                     >
                       {{ block.settings.button_label | escape }}

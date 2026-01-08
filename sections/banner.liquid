@@ -1,5 +1,23 @@
-<div class="golf-app-hero">
-  <div class="golf-app-hero__grid flex flex-col-reverse min-990:flex-row">
+<div class="golf-app-hero relative">
+  <div>
+    <img
+      src="{{ section.settings.desktop_bg | image_url }}"
+      alt="BG"
+      loading="lazy"
+      width="auto"
+      height="auto"
+      class="absolute w-full min-1582:w-[calc(100%_-_141px)] h-full top-0 left-0 object-cover pointer-events-none max-990:hidden"
+    >
+    <img
+      src="{{ section.settings.mobile_bg | image_url }}"
+      alt="BG"
+      loading="lazy"
+      width="auto"
+      height="auto"
+      class="absolute w-full h-full top-0 left-0 object-cover pointer-events-none min-990:hidden"
+    >
+  </div>
+  <div class="golf-app-hero__grid flex flex-col-reverse min-990:flex-row relative z-1">
     <!-- LEFT CONTENT -->
     <div class="golf-app-hero__content min-990:flex-[0_0_56.64%] px-[28px] min-768:px-[30px] min-990:pl-[30px] min-1440:pl-[135px] min-990:pr-[100px] min-1440:pr-[189px] pt-[36px] pb-[54px] min-990:pt-[70px] min-990:pb-[58px] min-990:flex min-990:flex-col min-990:justify-center">
       {% if section.settings.top_text != blank %}
@@ -138,6 +156,16 @@
 {
   "name": "Golf App Banner",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_bg",
+      "label": "Desktop BG"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg",
+      "label": "Mobile BG"
+    },
     {
       "type": "text",
       "id": "top_text",

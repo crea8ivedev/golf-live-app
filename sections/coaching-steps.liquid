@@ -20,14 +20,14 @@
 {%- endstyle -%}
 
 <div id="section-{{ section.id }}" class="coaching-steps-wrapper {{ section.settings.extra-class }}">
-  <div class="coaching-steps-container">
+  <div class="container-136 coaching-steps-container">
     {%- if section.settings.heading != blank -%}
-      <h2 class="coaching-steps-title">{{ section.settings.heading }}</h2>
+      <h2 class="coaching-steps-title max-w-[591px] mx-auto text-center">{{ section.settings.heading }}</h2>
     {%- endif -%}
 
     <div class="coaching-steps-grid">
       {%- for block in section.blocks -%}
-        <div class="coaching-step-card" {{ block.shopify_attributes }}>
+        <div class="coaching-step-card max-576:flex" {{ block.shopify_attributes }}>
           <div class="coaching-step-image-wrap">
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}
@@ -38,8 +38,10 @@
 
           <div class="coaching-step-content">
             <span class="coaching-step-badge">{{ block.settings.step_label }}</span>
-            <h3 class="coaching-step-heading">{{ block.settings.title }}</h3>
-            <p class="coaching-step-desc">{{ block.settings.description }}</p>
+            <h4 class="coaching-step-heading">{{ block.settings.title }}</h4>
+            <p class="coaching-step-desc font-medium tracking-[0.2px] leading-[158%] text">
+              {{ block.settings.description }}
+            </p>
           </div>
         </div>
       {%- endfor -%}

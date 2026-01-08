@@ -62,17 +62,24 @@
   {% endif %}
 
   <div class="page-width ctm_bgc_heading_main">
-    {% if section.settings.bgc_heading != blank %}
-      <div class="section-heading text-center">
-        {{ section.settings.bgc_heading }}
-      </div>
-    {% endif %}
+    <div class="ctm_bgc_heading_wrapper">
+      {% if section.settings.bgc_heading != blank %}
+        <div class="section-heading text-center">
+          {{ section.settings.bgc_heading }}
+        </div>
+      {% endif %}
+      {% if section.settings.bgc_heading_sub != blank %}
+        <div class="section-heading-center subheading-desktop text-center max-768:!hidden">
+          {{ section.settings.bgc_heading_sub }}
+        </div>
+      {% endif %}
+    </div>
 
     <div class="ctm_challenges_wrapper flex max-990:flex-col-reverse items-center gap-[30px] lg:gap-[50px] max-768:pt-[25px] justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %}">
       <div class="ctm_challenges_list w-full h-full">
         {% for block in section.blocks %}
           <div
-            class="ctm_challenges_inner_list flex gap-[18px] lg:gap-[25px] items-start justify-center max-768:rounded-0 rounded-[22px]"
+            class="ctm_challenges_inner_list flex gap-[18px] lg:gap-[25px] items-start justify-start max-768:rounded-0 rounded-[22px]"
             style="{% if block.settings.bg_color != blank %}background: {{ block.settings.bg_color }}; {% endif %}"
           >
             {% if block.settings['bgc-img-icon'] != blank %}
@@ -103,11 +110,18 @@
         {% endfor %}
       </div>
 
-      {% if section.settings.bgc_heading != blank %}
-        <div class="section-heading-center text-center block md:hidden">
-          {{ section.settings.bgc_heading }}
-        </div>
-      {% endif %}
+      <div class="ctm_bgc_heading_wrapper ctm-bgc-title-mobile block md:hidden">
+        {% if section.settings.bgc_heading != blank %}
+          <div class="text-center">
+            {{ section.settings.bgc_heading }}
+          </div>
+        {% endif %}
+        {% if section.settings.bgc_heading_sub != blank %}
+          <div class="section-heading-center subheading-desktop text-center">
+            {{ section.settings.bgc_heading_sub }}
+          </div>
+        {% endif %}
+      </div>
 
       {% if section.settings.side_image != blank %}
         <div class="challenges-side-image w-full h-full !hidden md:!block">
@@ -144,6 +158,11 @@
       "type": "richtext",
       "id": "bgc_heading",
       "label": "Section Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "bgc_heading_sub",
+      "label": "Section Sub-Heading"
     },
     {
       "type": "image_picker",

@@ -21,6 +21,8 @@
     height: 100%;
     display: block;
     object-fit: cover;
+    background: white;
+    border-radius: 24px;
   }
 
   .vt-poster {
@@ -41,6 +43,17 @@
     margin: auto;
     border: none;
     cursor: pointer;
+  }
+  @media (min-width: 1280px) {
+    .vt-swiper .swiper-slide {
+      width: 24%;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    .vt-swiper .swiper-slide {
+      width: auto;
+    }
   }
 </style>
 
@@ -87,9 +100,7 @@
                         type="button"
                         aria-label="Play video"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="54" height="67" viewBox="0 0 54 67" fill="none">
-                          <path d="M48.3556 22.2282L21.9884 2.69733C19.9289 1.17397 17.4921 0.256425 14.9481 0.0464009C12.404 -0.163623 9.85206 0.342078 7.5751 1.50745C5.29813 2.67282 3.3851 4.45234 2.04803 6.64876C0.710967 8.84519 0.00210415 11.3727 1.66803e-05 13.9512V53.0325C-0.00395442 55.6135 0.701202 58.1449 2.03699 60.3451C3.37278 62.5453 5.2868 64.3279 7.566 65.4944C9.84519 66.6609 12.4001 67.1656 14.9464 66.9523C17.4927 66.739 19.9305 65.8161 21.9884 64.2863L48.3556 44.7555C50.1052 43.4585 51.5278 41.7636 52.5084 39.808C53.489 37.8524 54 35.691 54 33.4988C54 31.3066 53.489 29.1453 52.5084 27.1897C51.5278 25.234 50.1052 23.5392 48.3556 22.2422V22.2282Z" fill="white"/>
-                        </svg>
+                        {% render 'video-test-play-icon' %}
                       </button>
                     </div>
                   {% endif %}
@@ -117,44 +128,10 @@
       </div>
       {% if section.settings.show_arrows %}
         <div class="swiper-button-prev vt-arrow vt-prev">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <g filter="url(#filter0_d_328_3049)">
-              <circle cx="28" cy="28" r="28" transform="matrix(-1 0 0 1 60 0)" fill="white"/>
-            </g>
-            <path d="M37 17L25 29L37 41" stroke="black" stroke-width="2"/>
-            <defs>
-              <filter id="filter0_d_328_3049" x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dy="4"/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_328_3049"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_328_3049" result="shape"/>
-              </filter>
-            </defs>
-          </svg>
+          {% render 'swiper-video-testi-prev' %}
         </div>
         <div class="swiper-button-next vt-arrow vt-next">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <g filter="url(#filter0_d_328_3046)">
-              <circle cx="32" cy="28" r="28" fill="white"/>
-            </g>
-            <path d="M27 17L39 29L27 41" stroke="black" stroke-width="2"/>
-            <defs>
-              <filter id="filter0_d_328_3046" x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                <feOffset dy="4"/>
-                <feGaussianBlur stdDeviation="2"/>
-                <feComposite in2="hardAlpha" operator="out"/>
-                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_328_3046"/>
-                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_328_3046" result="shape"/>
-              </filter>
-            </defs>
-          </svg>
+          {% render 'swiper-video-testi-next' %}
         </div>
       {% endif %}
     </div>
@@ -189,44 +166,72 @@
 </section>
 
 <script>
-  var swiper = new Swiper('.vt-swiper', {
-    slidesPerView: 4,
-    spaceBetween: 24,
-    loop: true,
-    navigation: {
-      nextEl: '.vt-arrow.vt-next',
-      prevEl: '.vt-arrow.vt-prev',
-    },
-    breakpoints: {
-      0: { slidesPerView: 1.4 },
-      640: { slidesPerView: 2.4 },
-      990: { slidesPerView: 3 },
-      1280: { slidesPerView: 4 },
-    },
-    on: {
-      slideChange: function () {
-        document.querySelectorAll('.vt-video').forEach(function (video) {
-          video.pause();
-        });
-        document.querySelectorAll('[data-video-poster]').forEach(function (poster) {
-          poster.style.display = '';
-        });
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperEl = document.querySelector('.vt-swiper');
+    if (!swiperEl) return;
+
+    const wrapper = swiperEl.querySelector('.swiper-wrapper');
+    let slides = wrapper.querySelectorAll('.swiper-slide');
+    const visibleSlidesDesktop = 4;
+
+    if (slides.length <= visibleSlidesDesktop) {
+      slides.forEach((slide) => {
+        const clone = slide.cloneNode(true);
+        clone.classList.add('vt-slide-clone');
+        wrapper.appendChild(clone);
+      });
+    }
+
+    const swiper = new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 18,
+      loop: true,
+      watchOverflow: false,
+
+      navigation: {
+        nextEl: '.vt-arrow.vt-next',
+        prevEl: '.vt-arrow.vt-prev',
       },
-    },
-  });
 
-  document.addEventListener('click', function (e) {
-    var poster = e.target.closest('[data-video-poster]');
-    if (!poster) return;
+      breakpoints: {
+        0: { slidesPerView: 1.4 },
+        640: { slidesPerView: 2.4 },
+        990: { slidesPerView: 3 },
+        1280: { slidesPerView: 'auto' },
+      },
 
-    var wrapper = poster.closest('.vt-video-wrapper');
-    var video = wrapper.querySelector('video');
+      on: {
+        slideChange() {
+          document.querySelectorAll('.vt-video').forEach((v) => v.pause());
+          document.querySelectorAll('[data-video-poster]').forEach((p) => {
+            p.style.display = '';
+          });
+        },
+      },
+    });
 
-    poster.style.display = 'none';
-    video.play();
+    document.addEventListener('click', function (e) {
+      const poster = e.target.closest('[data-video-poster]');
+      if (!poster) return;
+
+      const video = poster.closest('.vt-video-wrapper')?.querySelector('video');
+      poster.style.display = 'none';
+      video?.play();
+    });
   });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.vt-video').forEach(function (video) {
+      const posterImg = video.querySelector('img');
+
+      if (posterImg && !posterImg.hasAttribute('alt')) {
+        posterImg.setAttribute('alt', video.getAttribute('aria-label') || 'Product demonstration video');
+      }
+    });
+  });
+</script>
 {% schema %}
 {
   "name": "Video Testimonials Swiper",
@@ -320,14 +325,3 @@
   ]
 }
 {% endschema %}
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.vt-video').forEach(function (video) {
-      const posterImg = video.querySelector('img');
-
-      if (posterImg && !posterImg.hasAttribute('alt')) {
-        posterImg.setAttribute('alt', video.getAttribute('aria-label') || 'Product demonstration video');
-      }
-    });
-  });
-</script>

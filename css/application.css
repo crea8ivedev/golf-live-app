@@ -148,7 +148,7 @@
 @layer components {
   .button,
   .ctm-button {
-    @apply cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold uppercase w-fit text-center text-[18px] min-1440:text-[21px] leading-100p tracking-[0.18px] min-1440:tracking-[0.21px] flex justify-center items-center px-[20px] py-[18px] min-990:py-[24px] rounded-[82px];
+    @apply cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold uppercase w-fit text-center text-[18px] min-1440:text-[21px] leading-100p tracking-[0.18px] min-1440:tracking-[0.21px] flex justify-center items-center px-[69px] py-[18px] min-990:py-[24px] rounded-[82px];
   }
   .button-green {
     @apply text-white bg-[linear-gradient(78deg,_#00511C_-24.41%,_#187F10_103.64%)] hover:bg-[linear-gradient(-78deg,_#00511C_-24.41%,_#187F10_103.64%)];
@@ -329,7 +329,15 @@
 }
 
 .trusted-coaches__overlay {
-  @apply absolute left-[15px] min-990:left-0 bottom-[14px] min-990:bottom-[40px] min-1440:bottom-[80px] max-w-[calc(100%_-_20px)] w-fit min-990:pl-[30px] min-990:pr-[43px] min-990:py-[10px] z-1 min-990:bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/coach-name-bg.png?v=1767700251')] min-990:bg-no-repeat min-990:bg-[length:100%_100%];
+  @apply absolute left-[15px] min-990:left-0 bottom-[14px] min-990:bottom-[40px] min-1440:bottom-[80px] max-w-[calc(100%_-_20px)] w-fit z-1 min-990:bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/sqaure-bg-without-green-line.png?v=1767865789')] min-990:bg-no-repeat min-990:bg-[length:100%_100%];
+}
+
+.trusted-coaches__overlay-inside {
+  @apply relative min-990:pl-[30px] min-990:pr-[43px] min-990:py-[10px];
+}
+
+.trusted-coaches__overlay-inside:after {
+  @apply min-990:content-[''] absolute w-[21px] h-full top-0 right-[-5px] bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/green-line.png?v=1767865788')] bg-no-repeat bg-[length:100%_100%];
 }
 
 .trusted-coaches__name {
@@ -413,7 +421,7 @@
 }
 
 .cg-testimonial-inside .cg-testimonial__image img {
-  @apply min-990:w-full min-990:h-auto min-990:aspect-[0.69/1] min-990:object-contain min-990:object-bottom-right min-990:rounded-[22px] min-990:bg-[url('https://cdn.shopify.com/s/files/1/0672/2410/9296/files/glofers-img-bg.png?v=1767781141')] min-990:bg-no-repeat min-990:bg-[length:100%_100%] min-990:mt-[-1px] min-990:min-h-full max-990:w-[171px] max-990:h-auto max-990:aspect-[1.08/1] max-990:object-contain max-990:rounded-br-[22px] max-990:object-bottom-right;
+  @apply min-990:w-full min-990:h-auto min-990:aspect-[0.69/1] min-990:object-contain min-990:object-bottom-right min-990:rounded-[22px] min-990:mt-[-1px] min-990:min-h-full max-990:w-[171px] max-990:h-auto max-990:aspect-[1.08/1] max-990:object-contain max-990:rounded-br-[22px] max-990:object-bottom-right;
 }
 
 .cg-testimonial__content {
@@ -436,6 +444,10 @@
   @apply font-semibold text-[18px] leading-[25px] tracking-[0.18px] min-990:text-[20px] min-990:leading-[24px] min-990:tracking-[0.20px] min-990:text-[22px] min-990:leading-[30px] min-990:tracking-[0.22px] block mb-[7px] min-990:mb-[2px];
 }
 
+.cg-testimonial__author span {
+  @apply font-medium;
+}
+
 .golfers-arrow {
   @apply !w-[56px] !h-[56px] !flex !justify-center !items-center !transition-all !duration-300 !ease-in-out hover:!opacity-50 max-990:!hidden;
 }
@@ -449,7 +461,7 @@
 }
 
 .cg-testimonial__author {
-  @apply max-w-[142px];
+  @apply max-990:max-w-[142px];
 }
 
 .is-mobile-stack .swiper-wrapper {
@@ -486,12 +498,72 @@
   @apply w-full h-auto aspect-[1.14/1] object-cover rounded-t-[22px];
 }
 
+.golf-feature-content-subtitle br {
+  @apply max-990:hidden;
+}
+
 /* golf-feature */
 
 .golf-features-arrow-common {
-  @apply max-1582:!w-[21px] max-1582:!h-[20px] max-[640px]:!hidden;
+  @apply max-1440:!w-[21px] max-1440:!h-[20px] max-[640px]:!hidden;
 }
 
 .swiper-disabled .golf-features-swiper .swiper-wrapper {
   @apply flex-col gap-[34px];
 }
+
+/* img-text-coaches */
+
+.ctm-img-with-text-coaches .page-width {
+  @apply max-990:px-0;
+}
+
+.ctm-img-with-text-coaches .image-with-text__grid {
+  @apply flex-col min-990:flex-row items-center gap-x-[50px] min-1582:gap-x-[82px] gap-y-[50px];
+}
+
+.ctm-img-with-text-coaches .image-with-text__grid > * {
+  @apply w-full max-w-full min-990:flex-[0_0_calc(50%_-_25px)] min-1582:flex-[0_0_calc(50%_-_41px)] min-990:w-[calc(50%_-_25px)] min-1582:w-[calc(50%_-_41px)];
+}
+
+.ctm-img-with-text-coaches .image-with-text__heading {
+  @apply max-990:text-center max-990:mx-auto max-w-[338px] min-768:max-w-[440px] min-1582:max-w-[601px];
+}
+
+.ctm-img-with-text-coaches .image-with-text__content {
+  @apply p-0;
+}
+
+.ctm-img-with-text-coaches .image-with-text__media {
+  @apply min-h-[unset];
+}
+
+.ctm-img-with-text-coaches .image-with-text__media img {
+  @apply min-990:rounded-[22px];
+}
+
+.ctm-img-with-text-coaches .image-with-text__text {
+  @apply mt-[21px] min-990:mt-[28px] font-medium;
+}
+
+.ctm-img-with-text-coaches .ctm-button {
+  @apply mt-[39px] min-990:mt-[56px] max-393:px-[56px] max-990:mx-auto;
+}
+
+.ctm-img-with-text-coaches .image-with-text__text-item {
+  @apply max-990:px-[28px];
+}
+
+/* img-text-coaches */
+
+/* price-plan */
+
+.pricing-plan-box-wrapper {
+  display: grid;
+}
+
+.header-pricing-plan-price strong {
+  @apply font-semibold text-[35px] leading-[42px] tracking-[0.35px] min-990:text-[37px] min-990:leading-[45px] min-990:tracking-[0.37px];
+}
+
+/* price-plan */
