@@ -78,5 +78,9 @@
 }
 
 .ctm-review-slider-inner .swiper-pagination {
-  @apply max-990:!block hidden;
+  @apply max-990:!block hidden max-990:!bottom-[75px];
+}
+
+.ctm-review-slider-inner .swiper-pagination .swiper-pagination-bullet {
+  @apply !w-[9px] !h-[9px] !bg-[#E8E5E5] !opacity-100;
 }

@@ -590,6 +590,14 @@
   @apply max-640:!pr-[15px];
 }
 
+.glc-card {
+  @apply max-640:!pb-[30px];
+}
+
 .glc-card.glc-green > * {
   @apply max-640:!gap-0 max-640:!items-end;
+}
+
+.glc-item {
+  @apply max-640:last:!mb-0;
 }
