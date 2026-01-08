@@ -70,17 +70,21 @@
 }
 
 .ctm-reviews-content p {
-  @apply text-xl font-normal leading-[137%] tracking-[0.2px];
+  @apply text-xl max-md:text-[17px] font-normal leading-[137%] tracking-[0.2px];
 }
 
 .ctm-reviews-cust-name strong {
-  @apply mb-1 block text-xl leading-[140%] tracking-[0.2px] font-body font-semibold;
+  @apply mb-1 block text-xl max-768:text-base leading-[140%] tracking-[0.2px] font-body font-semibold;
 }
 
 .ctm-review-slider-inner .swiper-pagination {
-  @apply max-990:!block hidden max-990:!bottom-[75px];
+  @apply max-[1580px]:!block hidden max-[1580px]:!bottom-[80px] max-990:!bottom-[75px];
 }
 
 .ctm-review-slider-inner .swiper-pagination .swiper-pagination-bullet {
   @apply !w-[9px] !h-[9px] !bg-[#E8E5E5] !opacity-100;
+}
+
+.ctm-review-slider-inner .swiper-pagination .swiper-pagination-bullet-active {
+  @apply !bg-[#707070] !opacity-100;
 }

@@ -49,8 +49,8 @@
     {% endif %}
     <div class="ctm-review-slider-wrapper swiper-wrapper !h-auto">
       {% for block in section.blocks %}
-        <div class="ctm-reviews-slide-inner swiper-slide !h-auto p-8.5 min-h-[424px]">
-          <div class="ctm-reviews-content mt-10">
+        <div class="ctm-reviews-slide-inner swiper-slide !h-auto p-8.5 min-h-[424px] max-990:min-h-[380px] max-768:min-h-[278px] max-768:gap-5">
+          <div class="ctm-reviews-content mt-10 max-768:mt-14 max-576:mt-10">
             {{ block.settings['ctm-add-review'] }}
             {% if block.settings['enable-rating'] %}
               <div class="ctm-reviews-rating mt-5">
@@ -80,7 +80,10 @@
 
     {% if section.settings['review-btn-link'] != blank %}
       <div class="ctm-review-cta justify-center flex mt-12 max-990:mt-16">
-        <a href="{{ section.settings.review-btn-link }}" class="ctm-review-btn ctm-button button-green gap-10">
+        <a
+          href="{{ section.settings.review-btn-link }}"
+          class="ctm-review-btn ctm-button button-green gap-10 max-576:!px-8"
+        >
           {{ section.settings['review-btn-title'] }}
           {{- 'right-arrow-btn.svg' | inline_asset_content -}}
         </a>
@@ -259,7 +262,7 @@
         slidesPerView: 3,
         spaceBetween: 20,
       },
-      1660: {
+      1580: {
         slidesPerView: 4,
         spaceBetween: 24,
       },

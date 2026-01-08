@@ -134,14 +134,14 @@
                   endif
                 -%}
                 <div
-                  class="footer__blocks-wrapper grid !grid-cols-1 min-768:!grid-cols-3 !gap-x-[30px] !gap-y-0 {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  class="footer__blocks-wrapper grid !grid-cols-1 min-768:!grid-cols-3 !gap-x-[30px] !gap-y-0 {{ footer_grid_class }}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
                   {% endif %}
                 >
                   {%- for block in section.blocks -%}
                     <div
-                      class="footer-block {{ block.settings.extra_class_links }} grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                      class="footer-block {{ block.settings.extra_class_links }} grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}"
                       {{ block.shopify_attributes }}
                       {% if settings.animations_reveal_on_scroll %}
                         data-cascade
@@ -294,7 +294,7 @@
               {%- endif -%}
 
               <div
-                class="footer-block--newsletter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="footer-block--newsletter"
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
                 {% endif %}

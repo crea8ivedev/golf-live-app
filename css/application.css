@@ -201,7 +201,7 @@
 }
 
 .header .sign-up-btn a {
-  @apply font-body font-medium text-[17px] leading-[17px] tracking-[0.17px] cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold uppercase w-fit text-center flex justify-center items-center px-[37px] py-[12px] rounded-[50px] border-[1px] border-solid border-[#D8D8D8] text-black bg-transparent hover:border-green3 hover:text-white hover:bg-green3;
+  @apply font-body font-medium text-[17px] leading-[17px] tracking-[0.17px] cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold w-fit text-center flex justify-center items-center px-[41px] py-[12px] rounded-[50px] border-[1px] border-solid border-[#D8D8D8] text-black bg-transparent hover:border-green3 hover:text-white hover:bg-green3 normal-case;
 }
 
 .header__heading-logo {
@@ -600,4 +600,12 @@
 
 .glc-item {
   @apply max-640:last:!mb-0;
+}
+
+.golf-live-compare {
+  @apply !pt-[54px] min-990:!pt-[108px];
+}
+
+.ctm_challenges_inner_list {
+  @apply min-990:items-center min-1400:gap-[33px];
 }
