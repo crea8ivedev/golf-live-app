@@ -724,3 +724,15 @@
 .ctm-golf-live-plan .feature-pricing-plan-anchor {
   @apply max-990:px-[40px];
 }
+
+.ctm-golf-live-plan .pricing-plan-box-wrapper {
+  @apply flex flex-wrap justify-center;
+}
+
+.ctm-golf-live-plan .pricing-plan-box-wrapper .pricing-plan-box-slides {
+  @apply max-w-full flex-[0_0_450px];
+}
+
+.ctm-review-slider-hero .ctm-reviews-slide-inner {
+  @apply min-h-[380px] max-990:min-h-[380px] max-768:min-h-[278px];
+}
