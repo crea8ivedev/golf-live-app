@@ -53,11 +53,21 @@
 
   {% if section.settings.side_image != blank %}
     <div class="challenges-side-image w-full h-full block md:hidden">
-      {{
-        section.settings.side_image
-        | image_url: width: 800
-        | image_tag: class: 'challenges-image', loading: 'lazy', alt: section.settings.side_image.alt
-      }}
+      {% comment %}
+        {{
+          section.settings.side_image
+          | image_url: width: 800
+          | image_tag: class: 'challenges-image', loading: 'lazy', alt: 'challenges-image'
+        }}
+      {% endcomment %}
+      <img
+        src="{{ section.settings.side_image | image_url: width: 800 }}"
+        alt="challenges-image"
+        class="challenges-image"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
     </div>
   {% endif %}
 
@@ -128,10 +138,7 @@
           {{
             section.settings.side_image
             | image_url: width: 800
-            | image_tag:
-              class: 'challenges-image rounded-[22px] mx-auto',
-              loading: 'lazy',
-              alt: section.settings.side_image.alt
+            | image_tag: class: 'challenges-image rounded-[22px] mx-auto', loading: 'lazy', alt: 'challenges-image'
           }}
         </div>
       {% endif %}
