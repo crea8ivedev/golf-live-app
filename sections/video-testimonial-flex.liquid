@@ -57,7 +57,7 @@
   }
 </style>
 
-<section class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-[72px] min-990:pb-[98px]">
+<section class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-0">
   <div class="min-990:px-[42px]">
     <div class="max-990:px-[28px]">
       {% if section.settings.heading != blank %}
@@ -67,7 +67,7 @@
       {% endif %}
     </div>
 
-    <div class="relative max-990:pl-[28px]">
+    <div class="relative max-990:px-[28px]">
       <div class="swiper vt-swiper" data-enable-clone="{{ section.settings.enable_slide_clone }}">
         <div class="swiper-wrapper justify-center gap-[18px] flex-wrap">
           {% for block in section.blocks %}

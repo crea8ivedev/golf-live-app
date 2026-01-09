@@ -736,3 +736,7 @@
 .ctm-review-slider-hero .ctm-reviews-slide-inner {
   @apply min-h-[380px] max-990:min-h-[380px] max-768:min-h-[278px];
 }
+
+.ctm-rev-section {
+  @apply bg-[#EFEFEF];
+}
