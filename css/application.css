@@ -740,3 +740,11 @@
 .ctm-rev-section {
   @apply bg-[#EFEFEF];
 }
+
+.ctm-golf-live {
+  @apply min-768:max-990:!pt-[40px];
+}
+
+.ctm-rev-section {
+  @apply min-[990px]:max-[1025px]:!pb-[40px];
+}

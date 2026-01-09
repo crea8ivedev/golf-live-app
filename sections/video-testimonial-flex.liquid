@@ -170,12 +170,13 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.vt-video').forEach(function (video) {
-      const posterImg = video.querySelector('img');
+    document.addEventListener('click', function (e) {
+      const poster = e.target.closest('[data-video-poster]');
+      if (!poster) return;
 
-      if (posterImg && !posterImg.hasAttribute('alt')) {
-        posterImg.setAttribute('alt', video.getAttribute('aria-label') || 'Product demonstration video');
-      }
+      const video = poster.closest('.vt-video-wrapper')?.querySelector('video');
+      poster.style.display = 'none';
+      video?.play();
     });
   });
 </script>
