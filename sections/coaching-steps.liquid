@@ -22,14 +22,17 @@
 <div id="section-{{ section.id }}" class="coaching-steps-wrapper {{ section.settings.extra-class }}">
   <div class="container-136 coaching-steps-container">
     {%- if section.settings.heading != blank -%}
-      <h2 class="coaching-steps-title max-w-[330px] min-768:max-w-[350px] min-1440:max-w-[440px] min-1582:max-w-[591px] mx-auto text-center">
+      <h2 class="coaching-steps-title max-w-[330px] min-768:max-w-[350px] min-1440:max-w-[440px] min-1582:max-w-[591px] mx-auto text-center scroll-trigger animate--slide-in">
         {{ section.settings.heading }}
       </h2>
     {%- endif -%}
 
     <div class="coaching-steps-grid">
       {%- for block in section.blocks -%}
-        <div class="coaching-step-card max-576:flex max-576:gap-5" {{ block.shopify_attributes }}>
+        <div
+          class="coaching-step-card max-576:flex max-576:gap-5 scroll-trigger animate--slide-in"
+          {{ block.shopify_attributes }}
+        >
           <div class="coaching-step-image-wrap">
             {%- if block.settings.image != blank -%}
               {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy' }}

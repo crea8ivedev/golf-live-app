@@ -17,11 +17,11 @@
   }
 {% endstyle %}
 <div
-  class="landing-faq-main-box faq-section px-[28px] max-w-[1009px] mx-auto section-{{ section.id }}-padding {{ section.settings.extra-class }}"
+  class="landing-faq-main-box scroll-trigger animate--slide-in faq-section px-[28px] max-w-[1009px] mx-auto section-{{ section.id }}-padding {{ section.settings.extra-class }}"
   id="faq-{{ section.id }}"
 >
   {% if section.settings.heading != blank %}
-    <h2 class="text-center mb-[16px] min-990:mb-[30px]">
+    <h2 class="text-center mb-[16px] min-990:mb-[30px] ">
       {{ section.settings.heading }}
     </h2>
   {% endif %}

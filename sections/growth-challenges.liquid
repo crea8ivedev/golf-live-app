@@ -72,7 +72,7 @@
   {% endif %}
 
   <div class="page-width ctm_bgc_heading_main">
-    <div class="ctm_bgc_heading_wrapper">
+    <div class="ctm_bgc_heading_wrapper scroll-trigger animate--slide-in">
       {% if section.settings.bgc_heading != blank %}
         <div class="section-heading text-center">
           {{ section.settings.bgc_heading }}
@@ -86,7 +86,7 @@
     </div>
 
     <div class="ctm_challenges_wrapper flex max-990:flex-col-reverse max-1582:items-stretch items-center !gap-[30px] 990:!gap-[50px] 1024:!gap-[70px] 1280:!gap-[100px] max-768:pt-[25px] justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %} max-990:gap-y-[20px]">
-      <div class="ctm_challenges_list w-full h-full">
+      <div class="ctm_challenges_list w-full h-full scroll-trigger animate--slide-in">
         {% for block in section.blocks %}
           <div
             class="ctm_challenges_inner_list flex gap-[18px] lg:gap-[25px] items-start justify-start max-768:rounded-0 rounded-[22px]"
@@ -134,7 +134,7 @@
       </div>
 
       {% if section.settings.side_image != blank %}
-        <div class="challenges-side-image w-full h-full !hidden md:!block">
+        <div class="challenges-side-image w-full h-full !hidden md:!block scroll-trigger animate--slide-in">
           {{
             section.settings.side_image
             | image_url: width: 800

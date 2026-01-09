@@ -20,7 +20,7 @@
   <div class="ctm-trusted-pga-inner {{ section.settings.extra_class }}">
     <div class="ctm-main-heading">
       {% if section.settings['pga-main-title'] != blank %}
-        <div class="ctm-inner-heading mb-[32px]">
+        <div class="ctm-inner-heading mb-[32px] scroll-trigger animate--slide-in">
           <h2 class="ctm-pga-title ctm-text-pga uppercase text-center text-green0 ">
             {{ section.settings['pga-main-title'] }}
           </h2>
@@ -30,7 +30,7 @@
 
     <div class="ctm-main-content ctm-grid-container">
       {% for block in section.blocks %}
-        <div class="ctm-inner-content flex items-center flex-col relative w-full">
+        <div class="ctm-inner-content flex items-center flex-col relative w-full scroll-trigger animate--slide-in">
           <div class="ctm-pga-image relative inline-block">
             {% if block.settings['trusted-add-image'] != blank %}
               <img

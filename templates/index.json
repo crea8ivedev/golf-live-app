@@ -21,7 +21,6 @@
         "button_text": "Start Now",
         "button_url": "#",
         "desktop_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
-        "tablet_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
         "main_mobile_image": "shopify://shop_images/banner-golf-mobile.jpg",
         "mobile_image_1": "shopify://shop_images/banner-mobile-desktop.png",
         "mobile_combined_image": "shopify://shop_images/banner-mobile-mobile.png",
@@ -337,6 +336,7 @@
         },
         "testimonial_TGKdiz": {
           "type": "testimonial",
+          "disabled": true,
           "settings": {
             "extra_class_slide": "test-gradient-1",
             "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",

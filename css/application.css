@@ -217,11 +217,11 @@
 }
 
 .menu-drawer__navigation-container {
-  @apply flex flex-col justify-start max-990:gap-[60px] px-[28px] pb-[28px];
+  @apply flex flex-col justify-start max-990:gap-[20px] px-[28px] pb-[28px];
 }
 
 .menu-drawer__navigation {
-  @apply py-[28px];
+  @apply pt-[28px];
 }
 
 .section-header {
@@ -695,4 +695,32 @@
 
 .ctm_bgc_heading_wrapper br {
   @apply max-990:hidden;
+}
+
+.golfers-arrow.swiper-button-lock {
+  @apply pointer-events-none;
+}
+
+.ctm-golf-live .zigzag-right-side {
+  @apply max-990:mt-[30px];
+}
+
+.ctm-golf-live-hero .ctm-hero-left img {
+  @apply w-full;
+}
+
+.ctm-golf-live-hero .ctm-hero-buttons {
+  @apply justify-start;
+}
+
+.ctm-golf-live-hero .ctm-hero-trial {
+  @apply justify-start;
+}
+
+.ctm-hero-platform-main.ctm-golf-live-hero {
+  @apply max-768:!pb-0;
+}
+
+.ctm-golf-live-plan .feature-pricing-plan-anchor {
+  @apply max-990:px-[40px];
 }

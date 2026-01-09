@@ -12,7 +12,7 @@
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding {{ section.settings.extra-class-zigzag }}">
-  <div class="container-136 max-990:border-b max-990:border-[#DBDBDB] max-768:px-[20px]">
+  <div class="scroll-trigger animate--slide-in container-136 max-990:border-b max-990:border-[#DBDBDB] max-768:px-[20px]">
     <div class="ctm-zigzag-main">
       {%- if section.settings.show_h2 and section.settings.main_h2 != blank -%}
         <h2
@@ -47,7 +47,7 @@
           </div>
         </div>
 
-        <div class="w-full 990:w-1/2 990:py-5">
+        <div class="zigzag-right-side w-full 990:w-1/2 990:py-5">
           <div class="990:max-w-[586px] max-w-full flex flex-col gap-[21px] max-990:gap-2.5">
             {%- for block in section.blocks -%}
               {% case block.type %}
@@ -91,6 +91,13 @@
               {%- endcase -%}
             {%- endfor -%}
           </div>
+          {% if section.settings.btn_txt != blank %}
+            <div class="ctm-zig-zag-btn mt-[30px]">
+              <a href="{{ section.settings.btn_link }}" class="ctm-button button-green max-990:px-[40px]">
+                {{- section.settings.btn_txt -}}
+              </a>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -147,6 +154,16 @@
       ],
       "default": "image_first",
       "label": "Image Position"
+    },
+    {
+      "type": "text",
+      "id": "btn_txt",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
     },
     {
       "type": "header",

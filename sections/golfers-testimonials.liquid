@@ -19,7 +19,7 @@
   data-mobile-slider="{{ section.settings.enable_mobile_slider }}"
 >
   {% if section.settings.heading != blank %}
-    <div class="cg-testimonials__heading h2 text-center mb-[37px] min-990:mb-[68px]">
+    <div class="cg-testimonials__heading h2 text-center mb-[37px] min-990:mb-[68px] scroll-trigger animate--slide-in">
       {{ section.settings.heading }}
     </div>
   {% endif %}
@@ -78,19 +78,19 @@
           <div class="cg-testimonial-inside">
             <div class="cg-testimonial__content">
               <div>
-                <div class="cg-testimonial__stars min-990:hidden">
+                <div class="cg-testimonial__stars min-990:hidden scroll-trigger animate--slide-in">
                   {% render 'golfers-stars' %}
                 </div>
                 {% if block.settings.quote != blank %}
-                  <p class="cg-testimonial__quote">{{ block.settings.quote }}</p>
+                  <p class="cg-testimonial__quote scroll-trigger animate--slide-in">{{ block.settings.quote }}</p>
                 {% endif %}
               </div>
 
               <div>
-                <div class="cg-testimonial__stars max-990:hidden">
+                <div class="cg-testimonial__stars max-990:hidden scroll-trigger animate--slide-in">
                   {% render 'golfers-stars' %}
                 </div>
-                <div class="cg-testimonial__author">
+                <div class="cg-testimonial__author scroll-trigger animate--slide-in">
                   {% if block.settings.name != blank %}
                     <strong>{{ block.settings.name }}</strong>
                   {% endif %}
@@ -102,7 +102,7 @@
             </div>
 
             {% if block.settings.image != blank %}
-              <div class="cg-testimonial__image cg-testimonial__image--desktop">
+              <div class="cg-testimonial__image cg-testimonial__image--desktop scroll-trigger animate--slide-in">
                 <img
                   src="{{ block.settings.image | image_url }}"
                   alt="{{ block.settings.name | escape }}"
@@ -113,7 +113,7 @@
               </div>
             {% endif %}
             {% if block.settings.mobile_image != blank %}
-              <div class="cg-testimonial__image cg-testimonial__image--mobile">
+              <div class="cg-testimonial__image cg-testimonial__image--mobile scroll-trigger animate--slide-in">
                 <img
                   src="{{ block.settings.mobile_image | image_url }}"
                   alt="{{ block.settings.name | escape }}"

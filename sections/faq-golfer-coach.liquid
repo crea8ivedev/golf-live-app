@@ -78,7 +78,7 @@
 
 <div class="faq-section page-width {{ section.settings.extra-class }}" id="faq-{{ section.id }}">
   {% if section.settings.heading != blank %}
-    <h2 class="faq-heading">
+    <h2 class="faq-heading scroll-trigger animate--slide-in">
       {{ section.settings.heading }}
     </h2>
   {% endif %}
@@ -86,13 +86,13 @@
   <div class="faq-columns page-width">
     <!-- GOLFERS -->
     <div class="faq-column" data-column="golfers">
-      <h3 class="faq-column-title">
+      <h3 class="faq-column-title scroll-trigger animate--slide-in">
         {{ section.settings.golfers_title }}
       </h3>
 
       {% for block in section.blocks %}
         {% if block.type == 'golfer_faq' %}
-          <div class="faq-item" {{ block.shopify_attributes }}>
+          <div class="faq-item scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
             <div class="faq-golfer-block flex">
               <button type="button" class="faq-question gap-[13.5px]">
                 <span class="faq-icon">{% render 'faq-arrows' %}</span>
@@ -111,13 +111,13 @@
     </div>
 
     <div class="faq-column" data-column="coaches">
-      <h3 class="faq-column-title">
+      <h3 class="faq-column-title scroll-trigger animate--slide-in">
         {{ section.settings.coaches_title }}
       </h3>
 
       {% for block in section.blocks %}
         {% if block.type == 'coach_faq' %}
-          <div class="faq-item" {{ block.shopify_attributes }}>
+          <div class="faq-item scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
             <button type="button" class="faq-question gap-[13.5px]">
               <span class="faq-icon">{% render 'faq-arrows' %}</span>
               <h6>{{ block.settings.question }}</h6>

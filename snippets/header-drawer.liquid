@@ -374,15 +374,17 @@
                 {%- endif -%}
               </a>
             {% endif %}
-            <div class="login-signup-main flex gap-[27px] items-center">
+            <div class="login-signup-main flex items-center gap-[6px]">
               {% if section.settings.login_text != blank %}
                 <div class="login-btn">
-                  <a href="{{ section.settings.login_url }}">{{ section.settings.login_text }}</a>
+                  <a href="{{ section.settings.login_url }}" class="!font-bold">{{ section.settings.login_text }} / </a>
                 </div>
               {% endif %}
               {% if section.settings.signup_text != blank %}
-                <div class="sign-up-btn">
-                  <a href="{{ section.settings.signup_url }}">{{ section.settings.signup_text }}</a>
+                <div class="login-btn">
+                  <a href="{{ section.settings.signup_url }}" class="!font-bold !text-green3 hover:!text-black">
+                    {{- section.settings.signup_text -}}
+                  </a>
                 </div>
               {% endif %}
             </div>

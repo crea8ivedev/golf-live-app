@@ -72,7 +72,7 @@
       <div class="cta-questions-bar__inner">
         <div class="cta-questions-bar__content max-990:flex-col">
           {% if section.settings.text != blank %}
-            <p class="cta-questions-bar__text text-[26px] max-990:text-[20px] leading-120p font-bold text-black tracking-[0.3px] text-center">
+            <p class="cta-questions-bar__text text-[26px] max-990:text-[20px] leading-120p font-bold text-black tracking-[0.3px] text-center scroll-trigger animate--slide-in">
               {{ section.settings.text }}
             </p>
           {% endif %}
@@ -80,7 +80,7 @@
           {% if section.settings.button_text != blank and section.settings.button_link != blank %}
             <a
               href="{{ section.settings.button_link }}"
-              class="cta-questions-bar__btn ctm-button button-green 990:absolute right-0"
+              class="cta-questions-bar__btn ctm-button button-green 990:absolute right-0 scroll-trigger animate--slide-in"
             >
               {{ section.settings.button_text }}
               {% if section.settings.show_arrow %}

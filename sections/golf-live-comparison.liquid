@@ -32,11 +32,11 @@
   <div class="container-136 max-sm:!px-0">
     <div class=" max-sm:!px-[24px]">
       {% if section.settings.heading != blank %}
-        <h2 class="glc-heading">{{ section.settings.heading }}</h2>
+        <h2 class="glc-heading scroll-trigger animate--slide-in">{{ section.settings.heading }}</h2>
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <p class="glc-subheading">{{ section.settings.subheading }}</p>
+        <p class="glc-subheading scroll-trigger animate--slide-in">{{ section.settings.subheading }}</p>
       {% endif %}
     </div>
     <div class="glc-grid flex items-stretch gap-[44px] max-xl:gap-[30px] max-sm:gap-0 max-990:flex-wrap">
@@ -47,7 +47,7 @@
       >
         <div class="flex items-center gap-[23px] w-full">
           {% if section.settings.green_phone != blank %}
-            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
               <img
                 src="{{ section.settings.green_phone | image_url: width: 600 }}"
                 alt="With Golf Live App"
@@ -58,7 +58,7 @@
             </div>
           {% endif %}
           {% if section.settings.green_phone_mobile != blank %}
-            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2">
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
               <img
                 src="{{ section.settings.green_phone_mobile | image_url: width: 600 }}"
                 alt="With Golf Live App"
@@ -70,7 +70,9 @@
           {% endif %}
 
           <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] min-1520:mt-[80px] min-[1660px]:mt-[100px] max-sm:mt-[20px]">
-            <h3 class="glc-card-title text-white">{{ section.settings.green_title }}</h3>
+            <h3 class="glc-card-title text-white scroll-trigger animate--slide-in">
+              {{ section.settings.green_title }}
+            </h3>
 
             <div class="glc-shape mt-[8px] min-990:mt-[20px] max-990:max-w-[115px]">
               <svg
@@ -88,7 +90,10 @@
             <ul class="glc-list mt-[32px] max-[1660px]:max-w-[277px]">
               {% for block in section.blocks %}
                 {% if block.type == 'with_item' %}
-                  <li class="glc-item glc-item--check text-white text-left" {{ block.shopify_attributes }}>
+                  <li
+                    class="glc-item glc-item--check text-white text-left scroll-trigger animate--slide-in"
+                    {{ block.shopify_attributes }}
+                  >
                     {% if block.settings.icon != blank %}
                       <img
                         src="{{ block.settings.icon | image_url: width: 40 }}"
@@ -115,7 +120,9 @@
       >
         <div class="flex items-center gap-[23px] w-full max-sm:items-center">
           <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] min-1520:mt-[80px] min-[1660px]:mt-[100px] max-sm:mt-[20px]">
-            <h3 class="glc-card-title text-black">{{ section.settings.grey_title }}</h3>
+            <h3 class="glc-card-title text-black scroll-trigger animate--slide-in">
+              {{ section.settings.grey_title }}
+            </h3>
 
             <div class="glc-shape mt-[8px] min-990:mt-[20px] max-990:max-w-[115px]">
               <svg
@@ -133,7 +140,7 @@
             <ul class="glc-list mt-[32px]">
               {% for block in section.blocks %}
                 {% if block.type == 'without_item' %}
-                  <li class="glc-item glc-item--cross" {{ block.shopify_attributes }}>
+                  <li class="glc-item glc-item--cross scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
                       <img
                         src="{{ block.settings.icon | image_url: width: 40 }}"
@@ -152,7 +159,7 @@
           </div>
 
           {% if section.settings.grey_phone != blank %}
-            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
               <img
                 src="{{ section.settings.grey_phone | image_url: width: 600 }}"
                 alt="Without Golf Live"
@@ -163,7 +170,7 @@
             </div>
           {% endif %}
           {% if section.settings.grey_phone_mobile != blank %}
-            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2">
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
               <img
                 src="{{ section.settings.grey_phone_mobile | image_url: width: 600 }}"
                 alt="Without Golf Live"

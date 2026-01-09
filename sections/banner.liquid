@@ -55,7 +55,7 @@
           <a
             href="{{ section.settings.app_store_url }}"
             target="_blank"
-            class="inline-block flex-[0_0_calc(50%_-_11px)] min-393:flex-[0_0_158px] min-990:flex-[0_0_165px]"
+            class="inline-block flex-[0_0_calc(50%_-_11px)] min-393:flex-[0_0_158px] min-990:flex-[0_0_165px] scroll-trigger animate--slide-in"
           >
             <img
               src="{{ section.settings.app_store_image | image_url: width: 300 }}"
@@ -71,7 +71,7 @@
           <a
             href="{{ section.settings.play_store_url }}"
             target="_blank"
-            class="inline-block flex-[0_0_calc(50%_-_11px)] min-393:flex-[0_0_158px] min-990:flex-[0_0_165px]"
+            class="inline-block flex-[0_0_calc(50%_-_11px)] min-393:flex-[0_0_158px] min-990:flex-[0_0_165px] scroll-trigger animate--slide-in"
           >
             <img
               src="{{ section.settings.play_store_image | image_url: width: 300 }}"
@@ -105,7 +105,7 @@
       <!-- DESKTOP IMAGE STACK -->
       <div class="golf-app-hero__desktop-stack relative max-990:overflow-hidden min-990:h-full">
         {% if section.settings.desktop_image != blank %}
-          <div class="golf-app-hero__desktop-image min-990:h-full">
+          <div class="golf-app-hero__desktop-image min-990:h-full scroll-trigger animate--slide-in">
             <img
               src="{{ section.settings.desktop_image | image_url }}"
               alt="Golf player"
@@ -120,7 +120,7 @@
               loading="lazy"
               width="auto"
               height="auto"
-              class="w-full h-auto aspect-[1.17/1] object-cover min-990:hidden"
+              class="w-full h-auto aspect-[1.17/1] object-cover min-990:hidden scroll-trigger animate--slide-in"
             >
           </div>
         {% endif %}
@@ -133,7 +133,7 @@
               loading="lazy"
               width="auto"
               height="auto"
-              class="w-full h-auto object-cover max-990:hidden"
+              class="w-full h-auto object-cover max-990:hidden scroll-trigger animate--slide-in"
             >
           {% endif %}
           {% if section.settings.mobile_combined_image != blank %}
@@ -143,7 +143,7 @@
               loading="lazy"
               width="auto"
               height="auto"
-              class="w-full h-auto object-cover min-990:hidden"
+              class="w-full h-auto object-cover min-990:hidden scroll-trigger animate--slide-in"
             >
           {% endif %}
         </div>

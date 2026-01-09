@@ -22,10 +22,12 @@
   <div class="relative z-1">
     <div class="golf-features-heading text-center">
       {% if section.settings.heading != blank %}
-        <h2 class="max-w-[337px] min-1440:max-w-[937px] mx-auto">{{ section.settings.heading }}</h2>
+        <h2 class="max-w-[337px] min-1440:max-w-[937px] mx-auto scroll-trigger animate--slide-in">
+          {{ section.settings.heading }}
+        </h2>
       {% endif %}
       {% if section.settings.subheading != blank %}
-        <p class="text-h6 font-medium min-990:font-semibold min-990:max-w-[620px] mx-auto mt-[13px] min-990:mt-[24px]">
+        <p class="text-h6 font-medium min-990:font-semibold min-990:max-w-[620px] mx-auto mt-[13px] min-990:mt-[24px] scroll-trigger animate--slide-in">
           {{ section.settings.subheading }}
         </p>
       {% endif %}
@@ -70,6 +72,7 @@
                       loading="lazy"
                       width="auto"
                       height="auto"
+                      class="scroll-trigger animate--slide-in"
                     >
                   {% endif %}
                 </div>
@@ -77,11 +80,11 @@
                 <div class="golf-feature-content rounded-b-[22px]">
                   <div class="pt-[29px] min-990:pt-[43px] pb-0 pl-[28px] pr-[24px] min-990:px-[38px]">
                     {% if block.settings.title != blank %}
-                      <h4>{{ block.settings.title }}</h4>
+                      <h4 class="scroll-trigger animate--slide-in">{{ block.settings.title }}</h4>
                     {% endif %}
 
                     {% if block.settings.description != blank %}
-                      <div class="golf-feature-content-subtitle font-semibold text-[17px] leading-[26px] tracking-[0.17px] min-990:text-[19px] min-990:leading-[29px] min-990:tracking-[0.19px] mt-[6px] min-990:mt-[9px]">
+                      <div class="golf-feature-content-subtitle font-semibold text-[17px] leading-[26px] tracking-[0.17px] min-990:text-[19px] min-990:leading-[29px] min-990:tracking-[0.19px] mt-[6px] min-990:mt-[9px] scroll-trigger animate--slide-in">
                         {{ block.settings.description }}
                       </div>
                     {% endif %}
@@ -89,19 +92,23 @@
 
                   <div class="pt-[15px] min-990:pt-[25px] pb-[27px] min-990:pb-[23px] pl-[28px] pr-[24px] min-990:px-[38px] border-b-[1px] border-solid border-[#DFDFDF]">
                     {% if block.settings.coach_description != blank %}
-                      <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[5px]">
+                      <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[5px] scroll-trigger animate--slide-in">
                         {{- block.settings.coach_text -}}
                       </span>
-                      <p class="min-990:text-black2 font-medium">{{ block.settings.coach_description }}</p>
+                      <p class="min-990:text-black2 font-medium scroll-trigger animate--slide-in">
+                        {{ block.settings.coach_description }}
+                      </p>
                     {% endif %}
                   </div>
 
                   <div class="pt-[21px] min-990:pt-[19px] pb-[32px] min-990:pb-[35px] pl-[28px] pr-[24px] min-990:px-[38px]">
                     {% if block.settings.golfer_description != blank %}
-                      <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[8px]">
+                      <span class="golf-pill block w-fit font-bold text-[14px] leading-[18px] tracking-[0.14px] min-990:text-[17px] min-990:leading-[22px] min-990:tracking-[0.17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[8px] scroll-trigger animate--slide-in">
                         {{- block.settings.golfer_text -}}
                       </span>
-                      <p class="min-990:text-black2 font-medium">{{ block.settings.golfer_description }}</p>
+                      <p class="min-990:text-black2 font-medium scroll-trigger animate--slide-in">
+                        {{ block.settings.golfer_description }}
+                      </p>
                     {% endif %}
                   </div>
                 </div>

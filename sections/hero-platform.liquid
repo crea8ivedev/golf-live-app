@@ -23,7 +23,7 @@
   }
 {% endstyle %}
 
-<div class="ctm-hero-platform-main {{ section.settings.extra-class }} section-{{ section.id }}-padding">
+<div class="ctm-hero-platform-main scroll-trigger animate--slide-in {{ section.settings.extra-class }} section-{{ section.id }}-padding">
   <div class="ctm-hero-inner w-full flex max-[1025px]:flex-col items-center justify-center max-[1025px]:gap-[20px] gap-[100px]">
     <div class="ctm-hero-media">
       {% if section.settings.phone_image_1 != blank %}
@@ -96,7 +96,7 @@
         </div>
 
         {% if section.settings.stat_text != blank %}
-          <div class="flex justify-center items-center pt-[16px] gap-[8px] 1024:max-w-[700px]">
+          <div class="ctm-hero-trial flex justify-center items-center pt-[16px] gap-[8px] 1024:max-w-[700px]">
             {% if section.settings.stat_icon != blank %}
               {{ section.settings.stat_icon | image_url: width: 21 | image_tag }}
             {% endif %}
