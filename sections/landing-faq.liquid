@@ -142,6 +142,7 @@
     if (!section) return;
 
     const items = section.querySelectorAll('.faq-item');
+
     items.forEach((item) => {
       const button = item.querySelector('.faq-question');
       const wrapper = item.querySelector('.faq-answer-wrapper');
@@ -149,7 +150,6 @@
       button.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
-        // Close other items (Accordion behavior)
         items.forEach((i) => {
           i.classList.remove('active');
           i.querySelector('.faq-answer-wrapper').style.height = '0px';
@@ -161,6 +161,13 @@
         }
       });
     });
+
+    if (items.length > 0) {
+      const firstItem = items[0];
+      const firstWrapper = firstItem.querySelector('.faq-answer-wrapper');
+      firstItem.classList.add('active');
+      firstWrapper.style.height = firstWrapper.scrollHeight + 'px';
+    }
   })();
 </script>
 
