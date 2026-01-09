@@ -1,9 +1,9 @@
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
   }
-  @media screen and (min-width: 750px) {
+  @media screen and (max-width: 989px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top_mobile }}px;
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -69,7 +69,7 @@
                     {% assign list_items = block.settings.list_content | newline_to_br | split: '<br />' %}
                     {% for item in list_items %}
                       {% if item != blank %}
-                        <li class="flex items-center gap-3">
+                        <li class="flex min-990:items-center gap-3">
                           <span class="mt-1 flex-shrink-0">
                             <svg
                               width="26"

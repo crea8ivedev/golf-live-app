@@ -573,6 +573,7 @@
   background-color: #1c1c1c !important;
 }
 
+.ctn-golf-left-item-text,
 .ctn-golf-center-item-text,
 .ctn-golf-right-item-text {
   word-break: break-word;
@@ -608,4 +609,24 @@
 
 .ctm_challenges_inner_list {
   @apply min-990:items-center min-1400:gap-[33px];
+}
+
+.free-trial-content-svg svg {
+  @apply w-[18px] h-auto;
+}
+
+.coaching-step-content {
+  @apply max-640:gap-y-[4px];
+}
+
+.coaching-step-heading {
+  @apply max-640:pt-[6px];
+}
+
+.coaching-step-desc {
+  @apply max-640:text-[15px] max-640:tracking-[0.15px];
+}
+
+.ctm_bgc_heading_wrapper {
+  @apply max-640:!pb-[12px];
 }

@@ -42,7 +42,7 @@
 }
 /* lp- hero section */
 .ctm-hero-content {
-  @apply w-full h-auto flex flex-col max-576:px-[28px] max-1025:px-20 py-10;
+  @apply w-full h-auto flex flex-col max-576:px-[28px] max-1025:px-20 py-[60px];
 }
 .ctm-hero-eyebrow {
   @apply text-green0;

@@ -66,7 +66,7 @@
                       {{ block.settings.icon | image_url: width: 40 | image_tag }}
                     </span>
                   {% endif %}
-                  <span class="ctm-feature-text font-semibold">
+                  <span class="ctm-feature-text font-semibold text-[15px] lg:text-[18px]">
                     {{ block.settings.text }}
                   </span>
                 </li>
@@ -94,7 +94,7 @@
             {% if section.settings.stat_icon != blank %}
               {{ section.settings.stat_icon | image_url: width: 21 | image_tag }}
             {% endif %}
-            <span class="text-green0 font-bold">{{ section.settings.stat_text }}</span>
+            <span class="text-green0 font-bold leading-normal">{{ section.settings.stat_text }}</span>
           </div>
         {% endif %}
       </div>
