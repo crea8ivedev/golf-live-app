@@ -21,6 +21,7 @@
         "button_text": "Start Now",
         "button_url": "#",
         "desktop_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
+        "tablet_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
         "main_mobile_image": "shopify://shop_images/banner-golf-mobile.jpg",
         "mobile_image_1": "shopify://shop_images/banner-mobile-desktop.png",
         "mobile_combined_image": "shopify://shop_images/banner-mobile-mobile.png",
@@ -630,7 +631,7 @@
             "center_checked": false,
             "center_text": "Built-in",
             "right_checked": true,
-            "right_text": "Zoom (no replay)"
+            "right_text": "<p>Zoom (no replay)</p>"
           }
         },
         "feature_row_DH7mj8": {
@@ -641,7 +642,7 @@
             "center_checked": false,
             "center_text": "Built-in",
             "right_checked": true,
-            "right_text": "YouTube (no monetization)"
+            "right_text": "<p>YouTube (no monetization)</p>"
           }
         },
         "feature_row_Dq9MnL": {
@@ -652,7 +653,7 @@
             "center_checked": false,
             "center_text": "Built-in",
             "right_checked": true,
-            "right_text": "Google Drive (not organized)"
+            "right_text": "<p>Google Drive (not organized)</p>"
           }
         }
       },
