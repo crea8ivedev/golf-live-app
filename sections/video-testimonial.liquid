@@ -68,7 +68,7 @@
     </div>
 
     <div class="relative max-990:pl-[28px]">
-      <div class="swiper vt-swiper" data-enable-clone="{{ section.settings.enable_slide_clone }}">
+      <div class="swiper vt-swiper vt-swiper-1" data-enable-clone="{{ section.settings.enable_slide_clone }}">
         <div class="swiper-wrapper">
           {% for block in section.blocks %}
             <div class="swiper-slide vt-slide scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
@@ -167,7 +167,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const swiperEl = document.querySelector('.vt-swiper');
+    const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
     if (!swiperEl) return;
 
     const enableClone = swiperEl.dataset.enableClone === 'true';

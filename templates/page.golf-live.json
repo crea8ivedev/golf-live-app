@@ -104,6 +104,7 @@
         "slide_TfEn3t",
         "slide_gWKk3N"
       ],
+      "disabled": true,
       "name": "Video Testimonials",
       "settings": {
         "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
@@ -113,6 +114,46 @@
         "golfer_text": "I'M A GOLFER",
         "golfer_url": "",
         "coach_text": "I'M A COACH",
+        "coach_url": "",
+        "button_bg": "#0a7a28",
+        "button_text": "#ffffff"
+      }
+    },
+    "video_testimonial_flex_CqJjq3": {
+      "type": "video-testimonial-flex",
+      "blocks": {
+        "slide_TkX9w4": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/GolfLive-Relaunch-draft4.mov",
+            "image": "shopify://shop_images/Group_123.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_YaEJcb": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/GolfLive-FlightscopeV3.mov",
+            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
+            "name": "",
+            "subtitle": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_TkX9w4",
+        "slide_YaEJcb"
+      ],
+      "name": "Video Testimonials Flex",
+      "settings": {
+        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "highlight_color": "#0a7a28",
+        "show_arrows": false,
+        "enable_slide_clone": false,
+        "golfer_text": "",
+        "golfer_url": "",
+        "coach_text": "",
         "coach_url": "",
         "button_bg": "#0a7a28",
         "button_text": "#ffffff"
@@ -363,6 +404,7 @@
     "main",
     "hero_platform_36BXwJ",
     "video_testimonial_yVrHzQ",
+    "video_testimonial_flex_CqJjq3",
     "growth_challenges_3aYGpy",
     "zigzag_section_kQQrbG",
     "zigzag_section_b9tXrf",
