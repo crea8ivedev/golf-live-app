@@ -68,7 +68,7 @@
     </div>
 
     <div class="relative max-990:pl-[28px]">
-      <div class="swiper vt-swiper">
+      <div class="swiper vt-swiper" data-enable-clone="{{ section.settings.enable_slide_clone }}">
         <div class="swiper-wrapper">
           {% for block in section.blocks %}
             <div class="swiper-slide vt-slide scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
@@ -170,11 +170,13 @@
     const swiperEl = document.querySelector('.vt-swiper');
     if (!swiperEl) return;
 
+    const enableClone = swiperEl.dataset.enableClone === 'true';
     const wrapper = swiperEl.querySelector('.swiper-wrapper');
     let slides = wrapper.querySelectorAll('.swiper-slide');
     const visibleSlidesDesktop = 4;
 
-    if (slides.length <= visibleSlidesDesktop) {
+    /* Clone slides only if enabled */
+    if (enableClone && slides.length <= visibleSlidesDesktop) {
       slides.forEach((slide) => {
         const clone = slide.cloneNode(true);
         clone.classList.add('vt-slide-clone');
@@ -185,7 +187,10 @@
     const swiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 18,
-      loop: true,
+
+      /* Loop should follow clone logic */
+      loop: enableClone,
+
       watchOverflow: false,
 
       navigation: {
@@ -252,6 +257,12 @@
       "type": "checkbox",
       "id": "show_arrows",
       "label": "Show arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_slide_clone",
+      "label": "Enable slide cloning for loop",
       "default": true
     },
     {

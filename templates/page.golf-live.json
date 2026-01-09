@@ -78,6 +78,46 @@
         "padding_bottom_mobile": 20
       }
     },
+    "video_testimonial_yVrHzQ": {
+      "type": "video-testimonial",
+      "blocks": {
+        "slide_TfEn3t": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/GolfLive-Relaunch-draft4.mov",
+            "image": "shopify://shop_images/Group_123.png",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_gWKk3N": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/GolfLive-FlightscopeV3.mov",
+            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
+            "name": "",
+            "subtitle": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_TfEn3t",
+        "slide_gWKk3N"
+      ],
+      "name": "Video Testimonials",
+      "settings": {
+        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "highlight_color": "#0a7a28",
+        "show_arrows": false,
+        "enable_slide_clone": false,
+        "golfer_text": "I'M A GOLFER",
+        "golfer_url": "",
+        "coach_text": "I'M A COACH",
+        "coach_url": "",
+        "button_bg": "#0a7a28",
+        "button_text": "#ffffff"
+      }
+    },
     "growth_challenges_3aYGpy": {
       "type": "growth-challenges",
       "blocks": {
@@ -130,7 +170,7 @@
         "color_scheme": "scheme-1",
         "bgc_heading": "<h2>What’s Inside Golf Live+</h2>",
         "bgc_heading_sub": "",
-        "side_image": "shopify://shop_images/Rectangle_30.png",
+        "side_image": "shopify://shop_images/0efc03d29e05058fb715da8becb414539dc65a60_7bf85857-3d59-4fdd-8c13-5a3c7c4a8f49.png",
         "pga_image_position": "left",
         "show_announcement": false,
         "text": "",
@@ -322,6 +362,7 @@
   "order": [
     "main",
     "hero_platform_36BXwJ",
+    "video_testimonial_yVrHzQ",
     "growth_challenges_3aYGpy",
     "zigzag_section_kQQrbG",
     "zigzag_section_b9tXrf",
