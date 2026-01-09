@@ -96,7 +96,7 @@
             {%- if section.settings.btn_link != blank -%}
               <a
                 href="{{ section.settings.btn_link | default: '#' }}"
-                class="free-trial-btn-one ctm-button button-green max-576:w-full custom-btn-{{ section.id }}"
+                class="free-trial-btn-one ctm-button button-green max-576:w-full min-990:px-[50px] custom-btn-{{ section.id }}"
               >
                 {{ section.settings.btn_text }}
               </a>
@@ -105,7 +105,7 @@
             {%- if section.settings.btn_link_2 != blank -%}
               <a
                 href="{{ section.settings.btn_link_2 | default: '#' }}"
-                class="free-trial-btn-two ctm-button button-white-outline max-576:w-full"
+                class="free-trial-btn-two ctm-button button-white-outline max-576:w-full min-990:px-[50px]"
               >
                 {{ section.settings.btn_text_2 }}
               </a>

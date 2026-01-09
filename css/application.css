@@ -692,3 +692,7 @@
 .header__menu-item span.header__active-menu-item {
   @apply !text-green3 !font-bold;
 }
+
+.ctm_bgc_heading_wrapper br {
+  @apply max-990:hidden;
+}

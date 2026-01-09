@@ -76,7 +76,7 @@
         "padding_top_tablet": 0,
         "padding_bottom_tablet": 0,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_bottom_mobile": 20
       }
     },
     "trusted_professional_Mr4PtT": {
@@ -246,7 +246,7 @@
         "color_scheme": "scheme-1",
         "bgc_heading": "<h2>One Platform. <br/>Your Entire Coaching Business.</h2>",
         "bgc_heading_sub": "<p>Golf Live gives you everything you need to coach better, reach more students, and grow your revenue, all from one seamless app.<br/></p>",
-        "side_image": "shopify://shop_images/0efc03d29e05058fb715da8becb414539dc65a60.png",
+        "side_image": "shopify://shop_images/Rectangle_30.png",
         "pga_image_position": "left",
         "show_announcement": true,
         "text": "There’s a better way to run your coaching business.",
@@ -356,7 +356,7 @@
         "layout": "image_first",
         "padding_top": 80,
         "padding_bottom": 80,
-        "padding_top_mobile": 45,
+        "padding_top_mobile": 40,
         "padding_bottom_mobile": 45
       }
     },
@@ -398,7 +398,7 @@
         "layout": "text_first",
         "padding_top": 36,
         "padding_bottom": 36,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 52
       }
     },
@@ -440,7 +440,7 @@
         "layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 36,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 52
       }
     },
@@ -482,7 +482,7 @@
         "layout": "text_first",
         "padding_top": 36,
         "padding_bottom": 36,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 52
       }
     },
@@ -524,7 +524,7 @@
         "layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 36,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 52
       }
     },
@@ -566,7 +566,7 @@
         "layout": "text_first",
         "padding_top": 36,
         "padding_bottom": 36,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 0,
         "padding_bottom_mobile": 52
       }
     },
