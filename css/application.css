@@ -679,3 +679,7 @@
 .cta-questions-bar__text {
   @apply min-990:max-1440:mr-[150px];
 }
+
+.ctm-range-growth .ctm_challenges_list {
+  @apply min-990:gap-y-[18px];
+}
