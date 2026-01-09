@@ -651,3 +651,7 @@
 .ctm-rev-section .section-heading-center p {
   @apply min-1440:text-[21px];
 }
+
+.glc-item span {
+  @apply min-[1582px]:max-[1600px]:max-w-[290px];
+}
