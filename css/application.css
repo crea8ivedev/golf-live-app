@@ -675,3 +675,7 @@
 .dual-card__button {
   @apply min-990:max-1440:pl-[30px];
 }
+
+.cta-questions-bar__text {
+  @apply min-990:max-1440:mr-[150px];
+}
