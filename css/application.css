@@ -683,3 +683,12 @@
 .ctm-range-growth .ctm_challenges_list {
   @apply min-990:gap-y-[18px];
 }
+
+.header__menu-item span {
+  @apply no-underline;
+}
+
+.menu-drawer__menu-item--active,
+.header__menu-item span.header__active-menu-item {
+  @apply !text-green3 !font-bold;
+}

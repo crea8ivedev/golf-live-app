@@ -643,7 +643,7 @@
             "center_checked": true,
             "center_text": "Built-in",
             "right_checked": false,
-            "right_text": "Zoom (no replay)"
+            "right_text": "<p><strong>Zoom (no replay)</strong></p>"
           }
         },
         "feature_row_6ibUin": {
@@ -654,7 +654,7 @@
             "center_checked": true,
             "center_text": "Unlimited",
             "right_checked": false,
-            "right_text": "YouTube (no monetization)"
+            "right_text": "<p><strong>YouTube</strong> (no monetization)</p>"
           }
         },
         "feature_row_rKrUdj": {
@@ -665,7 +665,7 @@
             "center_checked": true,
             "center_text": "Sell your content",
             "right_checked": false,
-            "right_text": "Google Drive (not organized)"
+            "right_text": "<p><strong>Google Drive</strong> (not organized)</p>"
           }
         },
         "feature_row_zHQ7yJ": {
@@ -676,7 +676,7 @@
             "center_checked": true,
             "center_text": "Automatic",
             "right_checked": false,
-            "right_text": "Venmo (manual)"
+            "right_text": "<p><strong>Venmo</strong> (manual)</p>"
           }
         },
         "feature_row_6crWNm": {
@@ -687,7 +687,7 @@
             "center_checked": true,
             "center_text": "Automatic",
             "right_checked": false,
-            "right_text": "Calendly (separate login)"
+            "right_text": "<p><strong>Calendly</strong> (separate login)</p>"
           }
         },
         "feature_row_WpdjpK": {
@@ -698,7 +698,7 @@
             "center_checked": true,
             "center_text": "Built-in network",
             "right_checked": false,
-            "right_text": "Instagram (hit or miss)"
+            "right_text": "<p><strong>Instagram</strong> (hit or miss)</p>"
           }
         },
         "feature_row_FjqFRm": {
@@ -709,7 +709,7 @@
             "center_checked": true,
             "center_text": "Forever",
             "right_checked": false,
-            "right_text": "Phone storage (runs out)"
+            "right_text": "<p><strong>Phone storage</strong> (runs out)</p>"
           }
         },
         "feature_row_JJbDYk": {
@@ -720,7 +720,7 @@
             "center_checked": true,
             "center_text": "Everything",
             "right_checked": false,
-            "right_text": "5+ different apps"
+            "right_text": "<p><strong>5+ different apps</strong></p>"
           }
         }
       },
