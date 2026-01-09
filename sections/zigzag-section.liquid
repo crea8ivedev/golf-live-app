@@ -48,7 +48,7 @@
         </div>
 
         <div class="w-full 990:w-1/2 990:py-5">
-          <div class="990:max-w-[535px] max-w-full flex flex-col gap-[21px] max-990:gap-2.5">
+          <div class="990:max-w-[586px] max-w-full flex flex-col gap-[21px] max-990:gap-2.5">
             {%- for block in section.blocks -%}
               {% case block.type %}
                 {%- when 'heading' -%}
@@ -57,7 +57,7 @@
                   </h4>
 
                 {%- when 'paragraph' -%}
-                  <div class="space-y-5" {{ block.shopify_attributes }}>
+                  <div class="space-y-5 font-medium" {{ block.shopify_attributes }}>
                     {% assign para_lines = block.settings.text | newline_to_br | split: '<br />' %}
                     {% for line in para_lines %}
                       <p class="leading-normal">{{ line | strip }}</p>

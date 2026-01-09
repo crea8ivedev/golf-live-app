@@ -72,11 +72,11 @@
         "stat_icon": "shopify://shop_images/Vector_6.svg",
         "stat_text": "20,000+ Hours of Coaching Delivered",
         "padding_top": 0,
-        "padding_bottom": 52,
+        "padding_bottom": 0,
         "padding_top_tablet": 0,
-        "padding_bottom_tablet": 50,
+        "padding_bottom_tablet": 0,
         "padding_top_mobile": 0,
-        "padding_bottom_mobile": 52
+        "padding_bottom_mobile": 0
       }
     },
     "trusted_professional_Mr4PtT": {
@@ -144,8 +144,8 @@
         "padding_bottom": 52,
         "padding_top_tablet": 50,
         "padding_bottom_tablet": 50,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 52
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "growth_challenges_HC3REj": {

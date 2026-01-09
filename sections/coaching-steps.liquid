@@ -22,7 +22,9 @@
 <div id="section-{{ section.id }}" class="coaching-steps-wrapper {{ section.settings.extra-class }}">
   <div class="container-136 coaching-steps-container">
     {%- if section.settings.heading != blank -%}
-      <h2 class="coaching-steps-title max-w-[591px] mx-auto text-center">{{ section.settings.heading }}</h2>
+      <h2 class="coaching-steps-title max-w-[330px] min-768:max-w-[350px] min-1440:max-w-[440px] min-1582:max-w-[591px] mx-auto text-center">
+        {{ section.settings.heading }}
+      </h2>
     {%- endif -%}
 
     <div class="coaching-steps-grid">
@@ -38,7 +40,7 @@
 
           <div class="coaching-step-content">
             <span class="coaching-step-badge">{{ block.settings.step_label }}</span>
-            <h4 class="coaching-step-heading max-576:text-[17px]">{{ block.settings.title }}</h4>
+            <h4 class="coaching-step-heading max-576:text-[17px] min-1440:text-[25px]">{{ block.settings.title }}</h4>
             <p class="coaching-step-desc font-medium tracking-[0.2px] leading-[158%] max-576:text-sm">
               {{ block.settings.description }}
             </p>

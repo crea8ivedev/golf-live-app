@@ -38,7 +38,7 @@
         </div>
       {% endif %}
     </div>
-    <div class="w-full min-[1440px]:pr-[130px]">
+    <div class="w-full min-[1560px]:pr-[130px] pr-[30px]">
       <div class="ctm-hero-content">
         {% if section.settings.eyebrow != blank %}
           <p class="ctm-hero-eyebrow  h5 mb-[10px] 576:mb-[15px] max-576:text-center">
@@ -66,7 +66,7 @@
                       {{ block.settings.icon | image_url: width: 40 | image_tag }}
                     </span>
                   {% endif %}
-                  <span class="ctm-feature-text font-semibold text-[15px] lg:text-[18px]">
+                  <span class="ctm-feature-text font-semibold text-[15px] lg:text-[18px] min-1582:max-w-[500px]">
                     {{ block.settings.text }}
                   </span>
                 </li>
@@ -75,22 +75,28 @@
           </ul>
         {% endif %}
 
-        <div class="ctm-hero-buttons">
+        <div class="ctm-hero-buttons flex-wrap">
           {% if section.settings.primary_label != blank %}
-            <a href="{{ section.settings.primary_link }}" class="btn btn-primary ctm-button button-green">
+            <a
+              href="{{ section.settings.primary_link }}"
+              class="btn btn-primary ctm-button button-green max-1440:px-[50px]"
+            >
               {{ section.settings.primary_label }}
             </a>
           {% endif %}
 
           {% if section.settings.secondary_label != blank %}
-            <a href="{{ section.settings.secondary_link }}" class="btn btn-secondary ctm-button button-white-outline">
+            <a
+              href="{{ section.settings.secondary_link }}"
+              class="btn btn-secondary ctm-button button-white-outline max-1440:px-[50px]"
+            >
               {{ section.settings.secondary_label }}
             </a>
           {% endif %}
         </div>
 
         {% if section.settings.stat_text != blank %}
-          <div class="flex justify-center items-center pt-[16px] gap-[8px]">
+          <div class="flex justify-center items-center pt-[16px] gap-[8px] 1024:max-w-[700px]">
             {% if section.settings.stat_icon != blank %}
               {{ section.settings.stat_icon | image_url: width: 21 | image_tag }}
             {% endif %}

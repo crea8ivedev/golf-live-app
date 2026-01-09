@@ -21,7 +21,7 @@
   {% comment %}show_announcement{% endcomment %}
   {% if section.settings.show_announcement %}
     <div class="ctm-green-container w-full bg-green-700 relative">
-      <div class="max-w-full mx-auto flex items-center justify-center gap-3 px-[45px] py-4">
+      <div class="max-w-full mx-auto flex items-center justify-center gap-3 px-[45px] max-393:px-[40px] py-4">
         {% if section.settings.icon_image != blank %}
           <span class="flex-shrink-0">
             {{
@@ -32,7 +32,7 @@
           </span>
         {% endif %}
         {% if section.settings.text != blank %}
-          <p class="text-white text-[18px] lg:text-[27px] font-semibold uppercase text-center">
+          <p class="text-white text-[18px] lg:text-[27px] uppercase text-center max-768:text-left font-bold">
             {{ section.settings.text }}
           </p>
         {% endif %}
@@ -75,7 +75,7 @@
       {% endif %}
     </div>
 
-    <div class="ctm_challenges_wrapper flex max-990:flex-col-reverse items-stretch gap-[30px] 990:gap-[50px] 1024:gap-[100px] max-768:pt-[25px] justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %}">
+    <div class="ctm_challenges_wrapper flex max-990:flex-col-reverse max-1582:items-stretch items-center !gap-[30px] 990:!gap-[50px] 1024:!gap-[70px] 1280:!gap-[100px] max-768:pt-[25px] justify-center {% if section.settings.pga_image_position == 'left' %}flex-row-reverse gap-[50px]{% endif %} max-990:gap-y-[20px]">
       <div class="ctm_challenges_list w-full h-full">
         {% for block in section.blocks %}
           <div
@@ -96,7 +96,7 @@
             {% endif %}
             <div class="challenge-item" {{ block.shopify_attributes }}>
               {% if block.settings.title != blank %}
-                <h4 class="challenge-title ctm-text-pga">
+                <h4 class="challenge-title ctm-text-pga max-768:pb-[8px]">
                   {{ block.settings.title }}
                 </h4>
               {% endif %}

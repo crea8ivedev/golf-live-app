@@ -630,3 +630,24 @@
 .ctm_bgc_heading_wrapper {
   @apply max-640:!pb-[12px];
 }
+
+.glc-grey .glc-phone-sibling {
+  @apply min-990:flex-[0_0_calc(100%_-_185px)];
+}
+
+.glc-grey .glc-phone {
+  @apply min-990:flex-[0_0_185px];
+}
+
+.coaching-step-heading {
+  @apply min-768:max-1440:text-[20px] min-768:max-1440:leading-[22px];
+}
+
+.ctm_challenges_list .challenge-item .ctm-text-pga,
+.ctm-trusted-pga-main .ctm-inner-content .ctm-text-pga {
+  @apply min-1440:max-1582:text-[22px];
+}
+
+.ctm-rev-section .section-heading-center p {
+  @apply min-1440:text-[21px];
+}

@@ -28,7 +28,7 @@
 }
 
 .coaching-step-badge {
-  @apply inline-block px-4 max-990:px-3 py-2 max-990:py-1 rounded-full text-[22px] max-576:leading-normal max-990:text-base font-bold text-white 576:mb-3 w-fit capitalize tracking-wider;
+  @apply inline-block px-4 max-990:px-3 py-2 max-990:py-1 rounded-full text-[22px] max-576:leading-normal max-990:text-base font-bold text-white 576:mb-0 w-fit capitalize tracking-wider;
   background-color: #0b4a1f; /* Your specific branding green */
 }
 
@@ -42,7 +42,7 @@
 }
 /* lp- hero section */
 .ctm-hero-content {
-  @apply w-full h-auto flex flex-col max-576:px-[28px] max-1025:px-20 py-[60px];
+  @apply w-full h-auto flex flex-col max-576:px-[28px] max-1025:px-20 lg:py-[60px];
 }
 .ctm-hero-eyebrow {
   @apply text-green0;
@@ -63,7 +63,7 @@
   @apply flex flex-col gap-[24px] py-[28px] 1024:py-[40px] 1025:px-[40px] min-[1440px]:px-[65px];
 }
 .ctm-hero-buttons {
-  @apply max-576:w-full flex max-576:flex-col max-576:items-center justify-center gap-[14px];
+  @apply max-576:w-full flex max-576:flex-col max-576:items-center max-1920:justify-center gap-[14px];
 }
 .ctm-hero-buttons a {
   @apply max-576:w-full;
@@ -75,7 +75,7 @@
   @apply max-w-[40px] max-h-[40px];
 }
 .ctm-text-pga {
-  @apply text-[17px] leading-[18px] tracking-[0.15px] min-[768px]:text-[19px] min-[768px]:leading-[28px] min-[1440px]:text-[25px] min-[1440px]:leading-[38px] tracking-[0.23px];
+  @apply text-[15px] leading-[18px] tracking-[0.15px] min-[768px]:text-[19px] min-[768px]:leading-[28px] min-[1440px]:text-[25px] min-[1440px]:leading-[38px] tracking-[0.23px];
 }
 
 .ctm-grid-container {
@@ -89,7 +89,7 @@
 
 /* growth-challeng */
 .ctm_bgc_heading_main .section-heading p {
-  @apply text-[25px] leading-[30px] tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[34px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.45px] min-[1582px]:text-[45px] min-[1582px]:leading-[54px];
+  @apply text-[25px] leading-[30px] !font-medium tracking-[0.25px] min-[768px]:text-[28px] min-[768px]:leading-[32px] min-[1440px]:text-[34px] min-[1440px]:leading-[40px] min-[1440px]:tracking-[0.45px] min-[1582px]:text-[45px] min-[1582px]:leading-[54px];
 }
 .ctm_bgc_heading_main .section-heading {
   @apply hidden md:block;
@@ -163,7 +163,7 @@
   @apply max-768:bg-[#E2E2DD];
 }
 .ctm-rev-section .section-heading-center p {
-  @apply !pt-[20px] max-w-[825px] mx-auto font-semibold;
+  @apply !pt-[20px] max-w-[805px] mx-auto font-semibold;
 }
 
 .ctm-rev-section .ctm_challenges_list {
