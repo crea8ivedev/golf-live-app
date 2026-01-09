@@ -41,15 +41,15 @@
 {% endstyle %}
 
 <div class="ctm-review-slider-main page-width color-{{ section.settings.color_scheme }} {{ section.settings.extra_class_reviews }} section-{{ section.id }}-padding">
-  <div class="scroll-trigger animate--slide-in page-width ctm-review-slider-inner swiper">
+  <div class="scroll-trigger animate--slide-in page-width ctm-review-slider swiper">
     {% if section.settings['review-main-title'] != blank %}
       <div class="ctm-review-slider-heading text-center mb-13">
         <h2>{{ section.settings['review-main-title'] }}</h2>
       </div>
     {% endif %}
-    <div class="ctm-review-slider-wrapper swiper-wrapper !h-auto">
+    <div class="ctm-review-slider-wrapper swiper-wrapper !h-auto justify-center flex-wrap gap-[24px]">
       {% for block in section.blocks %}
-        <div class="ctm-reviews-slide-inner swiper-slide !h-auto p-8.5 min-h-[424px] max-990:min-h-[380px] max-768:min-h-[278px] max-768:gap-5">
+        <div class="ctm-reviews-slide-inner flex-[0_0_100%] min-768:flex-[0_0_48%] min-1280:flex-[0_0_30%] swiper-slide !h-auto p-8.5 min-h-[424px] max-990:min-h-[380px] max-768:min-h-[278px] max-768:gap-5">
           <div class="ctm-reviews-content mt-10 max-768:mt-14 max-576:mt-10">
             {{ block.settings['ctm-add-review'] }}
             {% if block.settings['enable-rating'] %}
@@ -94,7 +94,7 @@
 
 {% schema %}
 {
-  "name": "Custom Review",
+  "name": "Custom Review Flex",
   "class": "ctm-review-slider-hero",
   "settings": [
     {
@@ -232,40 +232,8 @@
   ],
   "presets": [
     {
-      "name": "Custom Review"
+      "name": "Custom Review Flex"
     }
   ]
 }
 {% endschema %}
-
-<script>
-  var swiper = new Swiper('.ctm-review-slider-inner', {
-    loop: true,
-    {% comment %} autoplay: {
-      delay: 6000,
-      disableOnInteraction: false,
-    }, {% endcomment %}
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-        spaceBetween: 16,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      990: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      1580: {
-        slidesPerView: 4,
-        spaceBetween: 24,
-      },
-    },
-  });
-</script>

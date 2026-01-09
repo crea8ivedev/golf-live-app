@@ -271,10 +271,10 @@
         "padding_bottom_mobile": 52
       }
     },
-    "custom_reviews_wqynyM": {
-      "type": "custom-reviews",
+    "custom_review_flex_tWH86Q": {
+      "type": "custom-review-flex",
       "blocks": {
-        "review_XWV49A": {
+        "review_Y7fhDn": {
           "type": "review",
           "settings": {
             "ctm-add-review": "<p>“This is the most valuable golf content I’ve ever paid for.”</p>",
@@ -283,7 +283,7 @@
             "customer_name": "<p><strong>Alex B.,<br/></strong>38</p>"
           }
         },
-        "review_MFzmRN": {
+        "review_8YnFY9": {
           "type": "review",
           "settings": {
             "ctm-add-review": "<p>“I started watching for the short game drills, now I’m hooked on everything.”</p>",
@@ -292,7 +292,7 @@
             "customer_name": "<p><strong>Jordan R.,<br/></strong>21</p>"
           }
         },
-        "review_UE4D6q": {
+        "review_DHeWVT": {
           "type": "review",
           "settings": {
             "ctm-add-review": "<p>“Live streams + masterclasses = serious results.”</p>",
@@ -303,15 +303,15 @@
         }
       },
       "block_order": [
-        "review_XWV49A",
-        "review_MFzmRN",
-        "review_UE4D6q"
+        "review_Y7fhDn",
+        "review_8YnFY9",
+        "review_DHeWVT"
       ],
-      "name": "Custom Review",
+      "name": "Custom Review Flex",
       "settings": {
-        "extra_class_reviews": "golf-live-custom-review",
+        "extra_class_reviews": "ctm-review-flex-main",
         "color_scheme": "scheme-1",
-        "review-main-title": "What Members Are Saying",
+        "review-main-title": "What Users Are Saying",
         "bg-card-image": "shopify://shop_images/Rectangle_15.png",
         "review-btn-title": "Start Your Free Trial",
         "review-btn-link": "#",
@@ -366,7 +366,7 @@
     "growth_challenges_3aYGpy",
     "zigzag_section_kQQrbG",
     "zigzag_section_b9tXrf",
-    "custom_reviews_wqynyM",
+    "custom_review_flex_tWH86Q",
     "pricing_plans_x6Yi8T"
   ]
 }
