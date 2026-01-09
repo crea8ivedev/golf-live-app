@@ -366,7 +366,7 @@
 }
 
 .vt-play-btn svg {
-  @apply max-990:w-[38px];
+  @apply max-1440:w-[38px];
 }
 
 .vt-swiper .swiper-slide {
@@ -592,7 +592,7 @@
 }
 
 .glc-card {
-  @apply max-640:!pb-[30px];
+  @apply max-640:!py-[30px];
 }
 
 .glc-card.glc-green > * {
@@ -654,4 +654,24 @@
 
 .glc-item span {
   @apply min-[1582px]:max-[1600px]:max-w-[290px];
+}
+
+.glc-card-title {
+  @apply max-990:text-[19px] max-990:leading-[23px] max-990:tracking-[0.19px];
+}
+
+.golf-live-compare {
+  @apply max-640:!pb-[30px];
+}
+
+.faq-section .faq-icon svg {
+  @apply max-990:w-[16px] max-990:h-[8px];
+}
+
+.dual-card__inner-start {
+  @apply min-768:max-990:max-w-[450px] min-768:max-990:mx-auto;
+}
+
+.dual-card__button {
+  @apply min-990:max-1440:pl-[30px];
 }
