@@ -217,7 +217,7 @@
 }
 
 .menu-drawer__navigation-container {
-  @apply flex flex-col justify-between px-[28px] pb-[28px];
+  @apply flex flex-col justify-start max-990:gap-[60px] px-[28px] pb-[28px];
 }
 
 .menu-drawer__navigation {
