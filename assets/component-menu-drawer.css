@@ -59,8 +59,8 @@ menu-drawer > details[open] > summary::before {
 .js details[open] > .menu-drawer,
 .js details[open] > .menu-drawer__submenu {
   transition:
-    transform var(--duration-default) ease,
-    visibility var(--duration-default) ease;
+    transform 0.5s ease,
+    visibility 0.5s ease;
 }
 
 .js details[open].menu-opening > .menu-drawer,

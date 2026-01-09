@@ -168,27 +168,28 @@
       const cards = document.querySelectorAll('.dual-card__inner-start');
       if (!cards.length) return;
 
-      // reset
+      // Always reset first
       cards.forEach((card) => {
         card.style.height = 'auto';
       });
 
-      // calculate max height
+      // Only apply equal height on >= 990px
+      if (window.innerWidth < 990) return;
+
       let maxHeight = 0;
       cards.forEach((card) => {
         maxHeight = Math.max(maxHeight, card.offsetHeight);
       });
 
-      // apply
       cards.forEach((card) => {
         card.style.height = `${maxHeight}px`;
       });
     };
 
-    // run on load
+    // Initial run
     equalizeHeadings();
 
-    // run on resize
+    // Re-run on resize
     window.addEventListener('resize', equalizeHeadings);
   });
 </script>

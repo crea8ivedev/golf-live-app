@@ -21,19 +21,19 @@
     <!-- LEFT CONTENT -->
     <div class="golf-app-hero__content min-990:flex-[0_0_56.64%] px-[28px] min-768:px-[30px] min-990:pl-[30px] min-1440:pl-[135px] min-990:pr-[100px] min-1440:pr-[189px] pt-[36px] pb-[54px] min-990:pt-[70px] min-990:pb-[58px] min-990:flex min-990:flex-col min-990:justify-center">
       {% if section.settings.top_text != blank %}
-        <p class="golf-app-hero__top-text h5 uppercase mb-[8px] min-990:mb-[15px] text-green0 max-990:text-center">
+        <p class="golf-app-hero__top-text h5 uppercase mb-[8px] min-990:mb-[15px] text-green0 max-990:text-center scroll-trigger animate--slide-in">
           {{ section.settings.top_text }}
         </p>
       {% endif %}
 
       {% if section.settings.heading != blank %}
-        <div class="golf-app-hero__heading h1 mb-[20px] min-990:mb-[14px] max-990:text-center">
+        <div class="golf-app-hero__heading h1 mb-[20px] min-990:mb-[14px] max-990:text-center scroll-trigger animate--slide-in">
           {{ section.settings.heading }}
         </div>
       {% endif %}
 
       {% if section.settings.description != blank %}
-        <div class="golf-app-hero__description font-medium text-[15px] leading-[22px] tracking-[0.15px] min-990:text-[19px] min-990:leading-[30px] min-990:tracking-[0.19px] max-w-[337px] min-990:max-w-[465px] mb-[39px] min-990:mb-[57px] max-990:text-center max-990:mx-auto">
+        <div class="golf-app-hero__description font-medium text-[15px] leading-[22px] tracking-[0.15px] min-990:text-[19px] min-990:leading-[30px] min-990:tracking-[0.19px] max-w-[337px] min-990:max-w-[465px] mb-[39px] min-990:mb-[57px] max-990:text-center max-990:mx-auto scroll-trigger animate--slide-in">
           {{ section.settings.description }}
         </div>
       {% endif %}
@@ -41,7 +41,7 @@
       {% if section.settings.button_text != blank and section.settings.button_url != blank %}
         <a
           href="{{ section.settings.button_url }}"
-          class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[28px] min-990:gap-[85px] pr-[30px] min-990:pr-[38px] min-w-[246px] min-990:min-w-[362px] max-990:mx-auto"
+          class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[28px] min-990:gap-[85px] pr-[30px] min-990:pr-[38px] min-w-[246px] min-990:min-w-[362px] max-990:mx-auto scroll-trigger animate--slide-in"
         >
           {{ section.settings.button_text }}
           <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
@@ -50,7 +50,7 @@
         </a>
       {% endif %}
 
-      <div class="golf-app-hero__store-buttons flex flex-wrap gap-[21px] mt-[30px] min-990:mt-[48px] max-990:justify-center">
+      <div class="golf-app-hero__store-buttons flex flex-wrap gap-[21px] mt-[30px] min-990:mt-[48px] max-990:justify-center scroll-trigger animate--slide-in">
         {% if section.settings.app_store_image != blank and section.settings.app_store_url != blank %}
           <a
             href="{{ section.settings.app_store_url }}"
