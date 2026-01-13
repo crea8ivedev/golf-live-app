@@ -332,21 +332,11 @@
             "customer_image": "shopify://shop_images/819f001fffe0324ae89622785d7d9e5e88c7d1b7_1.png",
             "customer_name": "<p><strong>Jordan R.,<br/></strong>21</p>"
           }
-        },
-        "review_DHeWVT": {
-          "type": "review",
-          "settings": {
-            "ctm-add-review": "<p>“Live streams + masterclasses = serious results.”</p>",
-            "enable-rating": true,
-            "customer_image": "shopify://shop_images/819f001fffe0324ae89622785d7d9e5e88c7d1b7_1.png",
-            "customer_name": "<p><strong>Tasha M.,<br/></strong>45</p>"
-          }
         }
       },
       "block_order": [
         "review_Y7fhDn",
-        "review_8YnFY9",
-        "review_DHeWVT"
+        "review_8YnFY9"
       ],
       "name": "Custom Review Flex",
       "settings": {
