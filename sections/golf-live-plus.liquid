@@ -1,0 +1,195 @@
+<div class="golf-live-plus section-{{ section.id }} overflow-hidden py-[70px] min-1440:py-[100px]">
+  <div class="page-width">
+    {% if section.settings.heading != blank or section.settings.link_label != blank %}
+      <div class="golf-live-plus__header text-center">
+        {% if section.settings.heading != blank %}
+          <h2 class="golf-live-plus__heading mb-[20px]">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+        {% if section.settings.sub_heading != blank %}
+          {{ section.settings.sub_heading }}
+        {% endif %}
+
+        {% if section.settings.link_label != blank and section.settings.link_url != blank %}
+          <a
+            href="{{ section.settings.link_url }}"
+            class="golf-live-plus__link"
+          >
+            {{ section.settings.link_label }}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="swiper golf-live-plus__swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <a
+                href="{{ block.settings.card_link | default: '#' }}"
+                class="golf-live-plus__card"
+              >
+                {% if block.settings.image != blank %}
+                  <div class="golf-live-plus__media relative after:content-[''] after:absolute after:w-full after:h-full after:left-0 after:top-0 after:bg-[rgba(0,_0,_0,_0.2)] after:pointer-events-none">
+                    <img
+                      src="{{ block.settings.image | image_url: width: 800 }}"
+                      alt="{{ block.settings.title | escape }}"
+                      loading="lazy"
+                      |
+                      width="auto"
+                      height="auto"
+                      class="w-full object-cover"
+                    >
+                    <div class="absolute left-[12px] bottom-[12px] z-1">
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0672/2410/9296/files/play-icon-video.png?v=1768480207"
+                        alt="icon"
+                        loading="lazy"
+                        |
+                        width="auto"
+                        height="auto"
+                      >
+                    </div>
+                  </div>
+                {% endif %}
+
+                {% if block.settings.title != blank %}
+                  <div class="golf-live-plus__title">
+                    {{ block.settings.title }}
+                  </div>
+                {% endif %}
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} .golf-live-plus__header {
+    margin-bottom: 40px;
+  }
+
+  .section-{{ section.id }} .swiper {
+    overflow: visible;
+  }
+
+  .section-{{ section.id }} .swiper-slide {
+    width: auto;
+  }
+
+  .section-{{ section.id }} .golf-live-plus__card {
+    display: block;
+    text-decoration: none;
+  }
+
+  .section-{{ section.id }} .golf-live-plus__media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .section-{{ section.id }} .golf-live-plus__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .section-{{ section.id }} .golf-live-plus__title {
+    margin-top: 8px;
+  }
+{% endstyle %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.golf-live-plus__swiper').forEach(function (swiperEl) {
+      new Swiper(swiperEl, {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        speed: 600,
+        grabCursor: true,
+        watchOverflow: true,
+        breakpoints: {
+          640: {
+            slidesPerView: 2.2,
+          },
+          990: {
+            slidesPerView: 4,
+          },
+        },
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Golf Live Plus (Swiper)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Golf Live Plus"
+    },
+    {
+      "type": "richtext",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Top Right Link Label",
+      "default": "See More"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Top Right Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Content Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Thumbnail Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Short Game Secrets"
+        },
+        {
+          "type": "url",
+          "id": "card_link",
+          "label": "Card Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_play_icon",
+          "label": "Show Play Icon",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Golf Live Plus (Swiper)",
+      "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }]
+    }
+  ]
+}
+{% endschema %}

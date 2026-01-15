@@ -10,11 +10,14 @@
   --color-green3: #187f00;
   --color-green4: #05bb44;
   --color-green5: #05732b;
+  --color-green6: #16a34a;
   --color-black1: #1c1c1c;
   --color-black2: #494949;
+  --color-black3: #18181b;
   --color-gray: #efefef;
   --color-gray2: #d9d9d9;
   --color-gray3: #f2f2f2;
+  --color-gray4: #a1a1aa;
 
   /* Font-family */
   --font-body: "Inter", sans-serif;
@@ -747,4 +750,128 @@
 
 .ctm-rev-section {
   @apply min-[990px]:max-[1025px]:!pb-[40px];
+}
+
+/* golf-live-dark-theme */
+
+.ctm-page-golf-live-dark .header-wrapper {
+  @apply bg-black3;
+}
+
+.ctm-page-golf-live-dark .header .login-btn a,
+.ctm-page-golf-live-dark .header .list-menu__item {
+  @apply text-white hover:text-green6;
+}
+
+.ctm-page-golf-live-dark .header .sign-up-btn a {
+  @apply border-white bg-transparent text-white hover:bg-green6 hover:border-green6 hover:text-white;
+}
+
+.ctm-page-golf-live-dark .header__menu-item span.header__active-menu-item {
+  @apply !text-green6;
+}
+
+.ctm-page-golf-live-dark .ctm-hero-platform-main {
+  @apply bg-black3;
+}
+
+.ctm-page-golf-live-dark .ctm-hero-platform-main .ctm-hero-inner {
+  @apply bg-none;
+}
+
+.ctm-page-golf-live-dark .ctm-hero-eyebrow {
+  @apply text-green6;
+}
+
+.ctm-page-golf-live-dark .ctm-hero-heading {
+  @apply text-white;
+}
+
+.ctm-page-golf-live-dark .ctm-feature-text {
+  @apply text-white;
+}
+
+.ctm-page-golf-live-dark .ctm-hero-trial-text {
+  @apply text-green6;
+}
+
+.ctm-page-golf-live-dark .vt-wrapper {
+  @apply bg-black3;
+}
+
+.ctm-page-golf-live-dark .vt-heading {
+  @apply text-white;
+}
+
+.ctm-page-golf-live-dark .vt-heading span {
+  @apply text-green6;
+}
+
+.ctm-page-golf-live-dark .ctm-rev-section {
+  @apply bg-black3;
+}
+
+.ctm-page-golf-live-dark
+  .ctm-rev-section
+  .ctm_bgc_heading_wrapper
+  .section-heading
+  * {
+  @apply text-white;
+}
+
+.ctm-page-golf-live-dark .challenge-title {
+  @apply text-green6;
+}
+
+.ctm-page-golf-live-dark .challenge-description {
+  @apply text-white;
+}
+
+.ctm-page-golf-live-dark .trusted-coaches-new {
+  @apply bg-black3;
+}
+
+.ctm-page-golf-live-dark .trusted-coaches-new * {
+  @apply text-white;
+}
+
+.ctm-page-golf-live-dark .golf-live-plus {
+  @apply bg-black3;
+}
+
+.ctm-page-golf-live-dark .golf-live-plus * {
+  @apply text-white;
+}
+
+.ctm-page-golf-live-dark .ctm_bgc_heading_main {
+  @apply !bg-black3;
+}
+
+.ctm-page-golf-live-dark .ctm_bgc_heading_main .ctm_bgc_heading_wrapper {
+  @apply text-white;
+}
+
+.ctm-page-golf-live .ctm-hero-video {
+  @apply w-full object-cover rounded-[0px] max-[1025px]:max-w-[255px] max-[1025px]:mx-auto;
+}
+
+.ctm-page-golf-live .ctm-hero-left.ctm-hero-side-img-main:has(video) {
+  @apply min-[1025px]:pl-[100px] min-[1200px]:pl-[150px] min-[1300px]:pl-[200px] min-[1440px]:pl-[270px] min-[1800px]:pl-[350px];
+}
+
+.ctm-page-golf-live .ctm-hero-heading,
+.ctm-page-golf-live .ctm-hero-eyebrow {
+  @apply max-[1025px]:text-center;
+}
+
+.ctm-page-golf-live .ctm-hero-features {
+  @apply max-[1025px]:max-w-fit max-[1025px]:mx-auto;
+}
+
+.ctm-page-golf-live .ctm-hero-buttons a {
+  @apply max-[1025px]:w-fit max-[1025px]:mx-auto;
+}
+
+.ctm-page-golf-live .ctm-golf-live-hero .ctm-hero-trial {
+  @apply max-[1025px]:text-center max-[1025px]:justify-center;
 }

@@ -1,6 +1,8 @@
 {% style %}
   .ctm-hero-platform-main .ctm-hero-inner {
-    background-image: url('{{ section.settings.bg_image | image_url: width: 1200 }}');
+    {% if section.settings.bg_image != blank %}
+      background-image: url('{{ section.settings.bg_image | image_url: width: 1200 }}');
+    {% endif %}
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,20 +23,52 @@
       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
     }
   }
+
+  /* Video Styles */
+  .ctm-hero-video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .ctm-hero-media {
+    position: relative;
+  }
+  .ctm-hero-media.video-playing video {
+    display: block !important;
+  }
+  .ctm-hero-media.image-showing img {
+    display: block !important;
+  }
 {% endstyle %}
 
 <div class="ctm-hero-platform-main scroll-trigger animate--slide-in {{ section.settings.extra-class }} section-{{ section.id }}-padding">
   <div class="ctm-hero-inner w-full flex max-[1025px]:flex-col items-center justify-center max-[1025px]:gap-[20px] gap-[100px]">
-    <div class="ctm-hero-media">
-      {% if section.settings.phone_image_1 != blank %}
+    <div class="ctm-hero-media {% if section.settings.media_type == 'video' %}video-playing{% else %}image-showing{% endif %}">
+      {% if section.settings.media_type == 'video' and section.settings.video != blank %}
         <div class="ctm-hero-left ctm-hero-side-img-main">
-          {{ section.settings.phone_image_1 | image_url: width: 500 | image_tag }}
+          {{
+            section.settings.video
+            | video_tag: autoplay: true, loop: true, muted: true, controls: true, class: 'ctm-hero-video'
+          }}
+        </div>
+      {% elsif section.settings.media_type == 'image' and section.settings.phone_image_1 != blank %}
+        <div class="ctm-hero-left ctm-hero-side-img-main">
+          {{
+            section.settings.phone_image_1
+            | image_url: width: 500
+            | image_tag: loading: 'lazy', class: 'ctm-hero-image'
+          }}
         </div>
       {% endif %}
 
-      {% if section.settings.phone_image_2 != blank %}
+      {% if section.settings.media_type == 'image' and section.settings.phone_image_2 != blank %}
         <div class="ctm-hero-phone ctm-hero-phone-2">
-          {{ section.settings.phone_image_2 | image_url: width: 500 | image_tag }}
+          {{
+            section.settings.phone_image_2
+            | image_url: width: 500
+            | image_tag: loading: 'lazy', class: 'ctm-hero-image'
+          }}
         </div>
       {% endif %}
     </div>
@@ -63,7 +97,7 @@
                 <li class="ctm-hero-feature flex items-center gap-[25px]" {{ block.shopify_attributes }}>
                   {% if block.settings.icon != blank %}
                     <span class="ctm-feature-icon">
-                      {{ block.settings.icon | image_url: width: 40 | image_tag }}
+                      {{ block.settings.icon | image_url: width: 40 | image_tag: loading: 'lazy' }}
                     </span>
                   {% endif %}
                   <span class="ctm-feature-text font-semibold text-[15px] lg:text-[18px] min-1582:max-w-[500px]">
@@ -98,9 +132,11 @@
         {% if section.settings.stat_text != blank %}
           <div class="ctm-hero-trial flex justify-center items-center pt-[16px] gap-[8px] 1024:max-w-[700px]">
             {% if section.settings.stat_icon != blank %}
-              {{ section.settings.stat_icon | image_url: width: 21 | image_tag }}
+              {{ section.settings.stat_icon | image_url: width: 21 | image_tag: loading: 'lazy' }}
             {% endif %}
-            <span class="text-green0 font-bold leading-normal">{{ section.settings.stat_text }}</span>
+            <span class="ctm-hero-trial-text text-green0 font-bold leading-normal">
+              {{- section.settings.stat_text -}}
+            </span>
           </div>
         {% endif %}
       </div>
@@ -115,6 +151,27 @@
       "type": "text",
       "id": "extra-class",
       "label": "Extra Class"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Hero Video"
     },
     {
       "type": "image_picker",

@@ -105,7 +105,7 @@
         "slide_9hLxkF": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "video": "shopify://files/videos/Video 2.mp4",
             "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
             "name": "",
             "subtitle": ""
@@ -123,28 +123,8 @@
         "slide_hK9Pgt": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
+            "video": "shopify://files/videos/Video 4.mp4",
             "image": "shopify://shop_images/4_5b25ec31-32aa-45ff-971c-bb429b12d18e.png",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_JiMEGz": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/801b8f59b9bd2deb792b5b47c027797c5129cb40.png",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_Ga4nfX": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/BigBuckBunny.mp4",
-            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
             "name": "",
             "subtitle": ""
           }
@@ -154,15 +134,14 @@
         "slide_G9TP4E",
         "slide_9hLxkF",
         "slide_tkiG6V",
-        "slide_hK9Pgt",
-        "slide_JiMEGz",
-        "slide_Ga4nfX"
+        "slide_hK9Pgt"
       ],
       "name": "Video Testimonials",
       "settings": {
         "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
         "highlight_color": "#0a7a28",
         "show_arrows": true,
+        "enable_slide_clone": true,
         "golfer_text": "I'M A GOLFER",
         "golfer_url": "",
         "coach_text": "I'M A COACH",
@@ -207,6 +186,8 @@
         "heading-bottom-padding": 36,
         "image": "shopify://shop_images/Group_323.png",
         "layout": "image_first",
+        "btn_txt": "",
+        "btn_link": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "padding_top_mobile": 40,
@@ -306,7 +287,7 @@
         "heading_right": "<p>Get Real Coaching. <br/>See Real Progress.</p>",
         "description_right": "Personalized instruction from PGA-verified coaches. Train from anywhere, improve faster.",
         "button_text_right": "Get Free Swing Analysis",
-        "button_url_right": ""
+        "button_url_right": "/account"
       }
     },
     "golfers_testimonials_dVxtgK": {
@@ -538,7 +519,7 @@
         "mobile_background_up": "shopify://shop_images/Group_87.png",
         "mobile_background_down": "shopify://shop_images/Group_88.png",
         "button_text": "Schedule a Demo",
-        "button_link": "#",
+        "button_link": "https://meetings.hubspot.com/allan-belden/golf-live",
         "show_arrow": true
       }
     },

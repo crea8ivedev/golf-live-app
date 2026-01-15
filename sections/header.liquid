@@ -130,15 +130,37 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
+
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
+        {%- assign use_white_logo = false -%}
+
+        {%- if request.path == '/pages/golf-live' and settings.white_logo != blank -%}
+          {%- assign use_white_logo = true -%}
+        {%- endif -%}
+
+        {%- if settings.logo != blank or use_white_logo -%}
           <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {%- assign logo_image = settings.logo -%}
+
+            {%- if use_white_logo -%}
+              {%- assign logo_image = settings.white_logo -%}
+            {%- endif -%}
+
+            {%- assign logo_alt = logo_image.alt | default: shop.name | escape -%}
+            {%- assign logo_height = settings.logo_width | divided_by: logo_image.aspect_ratio -%}
+
+            {% capture sizes %}
+          (max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px
+        {% endcapture %}
+
+            {% capture widths %}
+          {{ settings.logo_width }},
+          {{ settings.logo_width | times: 1.5 | round }},
+          {{ settings.logo_width | times: 2 }}
+        {% endcapture %}
+
             {{
-              settings.logo
+              logo_image
               | image_url: width: 600
               | image_tag:
                 class: 'header__heading-logo motion-reduce',
@@ -154,6 +176,7 @@
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
       </a>
+
       {%- if request.page_type == 'index' -%}
         </h1>
       {%- endif -%}
@@ -432,26 +455,29 @@
 {% endjavascript %}
 
 <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "name": {{ shop.name | json }},
-    {% if settings.logo %}
-      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-    {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
-  }
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": {{ shop.name | json }},
+      {% if request.path == '/pages/golf-live' and settings.white_logo %}
+    "logo": {{ settings.white_logo | image_url: width: 500 | prepend: "https:" | json }},
+  {% elsif settings.logo %}
+    "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+  {% endif %}
+
+      "sameAs": [
+        {{ settings.social_twitter_link | json }},
+        {{ settings.social_facebook_link | json }},
+        {{ settings.social_pinterest_link | json }},
+        {{ settings.social_instagram_link | json }},
+        {{ settings.social_tiktok_link | json }},
+        {{ settings.social_tumblr_link | json }},
+        {{ settings.social_snapchat_link | json }},
+        {{ settings.social_youtube_link | json }},
+        {{ settings.social_vimeo_link | json }}
+      ],
+      "url": {{ request.origin | append: page.url | json }}
+    }
 </script>
 
 {%- if request.page_type == 'index' -%}
@@ -470,6 +496,40 @@
     }
   </script>
 {%- endif -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const siteHostname = window.location.hostname;
+
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      const href = link.getAttribute('href');
+
+      // Skip empty, anchor-only, javascript, mailto, tel links
+      if (
+        !href ||
+        href.startsWith('#') ||
+        href.startsWith('javascript:') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:')
+      ) {
+        return;
+      }
+
+      // Create URL object safely
+      let linkUrl;
+      try {
+        linkUrl = new URL(href, window.location.origin);
+      } catch (e) {
+        return;
+      }
+
+      // If external link
+      if (linkUrl.hostname !== siteHostname) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {
@@ -523,6 +583,16 @@
       "id": "menu",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "text",
+      "label": "Book Lesson Text",
+      "id": "book_lesson_text"
+    },
+    {
+      "type": "url",
+      "label": "Book Lesson URL",
+      "id": "book_lesson_url"
     },
     {
       "type": "select",

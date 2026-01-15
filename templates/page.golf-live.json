@@ -58,7 +58,8 @@
       "name": "Hero Platform",
       "settings": {
         "extra-class": "ctm-golf-live-hero",
-        "bg_image": "shopify://shop_images/Rectangle_2_1.png",
+        "media_type": "video",
+        "video": "shopify://files/videos/Video for plus page.mp4",
         "overlay_opacity": 70,
         "phone_image_1": "shopify://shop_images/Group_123.png",
         "eyebrow": "Where Golf Never Stops",
@@ -68,7 +69,7 @@
         "primary_link": "#",
         "secondary_label": "",
         "secondary_link": "",
-        "stat_icon": "shopify://shop_images/Vector_6.svg",
+        "stat_icon": "shopify://shop_images/dark-golf-live-star-icon.svg",
         "stat_text": "30-day free trial. Cancel anytime. No hidden fees.",
         "padding_top": 0,
         "padding_bottom": 0,
@@ -78,45 +79,58 @@
         "padding_bottom_mobile": 20
       }
     },
-    "video_testimonial_yVrHzQ": {
-      "type": "video-testimonial",
+    "trusted_coaches_UykXTE": {
+      "type": "trusted-coaches",
       "blocks": {
-        "slide_TfEn3t": {
-          "type": "slide",
+        "coach_xNfamd": {
+          "type": "coach",
           "settings": {
-            "video": "shopify://files/videos/GolfLive-Relaunch-draft4.mov",
-            "image": "shopify://shop_images/Group_123.png",
-            "name": "",
-            "subtitle": ""
+            "image": "shopify://shop_images/Chris_Como_c701169b-348a-4f64-8d7a-69fffa7b5c45.png",
+            "name": "Chris Como"
           }
         },
-        "slide_gWKk3N": {
-          "type": "slide",
+        "coach_X9K43j": {
+          "type": "coach",
           "settings": {
-            "video": "shopify://files/videos/GolfLive-FlightscopeV3.mov",
-            "image": "shopify://shop_images/2_8b1b6adf-e91a-4204-a6d7-8d0236cc1fdd.png",
-            "name": "",
-            "subtitle": ""
+            "image": "shopify://shop_images/Colin_McCarthy_ace19f50-d796-4d47-a22a-1a6b4bb34e21.png",
+            "name": "Colin McCarthy"
+          }
+        },
+        "coach_E8HF94": {
+          "type": "coach",
+          "settings": {
+            "image": "shopify://shop_images/Mark_Blackburn.avif",
+            "name": "Mark Blackburn"
+          }
+        },
+        "coach_JcDCgy": {
+          "type": "coach",
+          "settings": {
+            "image": "shopify://shop_images/Erika_Larkin.avif",
+            "name": "Erika Larkin"
+          }
+        },
+        "coach_XdU8cc": {
+          "type": "coach",
+          "settings": {
+            "image": "shopify://shop_images/Mike_Malaska.avif",
+            "name": "Mike Malaska"
           }
         }
       },
       "block_order": [
-        "slide_TfEn3t",
-        "slide_gWKk3N"
+        "coach_xNfamd",
+        "coach_X9K43j",
+        "coach_E8HF94",
+        "coach_JcDCgy",
+        "coach_XdU8cc"
       ],
-      "disabled": true,
-      "name": "Video Testimonials",
+      "name": "Trusted Coaches Block",
       "settings": {
-        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
-        "highlight_color": "#0a7a28",
-        "show_arrows": false,
-        "enable_slide_clone": false,
-        "golfer_text": "I'M A GOLFER",
-        "golfer_url": "",
-        "coach_text": "I'M A COACH",
-        "coach_url": "",
-        "button_bg": "#0a7a28",
-        "button_text": "#ffffff"
+        "heading": "Trusted by Top Coaches",
+        "description": "<p>Golf Live is the platform of choice for modern Coaches, trusted by top-ranked Instructors and rising stars to elevate their coaching, grow their brand, and stay connected with today’s golfers.</p>",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "video_testimonial_flex_CqJjq3": {
@@ -145,9 +159,10 @@
         "slide_TkX9w4",
         "slide_YaEJcb"
       ],
+      "disabled": true,
       "name": "Video Testimonials Flex",
       "settings": {
-        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "heading": "Now on Golf Live Plus.",
         "highlight_color": "#0a7a28",
         "show_arrows": false,
         "enable_slide_clone": false,
@@ -159,13 +174,77 @@
         "button_text": "#ffffff"
       }
     },
+    "golf_live_plus_aWmB9D": {
+      "type": "golf-live-plus",
+      "blocks": {
+        "card_C33bJQ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Short_Game_Secrets.png",
+            "title": "Short Game Secrets",
+            "card_link": "",
+            "show_play_icon": false
+          }
+        },
+        "card_PwTBhe": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Putting_Masterclass.png",
+            "title": "Putting Masterclass",
+            "card_link": "",
+            "show_play_icon": false
+          }
+        },
+        "card_Qz8QgV": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Live_Stream_with_PGA_Professionals.png",
+            "title": "Live Stream with PGA Professionals",
+            "card_link": "",
+            "show_play_icon": false
+          }
+        },
+        "card_KqCF8r": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Swing_Analysis_Feedback_1.png",
+            "title": "Swing Analysis & Feedback",
+            "card_link": "",
+            "show_play_icon": false
+          }
+        },
+        "card_UDU9y8": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Swing_Analysis_Feedback.png",
+            "title": "Swing Analysis & Feedback",
+            "card_link": "",
+            "show_play_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "card_C33bJQ",
+        "card_PwTBhe",
+        "card_Qz8QgV",
+        "card_KqCF8r",
+        "card_UDU9y8"
+      ],
+      "name": "Golf Live Plus",
+      "settings": {
+        "heading": "Now on Golf Live Plus.",
+        "sub_heading": "<p>Stream exclusive lessons, drills, and series from Golf Digest Top 100 coaches, PGA instructors, and elite golf educators.</p>",
+        "link_label": "See More",
+        "link_url": ""
+      }
+    },
     "growth_challenges_3aYGpy": {
       "type": "growth-challenges",
       "blocks": {
         "challenge_priKYj": {
           "type": "challenge",
           "settings": {
-            "bgc-img-icon": "shopify://shop_images/Vector_3.svg",
+            "bgc-img-icon": "shopify://shop_images/Vector_3_dark.svg",
             "title": "Live Every Day",
             "description": "Stream new content daily: swing breakdowns, coaching sessions, Q&As, and challenge shows with tour players and coaches.",
             "bg_color": "rgba(0,0,0,0)"
@@ -174,7 +253,7 @@
         "challenge_CH87Gb": {
           "type": "challenge",
           "settings": {
-            "bgc-img-icon": "shopify://shop_images/video-stream.svg",
+            "bgc-img-icon": "shopify://shop_images/video-stream-dark.svg",
             "title": "Stream On Your Schedule",
             "description": "On-demand access to pro-led drills, masterclasses, training plans, and entertainment segments you won’t find anywhere else.",
             "bg_color": "rgba(0,0,0,0)"
@@ -183,7 +262,7 @@
         "challenge_8YkCAJ": {
           "type": "challenge",
           "settings": {
-            "bgc-img-icon": "shopify://shop_images/responsive_1.svg",
+            "bgc-img-icon": "shopify://shop_images/responsive_1_dark.svg",
             "title": "Train Smarter",
             "description": "Level up your swing, short game, fitness, and mindset with programming organized by topic, goal, and skill level.",
             "bg_color": "rgba(0,0,0,0)"
@@ -192,7 +271,7 @@
         "challenge_76yYgA": {
           "type": "challenge",
           "settings": {
-            "bgc-img-icon": "shopify://shop_images/hobby_1.svg",
+            "bgc-img-icon": "shopify://shop_images/hobby_1_dark.svg",
             "title": "Entertaining. Educational. Always On.",
             "description": "Whether you’re grinding in the offseason or sneaking in a quick session between rounds, Golf Live+ keeps you connected to the game.",
             "bg_color": ""
@@ -223,182 +302,14 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
-    },
-    "zigzag_section_kQQrbG": {
-      "type": "zigzag-section",
-      "blocks": {
-        "heading_pcFKPJ": {
-          "type": "heading",
-          "settings": {
-            "heading": "Why Golfers Love Golf Live+"
-          }
-        },
-        "list_BmdzWf": {
-          "type": "list",
-          "settings": {
-            "list_content": "Learn from the best: Malaska, Blackburn, Gankas, Larkin, and more\nDaily instruction meets daily motivation\nIt’s affordable, just $4.99/month\nYou can revisit lessons as many times as you want\nNew content drops weekly so it never gets stale\nFeels like a front-row seat, from anywhere"
-          }
-        }
-      },
-      "block_order": [
-        "heading_pcFKPJ",
-        "list_BmdzWf"
-      ],
-      "name": "Custom Zigzag Row",
-      "settings": {
-        "extra-class-zigzag": "ctm-golf-live",
-        "main_h2": "",
-        "show_h2": false,
-        "heading-bottom-padding": 36,
-        "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
-        "round_image": "shopify://shop_images/Ellipse_11.png",
-        "layout": "text_first",
-        "btn_txt": "Start Your Free Trial",
-        "btn_link": "#",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 52
-      }
-    },
-    "zigzag_section_b9tXrf": {
-      "type": "zigzag-section",
-      "blocks": {
-        "heading_mVB7hN": {
-          "type": "heading",
-          "settings": {
-            "heading": "Built Different"
-          }
-        },
-        "paragraph_Efdn9F": {
-          "type": "paragraph",
-          "settings": {
-            "text": "Golf Live+ isn’t just another golf content app. It’s the engine behind the Golf Live coaching ecosystem. When you subscribe:"
-          }
-        },
-        "list_7YJVpx": {
-          "type": "list",
-          "settings": {
-            "list_content": "You get better.\nYou discover new ways to improve.\nYou stay inspired and engaged year-round."
-          }
-        },
-        "paragraph_aNzWTg": {
-          "type": "paragraph",
-          "settings": {
-            "text": "This is your all-access pass to better golf, for less than a bucket of balls."
-          }
-        }
-      },
-      "block_order": [
-        "heading_mVB7hN",
-        "paragraph_Efdn9F",
-        "list_7YJVpx",
-        "paragraph_aNzWTg"
-      ],
-      "name": "Custom Zigzag Row",
-      "settings": {
-        "extra-class-zigzag": "",
-        "main_h2": "",
-        "show_h2": false,
-        "heading-bottom-padding": 36,
-        "image": "shopify://shop_images/Group_157_3.png",
-        "round_image": "shopify://shop_images/Ellipse_11.png",
-        "layout": "image_first",
-        "btn_txt": "Start Free Trial",
-        "btn_link": "#",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 52
-      }
-    },
-    "custom_review_flex_tWH86Q": {
-      "type": "custom-review-flex",
-      "blocks": {
-        "review_Y7fhDn": {
-          "type": "review",
-          "settings": {
-            "ctm-add-review": "<p>“This is the most valuable golf content I’ve ever paid for.”</p>",
-            "enable-rating": true,
-            "customer_image": "shopify://shop_images/819f001fffe0324ae89622785d7d9e5e88c7d1b7_1.png",
-            "customer_name": "<p><strong>Alex B.,<br/></strong>38</p>"
-          }
-        },
-        "review_8YnFY9": {
-          "type": "review",
-          "settings": {
-            "ctm-add-review": "<p>“I started watching for the short game drills, now I’m hooked on everything.”</p>",
-            "enable-rating": true,
-            "customer_image": "shopify://shop_images/819f001fffe0324ae89622785d7d9e5e88c7d1b7_1.png",
-            "customer_name": "<p><strong>Jordan R.,<br/></strong>21</p>"
-          }
-        }
-      },
-      "block_order": [
-        "review_Y7fhDn",
-        "review_8YnFY9"
-      ],
-      "name": "Custom Review Flex",
-      "settings": {
-        "extra_class_reviews": "ctm-review-flex-main",
-        "color_scheme": "scheme-1",
-        "review-main-title": "What Members Are Saying",
-        "bg-card-image": "shopify://shop_images/Rectangle_15.png",
-        "review-btn-title": "Start Your Free Trial",
-        "review-btn-link": "#",
-        "padding_top": 40,
-        "padding_bottom": 52,
-        "padding_top_tablet": 50,
-        "padding_bottom_tablet": 50,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 52
-      }
-    },
-    "pricing_plans_x6Yi8T": {
-      "type": "pricing-plans",
-      "blocks": {
-        "plan_PtnXjU": {
-          "type": "plan",
-          "settings": {
-            "extra_class_card": "plan-card-1",
-            "card_header_color": "#00511c",
-            "header_image": "shopify://shop_images/Rectangle_48_1.png",
-            "pattern_opacity": 100,
-            "plan_name": "Starter",
-            "pricing_price": "<p><strong>$4.99/month</strong></p>",
-            "sub_heading": "Unlimited access<br>\nNew content added weekly<br>\nNo commitment. Cancel anytime.",
-            "features_list": "Start free for 30 days\nAvailable on iOS, Android, desktop\nPowered by the Golf Live app",
-            "button_text": "Start Free Trial",
-            "button_link": "#"
-          }
-        }
-      },
-      "block_order": [
-        "plan_PtnXjU"
-      ],
-      "name": "Coaching Pricing Flex",
-      "settings": {
-        "extra-class": "ctm-golf-live-plan",
-        "heading": "<p>Golf Live+ Pricing</p>",
-        "bg_color": "#efefef",
-        "padding_top": 88,
-        "padding_bottom": 100,
-        "padding_top_tablet": 50,
-        "padding_bottom_tablet": 65,
-        "padding_top_mobile": 50,
-        "padding_bottom_mobile": 65
-      }
     }
   },
   "order": [
     "main",
     "hero_platform_36BXwJ",
-    "video_testimonial_yVrHzQ",
+    "trusted_coaches_UykXTE",
     "video_testimonial_flex_CqJjq3",
-    "growth_challenges_3aYGpy",
-    "zigzag_section_kQQrbG",
-    "zigzag_section_b9tXrf",
-    "custom_review_flex_tWH86Q",
-    "pricing_plans_x6Yi8T"
+    "golf_live_plus_aWmB9D",
+    "growth_challenges_3aYGpy"
   ]
 }

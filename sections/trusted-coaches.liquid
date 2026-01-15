@@ -1,0 +1,156 @@
+<div class="trusted-coaches trusted-coaches-new section-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="trusted-coaches__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <div class="trusted-coaches__description rte">
+        {{ section.settings.description }}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="trusted-coaches__list">
+        {% for block in section.blocks %}
+          <div class="trusted-coaches__item" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              <div class="trusted-coaches__image">
+                {{
+                  block.settings.image
+                  | image_url: width: 400
+                  | image_tag: loading: 'lazy', alt: block.settings.name
+                }}
+              </div>
+            {% endif %}
+
+            {% if block.settings.name != blank %}
+              <p class="h5 uppercase italic">
+                {{ block.settings.name }}
+              </p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .trusted-coaches__heading {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .trusted-coaches__description {
+    text-align: center;
+    max-width: 850px;
+    margin-inline: auto;
+    margin-bottom: 3rem;
+  }
+
+  .trusted-coaches__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    align-items: start;
+  }
+
+  .trusted-coaches__item {
+    text-align: center;
+  }
+
+  .trusted-coaches__image {
+    width: 180px;
+    height: 226px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .trusted-coaches__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .trusted-coaches__name {
+    margin: 0;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Trusted Coaches Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by Top Coaches"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Golf Live is the platform of choice for modern Coaches, trusted by top-ranked Instructors and rising stars to elevate their coaching, grow their brand, and stay connected with today’s golfers.</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "coach",
+      "name": "Coach",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Coach image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Coach name",
+          "default": "Coach Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trusted Coaches Block",
+      "blocks": [
+        { "type": "coach" },
+        { "type": "coach" },
+        { "type": "coach" },
+        { "type": "coach" },
+        { "type": "coach" }
+      ]
+    }
+  ]
+}
+{% endschema %}
