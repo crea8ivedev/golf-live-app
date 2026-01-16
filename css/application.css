@@ -46,6 +46,7 @@
   --breakpoint-1440: 1440px;
   --breakpoint-1520: 1520px;
   --breakpoint-1582: 1582px;
+  --breakpoint-1800: 1800px;
   --breakpoint-1920: 1620px;
 }
 
@@ -188,7 +189,7 @@
 /* header */
 
 .header .list-menu {
-  @apply flex flex-col min-990:flex-row gap-y-[20px] gap-x-[30px] min-1440:gap-x-[40px] min-1440:gap-x-[67px] items-start min-990:items-center;
+  @apply flex flex-col min-990:flex-row gap-y-[20px] gap-x-[14px] min-1440:gap-x-[24px] min-1800:gap-x-[67px] items-start min-990:items-center;
 }
 
 .header {
@@ -196,19 +197,19 @@
 }
 
 .header .list-menu__item {
-  @apply font-body font-medium text-[17px] leading-[27px] tracking-[0.17px] hover:text-green3;
+  @apply font-body font-medium text-[17px] min-990:text-[15px] min-1440:text-[17px] leading-[27px] tracking-[0.17px] hover:text-green3;
 }
 
 .header .login-btn a {
-  @apply font-body font-medium text-[17px] leading-[27px] tracking-[0.17px] hover:text-green3;
+  @apply font-body font-medium text-[17px] min-990:text-[15px] min-1440:text-[17px] leading-[27px] tracking-[0.17px] hover:text-green3;
 }
 
 .header .sign-up-btn a {
-  @apply font-body font-medium text-[17px] leading-[17px] tracking-[0.17px] cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold w-fit text-center flex justify-center items-center px-[41px] py-[12px] rounded-[50px] border-[1px] border-solid border-[#D8D8D8] text-black bg-transparent hover:border-green3 hover:text-white hover:bg-green3 normal-case;
+  @apply font-body font-medium text-[17px] min-990:text-[15px] min-1440:text-[17px] leading-[17px] tracking-[0.17px] cursor-pointer transition-all duration-300 ease-in-out font-body font-extrabold w-fit text-center flex justify-center items-center px-[41px] min-990:max-1440:px-[30px] py-[12px] min-990:min-1440:py-[10px] rounded-[50px] border-[1px] border-solid border-[#D8D8D8] text-black bg-transparent hover:border-green3 hover:text-white hover:bg-green3 normal-case;
 }
 
 .header__heading-logo {
-  @apply object-contain max-990:w-[181px];
+  @apply object-contain max-990:w-[181px] min-990:max-1440:w-[120px];
 }
 
 .header .header__icon {
@@ -851,6 +852,14 @@
   @apply text-white;
 }
 
+.ctm-page-golf-live-dark .menu-drawer__navigation-container {
+  @apply bg-black3;
+}
+
+.ctm-page-golf-live-dark .header__icon span {
+  @apply text-white;
+}
+
 .ctm-page-golf-live .ctm-hero-video {
   @apply w-full object-cover rounded-[0px] max-[1025px]:max-w-[255px] max-[1025px]:mx-auto;
 }
@@ -874,4 +883,16 @@
 
 .ctm-page-golf-live .ctm-golf-live-hero .ctm-hero-trial {
   @apply max-[1025px]:text-center max-[1025px]:justify-center;
+}
+
+.header .list-menu li:has(.ctm-book-a-lesson) {
+  @apply hidden;
+}
+
+.ctm-page-golf-live .header .list-menu li {
+  @apply hidden;
+}
+
+.ctm-page-golf-live .header .list-menu li:has(.ctm-book-a-lesson) {
+  @apply block;
 }
