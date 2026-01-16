@@ -85,36 +85,36 @@
         "coach_xNfamd": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Chris_Como_c701169b-348a-4f64-8d7a-69fffa7b5c45.png",
-            "name": "Chris Como"
+            "image": "shopify://shop_images/newman.png",
+            "name": "Brian Newman"
           }
         },
         "coach_X9K43j": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Colin_McCarthy_ace19f50-d796-4d47-a22a-1a6b4bb34e21.png",
+            "image": "shopify://shop_images/mccarthy.png",
             "name": "Colin McCarthy"
           }
         },
         "coach_E8HF94": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Mark_Blackburn.avif",
-            "name": "Mark Blackburn"
+            "image": "shopify://shop_images/hughes.png",
+            "name": "John Hughes"
           }
         },
         "coach_JcDCgy": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Erika_Larkin.avif",
-            "name": "Erika Larkin"
+            "image": "shopify://shop_images/scorzone.png",
+            "name": "Brian Scorzone"
           }
         },
         "coach_XdU8cc": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Mike_Malaska.avif",
-            "name": "Mike Malaska"
+            "image": "shopify://shop_images/morris.png",
+            "name": "Kyle Morris"
           }
         }
       },
@@ -182,7 +182,7 @@
           "settings": {
             "image": "shopify://shop_images/Short_Game_Secrets.png",
             "title": "Short Game Secrets",
-            "card_link": "",
+            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
             "show_play_icon": false
           }
         },
@@ -191,7 +191,7 @@
           "settings": {
             "image": "shopify://shop_images/Putting_Masterclass.png",
             "title": "Putting Masterclass",
-            "card_link": "",
+            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
             "show_play_icon": false
           }
         },
@@ -200,7 +200,7 @@
           "settings": {
             "image": "shopify://shop_images/Live_Stream_with_PGA_Professionals.png",
             "title": "Live Stream with PGA Professionals",
-            "card_link": "",
+            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
             "show_play_icon": false
           }
         },
@@ -209,7 +209,7 @@
           "settings": {
             "image": "shopify://shop_images/Swing_Analysis_Feedback_1.png",
             "title": "Swing Analysis & Feedback",
-            "card_link": "",
+            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
             "show_play_icon": false
           }
         },
@@ -218,7 +218,7 @@
           "settings": {
             "image": "shopify://shop_images/Swing_Analysis_Feedback.png",
             "title": "Swing Analysis & Feedback",
-            "card_link": "",
+            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
             "show_play_icon": false
           }
         }
