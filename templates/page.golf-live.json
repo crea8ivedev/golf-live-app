@@ -284,6 +284,7 @@
         "challenge_8YkCAJ",
         "challenge_76yYgA"
       ],
+      "disabled": true,
       "name": "Growth Challenges",
       "settings": {
         "extra_class": "ctm-rev-section",

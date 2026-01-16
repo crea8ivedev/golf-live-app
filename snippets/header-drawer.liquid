@@ -394,3 +394,20 @@
     </div>
   </details>
 </header-drawer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const drawer = document.querySelector('#Details-menu-drawer-container');
+    const summary = drawer?.querySelector('summary');
+
+    if (!drawer || !summary) return;
+
+    drawer.querySelectorAll('a[href]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (drawer.hasAttribute('open')) {
+          summary.click(); // ✅ triggers Dawn’s internal close logic
+        }
+      });
+    });
+  });
+</script>

@@ -26,7 +26,10 @@
           >
         {% endif %}
       </div>
-      <div class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[632px] min-990:mx-auto pt-[276px] min-990:pt-[303px] pb-[60px] min-990:pb-[100px] scroll-trigger animate--slide-in">
+      <div
+        id="dual-card-left"
+        class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[632px] min-990:mx-auto pt-[276px] min-990:pt-[303px] pb-[60px] min-990:pb-[100px] scroll-trigger animate--slide-in"
+      >
         <div class="dual-card__inner-start px-[17px] min-990:px-[28px] pt-[15px] min-990:pt-[26px] pb-[27px] min-990:pb-[66px] bg-white rounded-[22px]">
           <div class="dual-card__inner-above px-[32px] min-990:px-[32px] pt-[30px] min-990:pt-[26px] pb-[35px] min-990:pb-[38px] rounded-[10px] min-990:rounded-[25px]">
             {% if section.settings.top_label_left != blank %}
@@ -108,7 +111,10 @@
           >
         {% endif %}
       </div>
-      <div class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[632px] min-990:mx-auto pt-[276px] min-990:pt-[303px] pb-[60px] min-990:pb-[100px]">
+      <div
+        id="dual-card-right"
+        class="dual-card__inner relative z-1 px-[28px] min-990:max-w-[632px] min-990:mx-auto pt-[276px] min-990:pt-[303px] pb-[60px] min-990:pb-[100px]"
+      >
         <div class="dual-card__inner-start px-[17px] min-990:px-[28px] pt-[15px] min-990:pt-[26px] pb-[27px] min-990:pb-[66px] bg-white rounded-[22px]">
           <div class="dual-card__inner-above px-[32px] min-990:px-[32px] pt-[30px] min-990:pt-[26px] pb-[35px] min-990:pb-[38px] rounded-[10px] min-990:rounded-[25px]">
             {% if section.settings.top_label_right != blank %}
