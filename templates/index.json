@@ -279,14 +279,14 @@
         "top_label_left": "FOR COACHES",
         "heading_left": "<p>Built by Coaches <br/>for Coaches</p>",
         "description_left": "Grow your business and reach more golfers. All from one powerful platform.",
-        "button_text_left": "Access Now",
+        "button_text_left": "Start Free Trial",
         "button_url_left": "https://plus.golfliveapp.com/en/sign-up",
         "bg_image_right": "shopify://shop_images/audience-desktop-2.png",
         "bg_image_right_mobile": "shopify://shop_images/audience-mobile-2.png",
         "top_label_right": "FOR GOLFERS",
         "heading_right": "<p>Get Real Coaching. <br/>See Real Progress.</p>",
         "description_right": "Personalized instruction from PGA-verified coaches. Train from anywhere, improve faster.",
-        "button_text_right": "START FREE TRIAL",
+        "button_text_right": "Access Now",
         "button_url_right": "https://plus.golfliveapp.com/en/sign-up"
       }
     },
