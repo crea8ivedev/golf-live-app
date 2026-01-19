@@ -85,36 +85,36 @@
         "coach_xNfamd": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/newman.png",
-            "name": "Brian Newman"
+            "image": "shopify://shop_images/Chris-Como-1_1.png",
+            "name": "Chris Como"
           }
         },
         "coach_X9K43j": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/mccarthy.png",
-            "name": "Colin McCarthy"
+            "image": "shopify://shop_images/larkin.png",
+            "name": "Erika Larkin"
           }
         },
         "coach_E8HF94": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/hughes.png",
-            "name": "John Hughes"
+            "image": "shopify://shop_images/Mark_Blackburn.avif",
+            "name": "Mark Blackburn"
           }
         },
         "coach_JcDCgy": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/scorzone.png",
-            "name": "Brian Scorzone"
+            "image": "shopify://shop_images/Mike_Malaska.avif",
+            "name": "Mike Malska"
           }
         },
         "coach_XdU8cc": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/morris.png",
-            "name": "Kyle Morris"
+            "image": "shopify://shop_images/gankas.png",
+            "name": "George Gankas"
           }
         }
       },
