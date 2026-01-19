@@ -113,6 +113,7 @@
         },
         "slide_tkiG6V": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/BigBuckBunny.mp4",
             "image": "shopify://shop_images/3_f16e0410-4848-44af-8ccd-6fe2d9f0c663.png",
