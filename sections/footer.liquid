@@ -162,48 +162,48 @@
                             </div>
                             <div class="footer-social-media">
                               {% if block.settings.instagram_url != blank %}
-                                <div class="footer-instagram">
+                                <a href="{{ block.settings.instagram_url }}" class="footer-instagram">
                                   {% render 'social-instagram' %}
-                                  <a href="{{ block.settings.instagram_url }}" target="_blank" rel="noopener">
+                                  <p target="_blank" rel="noopener">
                                     {{ block.settings.instagram }}
-                                  </a>
-                                </div>
+                                  </p>
+                                </a>
                               {% endif %}
 
                               {% if block.settings.facebook_url != blank %}
-                                <div class="footer-facebook">
+                                <a href="{{ block.settings.facebook_url }}" class="footer-facebook">
                                   {% render 'social-facebook' %}
-                                  <a href="{{ block.settings.facebook_url }}" target="_blank" rel="noopener">
+                                  <p target="_blank" rel="noopener">
                                     {{ block.settings.facebook }}
-                                  </a>
-                                </div>
+                                  </p>
+                                </a>
                               {% endif %}
 
                               {% if block.settings.linkedin_url != blank %}
-                                <div class="footer-linkedin">
+                                <a href="{{ block.settings.linkedin_url }}" class="footer-linkedin">
                                   {% render 'social-linkedin' %}
-                                  <a href="{{ block.settings.linkedin_url }}" target="_blank" rel="noopener">
+                                  <p target="_blank" rel="noopener">
                                     {{ block.settings.linkedin }}
-                                  </a>
-                                </div>
+                                  </p>
+                                </a>
                               {% endif %}
 
                               {% if block.settings.youtube_url != blank %}
-                                <div class="footer-youtube">
+                                <a href="{{ block.settings.youtube_url }}" class="footer-youtube">
                                   {% render 'social-youtube' %}
-                                  <a href="{{ block.settings.youtube_url }}" target="_blank" rel="noopener">
+                                  <p target="_blank" rel="noopener">
                                     {{ block.settings.youtube }}
-                                  </a>
-                                </div>
+                                  </p>
+                                </a>
                               {% endif %}
 
                               {% if block.settings.tiktok_url != blank %}
-                                <div class="footer-tiktok">
+                                <a href="{{ block.settings.tiktok_url }}" class="footer-tiktok">
                                   {% render 'social-tiktok' %}
-                                  <a href="{{ block.settings.tiktok_url }}" target="_blank" rel="noopener">
+                                  <p target="_blank" rel="noopener">
                                     {{ block.settings.tiktok }}
-                                  </a>
-                                </div>
+                                  </p>
+                                </a>
                               {% endif %}
                             </div>
 

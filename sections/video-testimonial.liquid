@@ -57,7 +57,7 @@
   }
 </style>
 
-<section class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-[72px] min-990:pb-[98px]">
+<div class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-[72px] min-990:pb-[98px]">
   <div class="min-990:px-[42px]">
     <div class="max-990:px-[28px]">
       {% if section.settings.heading != blank %}
@@ -77,7 +77,7 @@
                   {{
                     block.settings.video
                     | video_tag:
-                      controls: true,
+                      controls: false,
                       autoplay: false,
                       muted: false,
                       loop: false,
@@ -163,7 +163,7 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -187,10 +187,7 @@
     const swiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 18,
-
-      /* Loop should follow clone logic */
       loop: enableClone,
-
       watchOverflow: false,
 
       navigation: {
@@ -207,36 +204,48 @@
 
       on: {
         slideChange() {
-          document.querySelectorAll('.vt-video').forEach((v) => v.pause());
-          document.querySelectorAll('[data-video-poster]').forEach((p) => {
-            p.style.display = '';
+          document.querySelectorAll('.vt-video').forEach((video) => {
+            video.pause();
+          });
+
+          document.querySelectorAll('[data-video-poster]').forEach((poster) => {
+            poster.style.display = '';
           });
         },
       },
     });
 
+    /* Play / Pause toggle logic */
     document.addEventListener('click', function (e) {
       const poster = e.target.closest('[data-video-poster]');
-      if (!poster) return;
+      const video = e.target.closest('.vt-video');
 
-      const video = poster.closest('.vt-video-wrapper')?.querySelector('video');
-      poster.style.display = 'none';
-      video?.play();
-    });
-  });
-</script>
+      /* Click on poster → play */
+      if (poster) {
+        const videoEl = poster.closest('.vt-video-wrapper')?.querySelector('video');
+        if (!videoEl) return;
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.vt-video').forEach(function (video) {
-      const posterImg = video.querySelector('img');
+        poster.style.display = 'none';
+        videoEl.play();
+        return;
+      }
 
-      if (posterImg && !posterImg.hasAttribute('alt')) {
-        posterImg.setAttribute('alt', video.getAttribute('aria-label') || 'Product demonstration video');
+      /* Click on video → toggle play/pause */
+      if (video) {
+        const posterEl = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
+
+        if (video.paused) {
+          posterEl && (posterEl.style.display = 'none');
+          video.play();
+        } else {
+          video.pause();
+          posterEl && (posterEl.style.display = '');
+        }
       }
     });
   });
 </script>
+
 {% schema %}
 {
   "name": "Video Testimonials Swiper",

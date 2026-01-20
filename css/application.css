@@ -896,3 +896,50 @@
 .ctm-page-golf-live .header .list-menu li:has(.ctm-book-a-lesson) {
   @apply block;
 }
+
+.ctm-page-golf-live .ctm-hero-platform-main {
+  @apply pt-[60px];
+}
+
+.ctm-page-golf-live .ctm-feature-icon img {
+  @apply w-[24px] max-w-[unset] max-h-[unset];
+}
+
+/* terms-and-condition */
+
+.ctm-page-privacy-policy .rich-text__wrapper,
+.ctm-page-terms-condition .rich-text__wrapper {
+  @apply !block;
+}
+
+.ctm-page-privacy-policy .rich-text__blocks,
+.ctm-page-terms-condition .rich-text__blocks {
+  @apply !max-w-full;
+}
+
+.ctm-page-privacy-policy .rich-text__heading,
+.ctm-page-terms-condition .rich-text__heading {
+  @apply !text-green0 uppercase;
+}
+
+.ctm-page-privacy-policy .rich-text__text h4,
+.ctm-page-terms-condition .rich-text__text h4 {
+  @apply text-green3;
+}
+
+.ctm-page-privacy-policy .rich-text__text a,
+.ctm-page-terms-condition .rich-text__text a {
+  @apply underline text-green3 hover:opacity-50;
+}
+
+/* terms-and-condition */
+
+.nav-general-main-footer,
+.nav-sales-main-footer {
+  @apply flex flex-wrap gap-x-[10px];
+}
+
+.nav-general-main-footer a,
+.nav-sales-main-footer a {
+  @apply flex-[0_0_100%];
+}

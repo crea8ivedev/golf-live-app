@@ -11,45 +11,10 @@
   "sections": {
     "main": {
       "type": "main-404",
-      "disabled": true,
       "settings": {}
-    },
-    "rich_text_LG3X3w": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_LC4jqV": {
-          "type": "heading",
-          "settings": {
-            "heading": "Page Not Found",
-            "heading_size": "h1"
-          }
-        },
-        "text_8QAD3a": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Sorry, there's nothing to see here.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_LC4jqV",
-        "text_8QAD3a"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52,
-        "playstore_url": "",
-        "apple_app_store_url": ""
-      }
     }
   },
   "order": [
-    "main",
-    "rich_text_LG3X3w"
+    "main"
   ]
 }

@@ -23,28 +23,28 @@
         "feature_7bghKm": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/check-mark_2_1_b03fe8ca-42f7-4633-b4ea-36cfa125c214.png",
+            "icon": "shopify://shop_images/Vector_6_56108ffe-b73a-470a-90a2-2a093c276eb9.svg",
             "text": "Daily live streams with elite coaches and tour players"
           }
         },
         "feature_VBCxdr": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/check-mark_2_1_b03fe8ca-42f7-4633-b4ea-36cfa125c214.png",
+            "icon": "shopify://shop_images/Vector_6_56108ffe-b73a-470a-90a2-2a093c276eb9.svg",
             "text": "On-demand drills, masterclasses, and entertainment"
           }
         },
         "feature_KWAPxT": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/check-mark_2_1_b03fe8ca-42f7-4633-b4ea-36cfa125c214.png",
+            "icon": "shopify://shop_images/Vector_6_56108ffe-b73a-470a-90a2-2a093c276eb9.svg",
             "text": "Fitness, strategy, short game, and scoring content"
           }
         },
         "feature_yhqxHf": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/check-mark_2_1_b03fe8ca-42f7-4633-b4ea-36cfa125c214.png",
+            "icon": "shopify://shop_images/Vector_6_56108ffe-b73a-470a-90a2-2a093c276eb9.svg",
             "text": "Watch anytime on mobile, tablet, or desktop"
           }
         }
@@ -66,10 +66,9 @@
         "heading": "<p>Unlimited access to the <br/>best minds in golf, only $4.99/month</p>",
         "subheading": "",
         "primary_label": "Start Your Free Trial",
-        "primary_link": "https://plus.golfliveapp.com/en/sign-up",
+        "primary_link": "#",
         "secondary_label": "",
         "secondary_link": "",
-        "stat_icon": "shopify://shop_images/dark-golf-live-star-icon.svg",
         "stat_text": "30-day free trial. Cancel anytime. No hidden fees.",
         "padding_top": 0,
         "padding_bottom": 0,
@@ -85,15 +84,15 @@
         "coach_xNfamd": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Chris-Como-1_1.png",
+            "image": "shopify://shop_images/Chris_Como_c701169b-348a-4f64-8d7a-69fffa7b5c45.png",
             "name": "Chris Como"
           }
         },
         "coach_X9K43j": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/larkin.png",
-            "name": "Erika Larkin"
+            "image": "shopify://shop_images/Colin_McCarthy_ace19f50-d796-4d47-a22a-1a6b4bb34e21.png",
+            "name": "Colin McCarthy"
           }
         },
         "coach_E8HF94": {
@@ -106,15 +105,15 @@
         "coach_JcDCgy": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Mike_Malaska.avif",
-            "name": "Mike Malska"
+            "image": "shopify://shop_images/Erika_Larkin.avif",
+            "name": "Erika Larkin"
           }
         },
         "coach_XdU8cc": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/gankas.png",
-            "name": "George Gankas"
+            "image": "shopify://shop_images/Mike_Malaska.avif",
+            "name": "Mike Malaska"
           }
         }
       },
@@ -127,8 +126,8 @@
       ],
       "name": "Trusted Coaches Block",
       "settings": {
-        "heading": "Elite Coaches. Real Results.",
-        "description": "<p>Learn directly from nationally ranked instructors bringing their drills, methods, and mindset to Golf Live+.</p>",
+        "heading": "Trusted by Top Coaches",
+        "description": "<p>Golf Live is the platform of choice for modern Coaches, trusted by top-ranked Instructors and rising stars to elevate their coaching, grow their brand, and stay connected with today’s golfers.</p>",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -182,7 +181,7 @@
           "settings": {
             "image": "shopify://shop_images/Short_Game_Secrets.png",
             "title": "Short Game Secrets",
-            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
+            "card_link": "",
             "show_play_icon": false
           }
         },
@@ -191,7 +190,7 @@
           "settings": {
             "image": "shopify://shop_images/Putting_Masterclass.png",
             "title": "Putting Masterclass",
-            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
+            "card_link": "",
             "show_play_icon": false
           }
         },
@@ -200,7 +199,7 @@
           "settings": {
             "image": "shopify://shop_images/Live_Stream_with_PGA_Professionals.png",
             "title": "Live Stream with PGA Professionals",
-            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
+            "card_link": "",
             "show_play_icon": false
           }
         },
@@ -209,7 +208,7 @@
           "settings": {
             "image": "shopify://shop_images/Swing_Analysis_Feedback_1.png",
             "title": "Swing Analysis & Feedback",
-            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
+            "card_link": "",
             "show_play_icon": false
           }
         },
@@ -218,7 +217,7 @@
           "settings": {
             "image": "shopify://shop_images/Swing_Analysis_Feedback.png",
             "title": "Swing Analysis & Feedback",
-            "card_link": "https://plus.golfliveapp.com/en/golf-live-plus",
+            "card_link": "",
             "show_play_icon": false
           }
         }
@@ -232,7 +231,7 @@
       ],
       "name": "Golf Live Plus",
       "settings": {
-        "heading": "Content on Golf Live+",
+        "heading": "Now on Golf Live Plus.",
         "sub_heading": "<p>Stream exclusive lessons, drills, and series from Golf Digest Top 100 coaches, PGA instructors, and elite golf educators.</p>",
         "link_label": "See More",
         "link_url": ""

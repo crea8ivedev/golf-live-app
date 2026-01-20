@@ -19,7 +19,7 @@
         "heading": "<p>Built for Golfers Who <br/>Want Results and Coaches <br/>Who Deliver Them</p>",
         "description": "<p>Golf Live makes it easy to teach or train from anywhere with live video, instant replay, and performance tracking all in one app.</p>",
         "button_text": "Start Now",
-        "button_url": "https://plus.golfliveapp.com/en/sign-up",
+        "button_url": "#",
         "desktop_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
         "main_mobile_image": "shopify://shop_images/banner-golf-mobile.jpg",
         "mobile_image_1": "shopify://shop_images/banner-mobile-desktop.png",
@@ -113,7 +113,6 @@
         },
         "slide_tkiG6V": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/BigBuckBunny.mp4",
             "image": "shopify://shop_images/3_f16e0410-4848-44af-8ccd-6fe2d9f0c663.png",
@@ -144,9 +143,9 @@
         "show_arrows": true,
         "enable_slide_clone": true,
         "golfer_text": "I'M A GOLFER",
-        "golfer_url": "https://plus.golfliveapp.com/en/sign-up",
+        "golfer_url": "",
         "coach_text": "I'M A COACH",
-        "coach_url": "https://plus.golfliveapp.com/en/sign-up",
+        "coach_url": "",
         "button_bg": "#0a7a28",
         "button_text": "#ffffff"
       }
@@ -281,14 +280,14 @@
         "heading_left": "<p>Built by Coaches <br/>for Coaches</p>",
         "description_left": "Grow your business and reach more golfers. All from one powerful platform.",
         "button_text_left": "Start Free Trial",
-        "button_url_left": "https://plus.golfliveapp.com/en/sign-up",
+        "button_url_left": "",
         "bg_image_right": "shopify://shop_images/audience-desktop-2.png",
         "bg_image_right_mobile": "shopify://shop_images/audience-mobile-2.png",
         "top_label_right": "FOR GOLFERS",
         "heading_right": "<p>Get Real Coaching. <br/>See Real Progress.</p>",
         "description_right": "Personalized instruction from PGA-verified coaches. Train from anywhere, improve faster.",
-        "button_text_right": "Access Now",
-        "button_url_right": "https://plus.golfliveapp.com/en/sign-up"
+        "button_text_right": "Get Free Swing Analysis",
+        "button_url_right": "/account"
       }
     },
     "golfers_testimonials_dVxtgK": {
@@ -349,7 +348,7 @@
         "feature_HYxDmx": {
           "type": "feature",
           "settings": {
-            "image": "shopify://shop_images/mobile_4.png",
+            "image": "shopify://shop_images/golf-feature-card-1.png",
             "title": "Live Replay Technology",
             "description": "<p>See Swings Together in Real-Time</p>",
             "coach_text": "For Coaches",
@@ -363,7 +362,7 @@
           "settings": {
             "image": "shopify://shop_images/golf-feature-card-2.png",
             "title": "Video Analysis Tools",
-            "description": "<p>Frame-by-Frame Analysis</p>",
+            "description": "<p>Break Down Every Swing <br/>Frame-by-Frame</p>",
             "coach_text": "For Coaches",
             "coach_description": "Use drawing tools, slow motion, and side-by-side comparison to deliver precise feedback your students can actually understand.",
             "golfer_text": "For Golfers",
@@ -385,7 +384,7 @@
         "feature_qhABji": {
           "type": "feature",
           "settings": {
-            "image": "shopify://shop_images/golf-feature-card-1.png",
+            "image": "shopify://shop_images/mobile_4.png",
             "title": "Live Streams & Group Clinics",
             "description": "<p>Host Live Clinics or Learn from Top Coaches</p>",
             "coach_text": "For Coaches",
@@ -531,56 +530,56 @@
           "type": "golfer_faq",
           "settings": {
             "question": "Is remote coaching actually effective?",
-            "answer": "<p>Coaches and Golfers engage in real-time sessions with in-app video capture, replay and analysis — no need for Zoom or FaceTime. Every session is automatically recorded for easy review anytime.</p>"
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         },
         "golfer_faq_zpx84z": {
           "type": "golfer_faq",
           "settings": {
             "question": "How do I know my coach is qualified?",
-            "answer": "<p>Golf Live is the platform of choice for modern Coaches, trusted by top-ranked Instructors and rising stars to elevate their coaching, grow their brand, and stay connected with today’s golfers.</p>"
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         },
         "golfer_faq_Dmp7qR": {
           "type": "golfer_faq",
           "settings": {
             "question": "What if I'm not tech-savvy?",
-            "answer": "<p>Golf Live is intuitive and easy to use! If you've been on a FaceTime call before, you're already halfway there. Our support team is available to help with any issues.</p>"
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         },
         "golfer_faq_7dymDM": {
           "type": "golfer_faq",
           "settings": {
             "question": "What if it doesn't work for me?",
-            "answer": "<p>Need help choosing the right coach? Email us at contact@golfliveapp.com with a brief summary of your goals, and we'll help you get on track.</p>"
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         },
         "coach_faq_WArNbW": {
           "type": "coach_faq",
           "settings": {
-            "question": "I already use FaceTime and other apps, why switch?",
-            "answer": "<p>With Golf Live, you consolidate all of your business operations into a single app. Say goodbye to juggling 5 apps just to have a lesson.</p>"
+            "question": "I already use [CoachNow/Skillest] — why switch?",
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         },
         "coach_faq_idCxXM": {
           "type": "coach_faq",
           "settings": {
             "question": "What if most of my business is in-person?",
-            "answer": "<p>Golf Live App works for both in-person and virtual lessons! Meet your students wherever they are.</p>"
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         },
         "coach_faq_YawrLJ": {
           "type": "coach_faq",
           "settings": {
             "question": "How do I move my existing videos?",
-            "answer": "<p>After creating a profile, you can store, organize, and monetize all your saved content so it never stops working for you.</p>"
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         },
         "coach_faq_YxyLn8": {
           "type": "coach_faq",
           "settings": {
             "question": "Is it worth the investment?",
-            "answer": "<p>Coaches often report cost-savings and growth by switching to Golf Live and streamlining their coaching business.</p>"
+            "answer": "<p>Yes. With live video and instant replay, your coach sees exactly what you're doing in real-time — just like being there in person.</p>"
           }
         }
       },

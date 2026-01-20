@@ -496,40 +496,42 @@
     }
   </script>
 {%- endif -%}
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const siteHostname = window.location.hostname;
+{% comment %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const siteHostname = window.location.hostname;
 
-    document.querySelectorAll('a[href]').forEach(function (link) {
-      const href = link.getAttribute('href');
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        const href = link.getAttribute('href');
 
-      // Skip empty, anchor-only, javascript, mailto, tel links
-      if (
-        !href ||
-        href.startsWith('#') ||
-        href.startsWith('javascript:') ||
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:')
-      ) {
-        return;
-      }
+        // Skip empty, anchor-only, javascript, mailto, tel links
+        if (
+          !href ||
+          href.startsWith('#') ||
+          href.startsWith('javascript:') ||
+          href.startsWith('mailto:') ||
+          href.startsWith('tel:')
+        ) {
+          return;
+        }
 
-      // Create URL object safely
-      let linkUrl;
-      try {
-        linkUrl = new URL(href, window.location.origin);
-      } catch (e) {
-        return;
-      }
+        // Create URL object safely
+        let linkUrl;
+        try {
+          linkUrl = new URL(href, window.location.origin);
+        } catch (e) {
+          return;
+        }
 
-      // If external link
-      if (linkUrl.hostname !== siteHostname) {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
-      }
+        // If external link
+        if (linkUrl.hostname !== siteHostname) {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        }
+      });
     });
-  });
-</script>
+  </script>
+{% endcomment %}
 
 {% schema %}
 {
