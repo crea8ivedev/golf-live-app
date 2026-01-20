@@ -107,9 +107,10 @@
                       {{ block.settings.icon | image_url: width: 40 | image_tag: loading: 'lazy' }}
                     </span>
                   {% endif %}
-                  <span class="ctm-feature-text font-semibold text-[15px] lg:text-[18px] min-1582:max-w-[500px]">
-                    {{ block.settings.text }}
-                  </span>
+                  <span class="ctm-feature-text font-semibold text-[15px] lg:text-[18px] min-1582:max-w-[500px]"
+      style="color:#16a34a;">
+  {{ block.settings.text }}
+</span>
                 </li>
               {% endif %}
             {% endfor %}
