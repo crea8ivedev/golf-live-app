@@ -381,24 +381,23 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var hash = window.location.hash;
-        var landingPagePath = '/pages/landing-page';
-        if (!hash) return;
-        if (window.location.pathname !== landingPagePath) {
-          window.location.replace(landingPagePath + hash);
-          return;
+      (function () {
+        var TARGET_PAGE = '/'; // homepage
+
+        function handleAnchorRedirect() {
+          var hash = window.location.hash;
+          var path = window.location.pathname;
+
+          if (!hash) return;
+
+          if (path !== TARGET_PAGE) {
+            window.location.href = TARGET_PAGE + hash;
+          }
         }
-        var targetElement = document.querySelector(hash);
-        if (targetElement) {
-          setTimeout(function () {
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start',
-            });
-          }, 300);
-        }
-      });
+
+        document.addEventListener('DOMContentLoaded', handleAnchorRedirect);
+        window.addEventListener('hashchange', handleAnchorRedirect);
+      })();
     </script>
   </body>
 </html>
