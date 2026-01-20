@@ -380,5 +380,25 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var hash = window.location.hash;
+        var landingPagePath = '/pages/landing-page';
+        if (!hash) return;
+        if (window.location.pathname !== landingPagePath) {
+          window.location.replace(landingPagePath + hash);
+          return;
+        }
+        var targetElement = document.querySelector(hash);
+        if (targetElement) {
+          setTimeout(function () {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }, 300);
+        }
+      });
+    </script>
   </body>
 </html>
