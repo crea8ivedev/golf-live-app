@@ -58,7 +58,8 @@
       ],
       "custom_css": [
         ".ctm-hero-heading {margin-bottom: 6px;}",
-        ".ctm-hero-subheading {margin-top: 0; padding-top: 0;}"
+        ".ctm-hero-subheading {margin-top: 0; padding-top: 0;}",
+        ".ctm-golf-live-hero {margin-top: -50px;}"
       ],
       "name": "Hero Platform",
       "settings": {
