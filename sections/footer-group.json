@@ -55,7 +55,7 @@
           "settings": {
             "heading": "Quick links",
             "menu": "new-menu-footer",
-            "show_copyright_text": false
+            "show_copyright_text": true
           }
         }
       },
