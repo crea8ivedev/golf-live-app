@@ -459,11 +459,11 @@
       "@context": "http://schema.org",
       "@type": "Organization",
       "name": {{ shop.name | json }},
-      {% if request.path == '/pages/golf-live' and settings.white_logo %}
-    "logo": {{ settings.white_logo | image_url: width: 500 | prepend: "https:" | json }},
-  {% elsif settings.logo %}
-    "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-  {% endif %}
+     {% if template == 'page.golf-live' and settings.white_logo %}
+  "logo": {{ settings.white_logo | image_url: width: 500 | prepend: "https:" | json }},
+{% elsif settings.logo %}
+  "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+{% endif %}
 
       "sameAs": [
         {{ settings.social_twitter_link | json }},
