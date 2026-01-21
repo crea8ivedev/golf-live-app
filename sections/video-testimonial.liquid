@@ -68,63 +68,42 @@
       width: auto;
     }
   }
-/* Add these styles to your existing CSS */
+/* Add these styles */
 .vt-video-wrapper {
-  pointer-events: auto !important;
+  /* Ensure video wrapper doesn't interfere */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.vt-video-wrapper * {
-  pointer-events: auto !important;
-}
-
-/* Make video controls fully isolated */
+/* Make video controls more touch-friendly */
 .vt-video {
-  -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
 
-.vt-video::-webkit-media-controls {
+/* Style for when video is playing */
+.vt-video-wrapper[data-video-playing] {
+  cursor: default;
+}
+
+/* Ensure play button works properly */
+.vt-play-btn {
   pointer-events: auto !important;
-  touch-action: manipulation !important;
+  z-index: 10;
 }
 
-.vt-video::-webkit-media-controls-panel {
+.vt-poster {
   pointer-events: auto !important;
-  touch-action: manipulation !important;
+  cursor: pointer;
 }
 
-.vt-video::-webkit-media-controls-play-button,
-.vt-video::-webkit-media-controls-current-time-display,
-.vt-video::-webkit-media-controls-time-remaining-display,
-.vt-video::-webkit-media-controls-timeline,
-.vt-video::-webkit-media-controls-volume-slider,
-.vt-video::-webkit-media-controls-volume-slider-thumb,
-.vt-video::-webkit-media-controls-mute-button,
-.vt-video::-webkit-media-controls-fullscreen-button {
-  pointer-events: auto !important;
-  touch-action: manipulation !important;
+/* When poster is hidden, don't show cursor */
+.vt-poster[style*="display: none"] {
+  pointer-events: none;
 }
 
-/* Disable swiper interaction on video elements */
-.swiper-slide.swiper-no-swiping .vt-video-wrapper,
-.swiper-slide.swiper-no-swiping .vt-video-wrapper *,
-.vt-video-wrapper.swiper-no-swiping,
-.vt-video-wrapper.swiper-no-swiping * {
-  touch-action: manipulation !important;
-  -ms-touch-action: manipulation !important;
-}
-
-/* Prevent swiper from capturing events on video */
-.vt-swiper .swiper-wrapper {
-  pointer-events: auto;
-}
-
-.vt-swiper .swiper-slide {
-  pointer-events: auto;
-}
-
-.vt-swiper .swiper-slide .vt-video-wrapper {
-  pointer-events: auto;
+/* Make swiper arrows stay above video */
+.vt-arrow {
+  z-index: 20 !important;
 }
 </style>
 
