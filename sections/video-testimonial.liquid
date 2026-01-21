@@ -202,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (slides.length < MIN_SLIDES_FOR_LOOP) {
     const clonesNeeded = MIN_SLIDES_FOR_LOOP - slides.length;
-
     for (let i = 0; i < clonesNeeded; i++) {
       const clone = slides[i % slides.length].cloneNode(true);
       clone.classList.add('is-duplicate');
@@ -223,8 +222,6 @@ document.addEventListener('DOMContentLoaded', function () {
     slidesPerView: 'auto',
     spaceBetween: 18,
     loop: true,
-    noSwipingClass: 'swiper-no-swiping',
-    allowTouchMove: true,
     navigation: {
       nextEl: '.vt-arrow.vt-next',
       prevEl: '.vt-arrow.vt-prev',
@@ -238,24 +235,38 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   let anyVideoPlaying = false;
+  let swiperDetached = false;
 
   /* --------------------------------------------------
-     HELPERS
+     SWIPER HARD LOCK (🔥 REAL FIX)
   -------------------------------------------------- */
-  function disableSwiper(source) {
+  function lockSwiper(reason) {
+    if (swiperDetached) return;
+
     swiper.allowTouchMove = false;
+    swiper.detachEvents();               // 🔥 KILLS ALL TOUCH LISTENERS
     arrows.forEach(btn => btn.style.pointerEvents = 'none');
 
-    console.log('%c🔒 Swiper DISABLED', 'color:red;font-weight:bold;', source);
+    swiperDetached = true;
+
+    console.log('%c🔒 Swiper DETACHED', 'color:red;font-weight:bold;', reason);
   }
 
-  function enableSwiper(source) {
+  function unlockSwiper(reason) {
+    if (!swiperDetached) return;
+
+    swiper.attachEvents();                // 🔥 RESTORES TOUCH LISTENERS
     swiper.allowTouchMove = true;
     arrows.forEach(btn => btn.style.pointerEvents = '');
 
-    console.log('%c🔓 Swiper ENABLED', 'color:green;font-weight:bold;', source);
+    swiperDetached = false;
+
+    console.log('%c🔓 Swiper ATTACHED', 'color:green;font-weight:bold;', reason);
   }
 
+  /* --------------------------------------------------
+     PAUSE ALL VIDEOS
+  -------------------------------------------------- */
   function pauseAllVideos() {
     console.log('%c⏸ Pausing all videos', 'color:orange;font-weight:bold;');
 
@@ -275,45 +286,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     anyVideoPlaying = false;
-    enableSwiper('pauseAllVideos');
+    unlockSwiper('pauseAllVideos');
   }
 
   /* --------------------------------------------------
-     VIDEO INTERACTION (CORE FIX)
+     VIDEO SETUP
   -------------------------------------------------- */
-  function setupVideo(video, index) {
+  swiperEl.querySelectorAll('video').forEach((video, index) => {
     const wrap = video.closest('.vt-video-wrapper');
-    wrap.classList.add('swiper-no-swiping');
-
-    /* 🚫 STOP ALL SWIPER EVENTS FROM VIDEO */
-    const stopSwiperEvents = (e) => {
-      if (!video.hasAttribute('data-playing')) return;
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-    };
-
-    [
-      'touchstart',
-      'touchmove',
-      'touchend',
-      'pointerdown',
-      'pointermove',
-      'pointerup',
-      'mousedown',
-      'mousemove',
-      'mouseup',
-      'click'
-    ].forEach(evt =>
-      video.addEventListener(evt, stopSwiperEvents, true)
-    );
 
     video.addEventListener('play', () => {
       anyVideoPlaying = true;
       video.setAttribute('data-playing', 'true');
-      wrap.setAttribute('data-video-playing', 'true');
+      wrap?.setAttribute('data-video-playing', 'true');
 
       console.log(`▶ Video PLAYING (index ${index})`);
-      disableSwiper('video.play');
+      lockSwiper('video.play');
     });
 
     video.addEventListener('pause', () => {
@@ -325,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!stillPlaying) {
           anyVideoPlaying = false;
-          enableSwiper('video.pause');
+          unlockSwiper('video.pause');
         }
       }, 100);
     });
@@ -334,9 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(`⏹ Video ENDED (index ${index})`);
       pauseAllVideos();
     });
-  }
-
-  swiperEl.querySelectorAll('video').forEach(setupVideo);
+  });
 
   /* --------------------------------------------------
      POSTER CLICK → PLAY
@@ -345,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const wrap = poster.closest('.vt-video-wrapper');
     const video = wrap.querySelector('video');
 
-    const playVideo = (e) => {
+    poster.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
 
@@ -357,18 +343,14 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => poster.style.display = 'none', 100);
 
       video.play().catch(() => {
-        console.warn('❌ Video play failed');
         poster.style.display = 'block';
         poster.classList.remove('hiding');
       });
-    };
-
-    poster.addEventListener('click', playVideo);
-    poster.querySelector('.vt-play-btn')?.addEventListener('click', playVideo);
+    });
   });
 
   /* --------------------------------------------------
-     CLICK OUTSIDE → PAUSE
+     OUTSIDE CLICK → PAUSE
   -------------------------------------------------- */
   document.addEventListener('click', (e) => {
     if (anyVideoPlaying && !swiperEl.contains(e.target)) {
@@ -385,12 +367,11 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('⛔ slideChange ignored (video playing)');
       return;
     }
-
-    console.log('↔ Slide changed → pause video');
     pauseAllVideos();
   });
 });
 </script>
+
 
 
 
