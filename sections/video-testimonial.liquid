@@ -208,26 +208,30 @@
        🧠 INIT SWIPER (KEY FIX HERE)
     -------------------------------------------------- */
     const swiper = new Swiper(swiperEl, {
-      slidesPerView: 'auto',
-      spaceBetween: 18,
-      loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 18,
+    loop: true,
 
-      /* 🔒 HARD BLOCK SWIPING ON VIDEO */
-      noSwiping: true,
-      noSwipingClass: 'swiper-no-swiping',
+    /* ✅ HARD FIX */
+    allowTouchMove: false,     // 🔒 disable swipe forever
+    simulateTouch: false,     // 🔒 block mouse drag
+    touchStartPreventDefault: false,
 
-      navigation: {
-        nextEl: '.vt-arrow.vt-next',
-        prevEl: '.vt-arrow.vt-prev',
-      },
+    noSwiping: true,
+    noSwipingClass: 'swiper-no-swiping',
 
-      breakpoints: {
-        0: { slidesPerView: 1.4 },
-        640: { slidesPerView: 2.4 },
-        990: { slidesPerView: 3 },
-        1280: { slidesPerView: 'auto' },
-      },
-    });
+    navigation: {
+      nextEl: '.vt-arrow.vt-next',
+      prevEl: '.vt-arrow.vt-prev',
+    },
+
+    breakpoints: {
+      0: { slidesPerView: 1.4 },
+      640: { slidesPerView: 2.4 },
+      990: { slidesPerView: 3 },
+      1280: { slidesPerView: 'auto' },
+    },
+  });
 
     /* --------------------------------------------------
        ⏹ PAUSE OTHER VIDEOS
