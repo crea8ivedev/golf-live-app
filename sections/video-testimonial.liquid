@@ -51,9 +51,11 @@
   .vt-poster[style*="display: none"] {
     pointer-events: none;
   }
-  .vt-video-wrapper video {
-    touch-action: manipulation;
-  }
+  .vt-video-wrapper,
+.vt-video-wrapper * {
+  touch-action: manipulation;
+}
+
 
   @media (min-width: 1280px) {
     .vt-swiper .swiper-slide {
