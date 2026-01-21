@@ -90,7 +90,7 @@
       "settings": {
         "custom_liquid": "<div class=\"custom-liquid-black-bg\">\n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0672/2410/9296/files/golf-live-plus-logo.png?v=1768971661\"\n    alt=\"Hero image\"\n    loading=\"lazy\"\n  >\n</div>\n\n<style>\n  .custom-liquid-black-bg {\n    background-color: #18181c;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 60px 0px 0px 0px ;\n  }\n\n  .custom-liquid-black-bg img {\n    max-width: 300px;\n    height: auto;\n    display: block;\n  }\n</style>",
         "color_scheme": "",
-        "padding_top": 40,
+        "padding_top": 0,
         "padding_bottom": 0
       }
     },
