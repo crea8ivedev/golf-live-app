@@ -327,12 +327,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
   if (!swiperEl) return;
 
-  // Store the original Swiper touch methods
-  let originalOnTouchStart, originalOnTouchMove, originalOnTouchEnd;
-  
-  // Flag to track if we're interacting with video
-  let isInteractingWithVideo = false;
-
   const wrapper = swiperEl.querySelector('.swiper-wrapper');
   let slides = Array.from(wrapper.children);
   const originalCount = slides.length;
@@ -353,64 +347,20 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* --------------------------------------------------
-     🧠 INIT SWIPER WITH CUSTOM TOUCH HANDLING
+     🧠 INIT SWIPER WITH SIMPLIFIED SETTINGS
   -------------------------------------------------- */
   const swiper = new Swiper(swiperEl, {
     slidesPerView: 'auto',
     spaceBetween: 18,
     loop: true,
     
-    // Disable all interactions on video controls
+    // Use Swiper's built-in prevention
     noSwiping: true,
-    noSwipingClass: 'swiper-no-swiping',
+    noSwipingClass: 'vt-video-wrapper',
     preventInteractionOnTransition: true,
     
-    // Disable some Swiper features that might interfere
-    followFinger: false,
-    shortSwipes: false,
-    longSwipes: false,
-    
-    // Add custom resistance to prevent accidental slides
-    resistanceRatio: 0,
-    
-    // Custom touch event handlers
-    on: {
-      init: function() {
-        // Store original touch methods
-        originalOnTouchStart = swiper.touchEvents.onTouchStart;
-        originalOnTouchMove = swiper.touchEvents.onTouchMove;
-        originalOnTouchEnd = swiper.touchEvents.onTouchEnd;
-        
-        // Override touch methods
-        swiper.touchEvents.onTouchStart = function(e) {
-          if (isInteractingWithVideo) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-          }
-          return originalOnTouchStart.call(swiper.touchEvents, e);
-        };
-        
-        swiper.touchEvents.onTouchMove = function(e) {
-          if (isInteractingWithVideo) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-          }
-          return originalOnTouchMove.call(swiper.touchEvents, e);
-        };
-        
-        swiper.touchEvents.onTouchEnd = function(e) {
-          if (isInteractingWithVideo) {
-            isInteractingWithVideo = false;
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-          }
-          return originalOnTouchEnd.call(swiper.touchEvents, e);
-        };
-      }
-    },
+    // Allow normal swiping but we'll handle video separately
+    allowTouchMove: true,
 
     navigation: {
       nextEl: '.vt-arrow.vt-next',
@@ -432,17 +382,12 @@ document.addEventListener('DOMContentLoaded', function () {
     swiperEl.querySelectorAll('video').forEach((video) => {
       if (video !== activeVideo) {
         video.pause();
-        // Show poster if it exists
-        const poster = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
-        if (poster && poster.style.display === 'none') {
-          poster.style.display = 'block';
-        }
       }
     });
   }
 
   /* --------------------------------------------------
-     ▶ POSTER → PLAY VIDEO
+     ▶ POSTER → PLAY VIDEO (SIMPLIFIED)
   -------------------------------------------------- */
   swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
     const playBtn = poster.querySelector('.vt-play-btn');
@@ -451,24 +396,30 @@ document.addEventListener('DOMContentLoaded', function () {
     playBtn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      e.stopImmediatePropagation();
 
       const videoWrapper = poster.closest('.vt-video-wrapper');
       const video = videoWrapper?.querySelector('video');
       if (!video) return;
 
+      // Hide poster and play video
       poster.style.display = 'none';
       pauseOtherVideos(video);
-      video.play().catch(console.error);
-
-      // Disable swiper completely
-      swiper.disable();
-      isInteractingWithVideo = true;
+      
+      // Play video
+      video.play().catch(error => {
+        console.error('Video play failed:', error);
+        // Show poster again if play fails
+        poster.style.display = 'block';
+      });
+      
+      // Mark that we're interacting with video
+      videoWrapper.setAttribute('data-video-playing', 'true');
     });
     
-    // Also handle direct poster click
+    // Also handle poster click (outside play button)
     poster.addEventListener('click', function(e) {
-      if (e.target !== playBtn && !playBtn.contains(e.target)) {
+      // Only trigger if click is directly on poster (not play button)
+      if (e.target === this || e.target.classList.contains('vt-poster')) {
         e.preventDefault();
         e.stopPropagation();
         playBtn.click();
@@ -477,179 +428,169 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* --------------------------------------------------
-     🎥 COMPREHENSIVE VIDEO CONTROL PROTECTION
+     🎥 SMART VIDEO CONTROL HANDLING
   -------------------------------------------------- */
-  function setupVideoProtection(video) {
-    // Mark video and all its children as non-swipeable
-    video.classList.add('swiper-no-swiping');
-    video.querySelectorAll('*').forEach(el => {
-      el.classList.add('swiper-no-swiping');
+  function setupVideoInteraction(video) {
+    const videoWrapper = video.closest('.vt-video-wrapper');
+    
+    // Listen for all mouse/touch events on video controls
+    video.addEventListener('mousedown', function(e) {
+      // Only prevent if clicking on video controls (not the video itself)
+      const isControlClick = e.target !== video && 
+                            (e.target.tagName === 'BUTTON' || 
+                             e.target.tagName === 'INPUT' || 
+                             e.target.getAttribute('role') === 'slider');
+      
+      if (isControlClick) {
+        e.stopPropagation();
+        // Temporarily disable swiper
+        swiper.allowTouchMove = false;
+      }
     });
     
-    // Prevent ALL events from bubbling
-    const events = [
-      'click', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'touchmove',
-      'touchcancel', 'pointerdown', 'pointerup', 'pointermove', 'pointercancel'
-    ];
+    video.addEventListener('touchstart', function(e) {
+      // Only prevent if touching video controls
+      const isControlTouch = e.target !== video && 
+                            (e.target.tagName === 'BUTTON' || 
+                             e.target.tagName === 'INPUT' || 
+                             e.target.getAttribute('role') === 'slider');
+      
+      if (isControlTouch) {
+        e.stopPropagation();
+        swiper.allowTouchMove = false;
+      }
+    });
     
-    events.forEach(eventType => {
-      video.addEventListener(eventType, function(e) {
-        // If this is a video control interaction
-        if (e.target === video || 
-            e.target.tagName === 'BUTTON' ||
-            e.target.getAttribute('role') === 'button' ||
-            e.target.closest('[role="button"]') ||
-            e.target.closest('[aria-label]') ||
-            e.target.closest('input[type="range"]')) {
-          
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-          
-          // Set flag to block Swiper
-          isInteractingWithVideo = true;
-          
-          // Temporarily disable Swiper
-          if (eventType === 'mousedown' || eventType === 'touchstart' || eventType === 'pointerdown') {
-            swiper.disable();
-          }
-          
-          // Re-enable after interaction
-          if (eventType === 'mouseup' || eventType === 'touchend' || eventType === 'pointerup') {
-            setTimeout(() => {
-              isInteractingWithVideo = false;
-              // Only re-enable if video is not playing
-              if (video.paused) {
-                swiper.enable();
-              }
-            }, 100);
-          }
-          
-          return false;
-        }
-      }, { capture: true, passive: false });
+    // Re-enable swiper when mouse/touch ends
+    ['mouseup', 'touchend', 'touchcancel'].forEach(eventType => {
+      video.addEventListener(eventType, function() {
+        // Small delay to ensure video controls processed the event
+        setTimeout(() => {
+          swiper.allowTouchMove = true;
+        }, 100);
+      });
     });
     
     // Video state events
-    video.addEventListener('play', () => {
-      isInteractingWithVideo = true;
-      swiper.disable();
+    video.addEventListener('play', function() {
+      videoWrapper.setAttribute('data-video-playing', 'true');
+      // Disable swiper while video is playing
+      swiper.allowTouchMove = false;
     });
     
-    video.addEventListener('pause', () => {
+    video.addEventListener('pause', function() {
+      videoWrapper.removeAttribute('data-video-playing');
+      // Re-enable swiper after a short delay
       setTimeout(() => {
-        isInteractingWithVideo = false;
-        swiper.enable();
-      }, 100);
+        swiper.allowTouchMove = true;
+      }, 300);
     });
     
-    video.addEventListener('ended', () => {
-      isInteractingWithVideo = false;
-      swiper.enable();
-      
-      // Show poster again
-      const poster = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
+    video.addEventListener('ended', function() {
+      videoWrapper.removeAttribute('data-video-playing');
+      // Show poster
+      const poster = videoWrapper.querySelector('[data-video-poster]');
       if (poster) {
         poster.style.display = 'block';
       }
+      // Re-enable swiper
+      swiper.allowTouchMove = true;
     });
     
-    // Handle seeking
-    video.addEventListener('seeking', () => {
-      isInteractingWithVideo = true;
-      swiper.disable();
+    // Handle seeking events
+    video.addEventListener('seeking', function() {
+      swiper.allowTouchMove = false;
     });
     
-    video.addEventListener('seeked', () => {
-      setTimeout(() => {
-        isInteractingWithVideo = false;
-        // Don't re-enable if video is still playing
-        if (!video.paused) {
-          swiper.disable();
-        } else {
-          swiper.enable();
-        }
-      }, 100);
+    video.addEventListener('seeked', function() {
+      // Only re-enable if video is paused
+      if (video.paused) {
+        setTimeout(() => {
+          swiper.allowTouchMove = true;
+        }, 100);
+      }
     });
   }
 
-  // Apply protection to all videos
-  swiperEl.querySelectorAll('video').forEach(setupVideoProtection);
+  // Setup all videos
+  swiperEl.querySelectorAll('video').forEach(setupVideoInteraction);
 
   /* --------------------------------------------------
-     🔁 ON SLIDE CHANGE - Cleanup
+     🔁 ON SLIDE CHANGE
   -------------------------------------------------- */
-  swiper.on('slideChange', () => {
+  swiper.on('slideChange', function() {
     // Pause all videos
     swiperEl.querySelectorAll('video').forEach((video) => {
       video.pause();
+      
       // Show poster
-      const poster = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
+      const videoWrapper = video.closest('.vt-video-wrapper');
+      const poster = videoWrapper?.querySelector('[data-video-poster]');
       if (poster) {
         poster.style.display = 'block';
       }
+      videoWrapper?.removeAttribute('data-video-playing');
     });
     
-    // Re-enable swiper
-    isInteractingWithVideo = false;
-    swiper.enable();
-  });
-  
-  /* --------------------------------------------------
-     🛡️ ADD GLOBAL PROTECTION
-  -------------------------------------------------- */
-  // Prevent any click/touch on video wrapper from affecting swiper
-  swiperEl.querySelectorAll('.vt-video-wrapper').forEach(wrapper => {
-    wrapper.addEventListener('click', function(e) {
-      if (e.target.closest('video') || e.target.closest('[data-video-poster]')) {
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-      }
-    }, true); // Use capture phase
-    
-    wrapper.addEventListener('touchstart', function(e) {
-      if (e.target.closest('video') || e.target.closest('[data-video-poster]')) {
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        isInteractingWithVideo = true;
-        swiper.disable();
-      }
-    }, true);
-    
-    wrapper.addEventListener('touchend', function(e) {
-      if (e.target.closest('video') || e.target.closest('[data-video-poster]')) {
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        // Only re-enable if no video is playing
-        const videosInWrapper = wrapper.querySelectorAll('video');
-        const isAnyVideoPlaying = Array.from(videosInWrapper).some(v => !v.paused);
-        if (!isAnyVideoPlaying) {
-          setTimeout(() => {
-            isInteractingWithVideo = false;
-            swiper.enable();
-          }, 150);
-        }
-      }
-    }, true);
+    // Always re-enable swiper on slide change
+    swiper.allowTouchMove = true;
   });
 
   /* --------------------------------------------------
-     🔄 HANDLE SWIPER RE-ENABLE
+     🛡️ GLOBAL CLICK HANDLER TO DETECT VIDEO INTERACTIONS
   -------------------------------------------------- */
-  // Monitor document clicks to re-enable swiper when clicking outside
   document.addEventListener('click', function(e) {
-    if (!swiperEl.contains(e.target) || 
-        (!e.target.closest('video') && !e.target.closest('[data-video-poster]'))) {
-      isInteractingWithVideo = false;
-      swiper.enable();
+    // Check if click is on video controls
+    const video = e.target.closest('video');
+    if (video) {
+      // If click is directly on video element (not controls), let it play
+      if (e.target === video) {
+        return; // Allow default behavior
+      }
+      
+      // If click is on video controls, prevent swiper interaction
+      if (e.target.tagName === 'BUTTON' || 
+          e.target.tagName === 'INPUT' || 
+          e.target.getAttribute('role') === 'button' ||
+          e.target.getAttribute('role') === 'slider') {
+        e.stopPropagation();
+        swiper.allowTouchMove = false;
+        
+        // Re-enable after interaction
+        setTimeout(() => {
+          swiper.allowTouchMove = true;
+        }, 500);
+      }
     }
-  });
+  }, true); // Use capture phase
+
+  /* --------------------------------------------------
+     🚫 PREVENT SWIPER FROM CAPTURING VIDEO CONTROL EVENTS
+  -------------------------------------------------- */
+  // Add a passive event listener to detect video control interactions
+  swiperEl.addEventListener('touchstart', function(e) {
+    const target = e.target;
+    const isVideoControl = target.closest('video') && 
+                          (target.tagName === 'BUTTON' || 
+                           target.tagName === 'INPUT' || 
+                           target.getAttribute('role') === 'slider');
+    
+    if (isVideoControl) {
+      // Don't prevent default, just stop propagation
+      e.stopPropagation();
+    }
+  }, { passive: true, capture: true });
   
-  // Also re-enable on window blur
-  window.addEventListener('blur', function() {
-    isInteractingWithVideo = false;
-    swiper.enable();
-  });
+  swiperEl.addEventListener('click', function(e) {
+    const target = e.target;
+    const isVideoControl = target.closest('video') && 
+                          (target.tagName === 'BUTTON' || 
+                           target.tagName === 'INPUT');
+    
+    if (isVideoControl) {
+      e.stopPropagation();
+    }
+  }, { capture: true });
 });
 </script>
 
