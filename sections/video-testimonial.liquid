@@ -284,9 +284,15 @@
 </script> {% endcomment %}
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
   const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
   if (!swiperEl) return;
+
+  // Store the original Swiper touch methods
+  let originalOnTouchStart, originalOnTouchMove, originalOnTouchEnd;
+  
+  // Flag to track if we're interacting with video
+  let isInteractingWithVideo = false;
 
   const wrapper = swiperEl.querySelector('.swiper-wrapper');
   let slides = Array.from(wrapper.children);
@@ -308,19 +314,64 @@
   }
 
   /* --------------------------------------------------
-     🧠 INIT SWIPER (KEY FIX HERE)
+     🧠 INIT SWIPER WITH CUSTOM TOUCH HANDLING
   -------------------------------------------------- */
   const swiper = new Swiper(swiperEl, {
     slidesPerView: 'auto',
     spaceBetween: 18,
     loop: true,
-
-    /* 🔒 HARD BLOCK SWIPING ON VIDEO */
+    
+    // Disable all interactions on video controls
     noSwiping: true,
     noSwipingClass: 'swiper-no-swiping',
-    
-    /* NEW: Prevent clicks on video controls from triggering navigation */
     preventInteractionOnTransition: true,
+    
+    // Disable some Swiper features that might interfere
+    followFinger: false,
+    shortSwipes: false,
+    longSwipes: false,
+    
+    // Add custom resistance to prevent accidental slides
+    resistanceRatio: 0,
+    
+    // Custom touch event handlers
+    on: {
+      init: function() {
+        // Store original touch methods
+        originalOnTouchStart = swiper.touchEvents.onTouchStart;
+        originalOnTouchMove = swiper.touchEvents.onTouchMove;
+        originalOnTouchEnd = swiper.touchEvents.onTouchEnd;
+        
+        // Override touch methods
+        swiper.touchEvents.onTouchStart = function(e) {
+          if (isInteractingWithVideo) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+          return originalOnTouchStart.call(swiper.touchEvents, e);
+        };
+        
+        swiper.touchEvents.onTouchMove = function(e) {
+          if (isInteractingWithVideo) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+          return originalOnTouchMove.call(swiper.touchEvents, e);
+        };
+        
+        swiper.touchEvents.onTouchEnd = function(e) {
+          if (isInteractingWithVideo) {
+            isInteractingWithVideo = false;
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+          return originalOnTouchEnd.call(swiper.touchEvents, e);
+        };
+      }
+    },
 
     navigation: {
       nextEl: '.vt-arrow.vt-next',
@@ -342,6 +393,11 @@
     swiperEl.querySelectorAll('video').forEach((video) => {
       if (video !== activeVideo) {
         video.pause();
+        // Show poster if it exists
+        const poster = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
+        if (poster && poster.style.display === 'none') {
+          poster.style.display = 'block';
+        }
       }
     });
   }
@@ -350,124 +406,210 @@
      ▶ POSTER → PLAY VIDEO
   -------------------------------------------------- */
   swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
-    poster.addEventListener('click', function (e) {
+    const playBtn = poster.querySelector('.vt-play-btn');
+    
+    // Handle play button click
+    playBtn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
+      e.stopImmediatePropagation();
 
       const videoWrapper = poster.closest('.vt-video-wrapper');
       const video = videoWrapper?.querySelector('video');
       if (!video) return;
 
-      poster.remove();
+      poster.style.display = 'none';
       pauseOtherVideos(video);
-      video.play();
+      video.play().catch(console.error);
 
-      /* 🔒 Lock swipe globally (extra safety) */
-      swiper.allowTouchMove = false;
-    });
-  });
-
-  /* --------------------------------------------------
-     🎥 VIDEO EVENTS
-  -------------------------------------------------- */
-  swiperEl.querySelectorAll('video').forEach((video) => {
-    // Prevent video controls from triggering swiper
-    video.addEventListener('click', function(e) {
-      e.stopPropagation();
+      // Disable swiper completely
+      swiper.disable();
+      isInteractingWithVideo = true;
     });
     
-    // Prevent all interactions with video controls from affecting swiper
-    video.addEventListener('mousedown', function(e) {
-      e.stopPropagation();
-    });
-    
-    video.addEventListener('touchstart', function(e) {
-      e.stopPropagation();
-    });
-
-    video.addEventListener('play', () => {
-      swiper.allowTouchMove = false;
-      swiper.mousewheel.disable();
-      swiper.keyboard.disable();
-    });
-
-    video.addEventListener('pause', () => {
-      swiper.allowTouchMove = false;
-    });
-
-    video.addEventListener('ended', () => {
-      swiper.allowTouchMove = true;
-      swiper.mousewheel.enable();
-      swiper.keyboard.enable();
-    });
-  });
-
-  /* --------------------------------------------------
-     🛡️ ADDITIONAL PROTECTION: Block clicks on video controls
-  -------------------------------------------------- */
-  swiperEl.querySelectorAll('.vt-video-wrapper').forEach((wrapper) => {
-    // Block clicks on video controls (play/pause button, volume, etc.)
-    wrapper.addEventListener('click', function(e) {
-      // If the click is on any video control element, stop propagation
-      if (e.target.closest('video') || 
-          e.target.tagName === 'VIDEO' ||
-          e.target.type === 'button' || 
-          e.target.getAttribute('role') === 'button' ||
-          e.target.classList.contains('ytp-') || // YouTube player classes
-          e.target.closest('[role="button"]') ||
-          e.target.closest('[aria-label*="video"]') ||
-          e.target.closest('[aria-label*="play"]') ||
-          e.target.closest('[aria-label*="pause"]') ||
-          e.target.closest('[aria-label*="seek"]') ||
-          e.target.closest('[aria-label*="time"]') ||
-          e.target.closest('[aria-label*="volume"]')) {
-        e.stopPropagation();
+    // Also handle direct poster click
+    poster.addEventListener('click', function(e) {
+      if (e.target !== playBtn && !playBtn.contains(e.target)) {
         e.preventDefault();
-      }
-    });
-    
-    // Add touch event prevention for mobile
-    wrapper.addEventListener('touchstart', function(e) {
-      if (e.target.closest('video') || e.target.tagName === 'VIDEO') {
         e.stopPropagation();
+        playBtn.click();
       }
     });
   });
 
   /* --------------------------------------------------
-     🔁 ON SLIDE CHANGE
+     🎥 COMPREHENSIVE VIDEO CONTROL PROTECTION
   -------------------------------------------------- */
-  swiper.on('slideChange', () => {
-    swiperEl.querySelectorAll('video').forEach((video) => {
-      video.pause();
-      // Remove any existing posters that might have been hidden
+  function setupVideoProtection(video) {
+    // Mark video and all its children as non-swipeable
+    video.classList.add('swiper-no-swiping');
+    video.querySelectorAll('*').forEach(el => {
+      el.classList.add('swiper-no-swiping');
+    });
+    
+    // Prevent ALL events from bubbling
+    const events = [
+      'click', 'mousedown', 'mouseup', 'touchstart', 'touchend', 'touchmove',
+      'touchcancel', 'pointerdown', 'pointerup', 'pointermove', 'pointercancel'
+    ];
+    
+    events.forEach(eventType => {
+      video.addEventListener(eventType, function(e) {
+        // If this is a video control interaction
+        if (e.target === video || 
+            e.target.tagName === 'BUTTON' ||
+            e.target.getAttribute('role') === 'button' ||
+            e.target.closest('[role="button"]') ||
+            e.target.closest('[aria-label]') ||
+            e.target.closest('input[type="range"]')) {
+          
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          
+          // Set flag to block Swiper
+          isInteractingWithVideo = true;
+          
+          // Temporarily disable Swiper
+          if (eventType === 'mousedown' || eventType === 'touchstart' || eventType === 'pointerdown') {
+            swiper.disable();
+          }
+          
+          // Re-enable after interaction
+          if (eventType === 'mouseup' || eventType === 'touchend' || eventType === 'pointerup') {
+            setTimeout(() => {
+              isInteractingWithVideo = false;
+              // Only re-enable if video is not playing
+              if (video.paused) {
+                swiper.enable();
+              }
+            }, 100);
+          }
+          
+          return false;
+        }
+      }, { capture: true, passive: false });
+    });
+    
+    // Video state events
+    video.addEventListener('play', () => {
+      isInteractingWithVideo = true;
+      swiper.disable();
+    });
+    
+    video.addEventListener('pause', () => {
+      setTimeout(() => {
+        isInteractingWithVideo = false;
+        swiper.enable();
+      }, 100);
+    });
+    
+    video.addEventListener('ended', () => {
+      isInteractingWithVideo = false;
+      swiper.enable();
+      
+      // Show poster again
       const poster = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
-      if (poster && poster.style.display === 'none') {
+      if (poster) {
         poster.style.display = 'block';
       }
     });
-    swiper.allowTouchMove = true;
-    swiper.mousewheel.enable();
-    swiper.keyboard.enable();
+    
+    // Handle seeking
+    video.addEventListener('seeking', () => {
+      isInteractingWithVideo = true;
+      swiper.disable();
+    });
+    
+    video.addEventListener('seeked', () => {
+      setTimeout(() => {
+        isInteractingWithVideo = false;
+        // Don't re-enable if video is still playing
+        if (!video.paused) {
+          swiper.disable();
+        } else {
+          swiper.enable();
+        }
+      }, 100);
+    });
+  }
+
+  // Apply protection to all videos
+  swiperEl.querySelectorAll('video').forEach(setupVideoProtection);
+
+  /* --------------------------------------------------
+     🔁 ON SLIDE CHANGE - Cleanup
+  -------------------------------------------------- */
+  swiper.on('slideChange', () => {
+    // Pause all videos
+    swiperEl.querySelectorAll('video').forEach((video) => {
+      video.pause();
+      // Show poster
+      const poster = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
+      if (poster) {
+        poster.style.display = 'block';
+      }
+    });
+    
+    // Re-enable swiper
+    isInteractingWithVideo = false;
+    swiper.enable();
   });
   
   /* --------------------------------------------------
-     🚫 DISABLE SWIPER WHEN INTERACTING WITH VIDEO CONTROLS
+     🛡️ ADD GLOBAL PROTECTION
   -------------------------------------------------- */
-  swiperEl.addEventListener('mousedown', function(e) {
-    // Check if the mousedown is on video controls
-    const video = e.target.closest('video');
-    if (video) {
-      swiper.allowTouchMove = false;
+  // Prevent any click/touch on video wrapper from affecting swiper
+  swiperEl.querySelectorAll('.vt-video-wrapper').forEach(wrapper => {
+    wrapper.addEventListener('click', function(e) {
+      if (e.target.closest('video') || e.target.closest('[data-video-poster]')) {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
+    }, true); // Use capture phase
+    
+    wrapper.addEventListener('touchstart', function(e) {
+      if (e.target.closest('video') || e.target.closest('[data-video-poster]')) {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        isInteractingWithVideo = true;
+        swiper.disable();
+      }
+    }, true);
+    
+    wrapper.addEventListener('touchend', function(e) {
+      if (e.target.closest('video') || e.target.closest('[data-video-poster]')) {
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        // Only re-enable if no video is playing
+        const videosInWrapper = wrapper.querySelectorAll('video');
+        const isAnyVideoPlaying = Array.from(videosInWrapper).some(v => !v.paused);
+        if (!isAnyVideoPlaying) {
+          setTimeout(() => {
+            isInteractingWithVideo = false;
+            swiper.enable();
+          }, 150);
+        }
+      }
+    }, true);
+  });
+
+  /* --------------------------------------------------
+     🔄 HANDLE SWIPER RE-ENABLE
+  -------------------------------------------------- */
+  // Monitor document clicks to re-enable swiper when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!swiperEl.contains(e.target) || 
+        (!e.target.closest('video') && !e.target.closest('[data-video-poster]'))) {
+      isInteractingWithVideo = false;
+      swiper.enable();
     }
   });
   
-  swiperEl.addEventListener('touchstart', function(e) {
-    // Check if the touch is on video controls
-    const video = e.target.closest('video');
-    if (video) {
-      swiper.allowTouchMove = false;
-    }
+  // Also re-enable on window blur
+  window.addEventListener('blur', function() {
+    isInteractingWithVideo = false;
+    swiper.enable();
   });
 });
 </script>
