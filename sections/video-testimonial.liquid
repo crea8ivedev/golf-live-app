@@ -546,19 +546,25 @@ document.addEventListener('DOMContentLoaded', function () {
   /* --------------------------------------------------
      🚫 PREVENT SWIPER FROM CAPTURING VIDEO CONTROL EVENTS
   -------------------------------------------------- */
-  // Add a passive event listener to detect video control interactions
-  swiperEl.addEventListener('touchstart', function(e) {
-    const target = e.target;
-    const isVideoControl = target.closest('video') && 
-                          (target.tagName === 'BUTTON' || 
-                           target.tagName === 'INPUT' || 
-                           target.getAttribute('role') === 'slider');
+/* --------------------------------------------------
+     🛡️ PREVENT VIDEO CLICKS FROM TRIGGERING SWIPER
+  -------------------------------------------------- */
+  swiperEl.addEventListener('click', function(e) {
+    // Check if click is within a video element or its controls
+    const videoElement = e.target.closest('video');
+    const videoWrapper = e.target.closest('.vt-video-wrapper');
     
-    if (isVideoControl) {
-      // Don't prevent default, just stop propagation
-      e.stopPropagation();
+    if (videoWrapper) {
+      const isPlayingVideo = videoWrapper.hasAttribute('data-video-playing');
+      
+      // If video is playing or user is interacting with video/controls, stop propagation
+      if (isPlayingVideo || videoElement) {
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+      }
     }
-  }, { passive: true, capture: true });
+  }, true); // Use capture phase to catch events early
   
   swiperEl.addEventListener('click', function(e) {
     const target = e.target;
