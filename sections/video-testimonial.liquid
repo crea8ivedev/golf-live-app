@@ -409,9 +409,22 @@ document.addEventListener('DOMContentLoaded', function () {
      SLIDE CHANGE → PAUSE
   -------------------------------------------------- */
   swiper.on('slideChange', () => {
-    console.log('%c↔ Slide changed → pause video', 'color:#eab308;');
+    if (anyVideoPlaying) {
+      console.log(
+        '%c⛔ slideChange ignored (video playing)',
+        'color:red;font-weight:bold;'
+      );
+      return;
+    }
+
+    console.log(
+      '%c↔ Slide changed → pause video',
+      'color:#eab308;'
+    );
+
     pauseAllVideos();
   });
+
 });
 </script>
 
