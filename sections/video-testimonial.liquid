@@ -184,21 +184,6 @@
     const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
     if (!swiperEl) return;
 
-    const wrapper = swiperEl.querySelector('.swiper-wrapper');
-    let slides = Array.from(wrapper.children);
-    const originalCount = slides.length;
-
-    const MIN_SLIDES_FOR_LOOP = 8;
-
-    if (originalCount < MIN_SLIDES_FOR_LOOP) {
-      const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
-      for (let i = 0; i < clonesNeeded; i++) {
-        const clone = slides[i % originalCount].cloneNode(true);
-        clone.classList.add('is-duplicate');
-        wrapper.appendChild(clone);
-      }
-    }
-
     const swiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 18,
@@ -213,9 +198,9 @@
     let activeVideo = null;
     let isSeeking = false;
 
-    /* --------------------------------------------------
-       🎥 VIDEO DEBUG EVENTS
-    -------------------------------------------------- */
+    /* ---------------------------------------------
+       🎥 VIDEO – OBSERVE ONLY (NO BLOCKING)
+    --------------------------------------------- */
     swiperEl.querySelectorAll('video').forEach((video) => {
       video.addEventListener('play', () => {
         activeVideo = video;
@@ -228,18 +213,18 @@
 
       video.addEventListener('pointerdown', (e) => {
         isSeeking = true;
-        console.log('🎥 VIDEO POINTER DOWN (possible seek)', e.target);
+        console.log('🎥 VIDEO POINTER DOWN', e.target);
       });
 
       video.addEventListener('pointermove', () => {
         if (isSeeking) {
-          console.log('🎥 VIDEO POINTER MOVE (seeking)');
+          console.log('🎥 VIDEO POINTER MOVE (SEEKING)');
         }
       });
 
       video.addEventListener('pointerup', () => {
         isSeeking = false;
-        console.log('🎥 VIDEO POINTER UP (seek end)');
+        console.log('🎥 VIDEO POINTER UP');
       });
 
       video.addEventListener('touchstart', () => {
@@ -249,7 +234,7 @@
 
       video.addEventListener('touchmove', () => {
         if (isSeeking) {
-          console.log('🎥 VIDEO TOUCH MOVE (seeking)');
+          console.log('🎥 VIDEO TOUCH MOVE (SEEKING)');
         }
       });
 
@@ -259,9 +244,9 @@
       });
     });
 
-    /* --------------------------------------------------
-       🚨 SWIPER TOUCH DEBUG
-    -------------------------------------------------- */
+    /* ---------------------------------------------
+       🚨 SWIPER EVENT OBSERVATION
+    --------------------------------------------- */
     swiperEl.addEventListener('pointerdown', () => {
       console.log('🚨 SWIPER POINTER DOWN');
     });
@@ -278,22 +263,23 @@
       console.log('🚨 SWIPER TOUCH MOVE');
     });
 
-    /* --------------------------------------------------
-       🚨 SLIDE CHANGE DETECTION
-    -------------------------------------------------- */
+    /* ---------------------------------------------
+       🚨 SLIDE CHANGE MONITOR
+    --------------------------------------------- */
     swiper.on('slideChange', () => {
       if (activeVideo && !activeVideo.paused) {
         console.warn(
-          '🚨 SLIDE CHANGED WHILE VIDEO ACTIVE!',
+          '🚨 SLIDE MOVED WHILE VIDEO PLAYING',
           'activeIndex:',
           swiper.activeIndex
         );
       } else {
-        console.log('➡️ Slide changed (normal)');
+        console.log('➡️ Slide changed normally');
       }
     });
   });
 </script>
+
 
 
 
