@@ -372,6 +372,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Setup all videos
+  swiperEl.querySelectorAll('video').forEach(setupVideoInteraction);
+
   /* --------------------------------------------------
      🔁 ON SLIDE CHANGE
   -------------------------------------------------- */
@@ -380,10 +383,10 @@ document.addEventListener('DOMContentLoaded', function () {
     swiperEl.querySelectorAll('video').forEach((video) => {
       video.pause();
       
-      // Show poster
+      // Show poster only if video ended or at beginning
       const videoWrapper = video.closest('.vt-video-wrapper');
       const poster = videoWrapper?.querySelector('[data-video-poster]');
-      if (poster) {
+      if (poster && video.currentTime === 0) {
         poster.style.display = 'block';
       }
       videoWrapper?.removeAttribute('data-video-playing');
@@ -392,62 +395,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Always re-enable swiper on slide change
     swiper.allowTouchMove = true;
   });
-
-  /* --------------------------------------------------
-     🛡️ GLOBAL CLICK HANDLER TO DETECT VIDEO INTERACTIONS
-  -------------------------------------------------- */
-  document.addEventListener('click', function(e) {
-    // Check if click is on video controls
-    const video = e.target.closest('video');
-    if (video) {
-      // If click is directly on video element (not controls), let it play
-      if (e.target === video) {
-        return; // Allow default behavior
-      }
-      
-      // If click is on video controls, prevent swiper interaction
-      if (e.target.tagName === 'BUTTON' || 
-          e.target.tagName === 'INPUT' || 
-          e.target.getAttribute('role') === 'button' ||
-          e.target.getAttribute('role') === 'slider') {
-        e.stopPropagation();
-        swiper.allowTouchMove = false;
-        
-        // Re-enable after interaction
-        setTimeout(() => {
-          swiper.allowTouchMove = true;
-        }, 500);
-      }
-    }
-  }, true); // Use capture phase
-
-  /* --------------------------------------------------
-     🚫 PREVENT SWIPER FROM CAPTURING VIDEO CONTROL EVENTS
-  -------------------------------------------------- */
-  // Add a passive event listener to detect video control interactions
-  swiperEl.addEventListener('touchstart', function(e) {
-    const target = e.target;
-    const isVideoControl = target.closest('video') && 
-                          (target.tagName === 'BUTTON' || 
-                           target.tagName === 'INPUT' || 
-                           target.getAttribute('role') === 'slider');
-    
-    if (isVideoControl) {
-      // Don't prevent default, just stop propagation
-      e.stopPropagation();
-    }
-  }, { passive: true, capture: true });
-  
-  swiperEl.addEventListener('click', function(e) {
-    const target = e.target;
-    const isVideoControl = target.closest('video') && 
-                          (target.tagName === 'BUTTON' || 
-                           target.tagName === 'INPUT');
-    
-    if (isVideoControl) {
-      e.stopPropagation();
-    }
-  }, { capture: true });
 });
 </script>
 
