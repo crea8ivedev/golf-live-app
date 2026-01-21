@@ -88,13 +88,6 @@
             "name": "Chris Como"
           }
         },
-        "coach_X9K43j": {
-          "type": "coach",
-          "settings": {
-            "image": "shopify://shop_images/Colin_McCarthy_ace19f50-d796-4d47-a22a-1a6b4bb34e21.png",
-            "name": "Colin McCarthy"
-          }
-        },
         "coach_E8HF94": {
           "type": "coach",
           "settings": {
@@ -119,7 +112,6 @@
       },
       "block_order": [
         "coach_xNfamd",
-        "coach_X9K43j",
         "coach_E8HF94",
         "coach_JcDCgy",
         "coach_XdU8cc"
