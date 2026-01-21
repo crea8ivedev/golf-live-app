@@ -291,22 +291,36 @@ document.addEventListener('DOMContentLoaded', function () {
   -------------------------------------------------- */
   function setupVideoInteraction(video) {
     const videoWrapper = video.closest('.vt-video-wrapper');
+    const poster = videoWrapper.querySelector('[data-video-poster]');
     let isInteractingWithControls = false;
     
-    // Prevent swiper from interfering with video controls
+    // Prevent swiper from interfering with video controls ONLY
+    // Don't block poster clicks
     videoWrapper.addEventListener('mousedown', function(e) {
+      // Allow poster clicks to pass through
+      if (poster && poster.style.display !== 'none' && poster.contains(e.target)) {
+        return;
+      }
       e.stopPropagation();
       isInteractingWithControls = true;
       swiper.allowTouchMove = false;
     }, true);
     
     videoWrapper.addEventListener('touchstart', function(e) {
+      // Allow poster touches to pass through
+      if (poster && poster.style.display !== 'none' && poster.contains(e.target)) {
+        return;
+      }
       e.stopPropagation();
       isInteractingWithControls = true;
       swiper.allowTouchMove = false;
     }, true);
     
     videoWrapper.addEventListener('click', function(e) {
+      // Allow poster clicks to pass through
+      if (poster && poster.style.display !== 'none' && poster.contains(e.target)) {
+        return;
+      }
       e.stopPropagation();
     }, true);
     
