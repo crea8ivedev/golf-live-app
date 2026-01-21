@@ -281,6 +281,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const videoWrapper = video.closest('.vt-video-wrapper');
     const poster = videoWrapper.querySelector('[data-video-poster]');
     let isInteractingWithControls = false;
+  
+    /* --------------------------------------------------
+      🚫 HARD BLOCK SWIPER FROM VIDEO CONTROLS
+    -------------------------------------------------- */
+    ['pointerdown', 'pointermove', 'pointerup', 'touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup'].forEach(eventType => {
+      video.addEventListener(eventType, function (e) {
+        e.stopPropagation();
+      }, { capture: true });
+    });
+
     
     // Add swiper-no-swiping class to video wrapper
     videoWrapper.classList.add('swiper-no-swiping');
