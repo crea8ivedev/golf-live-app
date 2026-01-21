@@ -274,7 +274,7 @@
     /* --------------------------------------------------
        🔁 DUPLICATE SLIDES IF COUNT IS LOW
     -------------------------------------------------- */
-    const MIN_SLIDES_FOR_LOOP = 8; // safe for desktop
+    const MIN_SLIDES_FOR_LOOP = 8;
 
     if (originalCount < MIN_SLIDES_FOR_LOOP) {
       const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
@@ -286,16 +286,17 @@
       }
     }
 
-    slides = Array.from(wrapper.children);
-    const totalSlides = slides.length;
-
     /* --------------------------------------------------
-       🧠 INIT SWIPER
+       🧠 INIT SWIPER (KEY FIX HERE)
     -------------------------------------------------- */
     const swiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 18,
-      loop: totalSlides > 1,
+      loop: true,
+
+      /* 🔒 HARD BLOCK SWIPING ON VIDEO */
+      noSwiping: true,
+      noSwipingClass: 'swiper-no-swiping',
 
       navigation: {
         nextEl: '.vt-arrow.vt-next',
@@ -322,7 +323,7 @@
     }
 
     /* --------------------------------------------------
-       ▶ POSTER CLICK → PLAY VIDEO
+       ▶ POSTER → PLAY VIDEO
     -------------------------------------------------- */
     swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
       poster.addEventListener('click', function (e) {
@@ -335,74 +336,40 @@
 
         poster.remove();
         pauseOtherVideos(video);
-
         video.play();
 
-        /* 🔒 HARD LOCK SWIPE (arrows still work) */
+        /* 🔒 Lock swipe globally (extra safety) */
         swiper.allowTouchMove = false;
-        swiper.allowSlideNext = true;
-        swiper.allowSlidePrev = true;
       });
     });
 
     /* --------------------------------------------------
-       🎥 VIDEO EVENT ISOLATION (SEEK BAR FIX)
+       🎥 VIDEO EVENTS
     -------------------------------------------------- */
     swiperEl.querySelectorAll('video').forEach((video) => {
-      /* 🔒 Lock swiper as soon as video plays */
       video.addEventListener('play', () => {
         swiper.allowTouchMove = false;
       });
 
-      /* 🔓 Unlock only when video ends */
-      video.addEventListener('ended', () => {
-        swiper.allowTouchMove = true;
-      });
-
-      /* ⛔ Keep locked while paused (seek safe) */
       video.addEventListener('pause', () => {
         swiper.allowTouchMove = false;
       });
 
-      /* 🚫 Block ALL pointer/touch events from Swiper */
-      [
-        'pointerdown',
-        'pointermove',
-        'pointerup',
-        'touchstart',
-        'touchmove',
-        'touchend',
-        'mousedown',
-      ].forEach((evt) => {
-        video.addEventListener(evt, (e) => {
-          e.stopPropagation();
-        });
+      video.addEventListener('ended', () => {
+        swiper.allowTouchMove = true;
       });
     });
 
     /* --------------------------------------------------
-       🧱 EXTRA SAFETY: BLOCK SLIDE POINTER CAPTURE
-    -------------------------------------------------- */
-    swiperEl.querySelectorAll('.swiper-slide').forEach((slide) => {
-      slide.addEventListener('pointerdown', (e) => {
-        if (e.target.tagName === 'VIDEO') {
-          e.stopPropagation();
-        }
-      });
-    });
-
-    /* --------------------------------------------------
-       🔁 ON SLIDE CHANGE → PAUSE VIDEOS & UNLOCK
+       🔁 ON SLIDE CHANGE
     -------------------------------------------------- */
     swiper.on('slideChange', () => {
-      swiperEl.querySelectorAll('video').forEach((video) => {
-        video.pause();
-      });
-
+      swiperEl.querySelectorAll('video').forEach((video) => video.pause());
       swiper.allowTouchMove = true;
     });
   });
 </script>
+
 
 
 
