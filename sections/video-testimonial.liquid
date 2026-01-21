@@ -361,12 +361,6 @@ document.addEventListener('DOMContentLoaded', function () {
     swiperEl.querySelectorAll('video').forEach((video) => {
       if (video !== activeVideo) {
         video.pause();
-        // Show poster for other videos
-        const videoWrapper = video.closest('.vt-video-wrapper');
-        const poster = videoWrapper?.querySelector('[data-video-poster]');
-        if (poster) {
-          poster.style.display = 'block';
-        }
       }
     });
   }
@@ -414,22 +408,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* --------------------------------------------------
      🎥 SMART VIDEO CONTROL HANDLING
-     REMOVED: Click-to-pause functionality
   -------------------------------------------------- */
   function setupVideoInteraction(video) {
     const videoWrapper = video.closest('.vt-video-wrapper');
     
-    // PREVENT CLICK-TO-PAUSE: Remove click handler on video element
-    video.addEventListener('click', function(e) {
-      // If click is on the video itself (not controls), do nothing
-      if (e.target === video) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-    });
-    
-    // Listen for mouse/touch events on video controls only
+    // Listen for all mouse/touch events on video controls
     video.addEventListener('mousedown', function(e) {
       // Only prevent if clicking on video controls (not the video itself)
       const isControlClick = e.target !== video && 
@@ -474,10 +457,9 @@ document.addEventListener('DOMContentLoaded', function () {
       swiper.allowTouchMove = false;
     });
     
-    // REMOVED: No longer pause video on click, but still handle pause event
     video.addEventListener('pause', function() {
       videoWrapper.removeAttribute('data-video-playing');
-      // Only re-enable swiper if video ended naturally (not user pause)
+      // Re-enable swiper after a short delay
       setTimeout(() => {
         swiper.allowTouchMove = true;
       }, 300);
@@ -540,11 +522,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check if click is on video controls
     const video = e.target.closest('video');
     if (video) {
-      // If click is directly on video element, prevent default and stop
+      // If click is directly on video element (not controls), let it play
       if (e.target === video) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
+        return; // Allow default behavior
       }
       
       // If click is on video controls, prevent swiper interaction
@@ -578,11 +558,6 @@ document.addEventListener('DOMContentLoaded', function () {
       // Don't prevent default, just stop propagation
       e.stopPropagation();
     }
-    
-    // If clicking on video itself (not controls), prevent swiper
-    if (target === e.target.closest('video')) {
-      e.stopPropagation();
-    }
   }, { passive: true, capture: true });
   
   swiperEl.addEventListener('click', function(e) {
@@ -593,13 +568,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     if (isVideoControl) {
       e.stopPropagation();
-    }
-    
-    // If clicking on video itself (not controls), prevent swiper
-    if (target === e.target.closest('video')) {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
     }
   }, { capture: true });
 });
