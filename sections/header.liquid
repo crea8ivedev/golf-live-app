@@ -134,9 +134,9 @@
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
         {%- assign use_white_logo = false -%}
 
-        {%- if request.path == '/pages/golf-live' and settings.white_logo != blank -%}
-          {%- assign use_white_logo = true -%}
-        {%- endif -%}
+        {%- if template == 'page.golf-live' and settings.white_logo != blank -%}
+  {%- assign use_white_logo = true -%}
+{%- endif -%}
 
         {%- if settings.logo != blank or use_white_logo -%}
           <div class="header__heading-logo-wrapper">
