@@ -241,10 +241,11 @@
 
       on: {
         slideChange() {
-          if (isVideoInteracting) return;
-          pauseAllVideos();
-        },
-
+        if (isVideoInteracting) return;
+        pauseAllVideos();
+      },
+      },
+    });
     swiperEl.querySelectorAll('.vt-video').forEach((video) => {
       /* When user interacts with video controls */
       video.addEventListener('pointerdown', () => {
