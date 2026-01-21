@@ -271,8 +271,10 @@
     let slides = Array.from(wrapper.children);
     const originalCount = slides.length;
 
-    /* 🔁 DUPLICATE SLIDES IF NOT ENOUGH */
-    const MIN_SLIDES_FOR_LOOP = 8; // safe threshold for desktop
+    /* --------------------------------------------------
+       🔁 DUPLICATE SLIDES IF COUNT IS LOW
+    -------------------------------------------------- */
+    const MIN_SLIDES_FOR_LOOP = 8; // safe for desktop
 
     if (originalCount < MIN_SLIDES_FOR_LOOP) {
       const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
@@ -287,6 +289,9 @@
     slides = Array.from(wrapper.children);
     const totalSlides = slides.length;
 
+    /* --------------------------------------------------
+       🧠 INIT SWIPER
+    -------------------------------------------------- */
     const swiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 18,
@@ -305,7 +310,9 @@
       },
     });
 
-    /* ⏹ Pause all OTHER videos */
+    /* --------------------------------------------------
+       ⏹ PAUSE OTHER VIDEOS
+    -------------------------------------------------- */
     function pauseOtherVideos(activeVideo) {
       swiperEl.querySelectorAll('video').forEach((video) => {
         if (video !== activeVideo) {
@@ -314,39 +321,79 @@
       });
     }
 
-    /* ▶ PLAY VIDEO */
+    /* --------------------------------------------------
+       ▶ POSTER CLICK → PLAY VIDEO
+    -------------------------------------------------- */
     swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
       poster.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
-        const wrapper = poster.closest('.vt-video-wrapper');
-        const video = wrapper?.querySelector('video');
+        const videoWrapper = poster.closest('.vt-video-wrapper');
+        const video = videoWrapper?.querySelector('video');
         if (!video) return;
 
         poster.remove();
         pauseOtherVideos(video);
+
         video.play();
 
-        /* 🔒 Lock swipe only */
+        /* 🔒 HARD LOCK SWIPE (arrows still work) */
         swiper.allowTouchMove = false;
         swiper.allowSlideNext = true;
         swiper.allowSlidePrev = true;
       });
     });
 
-    /* 🎥 VIDEO EVENT ISOLATION */
+    /* --------------------------------------------------
+       🎥 VIDEO EVENT ISOLATION (SEEK BAR FIX)
+    -------------------------------------------------- */
     swiperEl.querySelectorAll('video').forEach((video) => {
-      ['click', 'touchstart', 'touchmove', 'touchend'].forEach((evt) => {
-        video.addEventListener(evt, (e) => e.stopPropagation());
+      /* 🔒 Lock swiper as soon as video plays */
+      video.addEventListener('play', () => {
+        swiper.allowTouchMove = false;
       });
 
+      /* 🔓 Unlock only when video ends */
       video.addEventListener('ended', () => {
         swiper.allowTouchMove = true;
       });
+
+      /* ⛔ Keep locked while paused (seek safe) */
+      video.addEventListener('pause', () => {
+        swiper.allowTouchMove = false;
+      });
+
+      /* 🚫 Block ALL pointer/touch events from Swiper */
+      [
+        'pointerdown',
+        'pointermove',
+        'pointerup',
+        'touchstart',
+        'touchmove',
+        'touchend',
+        'mousedown',
+      ].forEach((evt) => {
+        video.addEventListener(evt, (e) => {
+          e.stopPropagation();
+        });
+      });
     });
 
-    /* 🔁 On slide change → pause videos */
+    /* --------------------------------------------------
+       🧱 EXTRA SAFETY: BLOCK SLIDE POINTER CAPTURE
+    -------------------------------------------------- */
+    swiperEl.querySelectorAll('.swiper-slide').forEach((slide) => {
+      slide.addEventListener('pointerdown', (e) => {
+        if (e.target.tagName === 'VIDEO') {
+          e.stopPropagation();
+        }
+      });
+    });
+
+    /* --------------------------------------------------
+       🔁 ON SLIDE CHANGE → PAUSE VIDEOS & UNLOCK
+    -------------------------------------------------- */
     swiper.on('slideChange', () => {
       swiperEl.querySelectorAll('video').forEach((video) => {
         video.pause();
@@ -356,6 +403,7 @@
     });
   });
 </script>
+
 
 
 
