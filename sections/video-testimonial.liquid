@@ -178,91 +178,6 @@
   </div>
 </div>
 
-{% comment %} <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
-    if (!swiperEl) return;
-
-    const swiper = new Swiper(swiperEl, {
-      slidesPerView: 'auto',
-      spaceBetween: 18,
-      loop: swiperEl.dataset.enableClone === 'true',
-
-      navigation: {
-        nextEl: '.vt-arrow.vt-next',
-        prevEl: '.vt-arrow.vt-prev',
-      },
-
-      breakpoints: {
-        0: { slidesPerView: 1.4 },
-        640: { slidesPerView: 2.4 },
-        990: { slidesPerView: 3 },
-        1280: { slidesPerView: 'auto' },
-      },
-    });
-
-    /* ⏹ Pause all OTHER videos (no poster logic at all) */
-    function pauseOtherVideos(activeVideo) {
-      swiperEl.querySelectorAll('video').forEach((video) => {
-        if (video !== activeVideo) {
-          video.pause();
-        }
-      });
-    }
-
-    /* ▶ PLAY */
-    swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
-      poster.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const wrapper = poster.closest('.vt-video-wrapper');
-        const video = wrapper?.querySelector('video');
-        if (!video) return;
-
-        poster.remove(); // 🔥 permanently remove poster from DOM
-
-        pauseOtherVideos(video);
-
-        video.play();
-
-        /* 🔒 lock swipe ONLY — keep arrows working */
-        swiper.allowTouchMove = false;
-        swiper.allowSlideNext = true;
-        swiper.allowSlidePrev = true;
-      });
-    });
-
-    /* 🎥 VIDEO EVENT ISOLATION */
-    swiperEl.querySelectorAll('video').forEach((video) => {
-      // Prevent ANY click/touch from bubbling to Swiper
-      ['click', 'touchstart', 'touchmove', 'touchend'].forEach((evt) => {
-        video.addEventListener(evt, (e) => {
-          e.stopPropagation();
-        });
-      });
-
-      // When video ends, just unlock swiper (NO poster)
-      video.addEventListener('ended', () => {
-        swiper.allowTouchMove = true;
-      });
-
-      // If user pauses manually, keep swiper locked (video UI only)
-      video.addEventListener('pause', () => {
-        // intentionally empty — do NOTHING
-      });
-    });
-
-    /* 🔁 On slide change → pause videos (still NO poster) */
-    swiper.on('slideChange', () => {
-      swiperEl.querySelectorAll('video').forEach((video) => {
-        video.pause();
-      });
-
-      swiper.allowTouchMove = true;
-    });
-  });
-</script> {% endcomment %}
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -538,6 +453,91 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+{% comment %} <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
+    if (!swiperEl) return;
+
+    const swiper = new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 18,
+      loop: swiperEl.dataset.enableClone === 'true',
+
+      navigation: {
+        nextEl: '.vt-arrow.vt-next',
+        prevEl: '.vt-arrow.vt-prev',
+      },
+
+      breakpoints: {
+        0: { slidesPerView: 1.4 },
+        640: { slidesPerView: 2.4 },
+        990: { slidesPerView: 3 },
+        1280: { slidesPerView: 'auto' },
+      },
+    });
+
+    /* ⏹ Pause all OTHER videos (no poster logic at all) */
+    function pauseOtherVideos(activeVideo) {
+      swiperEl.querySelectorAll('video').forEach((video) => {
+        if (video !== activeVideo) {
+          video.pause();
+        }
+      });
+    }
+
+    /* ▶ PLAY */
+    swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
+      poster.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const wrapper = poster.closest('.vt-video-wrapper');
+        const video = wrapper?.querySelector('video');
+        if (!video) return;
+
+        poster.remove(); // 🔥 permanently remove poster from DOM
+
+        pauseOtherVideos(video);
+
+        video.play();
+
+        /* 🔒 lock swipe ONLY — keep arrows working */
+        swiper.allowTouchMove = false;
+        swiper.allowSlideNext = true;
+        swiper.allowSlidePrev = true;
+      });
+    });
+
+    /* 🎥 VIDEO EVENT ISOLATION */
+    swiperEl.querySelectorAll('video').forEach((video) => {
+      // Prevent ANY click/touch from bubbling to Swiper
+      ['click', 'touchstart', 'touchmove', 'touchend'].forEach((evt) => {
+        video.addEventListener(evt, (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      // When video ends, just unlock swiper (NO poster)
+      video.addEventListener('ended', () => {
+        swiper.allowTouchMove = true;
+      });
+
+      // If user pauses manually, keep swiper locked (video UI only)
+      video.addEventListener('pause', () => {
+        // intentionally empty — do NOTHING
+      });
+    });
+
+    /* 🔁 On slide change → pause videos (still NO poster) */
+    swiper.on('slideChange', () => {
+      swiperEl.querySelectorAll('video').forEach((video) => {
+        video.pause();
+      });
+
+      swiper.allowTouchMove = true;
+    });
+  });
+</script> {% endcomment %}
 
 
 {% schema %}
