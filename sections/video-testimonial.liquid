@@ -262,49 +262,6 @@
   });
 </script> {% endcomment %}
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var swiperEl = document.querySelector('.vt-swiper');
-    if (!swiperEl) return;
-
-    var totalSlides = swiperEl.querySelectorAll('.swiper-slide').length;
-
-    var swiper = new Swiper(swiperEl, {
-      slidesPerView: 'auto',
-      spaceBetween: 24,
-
-      /* ✅ loop only when safe */
-      loop: totalSlides > 3,
-      loopedSlides: totalSlides > 3 ? totalSlides : 0,
-
-      watchOverflow: true,
-
-      navigation: {
-        nextEl: '.vt-arrow.vt-next',
-        prevEl: '.vt-arrow.vt-prev',
-      },
-
-      breakpoints: {
-        0: { slidesPerView: 1.4 },
-        640: { slidesPerView: 2.4 },
-        990: { slidesPerView: 3 },
-        1280: { slidesPerView: 'auto' }
-      },
-
-      on: {
-        slideChange: function () {
-          swiperEl.querySelectorAll('video').forEach(function (video) {
-            video.pause();
-          });
-
-          swiperEl.querySelectorAll('[data-video-poster]').forEach(function (poster) {
-            poster.style.display = '';
-          });
-        }
-      }
-    });
-  });
-</script>
 
 
 {% schema %}
