@@ -215,14 +215,12 @@
 
     /* Init Swiper */
    const swiper = new Swiper(swiperEl, {
-  noSwiping: true,
-  noSwipingClass: 'swiper-no-swiping',
-
-  preventClicks: false,
-  preventClicksPropagation: false,
-  touchStartPreventDefault: false,
-
-
+      noSwiping: true,
+      noSwipingClass: 'swiper-no-swiping',
+      allowTouchMove: true,
+      preventClicks: false,
+      preventClicksPropagation: false,
+      touchStartPreventDefault: false,
       slidesPerView: 'auto',
       spaceBetween: 18,
       loop: enableClone,
