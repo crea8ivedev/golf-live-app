@@ -181,23 +181,11 @@
     const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
     if (!swiperEl) return;
 
-    const enableClone = swiperEl.dataset.enableClone === 'true';
-    const wrapper = swiperEl.querySelector('.swiper-wrapper');
-    const visibleSlidesDesktop = 4;
+    let isInternalReset = false;
 
-    let slides = wrapper.querySelectorAll('.swiper-slide');
+    function pauseAllVideos(showPoster = true) {
+      isInternalReset = true;
 
-    /* Clone slides if needed */
-    if (enableClone && slides.length <= visibleSlidesDesktop) {
-      slides.forEach((slide) => {
-        const clone = slide.cloneNode(true);
-        clone.classList.add('vt-slide-clone');
-        wrapper.appendChild(clone);
-      });
-    }
-
-    /* Pause & reset all videos */
-    function pauseAllVideos() {
       swiperEl.querySelectorAll('.vt-video-wrapper').forEach((wrapper) => {
         const video = wrapper.querySelector('video');
         const poster = wrapper.querySelector('[data-video-poster]');
@@ -207,24 +195,27 @@
           video.currentTime = 0;
         }
 
-        if (poster) {
+        if (poster && showPoster) {
           poster.style.display = '';
         }
       });
+
+      setTimeout(() => {
+        isInternalReset = false;
+      }, 50);
     }
 
-    /* Init Swiper */
-   const swiper = new Swiper(swiperEl, {
-  noSwiping: true,
-  noSwipingClass: 'swiper-no-swiping',
-  allowTouchMove: true,
-  preventClicks: false,
-  preventClicksPropagation: false,
-  touchStartPreventDefault: false,
+    const swiper = new Swiper(swiperEl, {
+      noSwiping: true,
+      noSwipingClass: 'swiper-no-swiping',
+      allowTouchMove: true,
+      preventClicks: false,
+      preventClicksPropagation: false,
+      touchStartPreventDefault: false,
+
       slidesPerView: 'auto',
       spaceBetween: 18,
-      loop: enableClone,
-      watchOverflow: false,
+      loop: swiperEl.dataset.enableClone === 'true',
 
       navigation: {
         nextEl: '.vt-arrow.vt-next',
@@ -240,31 +231,36 @@
 
       on: {
         slideChange() {
-          pauseAllVideos();
+          pauseAllVideos(true); // show poster only on slide change
         },
       },
     });
 
-    /* ▶ PLAY — bind ONLY to poster elements */
+    /* ▶ PLAY */
     swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
       poster.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
 
-        pauseAllVideos(); // ensure single playback
+        pauseAllVideos(false); // do NOT show poster for others
 
         const wrapper = poster.closest('.vt-video-wrapper');
         const video = wrapper?.querySelector('video');
         if (!video) return;
 
         poster.style.display = 'none';
-        video.currentTime = 0;
         video.play();
       });
     });
 
-    /* 🔁 Restore poster when video ends */
+    /* ❌ Do NOT restore poster on pause */
     swiperEl.querySelectorAll('.vt-video').forEach((video) => {
+      video.addEventListener('pause', function () {
+        if (isInternalReset) return;
+        // intentionally empty → pause should NOT bring poster back
+      });
+
+      /* ✅ Restore poster ONLY when video ends */
       video.addEventListener('ended', function () {
         const wrapper = video.closest('.vt-video-wrapper');
         const poster = wrapper?.querySelector('[data-video-poster]');
@@ -272,9 +268,21 @@
           poster.style.display = '';
         }
       });
+
+      /* 🛑 Prevent Swiper from interfering with seek bar */
+      video.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+      });
+      video.addEventListener('touchmove', (e) => {
+        e.stopPropagation();
+      });
+      video.addEventListener('touchend', (e) => {
+        e.stopPropagation();
+      });
     });
   });
 </script>
+
 
 
 
