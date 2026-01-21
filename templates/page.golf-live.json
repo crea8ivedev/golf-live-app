@@ -127,8 +127,8 @@
       ],
       "name": "Trusted Coaches Block",
       "settings": {
-        "heading": "Trusted by Top Coaches",
-        "description": "<p>Golf Live is the platform of choice for modern Coaches, trusted by top-ranked Instructors and rising stars to elevate their coaching, grow their brand, and stay connected with today’s golfers.</p>",
+        "heading": "Gain Access to the World’s Best",
+        "description": "",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -232,7 +232,7 @@
       ],
       "name": "Golf Live Plus",
       "settings": {
-        "heading": "Now on Golf Live Plus.",
+        "heading": "Now on Golf Live+",
         "sub_heading": "<p>Stream exclusive lessons, drills, and series from Golf Digest Top 100 coaches, PGA instructors, and elite golf educators.</p>",
         "link_label": "See More",
         "link_url": ""
