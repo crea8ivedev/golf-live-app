@@ -245,6 +245,22 @@
       },
     });
 
+    /* 🔒 Disable Swiper interaction while video is playing */
+    swiperEl.querySelectorAll('.vt-video').forEach((video) => {
+      video.addEventListener('play', function () {
+        swiper.allowTouchMove = false;
+      });
+
+      video.addEventListener('pause', function () {
+        swiper.allowTouchMove = true;
+      });
+
+      video.addEventListener('ended', function () {
+        swiper.allowTouchMove = true;
+      });
+    });
+
+
     /* ▶ PLAY — bind ONLY to poster elements */
     swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
       poster.addEventListener('click', function (e) {
