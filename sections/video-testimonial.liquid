@@ -69,23 +69,11 @@
     }
   }
 
-  .vt-video {
-  pointer-events: none; /* Block native controls until poster gone */
-}
-
 .vt-video[data-playing="true"] {
-  pointer-events: auto; /* Re-enable after custom play */
+  pointer-events: auto;
+  touch-action: none; /* ⛔ prevent swiper drag gestures */
 }
 
-.vt-poster {
-  z-index: 10; /* Above video */
-  transition: opacity 0.2s ease; /* Smooth hide */
-}
-
-.vt-poster.hiding {
-  opacity: 0;
-  pointer-events: none;
-}
 
 </style>
 
