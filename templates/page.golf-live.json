@@ -84,7 +84,7 @@
         "coach_xNfamd": {
           "type": "coach",
           "settings": {
-            "image": "shopify://shop_images/Chris_Como_c701169b-348a-4f64-8d7a-69fffa7b5c45.png",
+            "image": "shopify://shop_images/como-image.jpg",
             "name": "Chris Como"
           }
         },
@@ -108,13 +108,21 @@
             "image": "shopify://shop_images/Mike_Malaska.avif",
             "name": "Mike Malaska"
           }
+        },
+        "coach_NpV8Kh": {
+          "type": "coach",
+          "settings": {
+            "image": "shopify://shop_images/gankas.png",
+            "name": "George Gankas"
+          }
         }
       },
       "block_order": [
         "coach_xNfamd",
         "coach_E8HF94",
         "coach_JcDCgy",
-        "coach_XdU8cc"
+        "coach_XdU8cc",
+        "coach_NpV8Kh"
       ],
       "name": "Trusted Coaches Block",
       "settings": {
