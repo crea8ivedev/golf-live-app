@@ -223,6 +223,8 @@ document.addEventListener('DOMContentLoaded', function () {
     spaceBetween: 18,
     loop: true,
     draggable: false,
+    allowTouchMove: false,   // ✅ disables dragging
+  simulateTouch: false,    // ✅ disables mouse drag
     navigation: {
       nextEl: '.vt-arrow.vt-next',
       prevEl: '.vt-arrow.vt-prev',
