@@ -219,12 +219,13 @@ document.addEventListener('DOMContentLoaded', function () {
      SWIPER INIT
   -------------------------------------------------- */
   const swiper = new Swiper(swiperEl, {
-    slidesPerView: 'auto',
-    spaceBetween: 18,
-    loop: true,
-    draggable: false,
-    allowTouchMove: false,   // ✅ disables dragging
-  simulateTouch: false,    // ✅ disables mouse drag
+  slidesPerView: 'auto',
+  spaceBetween: 18,
+  loop: true,
+
+  allowTouchMove: false,
+  simulateTouch: false, 
+
     navigation: {
       nextEl: '.vt-arrow.vt-next',
       prevEl: '.vt-arrow.vt-prev',
@@ -235,6 +236,13 @@ document.addEventListener('DOMContentLoaded', function () {
       990: { slidesPerView: 3 },
       1280: { slidesPerView: 'auto' },
     },
+  });
+
+  // block pointer start/move so users can’t drag
+  ['pointerdown','touchstart','touchmove'].forEach(evt => {
+    swiperEl.addEventListener(evt, e => {
+      e.preventDefault();
+    }, { passive: false });
   });
 
   let anyVideoPlaying = false;
