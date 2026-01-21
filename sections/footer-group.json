@@ -69,7 +69,6 @@
       ],
       "settings": {
         "background_image": "shopify://shop_images/footer-bg-desktop.png",
-        "background_image_mobile": "shopify://shop_images/footer-bg-mobile.png",
         "apps_logo": "shopify://shop_images/footer-logo.svg",
         "apps_text": "<p>Elevate Your Coaching Experience</p>",
         "playstore_image": "shopify://shop_images/playstore.png",
