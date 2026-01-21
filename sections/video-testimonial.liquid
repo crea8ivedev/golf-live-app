@@ -179,7 +179,6 @@
 </div>
 
 
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
@@ -189,14 +188,10 @@
     let slides = Array.from(wrapper.children);
     const originalCount = slides.length;
 
-    /* --------------------------------------------------
-       🔁 DUPLICATE SLIDES IF COUNT IS LOW
-    -------------------------------------------------- */
     const MIN_SLIDES_FOR_LOOP = 8;
 
     if (originalCount < MIN_SLIDES_FOR_LOOP) {
       const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
-
       for (let i = 0; i < clonesNeeded; i++) {
         const clone = slides[i % originalCount].cloneNode(true);
         clone.classList.add('is-duplicate');
@@ -204,93 +199,102 @@
       }
     }
 
-    /* --------------------------------------------------
-       🧠 INIT SWIPER (KEY FIX HERE)
-    -------------------------------------------------- */
     const swiper = new Swiper(swiperEl, {
-    slidesPerView: 'auto',
-    spaceBetween: 18,
-    loop: true,
+      slidesPerView: 'auto',
+      spaceBetween: 18,
+      loop: true,
 
-    /* ✅ HARD FIX */
-    allowTouchMove: false,     // 🔒 disable swipe forever
-    simulateTouch: false,     // 🔒 block mouse drag
-    touchStartPreventDefault: false,
-
-    noSwiping: true,
-    noSwipingClass: 'swiper-no-swiping',
-
-    navigation: {
-      nextEl: '.vt-arrow.vt-next',
-      prevEl: '.vt-arrow.vt-prev',
-    },
-
-    breakpoints: {
-      0: { slidesPerView: 1.4 },
-      640: { slidesPerView: 2.4 },
-      990: { slidesPerView: 3 },
-      1280: { slidesPerView: 'auto' },
-    },
-  });
-
-    /* --------------------------------------------------
-       ⏹ PAUSE OTHER VIDEOS
-    -------------------------------------------------- */
-    function pauseOtherVideos(activeVideo) {
-      swiperEl.querySelectorAll('video').forEach((video) => {
-        if (video !== activeVideo) {
-          video.pause();
-        }
-      });
-    }
-
-    /* --------------------------------------------------
-       ▶ POSTER → PLAY VIDEO
-    -------------------------------------------------- */
-    swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
-      poster.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const videoWrapper = poster.closest('.vt-video-wrapper');
-        const video = videoWrapper?.querySelector('video');
-        if (!video) return;
-
-        poster.remove();
-        pauseOtherVideos(video);
-        video.play();
-
-        /* 🔒 Lock swipe globally (extra safety) */
-        swiper.allowTouchMove = false;
-      });
+      navigation: {
+        nextEl: '.vt-arrow.vt-next',
+        prevEl: '.vt-arrow.vt-prev',
+      },
     });
 
+    let activeVideo = null;
+    let isSeeking = false;
+
     /* --------------------------------------------------
-       🎥 VIDEO EVENTS
+       🎥 VIDEO DEBUG EVENTS
     -------------------------------------------------- */
     swiperEl.querySelectorAll('video').forEach((video) => {
       video.addEventListener('play', () => {
-        swiper.allowTouchMove = false;
+        activeVideo = video;
+        console.log('🎥 VIDEO PLAY');
       });
 
       video.addEventListener('pause', () => {
-        swiper.allowTouchMove = false;
+        console.log('🎥 VIDEO PAUSE');
       });
 
-      video.addEventListener('ended', () => {
-        swiper.allowTouchMove = false;
+      video.addEventListener('pointerdown', (e) => {
+        isSeeking = true;
+        console.log('🎥 VIDEO POINTER DOWN (possible seek)', e.target);
+      });
+
+      video.addEventListener('pointermove', () => {
+        if (isSeeking) {
+          console.log('🎥 VIDEO POINTER MOVE (seeking)');
+        }
+      });
+
+      video.addEventListener('pointerup', () => {
+        isSeeking = false;
+        console.log('🎥 VIDEO POINTER UP (seek end)');
+      });
+
+      video.addEventListener('touchstart', () => {
+        isSeeking = true;
+        console.log('🎥 VIDEO TOUCH START');
+      });
+
+      video.addEventListener('touchmove', () => {
+        if (isSeeking) {
+          console.log('🎥 VIDEO TOUCH MOVE (seeking)');
+        }
+      });
+
+      video.addEventListener('touchend', () => {
+        isSeeking = false;
+        console.log('🎥 VIDEO TOUCH END');
       });
     });
 
     /* --------------------------------------------------
-       🔁 ON SLIDE CHANGE
+       🚨 SWIPER TOUCH DEBUG
+    -------------------------------------------------- */
+    swiperEl.addEventListener('pointerdown', () => {
+      console.log('🚨 SWIPER POINTER DOWN');
+    });
+
+    swiperEl.addEventListener('pointermove', () => {
+      console.log('🚨 SWIPER POINTER MOVE');
+    });
+
+    swiperEl.addEventListener('touchstart', () => {
+      console.log('🚨 SWIPER TOUCH START');
+    });
+
+    swiperEl.addEventListener('touchmove', () => {
+      console.log('🚨 SWIPER TOUCH MOVE');
+    });
+
+    /* --------------------------------------------------
+       🚨 SLIDE CHANGE DETECTION
     -------------------------------------------------- */
     swiper.on('slideChange', () => {
-      swiperEl.querySelectorAll('video').forEach((video) => video.pause());
-      swiper.allowTouchMove = true;
+      if (activeVideo && !activeVideo.paused) {
+        console.warn(
+          '🚨 SLIDE CHANGED WHILE VIDEO ACTIVE!',
+          'activeIndex:',
+          swiper.activeIndex
+        );
+      } else {
+        console.log('➡️ Slide changed (normal)');
+      }
     });
   });
 </script>
+
 
 
 
