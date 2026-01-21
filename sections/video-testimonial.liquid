@@ -249,11 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
   swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
     const playBtn = poster.querySelector('.vt-play-btn');
     
-    // Handle play button click
-    playBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
+    function playVideo() {
       const videoWrapper = poster.closest('.vt-video-wrapper');
       const video = videoWrapper?.querySelector('video');
       if (!video) return;
@@ -271,16 +267,22 @@ document.addEventListener('DOMContentLoaded', function () {
       
       // Mark that we're interacting with video
       videoWrapper.setAttribute('data-video-playing', 'true');
-    });
+    }
     
-    // Also handle poster click (outside play button)
-    poster.addEventListener('click', function(e) {
-      // Only trigger if click is directly on poster (not play button)
-      if (e.target === this || e.target.classList.contains('vt-poster')) {
+    // Handle play button click
+    if (playBtn) {
+      playBtn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        playBtn.click();
-      }
+        playVideo();
+      });
+    }
+    
+    // Handle poster click (entire poster area)
+    poster.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      playVideo();
     });
   });
 
