@@ -25,10 +25,44 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "rich_text_bEtxki": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8jnjig": {
+          "type": "heading",
+          "settings": {
+            "heading": "CONTACT",
+            "heading_size": "h1"
+          }
+        },
+        "text_7fcxTz": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/><strong>Sales: </strong><a href=\"mailto:sales@golfliveapp.com\">sales@golfliveapp.com</a><br/><br/><strong>General Inquiry and Press:</strong><br/><a href=\"mailto:contact@golfliveapp.com\">contact@golfliveapp.com</a><br/><br/><strong>Golf Live Caddie</strong><br/><a href=\"https://golflivehelp.zendesk.com/hc/en-us\" target=\"_blank\">Message Support</a><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8jnjig",
+        "text_7fcxTz"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 8,
+        "padding_bottom": 72,
+        "playstore_url": "",
+        "apple_app_store_url": ""
+      }
     }
   },
   "order": [
     "main",
-    "form"
+    "form",
+    "rich_text_bEtxki"
   ]
 }
