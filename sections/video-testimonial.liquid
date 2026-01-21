@@ -176,7 +176,7 @@
   </div>
 </div>
 
-<script>
+{% comment %} <script>
   document.addEventListener('DOMContentLoaded', function () {
     const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
     if (!swiperEl) return;
@@ -260,8 +260,43 @@
       swiper.allowTouchMove = true;
     });
   });
-</script>
+</script> {% endcomment %}
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.vt-swiper', {
+      slidesPerView: 'auto', // ✅ KEY FIX
+      spaceBetween: 24,
+      loop: true,
+      loopedSlides: 4,
+      watchOverflow: false,
+      navigation: {
+        nextEl: '.vt-arrow.vt-next',
+        prevEl: '.vt-arrow.vt-prev',
+      },
+      breakpoints: {
+        0: { slidesPerView: 1.4 },
+        640: { slidesPerView: 2.4 },
+        990: { slidesPerView: 3 },
+        1280: { slidesPerView: 'auto' }
+      },
+      on: {
+        slideChange: function () {
+          document.querySelectorAll('.vt-video').forEach(v => v.pause());
+          document.querySelectorAll('[data-video-poster]').forEach(p => p.style.display = '');
+        }
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      var poster = e.target.closest('[data-video-poster]');
+      if (!poster) return;
+      var video = poster.closest('.vt-video-wrapper')?.querySelector('video');
+      poster.style.display = 'none';
+      video?.play();
+    });
+  });
+</script>
 
 {% schema %}
 {
