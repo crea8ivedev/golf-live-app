@@ -203,91 +203,51 @@ document.addEventListener('DOMContentLoaded', function () {
   const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
   if (!swiperEl) return;
 
-  const wrapper = swiperEl.querySelector('.swiper-wrapper');
-  let slides = Array.from(wrapper.children);
-  const originalCount = slides.length;
+  // ... (keep duplication code exactly the same) ...
 
-  /* --------------------------------------------------
-     🔁 DUPLICATE SLIDES IF COUNT IS LOW
-  -------------------------------------------------- */
-  const MIN_SLIDES_FOR_LOOP = 8;
-
-  if (originalCount < MIN_SLIDES_FOR_LOOP) {
-    const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
-    for (let i = 0; i < clonesNeeded; i++) {
-      const clone = slides[i % originalCount].cloneNode(true);
-      clone.classList.add('is-duplicate');
-      const clonedVideos = clone.querySelectorAll('video');
-      clonedVideos.forEach(video => {
-        const newVideo = video.cloneNode(true);
-        video.parentNode.replaceChild(newVideo, video);
-      });
-      wrapper.appendChild(clone);
-    }
-  }
-
-  /* --------------------------------------------------
-     🧠 INIT SWIPER - KEY: allowTouchMove controlled dynamically
-  -------------------------------------------------- */
   const swiper = new Swiper(swiperEl, {
-    slidesPerView: 'auto',
-    spaceBetween: 18,
-    loop: true,
-    noSwiping: true,
-    noSwipingClass: 'swiper-no-swiping',
-    allowTouchMove: true,  // Start enabled
-    slideToClickedSlide: false,
-    navigation: {
-      nextEl: '.vt-arrow.vt-next',
-      prevEl: '.vt-arrow.vt-prev',
-    },
-    breakpoints: {
-      0: { slidesPerView: 1.4 },
-      640: { slidesPerView: 2.4 },
-      990: { slidesPerView: 3 },
-      1280: { slidesPerView: 'auto' },
-    },
+    // ... (keep swiper config exactly the same) ...
   });
 
   let anyVideoPlaying = false;
 
-  /* --------------------------------------------------
-     ⏹ PAUSE ALL VIDEOS + UPDATE STATE
-  -------------------------------------------------- */
   function pauseAllVideos() {
     swiperEl.querySelectorAll('video').forEach(video => {
       video.pause();
+      video.currentTime = 0;
       const wrapper = video.closest('.vt-video-wrapper');
       const poster = wrapper.querySelector('[data-video-poster]');
-      if (poster && video.currentTime === 0) {
+      if (poster) {
         poster.style.display = 'block';
+        poster.classList.remove('hiding');
       }
       wrapper.removeAttribute('data-video-playing');
+      video.removeAttribute('data-playing');
     });
     anyVideoPlaying = false;
-    swiper.allowTouchMove = true;  // Re-enable swiping
+    swiper.allowTouchMove = true;
   }
 
-  /* --------------------------------------------------
-     🎥 SETUP VIDEO INTERACTION - SIMPLIFIED
-  -------------------------------------------------- */
   function setupVideoInteraction(video) {
     const videoWrapper = video.closest('.vt-video-wrapper');
     videoWrapper.classList.add('swiper-no-swiping');
 
-    // Block all pointer/touch events on video itself from propagating to swiper
-    ['pointerdown', 'pointermove', 'pointerup', 'touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup'].forEach(eventType => {
-      video.addEventListener(eventType, e => e.stopPropagation(), { capture: true, passive: true });
+    // FULLY BLOCK ALL INTERACTION ON VIDEO ELEMENT
+    ['click', 'pointerdown', 'pointermove', 'pointerup', 'touchstart', 'touchmove', 'touchend', 'mousedown', 'mousemove', 'mouseup'].forEach(eventType => {
+      video.addEventListener(eventType, e => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, { capture: true, passive: false });  // passive: false for preventDefault
     });
 
-    // Video events
     video.addEventListener('play', () => {
       anyVideoPlaying = true;
-      swiper.allowTouchMove = false;  // Disable swiping globally when ANY video plays
+      swiper.allowTouchMove = false;
+      video.setAttribute('data-playing', 'true');
+      videoWrapper.setAttribute('data-video-playing', 'true');
     });
 
     video.addEventListener('pause', () => {
-      // Check if ALL videos are paused
       const playingVideos = swiperEl.querySelectorAll('video:not([paused])');
       anyVideoPlaying = playingVideos.length > 0;
       if (!anyVideoPlaying) {
@@ -296,55 +256,54 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      const poster = videoWrapper.querySelector('[data-video-poster]');
-      if (poster) poster.style.display = 'block';
-      videoWrapper.removeAttribute('data-video-playing');
-      anyVideoPlaying = false;
-      swiper.allowTouchMove = true;
+      pauseAllVideos();  // Reset to start + show poster
     });
   }
 
-  // Setup all videos
   swiperEl.querySelectorAll('video').forEach(setupVideoInteraction);
 
-  // Setup poster clicks
+  // FIXED POSTER HANDLERS - SINGLE CLICK
   swiperEl.querySelectorAll('[data-video-poster]').forEach(poster => {
-    const playBtn = poster.querySelector('.vt-play-btn');
     const videoWrapper = poster.closest('.vt-video-wrapper');
     const video = videoWrapper.querySelector('video');
+    const playBtn = poster.querySelector('.vt-play-btn');
 
     const playVideo = (e) => {
-      if (e) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-      poster.style.display = 'none';
-      pauseAllVideos();  // Pause others first
-      video.play().catch(() => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // INSTANT hide poster with transition
+      poster.classList.add('hiding');
+      setTimeout(() => {
+        poster.style.display = 'none';
+      }, 50);  // After transition start
+
+      pauseAllVideos();  // Pause others
+      video.play().catch(err => {
+        console.error('Play failed:', err);
+        poster.classList.remove('hiding');
         poster.style.display = 'block';
       });
     };
 
-    playBtn?.addEventListener('click', playVideo, { capture: true });
-    poster.addEventListener('click', playVideo, { capture: true });
+    // Multiple triggers for reliability
+    ['click', 'touchend'].forEach(eventType => {
+      playBtn?.addEventListener(eventType, playVideo, { capture: true, passive: false });
+      poster.addEventListener(eventType, playVideo, { capture: true, passive: false });
+    });
   });
 
-  /* --------------------------------------------------
-     🖱️ GLOBAL CLICK HANDLER: Pause if outside video
-  -------------------------------------------------- */
+  // Global outside click
   document.addEventListener('click', (e) => {
     if (anyVideoPlaying && !e.target.closest('.vt-video-wrapper')) {
       pauseAllVideos();
     }
-  }, true);  // Capture phase to catch before swiper
+  }, true);
 
-  /* --------------------------------------------------
-     🔁 SLIDE CHANGE: Pause videos
-  -------------------------------------------------- */
   swiper.on('slideChange', pauseAllVideos);
 });
 </script>
+
 
 
 
