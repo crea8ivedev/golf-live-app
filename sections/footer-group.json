@@ -36,7 +36,7 @@
           "type": "text",
           "settings": {
             "extra_class_links": "footer-connect",
-            "heading": "Connect with Us",
+            "heading": "",
             "subtext": "",
             "instagram": "",
             "instagram_url": "https://www.instagram.com/golfliveapp/",
@@ -55,7 +55,7 @@
           "settings": {
             "heading": "Quick links",
             "menu": "new-menu-footer",
-            "show_copyright_text": true
+            "show_copyright_text": false
           }
         }
       },
