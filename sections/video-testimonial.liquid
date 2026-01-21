@@ -264,39 +264,117 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.vt-swiper', {
+    console.log('[VT] DOM loaded');
+
+    var swiperEl = document.querySelector('.vt-swiper');
+    if (!swiperEl) {
+      console.warn('[VT] Swiper element not found');
+      return;
+    }
+
+    console.log('[VT] Swiper element found');
+
+    var swiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 24,
       loop: true,
       loopedSlides: 4,
       watchOverflow: false,
+
       navigation: {
         nextEl: '.vt-arrow.vt-next',
         prevEl: '.vt-arrow.vt-prev',
       },
+
       breakpoints: {
         0: { slidesPerView: 1.4 },
         640: { slidesPerView: 2.4 },
         990: { slidesPerView: 3 },
         1280: { slidesPerView: 'auto' }
       },
+
       on: {
+        init: function () {
+          console.log('[VT] Swiper initialized');
+        },
+
         slideChange: function () {
-          document.querySelectorAll('.vt-video').forEach(v => v.pause());
-          document.querySelectorAll('[data-video-poster]').forEach(p => p.style.display = '');
+          console.log('[VT] Slide changed → index:', this.activeIndex);
+
+          swiperEl.querySelectorAll('video').forEach(function (video) {
+            console.log('[VT] Pausing video');
+            video.pause();
+          });
+
+          swiperEl.querySelectorAll('[data-video-poster]').forEach(function (poster) {
+            poster.style.display = '';
+          });
         }
       }
     });
 
-    document.addEventListener('click', function (e) {
+    /* ▶ Poster click */
+    swiperEl.addEventListener('click', function (e) {
       var poster = e.target.closest('[data-video-poster]');
       if (!poster) return;
-      var video = poster.closest('.vt-video-wrapper')?.querySelector('video');
+
+      console.log('[VT] Poster clicked');
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      var wrapper = poster.closest('.vt-video-wrapper');
+      var video = wrapper ? wrapper.querySelector('video') : null;
+
+      if (!video) {
+        console.warn('[VT] Video not found for poster');
+        return;
+      }
+
+      swiperEl.querySelectorAll('video').forEach(function (v) {
+        if (v !== video) {
+          console.log('[VT] Pausing other video');
+          v.pause();
+        }
+      });
+
       poster.style.display = 'none';
-      video?.play();
+      console.log('[VT] Playing video');
+      video.play();
+    });
+
+    /* 🎥 Video interaction isolation */
+    swiperEl.querySelectorAll('video').forEach(function (video, index) {
+      console.log('[VT] Video registered:', index);
+
+      ['click', 'touchstart', 'touchmove', 'touchend'].forEach(function (evt) {
+        video.addEventListener(evt, function (e) {
+          e.stopPropagation();
+        });
+      });
+
+      video.addEventListener('play', function () {
+        console.log('[VT] Video play event');
+      });
+
+      video.addEventListener('pause', function () {
+        console.log('[VT] Video pause event');
+      });
+
+      video.addEventListener('ended', function () {
+        console.log('[VT] Video ended');
+      });
+    });
+
+    /* 🧭 Arrow click debug */
+    document.querySelectorAll('.vt-arrow').forEach(function (arrow) {
+      arrow.addEventListener('click', function () {
+        console.log('[VT] Arrow clicked:', arrow.classList.contains('vt-next') ? 'NEXT' : 'PREV');
+      });
     });
   });
 </script>
+
 
 {% schema %}
 {
