@@ -242,17 +242,36 @@ document.addEventListener('DOMContentLoaded', function () {
   /* --------------------------------------------------
      HELPERS
   -------------------------------------------------- */
-  function disableSwiper() {
-    swiper.allowTouchMove = false;
-    arrows.forEach(btn => btn.style.pointerEvents = 'none');
+  function logSwiperState(source) {
+    console.log(
+      `%c[SWIPER STATE] ${source}`,
+      'color:#0ea5e9;font-weight:bold;',
+      {
+        allowTouchMove: swiper.allowTouchMove,
+        anyVideoPlaying: anyVideoPlaying
+      }
+    );
   }
 
-  function enableSwiper() {
+  function disableSwiper(source) {
+    swiper.allowTouchMove = false;
+    arrows.forEach(btn => btn.style.pointerEvents = 'none');
+
+    console.log('%c🔒 Swiper DISABLED', 'color:red;font-weight:bold;', source);
+    logSwiperState('disableSwiper');
+  }
+
+  function enableSwiper(source) {
     swiper.allowTouchMove = true;
     arrows.forEach(btn => btn.style.pointerEvents = '');
+
+    console.log('%c🔓 Swiper ENABLED', 'color:green;font-weight:bold;', source);
+    logSwiperState('enableSwiper');
   }
 
   function pauseAllVideos() {
+    console.log('%c⏸ Pausing all videos', 'color:orange;font-weight:bold;');
+
     swiperEl.querySelectorAll('video').forEach(video => {
       video.pause();
       video.currentTime = 0;
@@ -269,17 +288,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     anyVideoPlaying = false;
-    enableSwiper();
+    enableSwiper('pauseAllVideos');
   }
 
   /* --------------------------------------------------
-     VIDEO INTERACTION (🔥 CORE FIX)
+     VIDEO INTERACTION (CORE FIX)
   -------------------------------------------------- */
-  function setupVideo(video) {
+  function setupVideo(video, index) {
     const wrap = video.closest('.vt-video-wrapper');
     wrap.classList.add('swiper-no-swiping');
 
-    /* 🚫 HARD STOP SWIPER EVENTS ON VIDEO CONTROLS */
     const stopSwiperEvents = (e) => {
       if (!video.hasAttribute('data-playing')) return;
       e.stopPropagation();
@@ -305,22 +323,45 @@ document.addEventListener('DOMContentLoaded', function () {
       anyVideoPlaying = true;
       video.setAttribute('data-playing', 'true');
       wrap.setAttribute('data-video-playing', 'true');
-      disableSwiper();
+
+      console.log(
+        `%c▶ Video PLAYING (index: ${index})`,
+        'color:#22c55e;font-weight:bold;'
+      );
+
+      disableSwiper('video.play');
     });
 
     video.addEventListener('pause', () => {
+      console.log(
+        `%c⏸ Video PAUSED (index: ${index})`,
+        'color:#f97316;font-weight:bold;'
+      );
+
       setTimeout(() => {
         const stillPlaying = [...swiperEl.querySelectorAll('video')]
           .some(v => !v.paused);
 
+        console.log(
+          '%c🔍 Any video still playing?',
+          'color:#6366f1;',
+          stillPlaying
+        );
+
         if (!stillPlaying) {
           anyVideoPlaying = false;
-          enableSwiper();
+          enableSwiper('video.pause');
         }
       }, 100);
     });
 
-    video.addEventListener('ended', pauseAllVideos);
+    video.addEventListener('ended', () => {
+      console.log(
+        `%c⏹ Video ENDED (index: ${index})`,
+        'color:#ef4444;font-weight:bold;'
+      );
+      pauseAllVideos();
+    });
   }
 
   swiperEl.querySelectorAll('video').forEach(setupVideo);
@@ -336,12 +377,15 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       e.stopPropagation();
 
+      console.log('%c🖱 Poster clicked → play video', 'color:#0ea5e9;');
+
       pauseAllVideos();
 
       poster.classList.add('hiding');
       setTimeout(() => poster.style.display = 'none', 100);
 
       video.play().catch(() => {
+        console.warn('❌ Video play failed');
         poster.style.display = 'block';
         poster.classList.remove('hiding');
       });
@@ -352,24 +396,24 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* --------------------------------------------------
-     CLICK OUTSIDE → PAUSE VIDEO
+     CLICK OUTSIDE → PAUSE
   -------------------------------------------------- */
   document.addEventListener('click', (e) => {
     if (anyVideoPlaying && !swiperEl.contains(e.target)) {
+      console.log('%c🖱 Outside click → pause video', 'color:#a855f7;');
       pauseAllVideos();
     }
   }, true);
 
   /* --------------------------------------------------
-     SLIDE CHANGE → PAUSE VIDEO
+     SLIDE CHANGE → PAUSE
   -------------------------------------------------- */
-  swiper.on('slideChange', pauseAllVideos);
+  swiper.on('slideChange', () => {
+    console.log('%c↔ Slide changed → pause video', 'color:#eab308;');
+    pauseAllVideos();
+  });
 });
 </script>
-
-
-
-
 
 
 
