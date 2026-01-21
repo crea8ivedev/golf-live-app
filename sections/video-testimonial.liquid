@@ -176,7 +176,7 @@
 
     let slides = wrapper.querySelectorAll('.swiper-slide');
 
-    /* Clone slides if needed (desktop UX) */
+    /* Clone slides if needed */
     if (enableClone && slides.length <= visibleSlidesDesktop) {
       slides.forEach((slide) => {
         const clone = slide.cloneNode(true);
@@ -187,7 +187,7 @@
 
     /* Pause & reset all videos */
     function pauseAllVideos() {
-      document.querySelectorAll('.vt-video-wrapper').forEach((wrapper) => {
+      swiperEl.querySelectorAll('.vt-video-wrapper').forEach((wrapper) => {
         const video = wrapper.querySelector('video');
         const poster = wrapper.querySelector('[data-video-poster]');
 
@@ -195,6 +195,7 @@
           video.pause();
           video.currentTime = 0;
         }
+
         if (poster) {
           poster.style.display = '';
         }
@@ -227,27 +228,26 @@
       },
     });
 
-    /* ▶ PLAY — poster only (no control hijacking) */
-    document.addEventListener('click', function (e) {
-      const poster = e.target.closest('[data-video-poster]');
-      if (!poster) return;
+    /* ▶ PLAY — bind ONLY to poster elements */
+    swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
+      poster.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-      e.preventDefault();
-      e.stopPropagation();
+        pauseAllVideos(); // ensure single playback
 
-      pauseAllVideos(); // only one video plays at a time
+        const wrapper = poster.closest('.vt-video-wrapper');
+        const video = wrapper?.querySelector('video');
+        if (!video) return;
 
-      const wrapper = poster.closest('.vt-video-wrapper');
-      const videoEl = wrapper?.querySelector('video');
-      if (!videoEl) return;
-
-      poster.style.display = 'none';
-      videoEl.currentTime = 0;
-      videoEl.play();
+        poster.style.display = 'none';
+        video.currentTime = 0;
+        video.play();
+      });
     });
 
     /* 🔁 Restore poster when video ends */
-    document.querySelectorAll('.vt-video').forEach((video) => {
+    swiperEl.querySelectorAll('.vt-video').forEach((video) => {
       video.addEventListener('ended', function () {
         const wrapper = video.closest('.vt-video-wrapper');
         const poster = wrapper?.querySelector('[data-video-poster]');
@@ -258,6 +258,7 @@
     });
   });
 </script>
+
 
 
 {% schema %}
