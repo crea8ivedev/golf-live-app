@@ -262,6 +262,94 @@
   });
 </script> {% endcomment %}
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
+    if (!swiperEl) return;
+
+    const slides = swiperEl.querySelectorAll('.swiper-slide');
+    const totalSlides = slides.length;
+
+    const swiper = new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 18,
+
+      /* 🔁 LOOP FIX */
+      loop: swiperEl.dataset.enableClone === 'true' && totalSlides > 1,
+      loopedSlides: totalSlides,
+      loopAdditionalSlides: totalSlides,
+
+      navigation: {
+        nextEl: '.vt-arrow.vt-next',
+        prevEl: '.vt-arrow.vt-prev',
+      },
+
+      breakpoints: {
+        0: { slidesPerView: 1.4 },
+        640: { slidesPerView: 2.4 },
+        990: { slidesPerView: 3 },
+        1280: { slidesPerView: 'auto' },
+      },
+    });
+
+    /* ⏹ Pause all OTHER videos */
+    function pauseOtherVideos(activeVideo) {
+      swiperEl.querySelectorAll('video').forEach((video) => {
+        if (video !== activeVideo) {
+          video.pause();
+        }
+      });
+    }
+
+    /* ▶ PLAY VIDEO */
+    swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
+      poster.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const wrapper = poster.closest('.vt-video-wrapper');
+        const video = wrapper?.querySelector('video');
+        if (!video) return;
+
+        poster.remove(); // permanently remove poster
+        pauseOtherVideos(video);
+
+        video.play();
+
+        /* 🔒 Lock swipe only (arrows still work) */
+        swiper.allowTouchMove = false;
+        swiper.allowSlideNext = true;
+        swiper.allowSlidePrev = true;
+      });
+    });
+
+    /* 🎥 VIDEO EVENT ISOLATION */
+    swiperEl.querySelectorAll('video').forEach((video) => {
+      ['click', 'touchstart', 'touchmove', 'touchend'].forEach((evt) => {
+        video.addEventListener(evt, (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      /* Unlock swipe only when video ends */
+      video.addEventListener('ended', () => {
+        swiper.allowTouchMove = true;
+      });
+
+      /* Pause does nothing intentionally */
+      video.addEventListener('pause', () => {});
+    });
+
+    /* 🔁 On slide change → pause videos */
+    swiper.on('slideChange', () => {
+      swiperEl.querySelectorAll('video').forEach((video) => {
+        video.pause();
+      });
+
+      swiper.allowTouchMove = true;
+    });
+  });
+</script>
 
 
 {% schema %}
