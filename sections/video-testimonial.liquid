@@ -199,6 +199,14 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < clonesNeeded; i++) {
       const clone = slides[i % originalCount].cloneNode(true);
       clone.classList.add('is-duplicate');
+      
+      // Remove event listeners from cloned videos by replacing video elements
+      const clonedVideos = clone.querySelectorAll('video');
+      clonedVideos.forEach(video => {
+        const newVideo = video.cloneNode(true);
+        video.parentNode.replaceChild(newVideo, video);
+      });
+      
       wrapper.appendChild(clone);
     }
   }
@@ -242,49 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-
-  /* --------------------------------------------------
-     ▶ POSTER → PLAY VIDEO (SIMPLIFIED)
-  -------------------------------------------------- */
-  swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
-    const playBtn = poster.querySelector('.vt-play-btn');
-    
-    function playVideo() {
-      const videoWrapper = poster.closest('.vt-video-wrapper');
-      const video = videoWrapper?.querySelector('video');
-      if (!video) return;
-
-      // Hide poster and play video
-      poster.style.display = 'none';
-      pauseOtherVideos(video);
-      
-      // Play video
-      video.play().catch(error => {
-        console.error('Video play failed:', error);
-        // Show poster again if play fails
-        poster.style.display = 'block';
-      });
-      
-      // Mark that we're interacting with video
-      videoWrapper.setAttribute('data-video-playing', 'true');
-    }
-    
-    // Handle play button click
-    if (playBtn) {
-      playBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        playVideo();
-      });
-    }
-    
-    // Handle poster click (entire poster area)
-    poster.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      playVideo();
-    });
-  });
 
   /* --------------------------------------------------
      🎥 SMART VIDEO CONTROL HANDLING
@@ -388,8 +353,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Setup all videos
+  // Setup all videos (this now happens AFTER duplication, so event listeners are fresh)
   swiperEl.querySelectorAll('video').forEach(setupVideoInteraction);
+
+  // Setup poster click handlers AFTER swiper init and duplication
+  swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
+    const playBtn = poster.querySelector('.vt-play-btn');
+    
+    function playVideo() {
+      const videoWrapper = poster.closest('.vt-video-wrapper');
+      const video = videoWrapper?.querySelector('video');
+      if (!video) return;
+
+      // Hide poster and play video
+      poster.style.display = 'none';
+      pauseOtherVideos(video);
+      
+      // Play video
+      video.play().catch(error => {
+        console.error('Video play failed:', error);
+        // Show poster again if play fails
+        poster.style.display = 'block';
+      });
+      
+      // Mark that we're interacting with video
+      videoWrapper.setAttribute('data-video-playing', 'true');
+    }
+    
+    // Handle play button click
+    if (playBtn) {
+      playBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        playVideo();
+      });
+    }
+    
+    // Handle poster click (entire poster area)
+    poster.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      playVideo();
+    });
+  });
 
   /* --------------------------------------------------
      🔁 ON SLIDE CHANGE
