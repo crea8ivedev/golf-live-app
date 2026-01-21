@@ -176,12 +176,28 @@
 
     let slides = wrapper.querySelectorAll('.swiper-slide');
 
-    /* Clone slides if needed */
+    /* Clone slides if needed (desktop UX) */
     if (enableClone && slides.length <= visibleSlidesDesktop) {
       slides.forEach((slide) => {
         const clone = slide.cloneNode(true);
         clone.classList.add('vt-slide-clone');
         wrapper.appendChild(clone);
+      });
+    }
+
+    /* Pause & reset all videos */
+    function pauseAllVideos() {
+      document.querySelectorAll('.vt-video-wrapper').forEach((wrapper) => {
+        const video = wrapper.querySelector('video');
+        const poster = wrapper.querySelector('[data-video-poster]');
+
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+        if (poster) {
+          poster.style.display = '';
+        }
       });
     }
 
@@ -211,64 +227,38 @@
       },
     });
 
-    /* Pause & reset all videos */
-    function pauseAllVideos() {
-      document.querySelectorAll('.vt-video-wrapper').forEach((wrapper) => {
-        const video = wrapper.querySelector('video');
-        const poster = wrapper.querySelector('[data-video-poster]');
+    /* ▶ PLAY — poster only (no control hijacking) */
+    document.addEventListener('click', function (e) {
+      const poster = e.target.closest('[data-video-poster]');
+      if (!poster) return;
 
-        if (video) {
-          video.pause();
-          video.currentTime = 0;
-        }
+      e.preventDefault();
+      e.stopPropagation();
+
+      pauseAllVideos(); // only one video plays at a time
+
+      const wrapper = poster.closest('.vt-video-wrapper');
+      const videoEl = wrapper?.querySelector('video');
+      if (!videoEl) return;
+
+      poster.style.display = 'none';
+      videoEl.currentTime = 0;
+      videoEl.play();
+    });
+
+    /* 🔁 Restore poster when video ends */
+    document.querySelectorAll('.vt-video').forEach((video) => {
+      video.addEventListener('ended', function () {
+        const wrapper = video.closest('.vt-video-wrapper');
+        const poster = wrapper?.querySelector('[data-video-poster]');
         if (poster) {
           poster.style.display = '';
         }
       });
-    }
-
-    /* GLOBAL CLICK HANDLER */
-    document.addEventListener('click', function (e) {
-      const poster = e.target.closest('[data-video-poster]');
-      const video = e.target.closest('.vt-video');
-
-      /* ▶ PLAY — only via poster */
-      if (poster) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        pauseAllVideos(); // only one video plays at a time
-
-        const wrapper = poster.closest('.vt-video-wrapper');
-        const videoEl = wrapper?.querySelector('video');
-
-        if (!videoEl) return;
-
-        poster.style.display = 'none';
-        videoEl.currentTime = 0;
-        videoEl.play();
-
-        return;
-      }
-
-      /* ⏸ PAUSE — clicking directly on video */
-      if (video) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const wrapper = video.closest('.vt-video-wrapper');
-        const posterEl = wrapper?.querySelector('[data-video-poster]');
-
-        video.pause();
-        video.currentTime = 0; // HARD STOP (prevents background playback)
-
-        if (posterEl) {
-          posterEl.style.display = '';
-        }
-      }
     });
   });
 </script>
+
 
 {% schema %}
 {
