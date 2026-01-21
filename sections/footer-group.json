@@ -67,6 +67,9 @@
         "text_zdz4G4",
         "link_list_3R3Tt8"
       ],
+      "custom_css": [
+        ".footer {background-color: #18181c;}"
+      ],
       "settings": {
         "background_image": "shopify://shop_images/footer-bg-desktop.png",
         "apps_logo": "shopify://shop_images/footer-logo.svg",
