@@ -178,7 +178,6 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    let isVideoInteracting = false;
     const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
     if (!swiperEl) return;
 
@@ -216,12 +215,12 @@
 
     /* Init Swiper */
    const swiper = new Swiper(swiperEl, {
-      noSwiping: true,
-      noSwipingClass: 'swiper-no-swiping',
-      allowTouchMove: true,
-      preventClicks: false,
-      preventClicksPropagation: false,
-      touchStartPreventDefault: false,
+  noSwiping: true,
+  noSwipingClass: 'swiper-no-swiping',
+  allowTouchMove: true,
+  preventClicks: false,
+  preventClicksPropagation: false,
+  touchStartPreventDefault: false,
       slidesPerView: 'auto',
       spaceBetween: 18,
       loop: enableClone,
@@ -241,43 +240,10 @@
 
       on: {
         slideChange() {
-        if (isVideoInteracting) return;
-        pauseAllVideos();
+          pauseAllVideos();
+        },
       },
-      },
     });
-    swiperEl.querySelectorAll('.vt-video').forEach((video) => {
-      /* When user interacts with video controls */
-      video.addEventListener('pointerdown', () => {
-        isVideoInteracting = true;
-      });
-
-      /* When interaction ends */
-      video.addEventListener('pointerup', () => {
-        isVideoInteracting = false;
-      });
-
-      video.addEventListener('touchend', () => {
-        isVideoInteracting = false;
-      });
-    });
-
-
-    /* 🔒 Disable Swiper interaction while video is playing */
-    swiperEl.querySelectorAll('.vt-video').forEach((video) => {
-      video.addEventListener('play', function () {
-        swiper.allowTouchMove = false;
-      });
-
-      video.addEventListener('pause', function () {
-        swiper.allowTouchMove = true;
-      });
-
-      video.addEventListener('ended', function () {
-        swiper.allowTouchMove = true;
-      });
-    });
-
 
     /* ▶ PLAY — bind ONLY to poster elements */
     swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
