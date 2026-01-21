@@ -267,13 +267,30 @@
     const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
     if (!swiperEl) return;
 
-    const slides = swiperEl.querySelectorAll('.swiper-slide');
+    const wrapper = swiperEl.querySelector('.swiper-wrapper');
+    let slides = Array.from(wrapper.children);
+    const originalCount = slides.length;
+
+    /* 🔁 DUPLICATE SLIDES IF NOT ENOUGH */
+    const MIN_SLIDES_FOR_LOOP = 8; // safe threshold for desktop
+
+    if (originalCount < MIN_SLIDES_FOR_LOOP) {
+      const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
+
+      for (let i = 0; i < clonesNeeded; i++) {
+        const clone = slides[i % originalCount].cloneNode(true);
+        clone.classList.add('is-duplicate');
+        wrapper.appendChild(clone);
+      }
+    }
+
+    slides = Array.from(wrapper.children);
     const totalSlides = slides.length;
 
     const swiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 18,
-      loop: false, // 🔥 IMPORTANT: disable native loop
+      loop: totalSlides > 1,
 
       navigation: {
         nextEl: '.vt-arrow.vt-next',
@@ -286,15 +303,6 @@
         990: { slidesPerView: 3 },
         1280: { slidesPerView: 'auto' },
       },
-    });
-
-    /* 🔁 MANUAL LOOPING (NEXT / PREV FIX) */
-    swiper.on('reachEnd', () => {
-      swiper.slideTo(0, 0); // jump to first slide
-    });
-
-    swiper.on('reachBeginning', () => {
-      swiper.slideTo(totalSlides - 1, 0); // jump to last slide
     });
 
     /* ⏹ Pause all OTHER videos */
@@ -320,7 +328,7 @@
         pauseOtherVideos(video);
         video.play();
 
-        /* 🔒 Lock swipe only (arrows still work) */
+        /* 🔒 Lock swipe only */
         swiper.allowTouchMove = false;
         swiper.allowSlideNext = true;
         swiper.allowSlidePrev = true;
@@ -330,16 +338,12 @@
     /* 🎥 VIDEO EVENT ISOLATION */
     swiperEl.querySelectorAll('video').forEach((video) => {
       ['click', 'touchstart', 'touchmove', 'touchend'].forEach((evt) => {
-        video.addEventListener(evt, (e) => {
-          e.stopPropagation();
-        });
+        video.addEventListener(evt, (e) => e.stopPropagation());
       });
 
       video.addEventListener('ended', () => {
         swiper.allowTouchMove = true;
       });
-
-      video.addEventListener('pause', () => {});
     });
 
     /* 🔁 On slide change → pause videos */
