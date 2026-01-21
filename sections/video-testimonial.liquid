@@ -285,14 +285,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add swiper-no-swiping class to video wrapper
     videoWrapper.classList.add('swiper-no-swiping');
     
-    // Prevent ALL events from bubbling up to swiper
-    ['mousedown', 'touchstart', 'click', 'pointerdown'].forEach(eventType => {
+    // Prevent swiper navigation but allow poster clicks
+    ['mousedown', 'touchstart', 'pointerdown'].forEach(eventType => {
       videoWrapper.addEventListener(eventType, function(e) {
         e.stopPropagation();
-        if (eventType === 'mousedown' || eventType === 'touchstart' || eventType === 'pointerdown') {
-          isInteractingWithControls = true;
-          swiper.allowTouchMove = false;
-        }
+        isInteractingWithControls = true;
+        swiper.allowTouchMove = false;
       }, { capture: true });
     });
     
@@ -367,7 +365,12 @@ document.addEventListener('DOMContentLoaded', function () {
   swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
     const playBtn = poster.querySelector('.vt-play-btn');
     
-    function playVideo() {
+    function playVideo(e) {
+      if (e) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+      
       const videoWrapper = poster.closest('.vt-video-wrapper');
       const video = videoWrapper?.querySelector('video');
       if (!video) return;
@@ -387,21 +390,20 @@ document.addEventListener('DOMContentLoaded', function () {
       videoWrapper.setAttribute('data-video-playing', 'true');
     }
     
-    // Handle play button click
+    // Handle play button click - use capture phase to get event first
     if (playBtn) {
-      playBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        playVideo();
-      });
+      playBtn.addEventListener('click', playVideo, { capture: true });
+      playBtn.addEventListener('touchend', playVideo, { capture: true });
     }
     
-    // Handle poster click (entire poster area)
-    poster.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      playVideo();
-    });
+    // Handle poster click (entire poster area) - use capture phase
+    poster.addEventListener('click', playVideo, { capture: true });
+    poster.addEventListener('touchend', function(e) {
+      // Only trigger if not clicking play button
+      if (!playBtn.contains(e.target)) {
+        playVideo(e);
+      }
+    }, { capture: true });
   });
 
   /* --------------------------------------------------
