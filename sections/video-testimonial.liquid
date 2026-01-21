@@ -221,11 +221,14 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Use Swiper's built-in prevention
     noSwiping: true,
-    noSwipingClass: 'vt-video-wrapper',
+    noSwipingClass: 'swiper-no-swiping',
     preventInteractionOnTransition: true,
     
     // Allow normal swiping but we'll handle video separately
     allowTouchMove: true,
+    
+    // Prevent clicks from triggering slide change
+    slideToClickedSlide: false,
 
     navigation: {
       nextEl: '.vt-arrow.vt-next',
@@ -238,6 +241,26 @@ document.addEventListener('DOMContentLoaded', function () {
       990: { slidesPerView: 3 },
       1280: { slidesPerView: 'auto' },
     },
+    
+    // Add this to prevent click events
+    on: {
+      click: function(swiper, event) {
+        // If clicking on video wrapper, don't do anything
+        if (event.target.closest('.vt-video-wrapper')) {
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
+        }
+      },
+      tap: function(swiper, event) {
+        // If tapping on video wrapper, don't do anything
+        if (event.target.closest('.vt-video-wrapper')) {
+          event.stopPropagation();
+          event.preventDefault();
+          return false;
+        }
+      }
+    }
   });
 
   /* --------------------------------------------------
@@ -259,35 +282,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const poster = videoWrapper.querySelector('[data-video-poster]');
     let isInteractingWithControls = false;
     
-    // Prevent swiper from interfering with video controls ONLY
-    // Don't block poster clicks
-    videoWrapper.addEventListener('mousedown', function(e) {
-      // Allow poster clicks to pass through
-      if (poster && poster.style.display !== 'none' && poster.contains(e.target)) {
-        return;
-      }
-      e.stopPropagation();
-      isInteractingWithControls = true;
-      swiper.allowTouchMove = false;
-    }, true);
+    // Add swiper-no-swiping class to video wrapper
+    videoWrapper.classList.add('swiper-no-swiping');
     
-    videoWrapper.addEventListener('touchstart', function(e) {
-      // Allow poster touches to pass through
-      if (poster && poster.style.display !== 'none' && poster.contains(e.target)) {
-        return;
-      }
-      e.stopPropagation();
-      isInteractingWithControls = true;
-      swiper.allowTouchMove = false;
-    }, true);
-    
-    videoWrapper.addEventListener('click', function(e) {
-      // Allow poster clicks to pass through
-      if (poster && poster.style.display !== 'none' && poster.contains(e.target)) {
-        return;
-      }
-      e.stopPropagation();
-    }, true);
+    // Prevent ALL events from bubbling up to swiper
+    ['mousedown', 'touchstart', 'click', 'pointerdown'].forEach(eventType => {
+      videoWrapper.addEventListener(eventType, function(e) {
+        e.stopPropagation();
+        if (eventType === 'mousedown' || eventType === 'touchstart' || eventType === 'pointerdown') {
+          isInteractingWithControls = true;
+          swiper.allowTouchMove = false;
+        }
+      }, { capture: true });
+    });
     
     // Reset interaction flag after a delay
     ['mouseup', 'touchend', 'touchcancel'].forEach(eventType => {
