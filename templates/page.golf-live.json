@@ -128,7 +128,7 @@
       "name": "Trusted Coaches Block",
       "settings": {
         "heading": "Gain Access to the World’s Best",
-        "description": "",
+        "description": "<p>Stream exclusive lessons, drills, and series from Golf Digest Top 100 coaches, PGA instructors, and elite golf educators.</p>",
         "padding_top": 60,
         "padding_bottom": 0
       }
@@ -233,7 +233,7 @@
       "name": "Golf Live Plus",
       "settings": {
         "heading": "Now on Golf Live+",
-        "sub_heading": "<p>Stream exclusive lessons, drills, and series from Golf Digest Top 100 coaches, PGA instructors, and elite golf educators.</p>",
+        "sub_heading": "",
         "link_label": "See More",
         "link_url": ""
       }
