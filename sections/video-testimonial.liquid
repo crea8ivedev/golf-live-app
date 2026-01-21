@@ -266,110 +266,191 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
-    if (!swiperEl) return;
+  const swiperEl = document.querySelector('.vt-swiper.vt-swiper-1');
+  if (!swiperEl) return;
 
-    const wrapper = swiperEl.querySelector('.swiper-wrapper');
-    let slides = Array.from(wrapper.children);
-    const originalCount = slides.length;
+  const wrapper = swiperEl.querySelector('.swiper-wrapper');
+  let slides = Array.from(wrapper.children);
+  const originalCount = slides.length;
 
-    /* --------------------------------------------------
-       🔁 DUPLICATE SLIDES IF COUNT IS LOW
-    -------------------------------------------------- */
-    const MIN_SLIDES_FOR_LOOP = 8;
+  /* --------------------------------------------------
+     🔁 DUPLICATE SLIDES IF COUNT IS LOW
+  -------------------------------------------------- */
+  const MIN_SLIDES_FOR_LOOP = 8;
 
-    if (originalCount < MIN_SLIDES_FOR_LOOP) {
-      const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
+  if (originalCount < MIN_SLIDES_FOR_LOOP) {
+    const clonesNeeded = MIN_SLIDES_FOR_LOOP - originalCount;
 
-      for (let i = 0; i < clonesNeeded; i++) {
-        const clone = slides[i % originalCount].cloneNode(true);
-        clone.classList.add('is-duplicate');
-        wrapper.appendChild(clone);
-      }
+    for (let i = 0; i < clonesNeeded; i++) {
+      const clone = slides[i % originalCount].cloneNode(true);
+      clone.classList.add('is-duplicate');
+      wrapper.appendChild(clone);
     }
+  }
 
-    /* --------------------------------------------------
-       🧠 INIT SWIPER (KEY FIX HERE)
-    -------------------------------------------------- */
-    const swiper = new Swiper(swiperEl, {
-      slidesPerView: 'auto',
-      spaceBetween: 18,
-      loop: true,
+  /* --------------------------------------------------
+     🧠 INIT SWIPER (KEY FIX HERE)
+  -------------------------------------------------- */
+  const swiper = new Swiper(swiperEl, {
+    slidesPerView: 'auto',
+    spaceBetween: 18,
+    loop: true,
 
-      /* 🔒 HARD BLOCK SWIPING ON VIDEO */
-      noSwiping: true,
-      noSwipingClass: 'swiper-no-swiping',
+    /* 🔒 HARD BLOCK SWIPING ON VIDEO */
+    noSwiping: true,
+    noSwipingClass: 'swiper-no-swiping',
+    
+    /* NEW: Prevent clicks on video controls from triggering navigation */
+    preventInteractionOnTransition: true,
 
-      navigation: {
-        nextEl: '.vt-arrow.vt-next',
-        prevEl: '.vt-arrow.vt-prev',
-      },
+    navigation: {
+      nextEl: '.vt-arrow.vt-next',
+      prevEl: '.vt-arrow.vt-prev',
+    },
 
-      breakpoints: {
-        0: { slidesPerView: 1.4 },
-        640: { slidesPerView: 2.4 },
-        990: { slidesPerView: 3 },
-        1280: { slidesPerView: 'auto' },
-      },
-    });
+    breakpoints: {
+      0: { slidesPerView: 1.4 },
+      640: { slidesPerView: 2.4 },
+      990: { slidesPerView: 3 },
+      1280: { slidesPerView: 'auto' },
+    },
+  });
 
-    /* --------------------------------------------------
-       ⏹ PAUSE OTHER VIDEOS
-    -------------------------------------------------- */
-    function pauseOtherVideos(activeVideo) {
-      swiperEl.querySelectorAll('video').forEach((video) => {
-        if (video !== activeVideo) {
-          video.pause();
-        }
-      });
-    }
-
-    /* --------------------------------------------------
-       ▶ POSTER → PLAY VIDEO
-    -------------------------------------------------- */
-    swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
-      poster.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const videoWrapper = poster.closest('.vt-video-wrapper');
-        const video = videoWrapper?.querySelector('video');
-        if (!video) return;
-
-        poster.remove();
-        pauseOtherVideos(video);
-        video.play();
-
-        /* 🔒 Lock swipe globally (extra safety) */
-        swiper.allowTouchMove = false;
-      });
-    });
-
-    /* --------------------------------------------------
-       🎥 VIDEO EVENTS
-    -------------------------------------------------- */
+  /* --------------------------------------------------
+     ⏹ PAUSE OTHER VIDEOS
+  -------------------------------------------------- */
+  function pauseOtherVideos(activeVideo) {
     swiperEl.querySelectorAll('video').forEach((video) => {
-      video.addEventListener('play', () => {
-        swiper.allowTouchMove = false;
-      });
-
-      video.addEventListener('pause', () => {
-        swiper.allowTouchMove = false;
-      });
-
-      video.addEventListener('ended', () => {
-        swiper.allowTouchMove = false;
-      });
+      if (video !== activeVideo) {
+        video.pause();
+      }
     });
+  }
 
-    /* --------------------------------------------------
-       🔁 ON SLIDE CHANGE
-    -------------------------------------------------- */
-    swiper.on('slideChange', () => {
-      swiperEl.querySelectorAll('video').forEach((video) => video.pause());
-      swiper.allowTouchMove = true;
+  /* --------------------------------------------------
+     ▶ POSTER → PLAY VIDEO
+  -------------------------------------------------- */
+  swiperEl.querySelectorAll('[data-video-poster]').forEach((poster) => {
+    poster.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const videoWrapper = poster.closest('.vt-video-wrapper');
+      const video = videoWrapper?.querySelector('video');
+      if (!video) return;
+
+      poster.remove();
+      pauseOtherVideos(video);
+      video.play();
+
+      /* 🔒 Lock swipe globally (extra safety) */
+      swiper.allowTouchMove = false;
     });
   });
+
+  /* --------------------------------------------------
+     🎥 VIDEO EVENTS
+  -------------------------------------------------- */
+  swiperEl.querySelectorAll('video').forEach((video) => {
+    // Prevent video controls from triggering swiper
+    video.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    
+    // Prevent all interactions with video controls from affecting swiper
+    video.addEventListener('mousedown', function(e) {
+      e.stopPropagation();
+    });
+    
+    video.addEventListener('touchstart', function(e) {
+      e.stopPropagation();
+    });
+
+    video.addEventListener('play', () => {
+      swiper.allowTouchMove = false;
+      swiper.mousewheel.disable();
+      swiper.keyboard.disable();
+    });
+
+    video.addEventListener('pause', () => {
+      swiper.allowTouchMove = false;
+    });
+
+    video.addEventListener('ended', () => {
+      swiper.allowTouchMove = true;
+      swiper.mousewheel.enable();
+      swiper.keyboard.enable();
+    });
+  });
+
+  /* --------------------------------------------------
+     🛡️ ADDITIONAL PROTECTION: Block clicks on video controls
+  -------------------------------------------------- */
+  swiperEl.querySelectorAll('.vt-video-wrapper').forEach((wrapper) => {
+    // Block clicks on video controls (play/pause button, volume, etc.)
+    wrapper.addEventListener('click', function(e) {
+      // If the click is on any video control element, stop propagation
+      if (e.target.closest('video') || 
+          e.target.tagName === 'VIDEO' ||
+          e.target.type === 'button' || 
+          e.target.getAttribute('role') === 'button' ||
+          e.target.classList.contains('ytp-') || // YouTube player classes
+          e.target.closest('[role="button"]') ||
+          e.target.closest('[aria-label*="video"]') ||
+          e.target.closest('[aria-label*="play"]') ||
+          e.target.closest('[aria-label*="pause"]') ||
+          e.target.closest('[aria-label*="seek"]') ||
+          e.target.closest('[aria-label*="time"]') ||
+          e.target.closest('[aria-label*="volume"]')) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    });
+    
+    // Add touch event prevention for mobile
+    wrapper.addEventListener('touchstart', function(e) {
+      if (e.target.closest('video') || e.target.tagName === 'VIDEO') {
+        e.stopPropagation();
+      }
+    });
+  });
+
+  /* --------------------------------------------------
+     🔁 ON SLIDE CHANGE
+  -------------------------------------------------- */
+  swiper.on('slideChange', () => {
+    swiperEl.querySelectorAll('video').forEach((video) => {
+      video.pause();
+      // Remove any existing posters that might have been hidden
+      const poster = video.closest('.vt-video-wrapper')?.querySelector('[data-video-poster]');
+      if (poster && poster.style.display === 'none') {
+        poster.style.display = 'block';
+      }
+    });
+    swiper.allowTouchMove = true;
+    swiper.mousewheel.enable();
+    swiper.keyboard.enable();
+  });
+  
+  /* --------------------------------------------------
+     🚫 DISABLE SWIPER WHEN INTERACTING WITH VIDEO CONTROLS
+  -------------------------------------------------- */
+  swiperEl.addEventListener('mousedown', function(e) {
+    // Check if the mousedown is on video controls
+    const video = e.target.closest('video');
+    if (video) {
+      swiper.allowTouchMove = false;
+    }
+  });
+  
+  swiperEl.addEventListener('touchstart', function(e) {
+    // Check if the touch is on video controls
+    const video = e.target.closest('video');
+    if (video) {
+      swiper.allowTouchMove = false;
+    }
+  });
+});
 </script>
 
 
