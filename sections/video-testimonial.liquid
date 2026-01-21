@@ -223,7 +223,11 @@
         pauseOtherVideos(video);
 
         video.play();
-        swiper.allowTouchMove = false; // lock swiper while video plays
+
+        /* 🔒 lock swipe ONLY — keep arrows working */
+        swiper.allowTouchMove = false;
+        swiper.allowSlideNext = true;
+        swiper.allowSlidePrev = true;
       });
     });
 
@@ -252,10 +256,12 @@
       swiperEl.querySelectorAll('video').forEach((video) => {
         video.pause();
       });
+
       swiper.allowTouchMove = true;
     });
   });
 </script>
+
 
 {% schema %}
 {
