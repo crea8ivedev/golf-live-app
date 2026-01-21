@@ -68,6 +68,25 @@
       width: auto;
     }
   }
+  /* Add to your existing CSS */
+.vt-video::-webkit-media-controls {
+  touch-action: manipulation;
+}
+
+.vt-video::-webkit-media-controls-panel {
+  touch-action: manipulation;
+}
+
+.vt-video::-webkit-media-controls-play-button,
+.vt-video::-webkit-media-controls-timeline,
+.vt-video::-webkit-media-controls-current-time-display,
+.vt-video::-webkit-media-controls-time-remaining-display,
+.vt-video::-webkit-media-controls-timeline-container,
+.vt-video::-webkit-media-controls-volume-slider-container,
+.vt-video::-webkit-media-controls-volume-slider,
+.vt-video::-webkit-media-controls-mute-button {
+  touch-action: manipulation;
+}
 </style>
 
 <div class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-[72px] min-990:pb-[98px]">
