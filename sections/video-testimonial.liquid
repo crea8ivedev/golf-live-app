@@ -214,9 +214,14 @@
     }
 
     /* Init Swiper */
-    const swiper = new Swiper(swiperEl, {
+   const swiper = new Swiper(swiperEl, {
   noSwiping: true,
   noSwipingClass: 'swiper-no-swiping',
+
+  preventClicks: false,
+  preventClicksPropagation: false,
+  touchStartPreventDefault: false,
+
 
       slidesPerView: 'auto',
       spaceBetween: 18,
