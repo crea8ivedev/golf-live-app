@@ -56,6 +56,10 @@
         "feature_KWAPxT",
         "feature_yhqxHf"
       ],
+      "custom_css": [
+        ".ctm-hero-heading {margin-bottom: 6px;}",
+        ".ctm-hero-subheading {margin-top: 0; padding-top: 0;}"
+      ],
       "name": "Hero Platform",
       "settings": {
         "extra-class": "ctm-golf-live-hero",
