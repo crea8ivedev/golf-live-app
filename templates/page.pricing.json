@@ -21,9 +21,9 @@
     "hero_platform_KEaTjx": {
       "type": "hero-platform",
       "custom_css": [
-        "h1 {margin-bottom: 6px !important; }",
-        "h1 + p {margin: 0 0 25px 0 !important; }",
-        " /* tight top, bigger bottom */"
+        "h1 {margin-bottom: 6px !important;}",
+        "h1 + p {margin: 0 0 25px 0 !important;}",
+        " /* tight top, bigger bottom *//* Center the hero text */h1, h2, h3, p {text-align: center !important;}"
       ],
       "name": "Hero Platform",
       "settings": {
