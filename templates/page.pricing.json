@@ -9,15 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
     "banner_pricing_UeM4jy": {
       "type": "banner-pricing",
       "name": "Golf App Pricing Banner",
@@ -28,10 +19,29 @@
         "heading": "<p>Choose Your Path Inside Golf Live</p>",
         "description": "<p>Whether you coach, play, or manage a business, there’s a plan designed for you.</p>",
         "button_text": "Start Now",
-        "button_url": "https://plus.golfliveapp.com/en/sign-up",
+        "button_url": "#pricing-table",
         "desktop_image": "shopify://shop_images/banner-golf-mobile.jpg",
         "app_store_url": "",
         "play_store_url": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_6WTkpD": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div id=\"pricing-tables\"></div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "coaching_steps_AbMRCc": {
@@ -820,8 +830,9 @@
     }
   },
   "order": [
-    "main",
     "banner_pricing_UeM4jy",
+    "main",
+    "custom_liquid_6WTkpD",
     "coaching_steps_AbMRCc",
     "zigzag_section_6TF6mn",
     "zigzag_section_Gtb6DU",
