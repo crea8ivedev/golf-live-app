@@ -18,31 +18,20 @@
         "padding_bottom": 28
       }
     },
-    "hero_platform_KEaTjx": {
-      "type": "hero-platform",
-      "custom_css": [
-        "h1 {margin-bottom: 6px !important;}",
-        "h1 + p {margin: 0 0 25px 0 !important;}"
-      ],
-      "name": "Hero Platform",
+    "banner_pricing_UeM4jy": {
+      "type": "banner-pricing",
+      "name": "Golf App Pricing Banner",
       "settings": {
-        "extra-class": "",
-        "media_type": "image",
-        "overlay_opacity": 70,
-        "eyebrow": "GOLF LIVE FOR COACHES",
+        "desktop_bg": "shopify://shop_images/home-banner-bg-desktop.png",
+        "mobile_bg": "shopify://shop_images/home-banner-bg-mobile.png",
+        "top_text": "LIVE GOLF COACHING. ANYTIME, ANYWHERE.",
         "heading": "<p>Choose Your Path Inside Golf Live</p>",
-        "subheading": "Whether you coach, play, or manage a business, there’s a plan designed for you.",
-        "primary_label": "Start Free Trial",
-        "primary_link": "",
-        "secondary_label": "Schedule a Demo",
-        "secondary_link": "",
-        "stat_text": "20,000+ Hours of Coaching Delivered",
-        "padding_top": 40,
-        "padding_bottom": 70,
-        "padding_top_tablet": 50,
-        "padding_bottom_tablet": 50,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 52
+        "description": "<p>Whether you coach, play, or manage a business, there’s a plan designed for you.</p>",
+        "button_text": "Start Now",
+        "button_url": "https://plus.golfliveapp.com/en/sign-up",
+        "desktop_image": "shopify://shop_images/banner-golf-mobile.jpg",
+        "app_store_url": "",
+        "play_store_url": ""
       }
     },
     "coaching_steps_AbMRCc": {
@@ -832,7 +821,7 @@
   },
   "order": [
     "main",
-    "hero_platform_KEaTjx",
+    "banner_pricing_UeM4jy",
     "coaching_steps_AbMRCc",
     "zigzag_section_6TF6mn",
     "zigzag_section_Gtb6DU",
