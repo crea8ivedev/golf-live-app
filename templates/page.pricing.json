@@ -102,6 +102,10 @@
         "plan_CfaHeK",
         "plan_4EAYyF"
       ],
+      "custom_css": [
+        "/* Pricing cards: 3-up desktop, 1-up mobile */.pricing-plan-box-wrapper{display: grid; grid-template-columns: 1fr; column-gap: 39px; row-gap: 20px;}",
+        "@media (min-width: 990px){.pricing-plan-box-wrapper{grid-template-columns: repeat(3, minmax(0, 1fr)); }}"
+      ],
       "name": "Coaching Pricing Flex",
       "settings": {
         "extra-class": "",
