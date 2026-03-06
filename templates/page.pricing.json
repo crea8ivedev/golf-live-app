@@ -12,9 +12,7 @@
     "main": {
       "type": "main-page",
       "disabled": true,
-      "custom_css": [
-        "/* space between the text block and the buttons */.buttons,.button-group,.hero__buttons,.banner__buttons {margin-top: 18px !important;}"
-      ],
+      "custom_css": [],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -22,6 +20,11 @@
     },
     "hero_platform_KEaTjx": {
       "type": "hero-platform",
+      "custom_css": [
+        "h1 {margin-bottom: 6px !important; }",
+        "h1 + p {margin: 0 0 25px 0 !important; }",
+        " /* tight top, bigger bottom */"
+      ],
       "name": "Hero Platform",
       "settings": {
         "extra-class": "",
