@@ -35,6 +35,7 @@
         "button_text": "Start Free Trial",
         "button_url": "#pricing-table",
         "desktop_image": "shopify://shop_images/full-shot-man-playing-golf-nature_1.png",
+        "main_mobile_image": "shopify://shop_images/banner-golf-mobile.jpg",
         "app_store_url": "",
         "play_store_url": ""
       }
@@ -103,8 +104,8 @@
         "plan_4EAYyF"
       ],
       "custom_css": [
-        "/* Pricing cards: 3-up desktop, 1-up mobile */.pricing-plan-box-wrapper{display: grid; grid-template-columns: 1fr; column-gap: 39px; row-gap: 20px;}",
-        "@media (min-width: 990px){.pricing-plan-box-wrapper{grid-template-columns: repeat(3, minmax(0, 1fr)); }}"
+        "/* Pricing cards: 3-up desktop, 1-up mobile */.pricing-plan-box-wrapper {display: grid; grid-template-columns: 1fr; column-gap: 39px; row-gap: 20px;}",
+        "@media (min-width: 990px) {.pricing-plan-box-wrapper {grid-template-columns: repeat(3, minmax(0, 1fr)); }}"
       ],
       "name": "Coaching Pricing Flex",
       "settings": {
