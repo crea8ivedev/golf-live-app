@@ -17,247 +17,27 @@
         "padding_bottom": 28
       }
     },
-    "hero_platform_RRzpgL": {
+    "hero_platform_KEaTjx": {
       "type": "hero-platform",
-      "blocks": {
-        "feature_8jgFnk": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Vector_8.svg",
-            "text": "Coach students in real-time from anywhere with live video and instant replay"
-          }
-        },
-        "feature_Tz6Q36": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Vector_9.svg",
-            "text": "Monetize your expertise with live streams, video packages, and on-demand content"
-          }
-        },
-        "feature_rACmpY": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Vector_10.svg",
-            "text": "Manage bookings, payments, clients, and videos all in one dashboard"
-          }
-        },
-        "feature_dP6AkD": {
-          "type": "feature",
-          "settings": {
-            "icon": "shopify://shop_images/Vector_11.svg",
-            "text": "Get discovered by new golfers with built-in lead generation tools"
-          }
-        }
-      },
-      "block_order": [
-        "feature_8jgFnk",
-        "feature_Tz6Q36",
-        "feature_rACmpY",
-        "feature_dP6AkD"
-      ],
       "name": "Hero Platform",
       "settings": {
         "extra-class": "",
-        "bg_image": "shopify://shop_images/Rectangle_2_1.png",
+        "media_type": "image",
         "overlay_opacity": 70,
-        "phone_image_1": "shopify://shop_images/333.png",
-        "phone_image_2": "shopify://shop_images/1111.png",
-        "eyebrow": "Live Golf Coaching From Anywhere",
-        "heading": "<p>Reach More Students,<br/>Save Time, Earn More Revenue.</p>",
-        "subheading": "The all-in-one platform built by coaches, for coaches.",
+        "eyebrow": "",
+        "heading": "<p>Choose Your Path Inside Golf Live</p>",
+        "subheading": "Whether you coach, play, or manage a business, there’s a plan designed for you.",
         "primary_label": "Start Free Trial",
-        "primary_link": "#",
+        "primary_link": "",
         "secondary_label": "Schedule a Demo",
-        "secondary_link": "#",
-        "stat_icon": "shopify://shop_images/Vector_6.svg",
+        "secondary_link": "",
         "stat_text": "20,000+ Hours of Coaching Delivered",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_top_tablet": 0,
-        "padding_bottom_tablet": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 20
-      }
-    },
-    "trusted_professional_Mr4PtT": {
-      "type": "trusted-professional",
-      "blocks": {
-        "add_pga_dchdAR": {
-          "type": "add_pga",
-          "settings": {
-            "trusted-add-image": "shopify://shop_images/f239c35a2ecfce12d5ed5444b8da2a0aaebd1cce.png",
-            "pga-name": "Chris Como",
-            "pga-content": "<p>Golf Digest #2 Ranked Coach</p>",
-            "enable_professional": true
-          }
-        },
-        "add_pga_JNH9Eq": {
-          "type": "add_pga",
-          "settings": {
-            "trusted-add-image": "shopify://shop_images/12d233baaa803b8455bc3f6f8a654451dda35cba.png",
-            "pga-name": "Mark Blackburn",
-            "pga-content": "<p>Top 50 Coach in America</p>",
-            "enable_professional": true
-          }
-        },
-        "add_pga_qHPin3": {
-          "type": "add_pga",
-          "settings": {
-            "trusted-add-image": "shopify://shop_images/05cf04be50597eb806726e159f0f9f83af849bd3.jpg",
-            "pga-name": "Erika Larkin",
-            "pga-content": "<p>Golf Digest Top 50 Teacher</p>",
-            "enable_professional": true
-          }
-        },
-        "add_pga_7J3e8K": {
-          "type": "add_pga",
-          "settings": {
-            "trusted-add-image": "shopify://shop_images/2de3aac9fcad4b1a6d053eb9e3496dc509481c24.png",
-            "pga-name": "Mike Malaska",
-            "pga-content": "<p>Golf Digest Top 50 Teacher</p>",
-            "enable_professional": true
-          }
-        },
-        "add_pga_cJciwM": {
-          "type": "add_pga",
-          "settings": {
-            "trusted-add-image": "shopify://shop_images/934d987215affe22949ba6c59b9ef2e529039a4c.jpg",
-            "pga-name": "Colin McCarthy",
-            "pga-content": "<p>PGA Golf Coach</p>",
-            "enable_professional": true
-          }
-        }
-      },
-      "block_order": [
-        "add_pga_dchdAR",
-        "add_pga_JNH9Eq",
-        "add_pga_qHPin3",
-        "add_pga_7J3e8K",
-        "add_pga_cJciwM"
-      ],
-      "name": "Trusted PGA section",
-      "settings": {
-        "extra_class": "",
-        "color_scheme": "scheme-1",
-        "pga-main-title": "Trusted by PGA Professionals",
-        "padding_top": 124,
-        "padding_bottom": 52,
+        "padding_top": 40,
+        "padding_bottom": 70,
         "padding_top_tablet": 50,
         "padding_bottom_tablet": 50,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32
-      }
-    },
-    "growth_challenges_HC3REj": {
-      "type": "growth-challenges",
-      "blocks": {
-        "challenge_eDNXnh": {
-          "type": "challenge",
-          "settings": {
-            "bgc-img-icon": "shopify://shop_images/Vector.svg",
-            "title": "Stuck on the Lesson Tee",
-            "description": "You can only coach as many students as you have hours in the day - there's no way to scale.",
-            "bg_color": "#ffffff"
-          }
-        },
-        "challenge_eYcjhg": {
-          "type": "challenge",
-          "settings": {
-            "bgc-img-icon": "shopify://shop_images/Vector_4_09cf089d-d341-4e7c-b0f0-b9a6c6087da2.svg",
-            "title": "Juggling Multiple Apps",
-            "description": "You're managing bookings, payments, video calls, and video storage across different platforms and it's exhausting.",
-            "bg_color": "#ffffff"
-          }
-        },
-        "challenge_ta7Yr9": {
-          "type": "challenge",
-          "settings": {
-            "bgc-img-icon": "shopify://shop_images/Vector_5.svg",
-            "title": "No Lead Generation",
-            "description": "You're posting on social media hoping someone books a lesson but you have no real system to attract new students.",
-            "bg_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "challenge_eDNXnh",
-        "challenge_eYcjhg",
-        "challenge_ta7Yr9"
-      ],
-      "name": "Growth Challenges",
-      "settings": {
-        "extra_class": "ctm-range-growth",
-        "color_scheme": "scheme-2",
-        "bgc_heading": "<p><strong>You're Grinding on the Range All Day -</strong><br/>But Your Business Isn't Growing As It Should</p>",
-        "bgc_heading_sub": "",
-        "side_image": "shopify://shop_images/b24bab3016e1429bc4cd3f79eee000b5180e815f.png",
-        "pga_image_position": "right",
-        "show_announcement": false,
-        "text": "There’s a better way to run your coaching business.",
-        "icon_image": "shopify://shop_images/check-mark_2_1_1.png",
-        "show_pointer": true,
-        "padding_top": 50,
-        "padding_bottom": 52,
-        "padding_top_tablet": 50,
-        "padding_bottom_tablet": 50,
-        "padding_top_mobile": 0,
+        "padding_top_mobile": 40,
         "padding_bottom_mobile": 52
-      }
-    },
-    "growth_challenges_MDBf77": {
-      "type": "growth-challenges",
-      "blocks": {
-        "challenge_kDhLz8": {
-          "type": "challenge",
-          "settings": {
-            "bgc-img-icon": "shopify://shop_images/Vector_1.svg",
-            "title": "Coach From Anywhere",
-            "description": "Live virtual lessons with instant replay technology let you coach students in real-time from your phone, no matter where they are.",
-            "bg_color": "rgba(0,0,0,0)"
-          }
-        },
-        "challenge_fNj4nD": {
-          "type": "challenge",
-          "settings": {
-            "bgc-img-icon": "shopify://shop_images/Group_168.svg",
-            "title": "Multiple Revenue Streams",
-            "description": "Beyond 1-on-1 lessons: host live streams, sell video packages, monetize your content library, and build recurring income.",
-            "bg_color": "rgba(0,0,0,0)"
-          }
-        },
-        "challenge_XAxbeC": {
-          "type": "challenge",
-          "settings": {
-            "bgc-img-icon": "shopify://shop_images/Vector_2.svg",
-            "title": "Business Tools Built-In",
-            "description": "Scheduling, payment processing, client messaging, video storage, and lead generation - all in one dashboard.",
-            "bg_color": "rgba(0,0,0,0)"
-          }
-        }
-      },
-      "block_order": [
-        "challenge_kDhLz8",
-        "challenge_fNj4nD",
-        "challenge_XAxbeC"
-      ],
-      "name": "Growth Challenges",
-      "settings": {
-        "extra_class": "ctm-rev-section",
-        "color_scheme": "scheme-1",
-        "bgc_heading": "<h2>One Platform. <br/>Your Entire Coaching Business.</h2>",
-        "bgc_heading_sub": "<p>Golf Live gives you everything you need to coach better, reach more students, and grow your revenue, all from one seamless app.<br/></p>",
-        "side_image": "shopify://shop_images/Rectangle_30.png",
-        "pga_image_position": "left",
-        "show_announcement": true,
-        "text": "There’s a better way to run your coaching business.",
-        "icon_image": "shopify://shop_images/check-mark_2_1_b03fe8ca-42f7-4633-b4ea-36cfa125c214.png",
-        "show_pointer": true,
-        "padding_top": 0,
-        "padding_bottom": 52,
-        "padding_top_tablet": 0,
-        "padding_bottom_tablet": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
       }
     },
     "coaching_steps_AbMRCc": {
@@ -354,6 +134,8 @@
         "image": "shopify://shop_images/Group_157.png",
         "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "image_first",
+        "btn_txt": "",
+        "btn_link": "",
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mobile": 40,
@@ -396,6 +178,8 @@
         "image": "shopify://shop_images/Mask_group_679e6d60-c4bc-4a8f-afd8-d6232f6b49bb.png",
         "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "text_first",
+        "btn_txt": "",
+        "btn_link": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "padding_top_mobile": 0,
@@ -438,6 +222,8 @@
         "image": "shopify://shop_images/Group_157_1.png",
         "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "image_first",
+        "btn_txt": "",
+        "btn_link": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "padding_top_mobile": 0,
@@ -480,6 +266,8 @@
         "image": "shopify://shop_images/Mask_group_1_a379e477-c672-42cd-bcdc-b4c277a72578.png",
         "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "text_first",
+        "btn_txt": "",
+        "btn_link": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "padding_top_mobile": 0,
@@ -522,6 +310,8 @@
         "image": "shopify://shop_images/Group_157_3.png",
         "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "image_first",
+        "btn_txt": "",
+        "btn_link": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "padding_top_mobile": 0,
@@ -564,6 +354,8 @@
         "image": "shopify://shop_images/Mask_group_2.png",
         "round_image": "shopify://shop_images/Ellipse_11.png",
         "layout": "text_first",
+        "btn_txt": "",
+        "btn_link": "",
         "padding_top": 36,
         "padding_bottom": 36,
         "padding_top_mobile": 0,
@@ -1035,10 +827,7 @@
   },
   "order": [
     "main",
-    "hero_platform_RRzpgL",
-    "trusted_professional_Mr4PtT",
-    "growth_challenges_HC3REj",
-    "growth_challenges_MDBf77",
+    "hero_platform_KEaTjx",
     "coaching_steps_AbMRCc",
     "zigzag_section_6TF6mn",
     "zigzag_section_Gtb6DU",
