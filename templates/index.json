@@ -143,9 +143,9 @@
         "show_arrows": true,
         "enable_slide_clone": true,
         "golfer_text": "I'M A GOLFER",
-        "golfer_url": "",
+        "golfer_url": "https://plus.golfliveapp.com/en/sign-up",
         "coach_text": "I'M A COACH",
-        "coach_url": "",
+        "coach_url": "https://plus.golfliveapp.com/en/sign-up",
         "button_bg": "#0a7a28",
         "button_text": "#ffffff"
       }
