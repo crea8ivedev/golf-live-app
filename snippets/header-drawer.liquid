@@ -123,6 +123,9 @@
                     <a
                       id="HeaderDrawer-{{ link.handle }}"
                       href="{{ link.url }}"
+                      {% if link.title == "Golf Live+" %}
+                          target="_blank" rel="noopener noreferrer"
+                      {% endif %}
                       class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %} ctm-{{ link.title | handleize }}"
                       {% if link.current %}
                         aria-current="page"

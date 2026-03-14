@@ -290,7 +290,7 @@
         {%- endcase -%}
       {%- endfor -%}
       {% if section.settings.show_cart == true %}
-        <a href="{{ routes.cart_url }}" target="_blank" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
           {% if cart == empty %}
             <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
           {% else %}
