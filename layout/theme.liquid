@@ -438,31 +438,6 @@
   setTimeout(loadHubspot, 4000);
 })();
 </script>
-<script>
-(function() {
-  function loadGA() {
-    if (window.gaLoaded) return;
-    window.gaLoaded = true;
 
-    var s = document.createElement('script');
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-J2LKXQ8BHZ';
-    s.async = true;
-    document.head.appendChild(s);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-    gtag('config', 'G-J2LKXQ8BHZ');
-  }
-
-  ['click','scroll','mousemove','touchstart'].forEach(function(e) {
-    window.addEventListener(e, loadGA, { once: true });
-  });
-
-  setTimeout(loadGA, 4000);
-})();
-</script>
   </body>
 </html>
