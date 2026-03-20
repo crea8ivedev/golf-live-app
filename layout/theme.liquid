@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="">
+
     <link rel="canonical" href="{{ canonical_url }}">
 
     {% if settings.favicon != blank %}
@@ -22,50 +22,51 @@
 
     {% render 'meta-tags' %}
 
-    <!-- 🔥 CRITICAL: KEEP THIS (Shopify core scripts) -->
     {{ content_for_header }}
 
-    <!-- 🚀 CSS -->
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'application.css' | asset_url | stylesheet_tag }}
 
-    <!-- Lazy CSS -->
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {% if settings.cart_type == 'drawer' %}
       {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
+      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
+      {{ 'component-price.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
-    <!-- 🚀 FONT (optimized) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- 🚀 SWIPER (deferred) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
 
-    <!-- 🚀 Dawn-safe minimal CSS (DO NOT REMOVE VARIABLES) -->
     {% style %}
-      html { box-sizing: border-box; }
-      *, *:before, *:after { box-sizing: inherit; }
-
-      body {
-        margin: 0;
-        display: grid;
-        grid-template-rows: auto auto 1fr auto;
-        min-height: 100vh;
-        font-size: 16px;
-      }
-
-      /* ✅ CRITICAL: prevents zoom bug */
       :root {
         --font-body-scale: 1;
         --font-heading-scale: 1;
       }
+
+      html {
+        box-sizing: border-box;
+        height: 100%;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        min-height: 100%;
+        margin: 0;
+      }
     {% endstyle %}
 
-    <!-- 🚀 CORE SCRIPTS (deferred) -->
     <script src="{{ 'global.js' | asset_url }}" defer></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer></script>
     <script src="{{ 'details-modal.js' | asset_url }}" defer></script>
@@ -91,7 +92,6 @@
 
     {% sections 'footer-group' %}
 
-    <!-- 🚀 GLOBAL SHOPIFY VARS -->
     <script>
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
@@ -99,18 +99,11 @@
       };
     </script>
 
-    <!-- 🚀 DELAYED SCRIPTS (analytics-ready) -->
     <script>
       (function() {
         function loadDelayedScripts() {
           if (window.delayedLoaded) return;
           window.delayedLoaded = true;
-
-          // 🔥 Add GA later when ready
-          // var ga = document.createElement('script');
-          // ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
-          // ga.async = true;
-          // document.body.appendChild(ga);
         }
 
         ['click','scroll','mousemove','touchstart'].forEach(function(e) {
