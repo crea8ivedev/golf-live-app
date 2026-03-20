@@ -153,8 +153,8 @@
         "color_scheme": "scheme-e6ce27fb-3b70-459a-a970-22e47e138a2e",
         "extra_class": "",
         "heading": "<p>What Coaches <br/>and Golfers Are Saying</p>",
-        "enable_desktop_slider": false,
-        "enable_mobile_slider": true
+        "enable_desktop_slider": true,
+        "enable_mobile_slider": false
       }
     },
     "custom_reviews_iYN6rM": {
