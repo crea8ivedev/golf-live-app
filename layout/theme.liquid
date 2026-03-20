@@ -399,5 +399,36 @@
         window.addEventListener('hashchange', handleAnchorRedirect);
       })();
     </script>
+    <script>
+(function() {
+  function loadDelayedScripts() {
+    if (window.delayedLoaded) return;
+    window.delayedLoaded = true;
+
+    // Example: HubSpot
+    var hs = document.createElement('script');
+    hs.src = 'https://js.hs-scripts.com/YOUR_ID.js';
+    hs.async = true;
+    document.body.appendChild(hs);
+
+    // Example: Google Analytics
+    var ga = document.createElement('script');
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
+    ga.async = true;
+    document.body.appendChild(ga);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  }
+
+  ['click','scroll','mousemove','touchstart'].forEach(function(event) {
+    window.addEventListener(event, loadDelayedScripts, { once: true });
+  });
+
+  setTimeout(loadDelayedScripts, 4000);
+})();
+</script>
   </body>
 </html>
