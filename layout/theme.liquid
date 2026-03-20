@@ -1,16 +1,20 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
-   
-  <!-- Google tag (gtag.js) -->
+
+
+<!-- GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2LKXQ8BHZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-J2LKXQ8BHZ');
+  gtag('config', 'G-J2LKXQ8BHZ', {
+    debug_mode: true
+  });
 </script>
+  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
