@@ -116,7 +116,7 @@
         "padding_bottom": 100,
         "padding_top_tablet": 50,
         "padding_bottom_tablet": 65,
-        "padding_top_mobile": 50,
+        "padding_top_mobile": 35,
         "padding_bottom_mobile": 65
       }
     },
