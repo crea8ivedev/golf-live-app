@@ -5,8 +5,15 @@
   {% endif %}
 
   {% if section.settings.mobile_bg != blank %}
-    <img src="{{ section.settings.mobile_bg | image_url }}" alt="Lines" loading="lazy" class="absolute w-full h-full top-0 left-0 pointer-events-none min-990:hidden">
-  {% endif %}
+  <img
+    src="{{ section.settings.mobile_bg | image_url: width: 800 }}"
+    alt="Lines"
+    loading="lazy"
+    width="800"
+    height="1200"
+    class="absolute top-0 left-0 w-full h-auto object-cover pointer-events-none min-990:hidden z-0"
+  >
+{% endif %}
 
   <div class="relative z-1">
 
