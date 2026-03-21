@@ -3552,3 +3552,25 @@ details-disclosure > details {
 .golf-app-hero img {
   aspect-ratio: 4 / 3;
 }
+
+/* === TRUSTED COACHES FIX === */
+
+.trusted-coaches {
+  color: #fff;
+}
+
+/* Heading */
+.trusted-coaches__heading {
+  color: #fff !important;
+}
+
+/* Description */
+.trusted-coaches__description,
+.trusted-coaches__description p {
+  color: #fff !important;
+}
+
+/* Coach names */
+.trusted-coaches__item p {
+  color: #fff !important;
+}
