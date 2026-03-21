@@ -3552,3 +3552,19 @@ details-disclosure > details {
 .golf-app-hero img {
   aspect-ratio: 4 / 3;
 }
+.trusted-coaches::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.25)
+  );
+  z-index: 1;
+}
+
+.trusted-coaches > * {
+  position: relative;
+  z-index: 2;
+}
