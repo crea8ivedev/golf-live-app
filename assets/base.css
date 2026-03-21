@@ -3544,27 +3544,3 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
-/* === RESET GOLF FEATURES SECTION ONLY === */
-
-.golf-features-section img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-}
-
-.golf-feature-card {
-  display: block;
-  height: auto;
-}
-
-.swiper-slide {
-  height: auto !important;
-}
-
-.golf-feature-content {
-  height: auto;
-}
-
-.golf-features-section * {
-  position: relative;
-}
