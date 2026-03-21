@@ -1,22 +1,13 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
-
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J2LKXQ8BHZ"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J2LKXQ8BHZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-J2LKXQ8BHZ', {
-    send_page_view: true
-  });
-
-  // Force page view (Shopify safe)
-  gtag('event', 'page_view', {
-    page_path: window.location.pathname
-  });
+  gtag('config', 'G-J2LKXQ8BHZ');
 </script>
 
     <meta charset="utf-8">
