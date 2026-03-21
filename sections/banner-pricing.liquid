@@ -114,14 +114,23 @@
               height="auto"
               class="w-full h-auto min-990:min-h-full aspect-[1.04/1] object-cover max-990:hidden"
             >
-            <img
-              src="{{ section.settings.main_mobile_image | image_url }}"
-              alt="Golf player"
-              loading="lazy"
-              width="auto"
-              height="auto"
-              class="w-full h-auto aspect-[1.17/1] object-cover min-990:hidden scroll-trigger animate--slide-in"
-            >
+            {% if section.settings.main_mobile_image != blank %}
+  <img
+    src="{{ section.settings.main_mobile_image | image_url: width: 600 }}"
+    srcset="
+      {{ section.settings.main_mobile_image | image_url: width: 400 }} 400w,
+      {{ section.settings.main_mobile_image | image_url: width: 600 }} 600w,
+      {{ section.settings.main_mobile_image | image_url: width: 800 }} 800w
+    "
+    sizes="100vw"
+    alt="Golf player"
+    class="w-full h-auto aspect-[1.17/1] object-cover min-990:hidden scroll-trigger animate--slide-in"
+    loading="eager"
+    fetchpriority="high"
+    width="600"
+    height="513"
+  >
+{% endif %}
           </div>
         {% endif %}
 
