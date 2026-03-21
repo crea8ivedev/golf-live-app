@@ -3549,3 +3549,6 @@ details-disclosure > details {
 .golf-app-hero__grid {
   min-height: 60vh;
 }
+.golf-app-hero img {
+  aspect-ratio: 4 / 3;
+}
