@@ -1,21 +1,11 @@
 <div class="golf-features-section bg-[#EFEFEF] relative page-width pt-[46px] min-990:pt-[68px] pb-[65px] min-990:pb-[96px]">
 
   {% if section.settings.desktop_bg != blank %}
-    <img
-      src="{{ section.settings.desktop_bg | image_url }}"
-      alt="Lines"
-      loading="lazy"
-      class="absolute w-full h-full top-0 left-0 pointer-events-none"
-    >
+    <img src="{{ section.settings.desktop_bg | image_url }}" alt="Lines" loading="lazy" class="absolute w-full h-full top-0 left-0 pointer-events-none">
   {% endif %}
 
   {% if section.settings.mobile_bg != blank %}
-    <img
-      src="{{ section.settings.mobile_bg | image_url }}"
-      alt="Lines"
-      loading="lazy"
-      class="absolute w-full h-full top-0 left-0 pointer-events-none min-990:hidden"
-    >
+    <img src="{{ section.settings.mobile_bg | image_url }}" alt="Lines" loading="lazy" class="absolute w-full h-full top-0 left-0 pointer-events-none min-990:hidden">
   {% endif %}
 
   <div class="relative z-1">
@@ -70,12 +60,7 @@
                 <!-- ✅ IMAGE FIX -->
                 <div class="golf-feature-image">
                   {% if block.settings.image != blank %}
-                    <img
-                      src="{{ block.settings.image | image_url: width: 600 }}"
-                      alt="{{ block.settings.title | escape }}"
-                      loading="lazy"
-                      style="width:100%; height:auto; display:block;"
-                    >
+                    <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy" style="width:100%; height:auto; display:block;">
                   {% endif %}
                 </div>
 
