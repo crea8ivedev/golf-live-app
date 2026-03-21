@@ -31,14 +31,22 @@
             >
           {% endif %}
           {% if block.settings.player_image != blank %}
-            <img
-              src="{{ block.settings.player_image_mobile | image_url }}"
-              alt="{{ block.settings.player_name | escape }}"
-              class="trusted-coaches__image w-full h-auto object-cover max-990:aspect-[0.94/1] min-990:hidden scroll-trigger animate--slide-in"
-              loading="lazy"
-              width="auto"
-              height="auto"
-            >
+            {% if block.settings.player_image_mobile != blank %}
+  <img
+    src="{{ block.settings.player_image_mobile | image_url: width: 300 }}"
+    srcset="
+      {{ block.settings.player_image_mobile | image_url: width: 200 }} 200w,
+      {{ block.settings.player_image_mobile | image_url: width: 300 }} 300w,
+      {{ block.settings.player_image_mobile | image_url: width: 400 }} 400w
+    "
+    sizes="(max-width: 768px) 50vw, 200px"
+    alt="{{ block.settings.player_name | escape }}"
+    class="trusted-coaches__image w-full h-auto object-cover max-990:aspect-[0.94/1] min-990:hidden scroll-trigger animate--slide-in"
+    loading="lazy"
+    width="300"
+    height="320"
+  >
+{% endif %}
           {% endif %}
 
           {% if block.settings.player_name != blank %}
