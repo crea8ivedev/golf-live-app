@@ -1,19 +1,31 @@
-<div class="golf-features-section bg-[#EFEFEF] relative page-width pt-[46px] min-990:pt-[68px] pb-[65px] min-990:pb-[96px]">
+<div class="golf-features-section bg-[#EFEFEF] relative page-width pt-[46px] min-990:pt-[68px] pb-[65px] min-990:pb-[96px]" style="overflow:hidden;">
 
+  <!-- ✅ SAFE BACKGROUND (no layout break) -->
   {% if section.settings.desktop_bg != blank %}
-    <img src="{{ section.settings.desktop_bg | image_url }}" alt="Lines" loading="lazy" class="absolute w-full h-full top-0 left-0 pointer-events-none">
+    <div class="absolute inset-0 pointer-events-none max-990:hidden z-0">
+      <img
+        src="{{ section.settings.desktop_bg | image_url: width: 1600 }}"
+        alt="Lines"
+        loading="lazy"
+        width="1600"
+        height="800"
+        style="width:100%; height:100%; object-fit:cover;"
+      >
+    </div>
   {% endif %}
 
   {% if section.settings.mobile_bg != blank %}
-  <img
-    src="{{ section.settings.mobile_bg | image_url: width: 800 }}"
-    alt="Lines"
-    loading="lazy"
-    width="800"
-    height="1200"
-    class="absolute top-0 left-0 w-full h-auto object-cover pointer-events-none min-990:hidden z-0"
-  >
-{% endif %}
+    <div class="absolute inset-0 pointer-events-none min-990:hidden z-0">
+      <img
+        src="{{ section.settings.mobile_bg | image_url: width: 800 }}"
+        alt="Lines"
+        loading="lazy"
+        width="800"
+        height="1200"
+        style="width:100%; height:100%; object-fit:cover;"
+      >
+    </div>
+  {% endif %}
 
   <div class="relative z-1">
 
@@ -46,9 +58,9 @@
         </button>
       {% endif %}
 
-      <!-- ✅ FIXED WRAPPER -->
+      <!-- ✅ CLEAN WRAPPER -->
       <div
-        class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% else %}golf-features-grid{% endif %}"
+        class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"
         data-desktop-slider="{{ desktop_slider }}"
         data-mobile-slider="{{ mobile_slider }}"
       >
@@ -57,17 +69,21 @@
 
           {% for block in section.blocks %}
 
-            <div
-              class="{% if desktop_slider or mobile_slider %}swiper-slide !h-auto{% endif %}"
-              {{ block.shopify_attributes }}
-            >
+            <div class="{% if desktop_slider or mobile_slider %}swiper-slide !h-auto{% endif %}" {{ block.shopify_attributes }}>
 
               <div class="golf-feature-card bg-white rounded-[22px] h-full overflow-hidden">
 
                 <!-- ✅ IMAGE FIX -->
-                <div class="golf-feature-image">
+                <div class="golf-feature-image" style="width:100%; aspect-ratio:16/10; overflow:hidden;">
                   {% if block.settings.image != blank %}
-                    <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy" style="width:100%; height:auto; display:block;">
+                    <img
+                      src="{{ block.settings.image | image_url: width: 600 }}"
+                      alt="{{ block.settings.title | escape }}"
+                      loading="lazy"
+                      width="600"
+                      height="400"
+                      style="width:100%; height:100%; object-fit:cover;"
+                    >
                   {% endif %}
                 </div>
 
