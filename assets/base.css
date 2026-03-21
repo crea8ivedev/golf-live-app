@@ -3552,32 +3552,3 @@ details-disclosure > details {
 .golf-app-hero img {
   aspect-ratio: 4 / 3;
 }
-/* === TRUSTED COACHES FIX (FORCE WHITE TEXT + LAYERING) === */
-
-.trusted-coaches {
-  position: relative;
-}
-
-/* Add dark overlay */
-.trusted-coaches::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
-}
-
-/* Bring content above overlay */
-.trusted-coaches * {
-  position: relative;
-  z-index: 2;
-}
-
-/* FORCE WHITE TEXT */
-.trusted-coaches h1,
-.trusted-coaches h2,
-.trusted-coaches h3,
-.trusted-coaches p,
-.trusted-coaches span {
-  color: #fff !important;
-}
