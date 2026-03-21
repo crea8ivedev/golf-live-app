@@ -16,15 +16,21 @@
           >
         {% endif %}
         {% if section.settings.bg_image_left_mobile != blank %}
-          <img
-            src="{{ section.settings.bg_image_left_mobile | image_url }}"
-            alt="bg-img"
-            class="min-990:hidden w-full h-full object-cover object-top scroll-trigger animate--slide-in"
-            loading="lazy"
-            width="auto"
-            height="auto"
-          >
-        {% endif %}
+  <img
+    src="{{ section.settings.bg_image_left_mobile | image_url: width: 400 }}"
+    srcset="
+      {{ section.settings.bg_image_left_mobile | image_url: width: 300 }} 300w,
+      {{ section.settings.bg_image_left_mobile | image_url: width: 400 }} 400w,
+      {{ section.settings.bg_image_left_mobile | image_url: width: 600 }} 600w
+    "
+    sizes="100vw"
+    alt="bg-img"
+    class="min-990:hidden w-full h-full object-cover object-top scroll-trigger animate--slide-in"
+    loading="lazy"
+    width="400"
+    height="900"
+  >
+{% endif %}
       </div>
       <div
         id="dual-card-left"
