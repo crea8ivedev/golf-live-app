@@ -55,12 +55,11 @@
                 <div class="dual-feature scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
                   {% if block.settings.image != blank %}
                     <img
-                      src="{{ block.settings.image | image_url }}"
-                      alt="{{ block.settings.text | escape }}"
-                      loading="lazy"
-                      width="auto"
-                      height="auto"
-                    >
+  src="{{ block.settings.image | image_url }}"
+  alt="{{ block.settings.text | escape }}"
+  loading="lazy"
+  class="dual-feature__icon"
+>
                   {% endif %}
                   {% if block.settings.text != blank %}
                     <span>{{ block.settings.text }}</span>
