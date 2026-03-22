@@ -3551,3 +3551,41 @@ details-disclosure > details {
   object-fit: contain;
   display: block;
 }
+
+
+
+
+
+
+
+
+/* ===== GRID MODE (NO SLIDER) ===== */
+
+.golf-features-grid {
+  display: grid;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Desktop columns controlled by setting */
+@media (min-width: 990px) {
+  .golf-features-grid {
+    grid-template-columns: repeat(var(--desktop-cols), minmax(0, 1fr));
+    max-width: calc(var(--desktop-cols) * 420px + (var(--desktop-cols) - 1) * 30px);
+    margin: 0 auto;
+  }
+}
+
+/* Mobile columns */
+@media (max-width: 989px) {
+  .golf-features-grid {
+    grid-template-columns: repeat(var(--mobile-cols), 1fr);
+  }
+}
+
+/* CARD FIX */
+.golf-feature-card {
+  width: 100%;
+  max-width: none !important;
+  margin: 0 !important;
+}
