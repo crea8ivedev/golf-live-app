@@ -17,7 +17,7 @@
   }
 
   /* =========================
-    FORCE SIDE-BY-SIDE
+    FORCE SIDE-BY-SIDE ON MOBILE
   ========================= */
 
   .glc-reverse {
@@ -26,60 +26,33 @@
   }
 
   @media (min-width: 990px) {
-    .glc-reverse { flex-direction: row-reverse; }
+    .glc-reverse {
+      flex-direction: row-reverse; /* desktop flip */
+    }
   }
 
   @media (max-width: 989px) {
-    .glc-reverse { flex-direction: row; }
+    .glc-reverse {
+      flex-direction: row; /* 🔥 keep side-by-side on mobile */
+    }
   }
 
   /* =========================
     WIDTH CONTROL
   ========================= */
 
-  .glc-phone { flex: 0 0 45%; }
-  .glc-phone-sibling { flex: 0 0 55%; }
+  .glc-phone {
+    flex: 0 0 45%;
+  }
 
+  .glc-phone-sibling {
+    flex: 0 0 55%;
+  }
+
+  /* Mobile tweak */
   @media (max-width: 749px) {
     .glc-phone { flex: 0 0 40%; }
     .glc-phone-sibling { flex: 0 0 60%; padding-left: 12px; }
-  }
-
-  /* =========================
-    TEXT ALIGNMENT
-  ========================= */
-
-  .glc-phone-sibling {
-    text-align: left !important;
-  }
-
-  .glc-list {
-    text-align: left;
-    margin-top: 20px;
-  }
-
-  /* =========================
-    ICON CONSISTENCY
-  ========================= */
-
-  .glc-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .glc-list img {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    max-width: 28px;
-    object-fit: contain;
-    margin-top: 4px;
-  }
-
-  .glc-list span {
-    line-height: 1.5;
   }
 
   /* Prevent layout shift */
@@ -105,7 +78,9 @@
 
     <div class="glc-grid flex items-stretch gap-[44px] max-xl:gap-[30px] max-sm:gap-0 max-990:flex-wrap">
 
-      <!-- GREEN SECTION -->
+      <!-- =========================
+        WITH GOLF LIVE (GREEN)
+      ========================= -->
       <div
         class="glc-card glc-green 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pr-9 py-14 pl-0 rounded-[28px]"
         style="{% if section.settings.green_bg != blank %}background-image:url({{ section.settings.green_bg | image_url }});{% endif %}"
@@ -113,6 +88,7 @@
 
         <div class="glc-reverse gap-[23px] w-full">
 
+          <!-- IMAGE -->
           {% if section.settings.green_phone != blank %}
             <div class="glc-phone glc-phone--desktop">
               {{
@@ -141,15 +117,17 @@
             </div>
           {% endif %}
 
+          <!-- TEXT -->
           <div class="glc-phone-sibling text-white">
+
             <h3 class="glc-card-title text-white">
               {{ section.settings.green_title }}
             </h3>
 
-            <ul class="glc-list">
+            <ul class="glc-list mt-[24px]">
               {% for block in section.blocks %}
                 {% if block.type == 'with_item' %}
-                  <li {{ block.shopify_attributes }}>
+                  <li class="flex gap-3 items-start text-white" {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
                       {{
                         block.settings.icon
@@ -157,7 +135,7 @@
                         | image_tag:
                           loading: 'lazy',
                           widths: '40,60',
-                          sizes: '28px',
+                          sizes: '40px',
                           alt: ''
                       }}
                     {% endif %}
@@ -166,12 +144,14 @@
                 {% endif %}
               {% endfor %}
             </ul>
-          </div>
 
+          </div>
         </div>
       </div>
 
-      <!-- GREY SECTION -->
+      <!-- =========================
+        WITHOUT GOLF LIVE (GREY)
+      ========================= -->
       <div
         class="glc-card glc-grey 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pl-[50px] max-xl:pl-[22px] py-12 pr-0 rounded-[28px]"
         style="{% if section.settings.grey_bg != blank %}background-image:url({{ section.settings.grey_bg | image_url }});{% endif %}"
@@ -179,15 +159,17 @@
 
         <div class="flex items-center gap-[23px] w-full">
 
+          <!-- TEXT -->
           <div class="glc-phone-sibling text-left">
+
             <h3 class="glc-card-title text-black">
               {{ section.settings.grey_title }}
             </h3>
 
-            <ul class="glc-list">
+            <ul class="glc-list mt-[24px]">
               {% for block in section.blocks %}
                 {% if block.type == 'without_item' %}
-                  <li {{ block.shopify_attributes }}>
+                  <li class="flex gap-3 items-start" {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
                       {{
                         block.settings.icon
@@ -195,7 +177,7 @@
                         | image_tag:
                           loading: 'lazy',
                           widths: '40,60',
-                          sizes: '28px',
+                          sizes: '40px',
                           alt: ''
                       }}
                     {% endif %}
@@ -204,8 +186,10 @@
                 {% endif %}
               {% endfor %}
             </ul>
+
           </div>
 
+          <!-- IMAGE -->
           {% if section.settings.grey_phone != blank %}
             <div class="glc-phone glc-phone--desktop">
               {{
