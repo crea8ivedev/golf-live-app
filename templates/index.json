@@ -403,10 +403,10 @@
       "name": "Golf Features Slider",
       "settings": {
         "section_width": "page-width",
-        "card_max_width": 560,
+        "card_max_width": 300,
         "image_ratio": "16/10",
-        "image_max_height": 380,
-        "slides_desktop": 2,
+        "image_max_height": 260,
+        "slides_desktop": 3,
         "slides_mobile": 1,
         "desktop_bg": "shopify://shop_images/golf-feature-d-bg-lines.png",
         "mobile_bg": "shopify://shop_images/lines-bg-mobile-grey.png",
