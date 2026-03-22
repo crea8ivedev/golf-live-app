@@ -412,7 +412,7 @@
         "mobile_bg": "shopify://shop_images/lines-bg-mobile-grey.png",
         "heading": "Everything You Need to Coach or Improve At Golf - All in One App",
         "subheading": "See how Golf Live makes coaching and learning faster, easier, and more effective.",
-        "enable_slider_desktop": true,
+        "enable_slider_desktop": false,
         "enable_slider_mobile": false
       }
     },
