@@ -1,10 +1,14 @@
-<div class="golf-features-section bg-[#EFEFEF] relative {{ section.settings.section_width }} pt-[46px] min-990:pt-[68px] pb-[65px] min-990:pb-[96px]" style="overflow:hidden;">
+<div 
+  class="golf-features-section bg-[#EFEFEF] relative {{ section.settings.section_width }} pt-[46px] min-990:pt-[68px] pb-[65px] min-990:pb-[96px]"
+  style="overflow:hidden;"
+>
 
+  <!-- DESKTOP BG -->
   {% if section.settings.desktop_bg != blank %}
     <div class="absolute inset-0 pointer-events-none max-990:hidden z-0">
       <img
         src="{{ section.settings.desktop_bg | image_url: width: 1600 }}"
-        alt="Lines"
+        alt=""
         loading="lazy"
         width="1600"
         height="800"
@@ -13,11 +17,12 @@
     </div>
   {% endif %}
 
+  <!-- MOBILE BG -->
   {% if section.settings.mobile_bg != blank %}
     <div class="absolute inset-0 pointer-events-none min-990:hidden z-0">
       <img
         src="{{ section.settings.mobile_bg | image_url: width: 800 }}"
-        alt="Lines"
+        alt=""
         loading="lazy"
         width="800"
         height="1200"
@@ -31,27 +36,29 @@
     <!-- HEADING -->
     <div class="golf-features-heading text-center">
       {% if section.settings.heading != blank %}
-        <h2 class="max-w-[337px] min-1440:max-w-[937px] mx-auto">
+        <h2 class="max-w-[900px] mx-auto">
           {{ section.settings.heading }}
         </h2>
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <p class="text-h6 font-medium min-990:font-semibold min-990:max-w-[620px] mx-auto mt-[13px] min-990:mt-[24px]">
+        <p class="text-h6 max-w-[620px] mx-auto mt-[20px]">
           {{ section.settings.subheading }}
         </p>
       {% endif %}
     </div>
 
     <!-- GRID -->
-    <div class="golf-features-grid mt-[40px] min-990:mt-[66px]"
+    <div 
+      class="golf-features-grid mt-[40px]"
       style="
-        --desktop-cols: {{ section.settings.slides_desktop }};
-        --mobile-cols: {{ section.settings.slides_mobile }};
+        --desktop-cols: {{ section.settings.cards_desktop }};
+        --mobile-cols: {{ section.settings.cards_mobile }};
       "
     >
 
       {% for block in section.blocks %}
+
         <div class="golf-feature-card">
 
           <!-- IMAGE -->
@@ -70,186 +77,52 @@
           <!-- CONTENT -->
           <div class="golf-feature-content">
 
-            <div class="pt-[29px] min-990:pt-[43px] pb-0 pl-[28px] pr-[24px] min-990:px-[38px]">
+            <div class="golf-feature-top">
               {% if block.settings.title != blank %}
                 <h4>{{ block.settings.title }}</h4>
               {% endif %}
 
               {% if block.settings.description != blank %}
-                <div class="feature-subtitle">
+                <div class="golf-sub">
                   {{ block.settings.description }}
                 </div>
               {% endif %}
             </div>
 
-            <div class="feature-divider">
-              {% if block.settings.coach_description != blank %}
-                <span class="golf-pill">
-                  {{ block.settings.coach_text }}
-                </span>
-                <p>{{ block.settings.coach_description }}</p>
-              {% endif %}
-            </div>
+            {% if block.settings.coach_description != blank %}
+              <div class="golf-divider"></div>
 
-            <div class="feature-bottom">
-              {% if block.settings.golfer_description != blank %}
-                <span class="golf-pill">
-                  {{ block.settings.golfer_text }}
-                </span>
-                <p>{{ block.settings.golfer_description }}</p>
-              {% endif %}
-            </div>
+              <span class="golf-pill">
+                {{ block.settings.coach_text }}
+              </span>
+
+              <p class="golf-desc">
+                {{ block.settings.coach_description }}
+              </p>
+            {% endif %}
+
+            {% if block.settings.golfer_description != blank %}
+              <div class="golf-divider"></div>
+
+              <span class="golf-pill">
+                {{ block.settings.golfer_text }}
+              </span>
+
+              <p class="golf-desc">
+                {{ block.settings.golfer_description }}
+              </p>
+            {% endif %}
 
           </div>
 
         </div>
+
       {% endfor %}
 
     </div>
+
   </div>
 </div>
-
-{% stylesheet %}
-
-/* =========================
-   GRID (CLEAN + CENTERED)
-========================= */
-.golf-features-grid {
-  display: grid;
-  gap: 40px;
-  justify-content: center;
-}
-
-/* Desktop */
-@media (min-width: 990px) {
-  .golf-features-grid {
-    grid-template-columns: repeat(var(--desktop-cols), minmax(320px, 1fr));
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-}
-
-/* Mobile */
-@media (max-width: 989px) {
-  .golf-features-grid {
-    grid-template-columns: repeat(var(--mobile-cols), 1fr);
-    gap: 24px;
-  }
-}
-
-
-/* =========================
-   CARD
-========================= */
-.golf-feature-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border-radius: 22px;
-  overflow: hidden;
-  background: #ffffff;
-  transition: all 0.25s ease;
-}
-
-.golf-feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 35px rgba(0,0,0,0.08);
-}
-
-
-/* =========================
-   IMAGE
-========================= */
-.golf-feature-image {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.golf-feature-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-/* =========================
-   CONTENT
-========================= */
-.golf-feature-content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-
-/* =========================
-   TYPOGRAPHY
-========================= */
-.golf-feature-content h4 {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 6px;
-}
-
-.feature-subtitle {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.golf-feature-content p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #555;
-}
-
-
-/* =========================
-   DIVIDERS
-========================= */
-.feature-divider {
-  border-top: 1px solid #DFDFDF;
-  padding: 20px 28px;
-}
-
-.feature-bottom {
-  border-top: 1px solid #DFDFDF;
-  padding: 20px 28px 30px;
-}
-
-
-/* =========================
-   PILLS
-========================= */
-.golf-pill {
-  display: inline-block;
-  background: #2f6f2f;
-  color: #fff;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
-
-
-/* =========================
-   SECTION WIDTH
-========================= */
-.golf-features-section.page-width {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.golf-features-section.full-width {
-  max-width: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-{% endstylesheet %}
 
 {% schema %}
 {
@@ -267,16 +140,16 @@
     },
     {
       "type": "range",
-      "id": "slides_desktop",
+      "id": "cards_desktop",
       "label": "Cards per row (Desktop)",
       "min": 1,
       "max": 4,
       "step": 1,
-      "default": 2
+      "default": 3
     },
     {
       "type": "range",
-      "id": "slides_mobile",
+      "id": "cards_mobile",
       "label": "Cards per row (Mobile)",
       "min": 1,
       "max": 3,
