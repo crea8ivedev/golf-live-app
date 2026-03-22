@@ -402,6 +402,10 @@
       ],
       "name": "Golf Features Slider",
       "settings": {
+        "section_width": "page-width",
+        "card_max_width": 600,
+        "image_ratio": "16/10",
+        "image_max_height": 300,
         "desktop_bg": "shopify://shop_images/golf-feature-d-bg-lines.png",
         "mobile_bg": "shopify://shop_images/lines-bg-mobile-grey.png",
         "heading": "Everything You Need to Coach or Improve At Golf - All in One App",
