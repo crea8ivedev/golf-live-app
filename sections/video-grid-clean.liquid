@@ -51,16 +51,7 @@
           <div class="vt3-media">
 
             {% if block.settings.video != blank %}
-              {{
-                block.settings.video
-                | video_tag:
-                  controls: true,
-                  preload: 'metadata',
-                  playsinline: true,
-                  class: 'vt3-video',
-                  width: 800,
-                  height: 1422
-              }}
+            
 
         {% if block.settings.image != blank %}
   <div class="vt3-poster">
