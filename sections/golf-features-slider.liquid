@@ -45,6 +45,8 @@
         max-width: {{ section.settings.header_max_width }}px;
         margin-left: auto;
         margin-right: auto;
+        padding-top: {{ section.settings.header_padding_top }}px;
+        padding-bottom: {{ section.settings.header_padding_bottom }}px;
       "
     >
       {% if section.settings.heading != blank %}
@@ -129,7 +131,6 @@
   display: grid;
   gap: 40px;
   justify-content: center;
-  margin-top: 50px;
 }
 
 /* Desktop */
@@ -226,7 +227,7 @@
   color: #444;
 }
 
-/* WIDTH CONTROL */
+/* WIDTH */
 .golf-features-section.page-width {
   max-width: 1200px;
   margin: 0 auto;
@@ -261,7 +262,7 @@
       "min": 1,
       "max": 4,
       "step": 1,
-      "default": 2
+      "default": 3
     },
     {
       "type": "range",
@@ -294,7 +295,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Top Padding",
+      "label": "Section Top Padding",
       "min": 20,
       "max": 200,
       "step": 10,
@@ -303,11 +304,29 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Bottom Padding",
+      "label": "Section Bottom Padding",
       "min": 20,
       "max": 200,
       "step": 10,
       "default": 100
+    },
+    {
+      "type": "range",
+      "id": "header_padding_top",
+      "label": "Header Padding Top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "header_padding_bottom",
+      "label": "Header Padding Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 50
     },
     {
       "type": "image_picker",
