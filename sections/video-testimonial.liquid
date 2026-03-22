@@ -1,246 +1,187 @@
-<style>
-/* =========================================
-   VIDEO TESTIMONIAL GRID (NO SWIPER)
-========================================= */
+<div class="vt-wrapper">
 
-/* CONTAINER */
-.vt-grid-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+  <style>
+    .vt-wrapper {
+      padding: 60px 20px;
+    }
 
-/* GRID */
-.vt-grid {
-  display: grid;
-  gap: 24px;
-}
+    .vt-heading {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
 
-/* Mobile */
-@media (max-width: 639px) {
-  .vt-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    /* GRID */
+    .vt-grid {
+      display: grid;
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-/* Tablet */
-@media (min-width: 640px) {
-  .vt-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    /* Mobile */
+    .vt-grid {
+      grid-template-columns: 1fr;
+    }
 
-/* Desktop */
-@media (min-width: 990px) {
-  .vt-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-}
+    /* Tablet */
+    @media (min-width: 640px) {
+      .vt-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-/* Large desktop */
-@media (min-width: 1280px) {
-  .vt-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
+    /* Desktop */
+    @media (min-width: 990px) {
+      .vt-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+    }
 
-/* CARD */
-.vt-slide {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  width: 100%;
-  transition: all 0.25s ease;
-}
+    /* Large */
+    @media (min-width: 1280px) {
+      .vt-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
 
-.vt-slide:hover {
-  transform: translateY(-4px);
-}
+    /* CARD */
+    .vt-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
 
-/* VIDEO */
-.vt-video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+    .vt-media {
+      position: relative;
+      aspect-ratio: 16/10;
+    }
 
-.vt-slide img,
-.vt-slide video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border-radius: 24px;
-  background: #fff;
-}
+    .vt-media img,
+    .vt-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-/* POSTER */
-.vt-poster {
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-  z-index: 2;
-}
+    /* POSTER */
+    .vt-poster {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
 
-.vt-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .vt-play {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 60px;
+      height: 60px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 50%;
+    }
 
-.vt-play-btn {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  border: none;
-  cursor: pointer;
-  z-index: 3;
-}
+    /* TEXT */
+    .vt-content {
+      padding: 16px;
+    }
 
-/* CAPTION */
-.vt-caption {
-  margin-top: 12px;
-}
+    .vt-content h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
 
-.vt-caption h4 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
+    .vt-content p {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 
-.vt-caption p {
-  font-size: 14px;
-  color: #666;
-}
-</style>
+  {% if section.settings.heading != blank %}
+    <h2 class="vt-heading">
+      {{ section.settings.heading }}
+    </h2>
+  {% endif %}
 
+  <div class="vt-grid">
 
-<div class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-[72px] min-990:pb-[98px]">
+    {% for block in section.blocks %}
 
-  <div class="min-990:px-[42px]">
+      <div class="vt-card">
 
-    <!-- HEADING -->
-    <div class="max-990:px-[28px]">
-      {% if section.settings.heading != blank %}
-        <h2 class="vt-heading text-center max-w-[300px] min-768:max-w-[700px] min-990:max-w-[700px] min-1440:max-w-[800px] min-1582:max-w-[1069px] mx-auto mb-[31px] min-990:mb-[54px]">
-          {{ section.settings.heading | replace: '[highlight]', '<span>' | replace: '[/highlight]', '</span>' }}
-        </h2>
-      {% endif %}
-    </div>
+        <div class="vt-media">
 
-    <!-- GRID -->
-    <div class="relative max-990:px-[28px]">
-      <div class="vt-grid-container">
-        <div class="vt-grid">
+          {% if block.settings.video != blank %}
 
-          {% for block in section.blocks %}
+            {{
+              block.settings.video
+              | video_tag:
+                controls: true,
+                preload: 'metadata',
+                class: 'vt-video'
+            }}
 
-            <div class="vt-slide" {{ block.shopify_attributes }}>
-
-              {% if block.settings.video != blank %}
-                <div class="vt-video-wrapper">
-
-                  {{
-                    block.settings.video
-                    | video_tag:
-                      controls: true,
-                      autoplay: false,
-                      muted: false,
-                      loop: false,
-                      preload: 'metadata',
-                      class: 'vt-video'
-                  }}
-
-                  {% if block.settings.image != blank %}
-                    <div class="vt-poster" data-video-poster>
-                      <img
-                        src="{{ block.settings.image | image_url: width: 800 }}"
-                        alt="{{ block.settings.name | escape }}"
-                        loading="lazy"
-                      >
-                      <button class="vt-play-btn" type="button">
-                        {% render 'video-test-play-icon' %}
-                      </button>
-                    </div>
-                  {% endif %}
-
-                </div>
-
-              {% elsif block.settings.image != blank %}
+            {% if block.settings.image != blank %}
+              <div class="vt-poster">
                 <img
                   src="{{ block.settings.image | image_url: width: 800 }}"
-                  alt="{{ block.settings.name | escape }}"
+                  alt=""
                   loading="lazy"
                 >
-              {% endif %}
+                <div class="vt-play"></div>
+              </div>
+            {% endif %}
 
-              {% if block.settings.name != blank %}
-                <div class="vt-caption">
-                  <h4>{{ block.settings.name }}</h4>
-                  <p>{{ block.settings.subtitle }}</p>
-                </div>
-              {% endif %}
-
-            </div>
-
-          {% endfor %}
+          {% elsif block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt=""
+              loading="lazy"
+            >
+          {% endif %}
 
         </div>
-      </div>
-    </div>
 
-    <!-- BUTTONS -->
-    <div class="max-990:px-[28px]">
-      <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] mt-[40px] min-990:mt-[65px]">
-
-        {% if section.settings.golfer_text != blank %}
-          <a href="{{ section.settings.golfer_url }}" class="golf-app-hero__button ctm-button button-green min-w-[337px]">
-            {{ section.settings.golfer_text }}
-          </a>
-        {% endif %}
-
-        {% if section.settings.coach_text != blank %}
-          <a href="{{ section.settings.coach_url }}" class="golf-app-hero__button ctm-button button-green min-w-[337px]">
-            {{ section.settings.coach_text }}
-          </a>
-        {% endif %}
+        <div class="vt-content">
+          <h4>{{ block.settings.name }}</h4>
+          <p>{{ block.settings.subtitle }}</p>
+        </div>
 
       </div>
-    </div>
+
+    {% endfor %}
 
   </div>
+
 </div>
 
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
-  function pauseAllVideos() {
-    document.querySelectorAll('.vt-video').forEach(video => {
-      video.pause();
-      video.currentTime = 0;
+  function pauseAll() {
+    document.querySelectorAll('.vt-video').forEach(v => {
+      v.pause();
+      v.currentTime = 0;
     });
 
-    document.querySelectorAll('.vt-poster').forEach(poster => {
-      poster.style.display = 'block';
+    document.querySelectorAll('.vt-poster').forEach(p => {
+      p.style.display = 'block';
     });
   }
 
-  document.querySelectorAll('[data-video-poster]').forEach(poster => {
-    const wrapper = poster.closest('.vt-video-wrapper');
-    const video = wrapper.querySelector('video');
+  document.querySelectorAll('.vt-poster').forEach(poster => {
+    const video = poster.parentElement.querySelector('video');
 
-    poster.addEventListener('click', function () {
-      pauseAllVideos();
+    poster.addEventListener('click', () => {
+      pauseAll();
       poster.style.display = 'none';
-      video.play().catch(() => {
-        poster.style.display = 'block';
-      });
+      video.play();
     });
-  });
-
-  document.querySelectorAll('.vt-video').forEach(video => {
-    video.addEventListener('ended', pauseAllVideos);
   });
 
 });
