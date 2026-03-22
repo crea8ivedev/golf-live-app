@@ -28,6 +28,7 @@
 
   <div class="relative z-1">
 
+    <!-- HEADING -->
     <div class="golf-features-heading text-center">
       {% if section.settings.heading != blank %}
         <h2 class="max-w-[337px] min-1440:max-w-[937px] mx-auto">
@@ -45,6 +46,7 @@
     {% assign desktop_slider = section.settings.enable_slider_desktop %}
     {% assign mobile_slider = section.settings.enable_slider_mobile %}
 
+    <!-- SLIDER WRAPPER -->
     <div class="golf-features-slider-wrapper relative mt-[35px] min-990:mt-[66px]">
 
       {% if desktop_slider or mobile_slider %}
@@ -61,6 +63,8 @@
         class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"
         data-desktop-slider="{{ desktop_slider }}"
         data-mobile-slider="{{ mobile_slider }}"
+        data-slides-desktop="{{ section.settings.slides_desktop }}"
+        data-slides-mobile="{{ section.settings.slides_mobile }}"
       >
 
         <div class="{% if desktop_slider or mobile_slider %}swiper-wrapper{% else %}grid grid-cols-1 min-990:grid-cols-2 min-1280:grid-cols-3 gap-[30px]{% endif %}">
@@ -147,47 +151,64 @@
 
 {% javascript %}
 (function () {
-  const section = document.querySelector('.golf-features-section');
-  if (!section) return;
 
-  const swiperEl = section.querySelector('.golf-features-swiper');
-  if (!swiperEl || typeof Swiper === 'undefined') return;
+  function initGolfSliders() {
 
-  const enableDesktop = swiperEl.dataset.desktopSlider === 'true';
-  const enableMobile = swiperEl.dataset.mobileSlider === 'true';
+    document.querySelectorAll('.golf-features-section').forEach((section) => {
 
-  let swiperInstance = null;
+      const swiperEl = section.querySelector('.golf-features-swiper');
+      if (!swiperEl || typeof Swiper === 'undefined') return;
 
-  function init() {
-    const isMobile = window.matchMedia('(max-width: 639px)').matches;
-    const shouldEnable = (isMobile && enableMobile) || (!isMobile && enableDesktop);
+      const enableDesktop = swiperEl.dataset.desktopSlider === 'true';
+      const enableMobile = swiperEl.dataset.mobileSlider === 'true';
 
-    if (shouldEnable) {
-      if (!swiperInstance) {
-        swiperInstance = new Swiper(swiperEl, {
-          spaceBetween: 30,
-          loop: true,
-          navigation: {
-            nextEl: section.querySelector('.golf-features-next'),
-            prevEl: section.querySelector('.golf-features-prev'),
-          },
-          breakpoints: {
-            0: { slidesPerView: 1.2 },
-            990: { slidesPerView: 2 },
-            1280: { slidesPerView: 3 },
-          },
-        });
+      const slidesDesktop = parseFloat(swiperEl.dataset.slidesDesktop) || 1.5;
+      const slidesMobile = parseFloat(swiperEl.dataset.slidesMobile) || 1.1;
+
+      let swiperInstance = swiperEl.swiperInstance || null;
+
+      function setup() {
+        const isMobile = window.matchMedia('(max-width: 989px)').matches;
+        const shouldEnable = (isMobile && enableMobile) || (!isMobile && enableDesktop);
+
+        if (shouldEnable) {
+
+          if (!swiperInstance) {
+            swiperInstance = new Swiper(swiperEl, {
+              spaceBetween: 30,
+              loop: false,
+              navigation: {
+                nextEl: section.querySelector('.golf-features-next'),
+                prevEl: section.querySelector('.golf-features-prev'),
+              },
+              breakpoints: {
+                0: { slidesPerView: slidesMobile },
+                990: { slidesPerView: slidesDesktop }
+              }
+            });
+
+            swiperEl.swiperInstance = swiperInstance;
+          }
+
+        } else {
+          if (swiperInstance) {
+            swiperInstance.destroy(true, true);
+            swiperInstance = null;
+            swiperEl.swiperInstance = null;
+          }
+        }
       }
-    } else {
-      if (swiperInstance) {
-        swiperInstance.destroy(true, true);
-        swiperInstance = null;
-      }
-    }
+
+      setup();
+      window.addEventListener('resize', setup);
+
+    });
+
   }
 
-  init();
-  window.addEventListener('resize', init);
+  document.addEventListener('DOMContentLoaded', initGolfSliders);
+  document.addEventListener('shopify:section:load', initGolfSliders);
+
 })();
 {% endjavascript %}
 
@@ -208,9 +229,9 @@
     {
       "type": "range",
       "id": "card_max_width",
-      "label": "Card Max Width (desktop)",
+      "label": "Card Max Width",
       "min": 300,
-      "max": 600,
+      "max": 700,
       "step": 20,
       "default": 420
     },
@@ -219,8 +240,8 @@
       "id": "image_ratio",
       "label": "Image Aspect Ratio",
       "options": [
-        { "value": "16/10", "label": "Wide (16:10)" },
-        { "value": "4/3", "label": "Standard (4:3)" },
+        { "value": "16/10", "label": "Wide" },
+        { "value": "4/3", "label": "Standard" },
         { "value": "1/1", "label": "Square" }
       ],
       "default": "16/10"
@@ -228,11 +249,29 @@
     {
       "type": "range",
       "id": "image_max_height",
-      "label": "Image Max Height (desktop)",
+      "label": "Image Max Height",
       "min": 200,
       "max": 500,
       "step": 20,
       "default": 300
+    },
+    {
+      "type": "range",
+      "id": "slides_desktop",
+      "label": "Cards per row (Desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 0.1,
+      "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "slides_mobile",
+      "label": "Cards per row (Mobile)",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.1
     },
     {
       "type": "image_picker",
@@ -275,9 +314,9 @@
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "richtext", "id": "description", "label": "Description" },
-        { "type": "text", "id": "coach_text", "label": "Coach pill text", "default": "Coach" },
+        { "type": "text", "id": "coach_text", "label": "Coach label" },
         { "type": "textarea", "id": "coach_description", "label": "Coach description" },
-        { "type": "text", "id": "golfer_text", "label": "Golfer pill text", "default": "Golfer" },
+        { "type": "text", "id": "golfer_text", "label": "Golfer label" },
         { "type": "textarea", "id": "golfer_description", "label": "Golfer description" }
       ]
     }
