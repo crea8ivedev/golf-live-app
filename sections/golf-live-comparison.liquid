@@ -17,43 +17,72 @@
   }
 
   /* =========================
-    Layout Fix (KEY)
+    FORCE SIDE-BY-SIDE
   ========================= */
 
-  .glc-inner {
+  .glc-reverse {
     display: flex;
     align-items: center;
-    gap: 23px;
-    width: 100%;
   }
 
-  /* GREEN SECTION → REVERSED */
-  .glc-inner--reverse {
-    flex-direction: row-reverse;
+  @media (min-width: 990px) {
+    .glc-reverse { flex-direction: row-reverse; }
   }
 
-  /* MOBILE STACK */
+  @media (max-width: 989px) {
+    .glc-reverse { flex-direction: row; }
+  }
+
+  /* =========================
+    WIDTH CONTROL
+  ========================= */
+
+  .glc-phone { flex: 0 0 45%; }
+  .glc-phone-sibling { flex: 0 0 55%; }
+
   @media (max-width: 749px) {
-    .glc-inner,
-    .glc-inner--reverse {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .glc-phone {
-      width: 100% !important;
-      max-width: 260px;
-      margin: 0 auto;
-    }
-
-    .glc-phone-sibling {
-      width: 100% !important;
-      text-align: center !important;
-      margin-top: 20px !important;
-    }
+    .glc-phone { flex: 0 0 40%; }
+    .glc-phone-sibling { flex: 0 0 60%; padding-left: 12px; }
   }
 
-  /* IMAGE SAFETY (prevents collapse) */
+  /* =========================
+    TEXT ALIGNMENT
+  ========================= */
+
+  .glc-phone-sibling {
+    text-align: left !important;
+  }
+
+  .glc-list {
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  /* =========================
+    ICON CONSISTENCY
+  ========================= */
+
+  .glc-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .glc-list img {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    max-width: 28px;
+    object-fit: contain;
+    margin-top: 4px;
+  }
+
+  .glc-list span {
+    line-height: 1.5;
+  }
+
+  /* Prevent layout shift */
   .glc-phone img {
     width: 100%;
     height: auto;
@@ -66,134 +95,142 @@
 
     <div class="max-sm:!px-[24px]">
       {% if section.settings.heading != blank %}
-        <h2 class="glc-heading scroll-trigger animate--slide-in">
-          {{ section.settings.heading }}
-        </h2>
+        <h2 class="glc-heading">{{ section.settings.heading }}</h2>
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <p class="glc-subheading scroll-trigger animate--slide-in">
-          {{ section.settings.subheading }}
-        </p>
+        <p class="glc-subheading">{{ section.settings.subheading }}</p>
       {% endif %}
     </div>
 
     <div class="glc-grid flex items-stretch gap-[44px] max-xl:gap-[30px] max-sm:gap-0 max-990:flex-wrap">
 
-      <!-- =========================
-        WITH GOLF LIVE (GREEN)
-        ✅ FIXED: reversed layout
-      ========================= -->
+      <!-- GREEN SECTION -->
       <div
         class="glc-card glc-green 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pr-9 py-14 pl-0 rounded-[28px]"
         style="{% if section.settings.green_bg != blank %}background-image:url({{ section.settings.green_bg | image_url }});{% endif %}"
       >
 
-        <div class="glc-inner glc-inner--reverse">
+        <div class="glc-reverse gap-[23px] w-full">
 
-          <!-- PHONE -->
           {% if section.settings.green_phone != blank %}
-            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
-              <img
-                src="{{ section.settings.green_phone | image_url: width: 600 }}"
-                alt="With Golf Live App"
-                loading="lazy"
-                width="600"
-                height="900"
-              >
+            <div class="glc-phone glc-phone--desktop">
+              {{
+                section.settings.green_phone
+                | image_url: width: 600
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '300,400,600',
+                  sizes: '(max-width: 768px) 40vw, 45vw',
+                  alt: 'With Golf Live App'
+              }}
             </div>
           {% endif %}
 
           {% if section.settings.green_phone_mobile != blank %}
-            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
-              <img
-                src="{{ section.settings.green_phone_mobile | image_url: width: 500 }}"
-                alt="With Golf Live App"
-                loading="lazy"
-                width="500"
-                height="800"
-              >
+            <div class="glc-phone glc-phone--mobile">
+              {{
+                section.settings.green_phone_mobile
+                | image_url: width: 500
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '300,400,500',
+                  sizes: '40vw',
+                  alt: 'With Golf Live App'
+              }}
             </div>
           {% endif %}
 
-          <!-- TEXT -->
-          <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] max-sm:mt-[20px]">
-
-            <h3 class="glc-card-title text-white scroll-trigger animate--slide-in">
+          <div class="glc-phone-sibling text-white">
+            <h3 class="glc-card-title text-white">
               {{ section.settings.green_title }}
             </h3>
 
-            <ul class="glc-list mt-[32px]">
+            <ul class="glc-list">
               {% for block in section.blocks %}
                 {% if block.type == 'with_item' %}
-                  <li class="glc-item glc-item--check text-white scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
+                  <li {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
-                      <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="" loading="lazy">
+                      {{
+                        block.settings.icon
+                        | image_url: width: 40
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '40,60',
+                          sizes: '28px',
+                          alt: ''
+                      }}
                     {% endif %}
                     <span>{{ block.settings.text }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
             </ul>
-
           </div>
+
         </div>
       </div>
 
-      <!-- =========================
-        WITHOUT GOLF LIVE (GREY)
-      ========================= -->
+      <!-- GREY SECTION -->
       <div
         class="glc-card glc-grey 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pl-[50px] max-xl:pl-[22px] py-12 pr-0 rounded-[28px]"
         style="{% if section.settings.grey_bg != blank %}background-image:url({{ section.settings.grey_bg | image_url }});{% endif %}"
       >
 
-        <div class="glc-inner">
+        <div class="flex items-center gap-[23px] w-full">
 
-          <!-- TEXT -->
-          <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-left mt-[80px] max-sm:mt-[20px]">
-
-            <h3 class="glc-card-title text-black scroll-trigger animate--slide-in">
+          <div class="glc-phone-sibling text-left">
+            <h3 class="glc-card-title text-black">
               {{ section.settings.grey_title }}
             </h3>
 
-            <ul class="glc-list mt-[32px]">
+            <ul class="glc-list">
               {% for block in section.blocks %}
                 {% if block.type == 'without_item' %}
-                  <li class="glc-item glc-item--cross scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
+                  <li {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
-                      <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="" loading="lazy">
+                      {{
+                        block.settings.icon
+                        | image_url: width: 40
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '40,60',
+                          sizes: '28px',
+                          alt: ''
+                      }}
                     {% endif %}
                     <span class="text-black">{{ block.settings.text }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
             </ul>
-
           </div>
 
-          <!-- PHONE -->
           {% if section.settings.grey_phone != blank %}
-            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
-              <img
-                src="{{ section.settings.grey_phone | image_url: width: 600 }}"
-                alt="Without Golf Live"
-                loading="lazy"
-                width="600"
-                height="900"
-              >
+            <div class="glc-phone glc-phone--desktop">
+              {{
+                section.settings.grey_phone
+                | image_url: width: 600
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '300,400,600',
+                  sizes: '(max-width: 768px) 40vw, 45vw',
+                  alt: 'Without Golf Live'
+              }}
             </div>
           {% endif %}
 
           {% if section.settings.grey_phone_mobile != blank %}
-            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
-              <img
-                src="{{ section.settings.grey_phone_mobile | image_url: width: 500 }}"
-                alt="Without Golf Live"
-                loading="lazy"
-                width="500"
-                height="800"
-              >
+            <div class="glc-phone glc-phone--mobile">
+              {{
+                section.settings.grey_phone_mobile
+                | image_url: width: 500
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '300,400,500',
+                  sizes: '40vw',
+                  alt: 'Without Golf Live'
+              }}
             </div>
           {% endif %}
 
@@ -203,3 +240,42 @@
     </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Golf Live Comparison",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Section Heading" },
+    { "type": "textarea", "id": "subheading", "label": "Section Subheading" },
+    { "type": "image_picker", "id": "green_bg", "label": "Green Background Image" },
+    { "type": "image_picker", "id": "green_phone", "label": "Green Phone Image" },
+    { "type": "image_picker", "id": "green_phone_mobile", "label": "Green Phone Image (Mobile)" },
+    { "type": "text", "id": "green_title", "label": "Green Column Title" },
+    { "type": "image_picker", "id": "grey_bg", "label": "Grey Background Image" },
+    { "type": "image_picker", "id": "grey_phone", "label": "Grey Phone Image" },
+    { "type": "image_picker", "id": "grey_phone_mobile", "label": "Grey Phone Image (Mobile)" },
+    { "type": "text", "id": "grey_title", "label": "Grey Column Title" }
+  ],
+  "blocks": [
+    {
+      "type": "with_item",
+      "name": "With Golf Live Item",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon Image" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "without_item",
+      "name": "Without Golf Live Item",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon Image" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Golf Live Comparison" }
+  ]
+}
+{% endschema %}
