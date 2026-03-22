@@ -7,8 +7,8 @@
 >
 
   {% if section.settings.heading != blank %}
-    <h2 class="vt3-heading">
-      {{ section.settings.heading }}
+    <h2 class="vt3-heading text-center">
+      {{ section.settings.heading | replace: '[highlight]', '<span style="color:' | append: section.settings.highlight_color | append: '">' | replace: '[/highlight]', '</span>' }}
     </h2>
   {% endif %}
 
@@ -45,7 +45,9 @@
                     width="800"
                     height="1422"
                   >
-                  <div class="vt3-play"></div>
+                  <button class="vt3-play-btn" type="button" aria-label="Play video">
+                    {% render 'video-test-play-icon' %}
+                  </button>
                 </div>
               {% endif %}
 
@@ -59,34 +61,30 @@
 
     </div>
 
-    <!-- CTA BUTTONS -->
-    <div class="vt3-buttons">
+    <!-- BUTTONS (MATCHED STYLE) -->
+    <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] mt-[40px] min-990:mt-[65px]">
 
       {% if section.settings.golfer_text != blank %}
-        <a 
-          href="{{ section.settings.golfer_url }}" 
-          class="vt3-btn"
-          style="
-            background: {{ section.settings.button_bg }};
-            color: {{ section.settings.button_text }};
-          "
+        <a
+          href="{{ section.settings.golfer_url }}"
+          class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[42px] pr-[57px] min-990:pr-[56px] min-w-[337px] min-990:min-w-[346px]"
         >
           {{ section.settings.golfer_text }}
-          <span class="vt3-arrow">→</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+            <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
         </a>
       {% endif %}
 
       {% if section.settings.coach_text != blank %}
-        <a 
-          href="{{ section.settings.coach_url }}" 
-          class="vt3-btn"
-          style="
-            background: {{ section.settings.button_bg }};
-            color: {{ section.settings.button_text }};
-          "
+        <a
+          href="{{ section.settings.coach_url }}"
+          class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[42px] pr-[57px] min-990:pr-[56px] min-w-[337px] min-990:min-w-[346px]"
         >
           {{ section.settings.coach_text }}
-          <span class="vt3-arrow">→</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20" fill="none">
+            <path d="M0 9.88391H35M35 9.88391L26 0.883911M35 9.88391L26 18.8839" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
         </a>
       {% endif %}
 
@@ -136,6 +134,12 @@ document.addEventListener('DOMContentLoaded', function () {
       "label": "Heading"
     },
     {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#0A7A28"
+    },
+    {
       "type": "range",
       "id": "padding_top",
       "label": "Padding Top",
@@ -157,36 +161,24 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       "type": "text",
       "id": "golfer_text",
-      "label": "Golfer Button Text",
+      "label": "Golfer button text",
       "default": "I'M A GOLFER"
     },
     {
       "type": "url",
       "id": "golfer_url",
-      "label": "Golfer Button Link"
+      "label": "Golfer button link"
     },
     {
       "type": "text",
       "id": "coach_text",
-      "label": "Coach Button Text",
+      "label": "Coach button text",
       "default": "I'M A COACH"
     },
     {
       "type": "url",
       "id": "coach_url",
-      "label": "Coach Button Link"
-    },
-    {
-      "type": "color",
-      "id": "button_bg",
-      "label": "Button Background",
-      "default": "#0A7A28"
-    },
-    {
-      "type": "color",
-      "id": "button_text",
-      "label": "Button Text Color",
-      "default": "#FFFFFF"
+      "label": "Coach button link"
     }
   ],
   "blocks": [
