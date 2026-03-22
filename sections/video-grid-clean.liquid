@@ -1,8 +1,8 @@
 <div 
   class="vt3-section"
   style="
-    padding-top: {{ section.settings.padding_top_desktop }}px;
-    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
   "
 >
 
@@ -11,31 +11,28 @@
     <div 
       class="vt3-heading-wrap"
       style="
-        max-width: {{ section.settings.heading_max_width_desktop }}px;
-        padding-left: {{ section.settings.heading_padding_desktop }}px;
-        padding-right: {{ section.settings.heading_padding_desktop }}px;
+        max-width: {{ section.settings.heading_max_width }}px;
+        padding-left: {{ section.settings.heading_padding }}px;
+        padding-right: {{ section.settings.heading_padding }}px;
       "
     >
-      <h2 class="vt3-heading vt3-heading-locked">
+      <h2 
+        class="vt3-heading"
+        style="
+          font-size: {{ section.settings.heading_size }}px;
+        "
+      >
 
-        {% assign before = section.settings.heading | split: '–' | first %}
-        {% assign after = section.settings.heading | split: '–' | last %}
+        {% assign before = section.settings.heading | split: '[highlight]' | first %}
+        {% assign after_split = section.settings.heading | split: '[highlight]' | last | split: '[/highlight]' %}
+        {% assign highlight = after_split[0] %}
+        {% assign after = after_split[1] %}
 
-        {% assign highlight = after | split: '[highlight]' | last | split: '[/highlight]' | first %}
-        {% assign after_clean = after | split: '[highlight]' | first %}
-
-        <!-- LINE 1 -->
-        <span class="vt3-line">
-          {{ before }} –
+        {{ before }}
+        <span class="vt3-highlight">
+          {{ highlight }}
         </span>
-
-        <!-- LINE 2 -->
-        <span class="vt3-line">
-          {{ after_clean }}
-          <span class="vt3-highlight">
-            {{ highlight }}
-          </span>
-        </span>
+        {{ after }}
 
       </h2>
     </div>
@@ -43,7 +40,7 @@
 
   <div class="vt3-container">
 
-    <!-- GRID -->
+    <!-- VIDEO GRID -->
     <div class="vt3-grid">
 
       {% for block in section.blocks %}
@@ -71,9 +68,11 @@
                     width="800"
                     height="1422"
                   >
+                  <button class="vt3-play-btn" type="button" aria-label="Play video">
+                    {% render 'video-test-play-icon' %}
+                  </button>
                 </div>
               {% endif %}
-
             {% endif %}
 
           </div>
@@ -83,17 +82,23 @@
     </div>
 
     <!-- BUTTONS -->
-    <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] mt-[40px]">
+    <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] mt-[40px] min-990:mt-[65px]">
 
       {% if section.settings.golfer_text != blank %}
-        <a href="{{ section.settings.golfer_url }}" class="golf-app-hero__button button-green">
+        <a href="{{ section.settings.golfer_url }}" class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[42px] pr-[57px] min-w-[337px]">
           {{ section.settings.golfer_text }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20">
+            <path d="M0 9.88H35M35 9.88L26 0.88M35 9.88L26 18.88" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
         </a>
       {% endif %}
 
       {% if section.settings.coach_text != blank %}
-        <a href="{{ section.settings.coach_url }}" class="golf-app-hero__button button-green">
+        <a href="{{ section.settings.coach_url }}" class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[42px] pr-[57px] min-w-[337px]">
           {{ section.settings.coach_text }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20" viewBox="0 0 37 20">
+            <path d="M0 9.88H35M35 9.88L26 0.88M35 9.88L26 18.88" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
         </a>
       {% endif %}
 
@@ -102,3 +107,87 @@
   </div>
 
 </div>
+
+{% schema %}
+{
+  "name": "Video Grid Clean V2",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading" },
+
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size (Desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "heading_max_width",
+      "label": "Heading Max Width",
+      "min": 400,
+      "max": 1400,
+      "step": 50,
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "heading_padding",
+      "label": "Heading Side Padding",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 20
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60
+    },
+
+    { "type": "text", "id": "golfer_text", "label": "Golfer Button Text", "default": "I'M A GOLFER" },
+    { "type": "url", "id": "golfer_url", "label": "Golfer Link" },
+
+    { "type": "text", "id": "coach_text", "label": "Coach Button Text", "default": "I'M A COACH" },
+    { "type": "url", "id": "coach_url", "label": "Coach Link" }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video" },
+        { "type": "image_picker", "id": "image", "label": "Thumbnail" },
+        { "type": "text", "id": "name", "label": "Alt text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Grid Clean V2",
+      "blocks": [
+        { "type": "video" },
+        { "type": "video" },
+        { "type": "video" },
+        { "type": "video" }
+      ]
+    }
+  ]
+}
+{% endschema %}
