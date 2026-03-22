@@ -10,10 +10,16 @@
   {% if section.settings.heading != blank %}
     <div class="vt3-heading-wrap">
       <h2 class="vt3-heading">
-        {{ section.settings.heading 
-          | replace: '[highlight]', '<span class="vt3-highlight">' 
-          | replace: '[/highlight]', '</span>' 
-        }}
+        {% assign parts = section.settings.heading | split: '[highlight]' %}
+        {% if parts.size > 1 %}
+          {{ parts[0] }}
+          <span style="color: {{ section.settings.highlight_color }};">
+            {{ parts[1] | split: '[/highlight]' | first }}
+          </span>
+          {{ parts[1] | split: '[/highlight]' | last }}
+        {% else %}
+          {{ section.settings.heading }}
+        {% endif %}
       </h2>
     </div>
   {% endif %}
@@ -24,13 +30,11 @@
     <div class="vt3-grid">
 
       {% for block in section.blocks %}
-
         <div class="vt3-card" {{ block.shopify_attributes }}>
 
           <div class="vt3-media">
 
             {% if block.settings.video != blank %}
-
               {{
                 block.settings.video
                 | video_tag:
@@ -56,13 +60,11 @@
                   </button>
                 </div>
               {% endif %}
-
             {% endif %}
 
           </div>
 
         </div>
-
       {% endfor %}
 
     </div>
@@ -141,6 +143,12 @@ document.addEventListener('DOMContentLoaded', function () {
       "default": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]"
     },
     {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#0A7A28"
+    },
+    {
       "type": "range",
       "id": "padding_top",
       "label": "Padding Top",
@@ -158,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
       "step": 10,
       "default": 60
     },
-
     {
       "type": "text",
       "id": "golfer_text",
