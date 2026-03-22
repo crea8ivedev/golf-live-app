@@ -90,6 +90,62 @@
         "padding_bottom": 60
       }
     },
+    "video_grid_clean_HznWgy": {
+      "type": "video-grid-clean",
+      "blocks": {
+        "video_EaLnaN": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Video 1.mp4",
+            "image": "shopify://shop_images/video1-frame.jpg",
+            "name": ""
+          }
+        },
+        "video_96A4Ui": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Video 2.mp4",
+            "image": "shopify://shop_images/video2-frame.jpg",
+            "name": ""
+          }
+        },
+        "video_gLTFE8": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/The journey. If you’re not obsessed with it, you’ll never reach the destination.This path is too.mp4",
+            "image": "shopify://shop_images/video3-frame.jpg",
+            "name": ""
+          }
+        },
+        "video_UpphiN": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Video 4.mp4",
+            "image": "shopify://shop_images/video4-frame.jpg",
+            "name": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_EaLnaN",
+        "video_96A4Ui",
+        "video_gLTFE8",
+        "video_UpphiN"
+      ],
+      "name": "Video Grid Clean V2",
+      "settings": {
+        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "heading_size": 44,
+        "heading_max_width": 1000,
+        "heading_padding": 20,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "golfer_text": "I'M A GOLFER",
+        "golfer_url": "",
+        "coach_text": "I'M A COACH",
+        "coach_url": ""
+      }
+    },
     "video_testimonial_flex_gKwJXJ": {
       "type": "video-testimonial-flex",
       "blocks": {
@@ -729,65 +785,12 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 52
       }
-    },
-    "video_grid_clean_HznWgy": {
-      "type": "video-grid-clean",
-      "blocks": {
-        "video_EaLnaN": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/Video 1.mp4",
-            "image": "shopify://shop_images/video1-frame.jpg",
-            "name": ""
-          }
-        },
-        "video_96A4Ui": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/Video 2.mp4",
-            "image": "shopify://shop_images/video2-frame.jpg",
-            "name": ""
-          }
-        },
-        "video_gLTFE8": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/The journey. If you’re not obsessed with it, you’ll never reach the destination.This path is too.mp4",
-            "image": "shopify://shop_images/video3-frame.jpg",
-            "name": ""
-          }
-        },
-        "video_UpphiN": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/Video 4.mp4",
-            "image": "shopify://shop_images/video4-frame.jpg",
-            "name": ""
-          }
-        }
-      },
-      "block_order": [
-        "video_EaLnaN",
-        "video_96A4Ui",
-        "video_gLTFE8",
-        "video_UpphiN"
-      ],
-      "name": "Video Grid Clean V2",
-      "settings": {
-        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
-        "highlight_color": "#0a7a28",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "golfer_text": "I'M A GOLFER",
-        "golfer_url": "",
-        "coach_text": "I'M A COACH",
-        "coach_url": ""
-      }
     }
   },
   "order": [
     "banner_zY6kBL",
     "trusted_by_coaches_XXTeTG",
+    "video_grid_clean_HznWgy",
     "video_testimonial_flex_gKwJXJ",
     "video_testimonial_LBDcHx",
     "zigzag_section_9PexWn",
@@ -797,7 +800,6 @@
     "golf_live_comparison_CLjCmx",
     "cta_questions_bar_aypLzc",
     "faq_golfer_coach_rbLhDK",
-    "why_golf_live_thfDCf",
-    "video_grid_clean_HznWgy"
+    "why_golf_live_thfDCf"
   ]
 }
