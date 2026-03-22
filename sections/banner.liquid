@@ -8,14 +8,16 @@
       height="auto"
       class="absolute w-full min-1582:w-[calc(100%_-_141px)] h-full top-0 left-0 object-cover pointer-events-none max-990:hidden"
     >
-    <img
-      src="{{ section.settings.mobile_bg | image_url }}"
-      alt="BG"
-      loading="lazy"
-      width="auto"
-      height="auto"
-      class="absolute w-full h-full top-0 left-0 object-cover pointer-events-none min-990:hidden"
-    >
+<img
+  src="{{ section.settings.mobile_bg | image_url }}"
+  alt="Golf Live Background"
+  loading="eager"
+  fetchpriority="high"
+  decoding="async"
+  width="{{ section.settings.mobile_bg.width }}"
+  height="{{ section.settings.mobile_bg.height }}"
+  class="absolute w-full h-full top-0 left-0 object-cover pointer-events-none min-990:hidden"
+>
   </div>
   <div class="golf-app-hero__grid flex flex-col-reverse min-990:flex-row relative z-1">
     <!-- LEFT CONTENT -->
