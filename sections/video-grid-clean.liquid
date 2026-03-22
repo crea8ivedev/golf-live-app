@@ -1,4 +1,10 @@
-<div class="vt3-section">
+<div 
+  class="vt3-section"
+  style="
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
 
   {% if section.settings.heading != blank %}
     <h2 class="vt3-heading">
@@ -93,6 +99,24 @@ document.addEventListener('DOMContentLoaded', function () {
       "id": "heading",
       "label": "Heading",
       "default": "Seeing Results – Join Them Today"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "default": 60
     }
   ],
   "blocks": [
