@@ -176,7 +176,10 @@
           if (!swiperInstance) {
             swiperInstance = new Swiper(swiperEl, {
               spaceBetween: 30,
-              loop: false,
+              loop: true,
+              loopAdditionalSlides: 2,
+              watchOverflow: true,
+              speed: 600,
               navigation: {
                 nextEl: section.querySelector('.golf-features-next'),
                 prevEl: section.querySelector('.golf-features-prev'),
