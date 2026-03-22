@@ -1,59 +1,108 @@
 {% comment %}
-  Golf Live Comparison – Optimized + Animated + Responsive
+  Section: Golf Live Comparison
+  Theme: Dawn
 {% endcomment %}
+<style>
+  /* =========================
+    Golf Live Comparison
+    Phone Image Visibility
+    ========================= */
 
-<section 
-  class="golf-live-compare"
-  style="
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-  "
->
-  <div class="container-136">
+  /* Desktop (default) */
+  .golf-live-compare .glc-phone--mobile {
+    display: none;
+  }
 
-    {% if section.settings.heading != blank %}
-      <h2 class="glc-heading">{{ section.settings.heading }}</h2>
-    {% endif %}
+  .golf-live-compare .glc-phone--desktop {
+    display: block;
+  }
 
-    {% if section.settings.subheading != blank %}
-      <p class="glc-subheading">{{ section.settings.subheading }}</p>
-    {% endif %}
+  /* Mobile */
+  @media (max-width: 749px) {
+    .golf-live-compare .glc-phone--desktop {
+      display: none;
+    }
 
-    <div class="glc-grid">
+    .golf-live-compare .glc-phone--mobile {
+      display: block;
+    }
+  }
+</style>
+<section class="golf-live-compare" id="section-{{ section.id }}">
+  <div class="container-136 max-sm:!px-0">
+    <div class=" max-sm:!px-[24px]">
+      {% if section.settings.heading != blank %}
+        <h2 class="glc-heading scroll-trigger animate--slide-in">{{ section.settings.heading }}</h2>
+      {% endif %}
 
+      {% if section.settings.subheading != blank %}
+        <p class="glc-subheading scroll-trigger animate--slide-in">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+    <div class="glc-grid flex items-stretch gap-[44px] max-xl:gap-[30px] max-sm:gap-0 max-990:flex-wrap">
       <!-- WITH GOLF LIVE -->
-      <div class="glc-card glc-green">
-
-        <div class="glc-inner">
-
-          <!-- PHONE -->
+      <div
+        class="glc-card glc-green 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pr-9 py-14 pl-0 rounded-[28px]"
+        style="{% if section.settings.green_bg != blank %}background-image:url({{ section.settings.green_bg | image_url }});{% endif %}"
+      >
+        <div class="flex items-center gap-[23px] w-full">
           {% if section.settings.green_phone != blank %}
-            <div class="glc-phone">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
               <img
                 src="{{ section.settings.green_phone | image_url: width: 600 }}"
-                srcset="
-                  {{ section.settings.green_phone_mobile | image_url: width: 400 }} 400w,
-                  {{ section.settings.green_phone | image_url: width: 600 }} 600w
-                "
-                sizes="(max-width: 749px) 100vw, 40vw"
-                alt="With Golf Live"
+                alt="With Golf Live App"
                 loading="lazy"
-                width="600"
-                height="900"
+                height="auto"
+                width="auto"
+              >
+            </div>
+          {% endif %}
+          {% if section.settings.green_phone_mobile != blank %}
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
+              <img
+                src="{{ section.settings.green_phone_mobile | image_url: width: 600 }}"
+                alt="With Golf Live App"
+                loading="lazy"
+                height="auto"
+                width="auto"
               >
             </div>
           {% endif %}
 
-          <!-- TEXT -->
-          <div class="glc-content">
-            <h3>{{ section.settings.green_title }}</h3>
+          <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] min-1520:mt-[80px] min-[1660px]:mt-[100px] max-sm:mt-[20px]">
+            <h3 class="glc-card-title text-white scroll-trigger animate--slide-in">
+              {{ section.settings.green_title }}
+            </h3>
 
-            <ul>
+            <div class="glc-shape mt-[8px] min-990:mt-[20px] max-990:max-w-[115px]">
+              <svg
+                width="171"
+                height="8"
+                viewBox="0 0 171 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="max-990:w-full"
+              >
+                <path d="M170.359 3.77954C166.136 -0.59314 159.128 -0.593143 154.905 3.77954C150.681 8.15222 143.674 8.15222 139.45 3.77954C135.227 -0.593141 128.219 -0.593141 123.996 3.77954C119.772 8.15222 112.765 8.15222 108.541 3.77954C104.318 -0.593142 97.3102 -0.593142 93.0866 3.77954C88.863 8.15222 81.8557 8.15222 77.6321 3.77954C73.4085 -0.593142 66.4012 -0.593142 62.1775 3.77954C57.9539 8.15222 50.9466 8.15222 46.723 3.77954C42.4994 -0.593142 35.4921 -0.593141 31.2685 3.77954C27.0448 8.15222 20.0375 8.15222 15.8139 3.77954C11.5903 -0.593141 4.58299 -0.593142 0.359375 3.77954" stroke="white"/>
+              </svg>
+            </div>
+
+            <ul class="glc-list mt-[32px] max-[1660px]:max-w-[277px]">
               {% for block in section.blocks %}
                 {% if block.type == 'with_item' %}
-                  <li>
+                  <li
+                    class="glc-item glc-item--check text-white text-left scroll-trigger animate--slide-in"
+                    {{ block.shopify_attributes }}
+                  >
                     {% if block.settings.icon != blank %}
-                      <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="">
+                      <img
+                        src="{{ block.settings.icon | image_url: width: 40 }}"
+                        alt=""
+                        class="glc-item-icon"
+                        loading="lazy"
+                        height="auto"
+                        width="auto"
+                      >
                     {% endif %}
                     <span>{{ block.settings.text }}</span>
                   </li>
@@ -61,222 +110,178 @@
               {% endfor %}
             </ul>
           </div>
-
         </div>
       </div>
 
       <!-- WITHOUT GOLF LIVE -->
-      <div class="glc-card glc-grey">
+      <div
+        class="glc-card glc-grey 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pl-[50px] max-xl:pl-[22px] py-12 pr-0 rounded-[28px]"
+        style="{% if section.settings.grey_bg != blank %}background-image:url({{ section.settings.grey_bg | image_url }});{% endif %}"
+      >
+        <div class="flex items-center gap-[23px] w-full max-sm:items-center">
+          <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] min-1520:mt-[80px] min-[1660px]:mt-[100px] max-sm:mt-[20px]">
+            <h3 class="glc-card-title text-black scroll-trigger animate--slide-in">
+              {{ section.settings.grey_title }}
+            </h3>
 
-        <div class="glc-inner">
+            <div class="glc-shape mt-[8px] min-990:mt-[20px] max-990:max-w-[115px]">
+              <svg
+                width="171"
+                height="8"
+                viewBox="0 0 171 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="max-990:w-full"
+              >
+                <path d="M170.359 3.77954C166.136 -0.59314 159.128 -0.593143 154.905 3.77954C150.681 8.15222 143.674 8.15222 139.45 3.77954C135.227 -0.593141 128.219 -0.593141 123.996 3.77954C119.772 8.15222 112.765 8.15222 108.541 3.77954C104.318 -0.593142 97.3102 -0.593142 93.0866 3.77954C88.863 8.15222 81.8557 8.15222 77.6321 3.77954C73.4085 -0.593142 66.4012 -0.593142 62.1775 3.77954C57.9539 8.15222 50.9466 8.15222 46.723 3.77954C42.4994 -0.593142 35.4921 -0.593141 31.2685 3.77954C27.0448 8.15222 20.0375 8.15222 15.8139 3.77954C11.5903 -0.593141 4.58299 -0.593142 0.359375 3.77954" stroke="#646764"/>
+              </svg>
+            </div>
 
-          <!-- TEXT -->
-          <div class="glc-content">
-            <h3>{{ section.settings.grey_title }}</h3>
-
-            <ul>
+            <ul class="glc-list mt-[32px]">
               {% for block in section.blocks %}
                 {% if block.type == 'without_item' %}
-                  <li>
+                  <li class="glc-item glc-item--cross scroll-trigger animate--slide-in" {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
-                      <img src="{{ block.settings.icon | image_url: width: 40 }}" alt="">
+                      <img
+                        src="{{ block.settings.icon | image_url: width: 40 }}"
+                        alt=""
+                        class="glc-item-icon"
+                        loading="lazy"
+                        height="auto"
+                        width="auto"
+                      >
                     {% endif %}
-                    <span>{{ block.settings.text }}</span>
+                    <span class="text-black">{{ block.settings.text }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
             </ul>
           </div>
 
-          <!-- PHONE -->
           {% if section.settings.grey_phone != blank %}
-            <div class="glc-phone">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
               <img
                 src="{{ section.settings.grey_phone | image_url: width: 600 }}"
-                srcset="
-                  {{ section.settings.grey_phone_mobile | image_url: width: 400 }} 400w,
-                  {{ section.settings.grey_phone | image_url: width: 600 }} 600w
-                "
-                sizes="(max-width: 749px) 100vw, 40vw"
                 alt="Without Golf Live"
                 loading="lazy"
-                width="600"
-                height="900"
+                height="auto"
+                width="auto"
               >
             </div>
           {% endif %}
-
+          {% if section.settings.grey_phone_mobile != blank %}
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2 scroll-trigger animate--slide-in">
+              <img
+                src="{{ section.settings.grey_phone_mobile | image_url: width: 600 }}"
+                alt="Without Golf Live"
+                loading="lazy"
+                height="auto"
+                width="auto"
+              >
+            </div>
+          {% endif %}
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
-<!-- =========================
-  STYLES
-========================= -->
-<style>
-.golf-live-compare {
-  text-align: center;
-}
-
-.glc-heading {
-  font-size: 40px;
-  font-weight: 700;
-}
-
-.glc-subheading {
-  max-width: 700px;
-  margin: 10px auto 40px;
-}
-
-.glc-grid {
-  display: flex;
-  gap: 30px;
-}
-
-.glc-card {
-  flex: 1;
-  border-radius: 24px;
-  overflow: hidden;
-  padding: 40px;
-}
-
-.glc-green {
-  background: #2f6f3a;
-  color: #fff;
-}
-
-.glc-grey {
-  background: #f4f4f4;
-}
-
-.glc-inner {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.glc-phone {
-  flex: 1;
-  animation: float 4s ease-in-out infinite;
-}
-
-.glc-phone img {
-  width: 100%;
-  height: auto;
-}
-
-.glc-content {
-  flex: 1;
-  text-align: left;
-}
-
-.glc-content h3 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.glc-content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.glc-content li {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  align-items: center;
-}
-
-/* FLOATING ANIMATION */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-/* MOBILE FIX */
-@media (max-width: 749px) {
-  .glc-grid {
-    flex-direction: column;
-  }
-
-  .glc-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .glc-content {
-    text-align: center;
-  }
-
-  .glc-heading {
-    font-size: 28px;
-  }
-}
-</style>
-
-<!-- =========================
-  SCROLL ANIMATION
-========================= -->
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-});
-
-document.querySelectorAll('.glc-card').forEach(el => {
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(40px)';
-  el.style.transition = 'all 0.6s ease';
-  observer.observe(el);
-});
-</script>
 
 {% schema %}
 {
   "name": "Golf Live Comparison",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading" },
-
-    { "type": "image_picker", "id": "green_phone", "label": "Green Phone Desktop" },
-    { "type": "image_picker", "id": "green_phone_mobile", "label": "Green Phone Mobile" },
-    { "type": "text", "id": "green_title", "label": "Green Title", "default": "With Golf Live" },
-
-    { "type": "image_picker", "id": "grey_phone", "label": "Grey Phone Desktop" },
-    { "type": "image_picker", "id": "grey_phone_mobile", "label": "Grey Phone Mobile" },
-    { "type": "text", "id": "grey_title", "label": "Grey Title", "default": "Without Golf Live" },
-
-    { "type": "range", "id": "padding_top", "min": 0, "max": 200, "step": 10, "default": 60, "label": "Padding Top" },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 200, "step": 10, "default": 60, "label": "Padding Bottom" }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Why Golf Live Beats the Competition"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Section Subheading"
+    },
+    {
+      "type": "image_picker",
+      "id": "green_bg",
+      "label": "Green Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "green_phone",
+      "label": "Green Phone Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "green_phone_mobile",
+      "label": "Green Phone Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "green_title",
+      "label": "Green Column Title",
+      "default": "With Golf Live"
+    },
+    {
+      "type": "image_picker",
+      "id": "grey_bg",
+      "label": "Grey Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "grey_phone",
+      "label": "Grey Phone Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "grey_phone_mobile",
+      "label": "Grey Phone Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "grey_title",
+      "label": "Grey Column Title",
+      "default": "Without Golf Live"
+    }
   ],
   "blocks": [
     {
       "type": "with_item",
-      "name": "With Item",
+      "name": "With Golf Live Item",
       "settings": [
-        { "type": "image_picker", "id": "icon", "label": "Icon" },
-        { "type": "text", "id": "text", "label": "Text" }
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "List Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
       ]
     },
     {
       "type": "without_item",
-      "name": "Without Item",
+      "name": "Without Golf Live Item",
       "settings": [
-        { "type": "image_picker", "id": "icon", "label": "Icon" },
-        { "type": "text", "id": "text", "label": "Text" }
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "List Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
       ]
     }
   ],
   "presets": [
-    { "name": "Golf Live Comparison" }
+    {
+      "name": "Golf Live Comparison"
+    }
   ]
 }
 {% endschema %}
