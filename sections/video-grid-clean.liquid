@@ -27,7 +27,21 @@
                   height: 1422
               }}
 
-              {% if block.settings.image != blank %}
+              {% if block.settings.video.preview_image != blank %}
+                <!-- AUTO VIDEO THUMBNAIL -->
+                <div class="vt3-poster">
+                  <img
+                    src="{{ block.settings.video.preview_image | image_url: width: 800 }}"
+                    alt="{{ block.settings.name | escape }}"
+                    loading="lazy"
+                    width="800"
+                    height="1422"
+                  >
+                  <div class="vt3-play"></div>
+                </div>
+
+              {% elsif block.settings.image != blank %}
+                <!-- FALLBACK IMAGE -->
                 <div class="vt3-poster">
                   <img
                     src="{{ block.settings.image | image_url: width: 800 }}"
@@ -83,7 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
     poster.addEventListener('click', () => {
       pauseAll();
       poster.style.display = 'none';
-      video.play();
+      video.play().catch(() => {
+        poster.style.display = 'block';
+      });
     });
   });
 
@@ -107,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "name": "Video",
       "settings": [
         { "type": "video", "id": "video", "label": "Video" },
-        { "type": "image_picker", "id": "image", "label": "Poster image" },
+        { "type": "image_picker", "id": "image", "label": "Fallback image (optional)" },
         { "type": "text", "id": "name", "label": "Alt text (optional)" }
       ]
     }
