@@ -3652,7 +3652,7 @@ details-disclosure > details {
 
 
 /* ========================================
-   VIDEO GRID CLEAN V2 (FINAL CLEAN)
+   VIDEO GRID CLEAN V2 (FINAL)
 ======================================== */
 
 /* SECTION */
@@ -3667,7 +3667,7 @@ details-disclosure > details {
   margin: 0 auto;
 }
 
-/* GRID → FLEX ROW (NO WRAP) */
+/* GRID (ONE ROW, NO WRAP) */
 .vt3-grid {
   display: flex;
   gap: 24px;
@@ -3683,6 +3683,11 @@ details-disclosure > details {
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
+  transition: transform 0.25s ease;
+}
+
+.vt3-card:hover {
+  transform: translateY(-4px);
 }
 
 /* MEDIA */
@@ -3733,9 +3738,10 @@ details-disclosure > details {
   letter-spacing: -0.02em;
 }
 
-/* HIGHLIGHT */
-.vt3-highlight {
-  color: #0A7A28;
+/* 🔥 FORCE HIGHLIGHT COLOR (FIXED) */
+.vt3-heading .vt3-highlight {
+  color: #0A7A28 !important;
+  font-weight: 700;
 }
 
 /* MOBILE STACK */
