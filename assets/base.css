@@ -3770,3 +3770,49 @@ details-disclosure > details {
 .vt3-section .swiper-slide {
   all: unset;
 }
+/* ===============================
+   FORCE CLEAN VIDEO GRID
+================================ */
+
+/* 🔴 KILL ALL SWIPER UI INSIDE THIS SECTION */
+.vt3-section .swiper-button-next,
+.vt3-section .swiper-button-prev,
+.vt3-section .swiper-pagination {
+  display: none !important;
+}
+
+/* 🔴 FORCE GRID (override theme flex) */
+.vt3-grid {
+  display: grid !important;
+}
+
+/* 🔴 FORCE 4-UP NO BREAK */
+@media (min-width: 990px) {
+  .vt3-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* 🔴 REMOVE ANY WIDTH LIMITS */
+.vt3-card {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* 🔴 PREVENT FLEX OVERRIDES FROM THEME */
+.vt3-grid > * {
+  flex: unset !important;
+  max-width: none !important;
+}
+
+/* 🔴 ENSURE CONTAINER CAN FIT 4 */
+.vt3-container {
+  max-width: 1400px !important;
+}
+
+/* 🔴 SAFETY: NO SWIPER LAYOUT RULES */
+.vt3-section .swiper,
+.vt3-section .swiper-wrapper,
+.vt3-section .swiper-slide {
+  all: unset !important;
+}
