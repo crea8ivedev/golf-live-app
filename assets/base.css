@@ -3653,13 +3653,21 @@ details-disclosure > details {
 
 
 /* ========================================
-   VIDEO GRID CLEAN V2 (FINAL PREMIUM)
+   VIDEO GRID CLEAN V2 (FINAL STABLE)
 ======================================== */
 
 /* SECTION */
 .vt3-section {
   padding-left: 20px;
   padding-right: 20px;
+}
+
+/* MOBILE SECTION PADDING */
+@media (max-width: 989px) {
+  .vt3-section {
+    padding-top: var(--pt-mobile) !important;
+    padding-bottom: var(--pb-mobile) !important;
+  }
 }
 
 /* CONTAINER */
@@ -3675,7 +3683,7 @@ details-disclosure > details {
   align-items: stretch;
 }
 
-/* DESKTOP */
+/* DESKTOP: 4 ACROSS */
 @media (min-width: 990px) {
   .vt3-grid {
     flex-wrap: nowrap;
@@ -3683,11 +3691,11 @@ details-disclosure > details {
 
   .vt3-card {
     flex: 1 1 0;
-    min-width: 0;
+    min-width: 0; /* 🔥 critical fix */
   }
 }
 
-/* MOBILE */
+/* MOBILE: STACK */
 @media (max-width: 989px) {
   .vt3-grid {
     flex-direction: column;
@@ -3725,6 +3733,7 @@ details-disclosure > details {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 /* POSTER */
@@ -3735,49 +3744,55 @@ details-disclosure > details {
   z-index: 2;
 }
 
+/* PLAY BUTTON */
+.vt3-play-btn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* HEADING WRAP */
 .vt3-heading-wrap {
   text-align: center;
   margin: 0 auto 40px;
 }
 
-/* LOCKED HEADING */
-.vt3-heading-locked {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* HEADING */
+.vt3-heading {
+  font-size: 44px; /* fallback */
   line-height: 1.2;
-  letter-spacing: -0.02em;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* LINES */
-.vt3-line {
-  display: block;
-  width: 100%;
-}
-
-.vt3-line + .vt3-line {
-  margin-top: 6px;
+/* MOBILE HEADING SIZE (FROM LIQUID VAR) */
+@media (max-width: 768px) {
+  .vt3-heading {
+    font-size: var(--heading-mobile) !important;
+    line-height: 1.3;
+  }
 }
 
 /* HIGHLIGHT */
 .vt3-highlight {
   color: #0A7A28 !important;
+  font-weight: 700;
 }
 
-/* MOBILE TYPE */
-@media (max-width: 768px) {
-  .vt3-heading-locked {
-    line-height: 1.3;
-  }
+/* BUTTON WRAP */
+.vt-buttons {
+  margin-top: 40px;
 }
 
-/* REMOVE SWIPER LEFTOVERS */
+/* 🚫 REMOVE ANY SWIPER LEFTOVERS */
 .vt3-section .swiper,
 .vt3-section .swiper-wrapper,
 .vt3-section .swiper-slide,
 .vt3-section .swiper-button-next,
-.vt3-section .swiper-button-prev {
+.vt3-section .swiper-button-prev,
+.vt3-section .swiper-pagination {
   display: none !important;
 }
