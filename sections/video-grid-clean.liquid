@@ -44,43 +44,49 @@
         <div class="vt3-card" {{ block.shopify_attributes }}>
           <div class="vt3-media">
 
-            <!-- VIDEO (LAZY LOADED) -->
             {% if block.settings.video != blank %}
-              <video 
-                class="vt3-video"
-                playsinline
-                muted
-                preload="none"
-                width="500"
-                height="900"
-                data-src="{{ block.settings.video | file_url }}"
-              ></video>
 
-              <!-- POSTER -->
-              {% if block.settings.image != blank %}
-                <div class="vt3-poster">
+              <div class="vt3-video-wrap">
 
-                  <img
-                    src="{{ block.settings.image | image_url: width: 400 }}"
-                    srcset="
-                      {{ block.settings.image | image_url: width: 200 }} 200w,
-                      {{ block.settings.image | image_url: width: 300 }} 300w,
-                      {{ block.settings.image | image_url: width: 400 }} 400w,
-                      {{ block.settings.image | image_url: width: 500 }} 500w
-                    "
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    alt="{{ block.settings.name | escape }}"
-                    loading="lazy"
-                    width="400"
-                    height="700"
-                  >
+                <!-- VIDEO (hidden initially) -->
+                {{
+                  block.settings.video
+                  | video_tag:
+                    controls: false,
+                    preload: 'none',
+                    playsinline: true,
+                    class: 'vt3-video hidden',
+                    width: 500,
+                    height: 900
+                }}
 
-                  <button class="vt3-play-btn" type="button" aria-label="Play video">
-                    {% render 'video-test-play-icon' %}
-                  </button>
+                <!-- POSTER -->
+                {% if block.settings.image != blank %}
+                  <div class="vt3-poster">
 
-                </div>
-              {% endif %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 400 }}"
+                      srcset="
+                        {{ block.settings.image | image_url: width: 200 }} 200w,
+                        {{ block.settings.image | image_url: width: 300 }} 300w,
+                        {{ block.settings.image | image_url: width: 400 }} 400w,
+                        {{ block.settings.image | image_url: width: 500 }} 500w
+                      "
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      alt="{{ block.settings.name | escape }}"
+                      loading="lazy"
+                      width="400"
+                      height="700"
+                    >
+
+                    <button class="vt3-play-btn" type="button" aria-label="Play video">
+                      {% render 'video-test-play-icon' %}
+                    </button>
+
+                  </div>
+                {% endif %}
+
+              </div>
 
             {% endif %}
 
@@ -116,7 +122,7 @@
   </div>
 </div>
 
-<!-- JS: LAZY LOAD + PLAY -->
+<!-- PLAY VIDEO SCRIPT -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -129,12 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     poster.addEventListener('click', function () {
 
-      // Lazy load video source ONLY on click
-      if (!video.src) {
-        video.src = video.dataset.src;
-      }
-
       poster.style.display = 'none';
+      video.classList.remove('hidden');
 
       video.setAttribute('controls', true);
       video.play();
