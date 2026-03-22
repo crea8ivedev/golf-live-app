@@ -126,27 +126,23 @@
 
 {% stylesheet %}
 
-/* ===== GRID ===== */
+/* GRID BASE */
 .golf-features-grid {
   display: grid;
   gap: 40px;
   justify-content: center;
 }
 
-/* Desktop */
+/* DESKTOP (supports 1–4 cleanly) */
 @media (min-width: 990px) {
   .golf-features-grid {
-    grid-template-columns: repeat(var(--desktop-cols), minmax(0, 1fr));
-    max-width: calc(
-      var(--desktop-cols) * 380px +
-      (var(--desktop-cols) - 1) * 40px
-    );
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: repeat(var(--desktop-cols), 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
 
-/* Mobile */
+/* MOBILE */
 @media (max-width: 989px) {
   .golf-features-grid {
     grid-template-columns: repeat(var(--mobile-cols), 1fr);
@@ -227,7 +223,7 @@
   color: #444;
 }
 
-/* WIDTH */
+/* WIDTH CONTROL */
 .golf-features-section.page-width {
   max-width: 1200px;
   margin: 0 auto;
