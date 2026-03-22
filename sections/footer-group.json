@@ -71,7 +71,7 @@
         ".footer {background-color: #18181c;}"
       ],
       "settings": {
-        "background_image": "shopify://shop_images/footer-bg-desktop.png",
+        "background_image": "shopify://shop_images/footer-desktop-bg-rev2.jpg",
         "apps_logo": "shopify://shop_images/footer-logo.svg",
         "apps_text": "<p>Elevate Your Coaching Experience</p>",
         "playstore_image": "shopify://shop_images/playstore.png",
