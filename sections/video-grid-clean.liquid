@@ -3,6 +3,8 @@
   style="
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+    --pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
   "
 >
 
@@ -20,6 +22,7 @@
         class="vt3-heading"
         style="
           font-size: {{ section.settings.heading_size }}px;
+          --heading-mobile: {{ section.settings.heading_size_mobile }}px;
         "
       >
 
@@ -125,6 +128,15 @@
     },
     {
       "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (Mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "default": 26
+    },
+    {
+      "type": "range",
       "id": "heading_max_width",
       "label": "Heading Max Width",
       "min": 400,
@@ -145,7 +157,7 @@
     {
       "type": "range",
       "id": "padding_top",
-      "label": "Section Padding Top",
+      "label": "Section Padding Top (Desktop)",
       "min": 0,
       "max": 200,
       "step": 10,
@@ -154,11 +166,29 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Section Padding Bottom",
+      "label": "Section Padding Bottom (Desktop)",
       "min": 0,
       "max": 200,
       "step": 10,
       "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Section Padding Top (Mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Section Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 10,
+      "default": 40
     },
 
     { "type": "text", "id": "golfer_text", "label": "Golfer Button Text", "default": "I'M A GOLFER" },
