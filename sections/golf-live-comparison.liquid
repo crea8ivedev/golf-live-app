@@ -1,93 +1,92 @@
 {% comment %}
-  Section: Golf Live Comparison
-  Theme: Dawn
+  Section: Golf Live Comparison (FIXED ORIENTATION)
 {% endcomment %}
 
 <style>
-  /* =========================
-    Phone Visibility
-  ========================= */
+/* =========================
+  PHONE VISIBILITY
+========================= */
 
-  .golf-live-compare .glc-phone--mobile { display: none; }
-  .golf-live-compare .glc-phone--desktop { display: block; }
+.golf-live-compare .glc-phone--mobile { display: none; }
+.golf-live-compare .glc-phone--desktop { display: block; }
 
-  @media (max-width: 749px) {
-    .golf-live-compare .glc-phone--desktop { display: none; }
-    .golf-live-compare .glc-phone--mobile { display: block; }
+@media (max-width: 749px) {
+  .golf-live-compare .glc-phone--desktop { display: none; }
+  .golf-live-compare .glc-phone--mobile { display: block; }
+}
+
+/* =========================
+  FLEX LAYOUT
+========================= */
+
+.glc-row {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+/* ONLY grey flips */
+@media (min-width: 990px) {
+  .glc-row--reverse {
+    flex-direction: row-reverse;
   }
+}
 
-  /* =========================
-    FORCE SIDE-BY-SIDE
-  ========================= */
+/* =========================
+  WIDTHS
+========================= */
 
-  .glc-reverse {
-    display: flex;
-    align-items: center;
-  }
+.glc-phone { flex: 0 0 45%; }
+.glc-phone-sibling { flex: 0 0 55%; }
 
-  @media (min-width: 990px) {
-    .glc-reverse { flex-direction: row-reverse; }
-  }
+/* Mobile balance */
+@media (max-width: 749px) {
+  .glc-phone { flex: 0 0 40%; }
+  .glc-phone-sibling { flex: 0 0 60%; padding-left: 12px; }
+}
 
-  @media (max-width: 989px) {
-    .glc-reverse { flex-direction: row; }
-  }
+/* =========================
+  TEXT
+========================= */
 
-  /* =========================
-    WIDTH CONTROL
-  ========================= */
+.glc-phone-sibling {
+  text-align: left !important;
+}
 
-  .glc-phone { flex: 0 0 45%; }
-  .glc-phone-sibling { flex: 0 0 55%; }
+.glc-list {
+  text-align: left;
+  margin-top: 20px;
+}
 
-  @media (max-width: 749px) {
-    .glc-phone { flex: 0 0 40%; }
-    .glc-phone-sibling { flex: 0 0 60%; padding-left: 12px; }
-  }
+/* =========================
+  ICON CONSISTENCY
+========================= */
 
-  /* =========================
-    TEXT ALIGNMENT
-  ========================= */
+.glc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
 
-  .glc-phone-sibling {
-    text-align: left !important;
-  }
+.glc-list img {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  object-fit: contain;
+  margin-top: 4px;
+}
 
-  .glc-list {
-    text-align: left;
-    margin-top: 20px;
-  }
+.glc-list span {
+  line-height: 1.5;
+}
 
-  /* =========================
-    ICON CONSISTENCY
-  ========================= */
-
-  .glc-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .glc-list img {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    max-width: 28px;
-    object-fit: contain;
-    margin-top: 4px;
-  }
-
-  .glc-list span {
-    line-height: 1.5;
-  }
-
-  /* Prevent layout shift */
-  .glc-phone img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+/* Prevent layout shift */
+.glc-phone img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 </style>
 
 <section class="golf-live-compare" id="section-{{ section.id }}">
@@ -103,16 +102,14 @@
       {% endif %}
     </div>
 
-    <div class="glc-grid flex items-stretch gap-[44px] max-xl:gap-[30px] max-sm:gap-0 max-990:flex-wrap">
+    <div class="glc-grid flex gap-[44px] max-xl:gap-[30px] max-sm:gap-0 max-990:flex-wrap">
 
-      <!-- GREEN SECTION -->
-      <div
-        class="glc-card glc-green 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pr-9 py-14 pl-0 rounded-[28px]"
-        style="{% if section.settings.green_bg != blank %}background-image:url({{ section.settings.green_bg | image_url }});{% endif %}"
-      >
+      <!-- GREEN (IMAGE LEFT ✅) -->
+      <div class="glc-card glc-green 990:w-1/2 w-full rounded-[28px] py-14 pr-9 pl-0">
 
-        <div class="glc-reverse gap-[23px] w-full">
+        <div class="glc-row">
 
+          <!-- IMAGE LEFT -->
           {% if section.settings.green_phone != blank %}
             <div class="glc-phone glc-phone--desktop">
               {{
@@ -122,7 +119,7 @@
                   loading: 'lazy',
                   widths: '300,400,600',
                   sizes: '(max-width: 768px) 40vw, 45vw',
-                  alt: 'With Golf Live App'
+                  alt: 'With Golf Live'
               }}
             </div>
           {% endif %}
@@ -136,11 +133,12 @@
                   loading: 'lazy',
                   widths: '300,400,500',
                   sizes: '40vw',
-                  alt: 'With Golf Live App'
+                  alt: 'With Golf Live'
               }}
             </div>
           {% endif %}
 
+          <!-- TEXT -->
           <div class="glc-phone-sibling text-white">
             <h3 class="glc-card-title text-white">
               {{ section.settings.green_title }}
@@ -157,7 +155,7 @@
                         | image_tag:
                           loading: 'lazy',
                           widths: '40,60',
-                          sizes: '28px',
+                          sizes: '26px',
                           alt: ''
                       }}
                     {% endif %}
@@ -171,41 +169,12 @@
         </div>
       </div>
 
-      <!-- GREY SECTION -->
-      <div
-        class="glc-card glc-grey 990:w-1/2 w-full relative bg-cover bg-top bg-no-repeat overflow-hidden pl-[50px] max-xl:pl-[22px] py-12 pr-0 rounded-[28px]"
-        style="{% if section.settings.grey_bg != blank %}background-image:url({{ section.settings.grey_bg | image_url }});{% endif %}"
-      >
+      <!-- GREY (IMAGE RIGHT ✅) -->
+      <div class="glc-card glc-grey 990:w-1/2 w-full rounded-[28px] py-12 pl-[50px] pr-0">
 
-        <div class="flex items-center gap-[23px] w-full">
+        <div class="glc-row glc-row--reverse">
 
-          <div class="glc-phone-sibling text-left">
-            <h3 class="glc-card-title text-black">
-              {{ section.settings.grey_title }}
-            </h3>
-
-            <ul class="glc-list">
-              {% for block in section.blocks %}
-                {% if block.type == 'without_item' %}
-                  <li {{ block.shopify_attributes }}>
-                    {% if block.settings.icon != blank %}
-                      {{
-                        block.settings.icon
-                        | image_url: width: 40
-                        | image_tag:
-                          loading: 'lazy',
-                          widths: '40,60',
-                          sizes: '28px',
-                          alt: ''
-                      }}
-                    {% endif %}
-                    <span class="text-black">{{ block.settings.text }}</span>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </div>
-
+          <!-- IMAGE -->
           {% if section.settings.grey_phone != blank %}
             <div class="glc-phone glc-phone--desktop">
               {{
@@ -234,6 +203,34 @@
             </div>
           {% endif %}
 
+          <!-- TEXT -->
+          <div class="glc-phone-sibling text-left">
+            <h3 class="glc-card-title text-black">
+              {{ section.settings.grey_title }}
+            </h3>
+
+            <ul class="glc-list">
+              {% for block in section.blocks %}
+                {% if block.type == 'without_item' %}
+                  <li {{ block.shopify_attributes }}>
+                    {% if block.settings.icon != blank %}
+                      {{
+                        block.settings.icon
+                        | image_url: width: 40
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '40,60',
+                          sizes: '26px',
+                          alt: ''
+                      }}
+                    {% endif %}
+                    <span class="text-black">{{ block.settings.text }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+
         </div>
       </div>
 
@@ -247,19 +244,17 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Section Heading" },
     { "type": "textarea", "id": "subheading", "label": "Section Subheading" },
-    { "type": "image_picker", "id": "green_bg", "label": "Green Background Image" },
     { "type": "image_picker", "id": "green_phone", "label": "Green Phone Image" },
     { "type": "image_picker", "id": "green_phone_mobile", "label": "Green Phone Image (Mobile)" },
-    { "type": "text", "id": "green_title", "label": "Green Column Title" },
-    { "type": "image_picker", "id": "grey_bg", "label": "Grey Background Image" },
+    { "type": "text", "id": "green_title", "label": "Green Title" },
     { "type": "image_picker", "id": "grey_phone", "label": "Grey Phone Image" },
     { "type": "image_picker", "id": "grey_phone_mobile", "label": "Grey Phone Image (Mobile)" },
-    { "type": "text", "id": "grey_title", "label": "Grey Column Title" }
+    { "type": "text", "id": "grey_title", "label": "Grey Title" }
   ],
   "blocks": [
     {
       "type": "with_item",
-      "name": "With Golf Live Item",
+      "name": "With Item",
       "settings": [
         { "type": "image_picker", "id": "icon", "label": "Icon Image" },
         { "type": "text", "id": "text", "label": "Text" }
@@ -267,7 +262,7 @@
     },
     {
       "type": "without_item",
-      "name": "Without Golf Live Item",
+      "name": "Without Item",
       "settings": [
         { "type": "image_picker", "id": "icon", "label": "Icon Image" },
         { "type": "text", "id": "text", "label": "Text" }
