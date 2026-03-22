@@ -140,8 +140,8 @@
       "settings": {
         "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
         "highlight_color": "#0a7a28",
-        "show_arrows": true,
-        "enable_slide_clone": true,
+        "show_arrows": false,
+        "enable_slide_clone": false,
         "golfer_text": "I'M A GOLFER",
         "golfer_url": "https://plus.golfliveapp.com/en/sign-up",
         "coach_text": "I'M A COACH",
@@ -403,7 +403,7 @@
       "name": "Golf Features Slider",
       "settings": {
         "section_width": "page-width",
-        "cards_desktop": 3,
+        "cards_desktop": 4,
         "cards_mobile": 1,
         "header_alignment": "center",
         "header_max_width": 800,
@@ -668,6 +668,60 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 52
       }
+    },
+    "video_testimonial_flex_gKwJXJ": {
+      "type": "video-testimonial-flex",
+      "blocks": {
+        "slide_ztxCm3": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/Video 1.mp4",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_KwLaHP": {
+          "type": "slide",
+          "settings": {
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_8JywFj": {
+          "type": "slide",
+          "settings": {
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_EbHC4r": {
+          "type": "slide",
+          "settings": {
+            "name": "",
+            "subtitle": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ztxCm3",
+        "slide_KwLaHP",
+        "slide_8JywFj",
+        "slide_EbHC4r"
+      ],
+      "disabled": true,
+      "name": "Video Testimonials Flex",
+      "settings": {
+        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "highlight_color": "#0a7a28",
+        "show_arrows": true,
+        "enable_slide_clone": true,
+        "golfer_text": "I'M A GOLFER",
+        "golfer_url": "",
+        "coach_text": "I'M A COACH",
+        "coach_url": "",
+        "button_bg": "#0a7a28",
+        "button_text": "#ffffff"
+      }
     }
   },
   "order": [
@@ -681,6 +735,7 @@
     "golf_live_comparison_CLjCmx",
     "cta_questions_bar_aypLzc",
     "faq_golfer_coach_rbLhDK",
-    "why_golf_live_thfDCf"
+    "why_golf_live_thfDCf",
+    "video_testimonial_flex_gKwJXJ"
   ]
 }
