@@ -13,6 +13,8 @@
   {% endif %}
 
   <div class="vt3-container">
+
+    <!-- VIDEO GRID -->
     <div class="vt3-grid">
 
       {% for block in section.blocks %}
@@ -56,6 +58,40 @@
       {% endfor %}
 
     </div>
+
+    <!-- CTA BUTTONS -->
+    <div class="vt3-buttons">
+
+      {% if section.settings.golfer_text != blank %}
+        <a 
+          href="{{ section.settings.golfer_url }}" 
+          class="vt3-btn"
+          style="
+            background: {{ section.settings.button_bg }};
+            color: {{ section.settings.button_text }};
+          "
+        >
+          {{ section.settings.golfer_text }}
+          <span class="vt3-arrow">→</span>
+        </a>
+      {% endif %}
+
+      {% if section.settings.coach_text != blank %}
+        <a 
+          href="{{ section.settings.coach_url }}" 
+          class="vt3-btn"
+          style="
+            background: {{ section.settings.button_bg }};
+            color: {{ section.settings.button_text }};
+          "
+        >
+          {{ section.settings.coach_text }}
+          <span class="vt3-arrow">→</span>
+        </a>
+      {% endif %}
+
+    </div>
+
   </div>
 
 </div>
@@ -97,8 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
-      "default": "Seeing Results – Join Them Today"
+      "label": "Heading"
     },
     {
       "type": "range",
@@ -117,6 +152,41 @@ document.addEventListener('DOMContentLoaded', function () {
       "max": 200,
       "step": 10,
       "default": 60
+    },
+
+    {
+      "type": "text",
+      "id": "golfer_text",
+      "label": "Golfer Button Text",
+      "default": "I'M A GOLFER"
+    },
+    {
+      "type": "url",
+      "id": "golfer_url",
+      "label": "Golfer Button Link"
+    },
+    {
+      "type": "text",
+      "id": "coach_text",
+      "label": "Coach Button Text",
+      "default": "I'M A COACH"
+    },
+    {
+      "type": "url",
+      "id": "coach_url",
+      "label": "Coach Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#0A7A28"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
     }
   ],
   "blocks": [
@@ -125,8 +195,8 @@ document.addEventListener('DOMContentLoaded', function () {
       "name": "Video",
       "settings": [
         { "type": "video", "id": "video", "label": "Video" },
-        { "type": "image_picker", "id": "image", "label": "Thumbnail image (REQUIRED)" },
-        { "type": "text", "id": "name", "label": "Alt text (optional)" }
+        { "type": "image_picker", "id": "image", "label": "Thumbnail" },
+        { "type": "text", "id": "name", "label": "Alt text" }
       ]
     }
   ],
