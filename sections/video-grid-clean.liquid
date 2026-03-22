@@ -1,8 +1,10 @@
 <div 
   class="vt3-section"
   style="
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
   "
 >
 
@@ -11,19 +13,17 @@
     <div 
       class="vt3-heading-wrap"
       style="
-        max-width: {{ section.settings.heading_max_width }}px;
-        padding-left: {{ section.settings.heading_padding }}px;
-        padding-right: {{ section.settings.heading_padding }}px;
+        --heading-max-desktop: {{ section.settings.heading_max_width_desktop }}px;
+        --heading-max-mobile: {{ section.settings.heading_max_width_mobile }}px;
+        --heading-pad-desktop: {{ section.settings.heading_padding_desktop }}px;
+        --heading-pad-mobile: {{ section.settings.heading_padding_mobile }}px;
       "
     >
       <h2 
         class="vt3-heading vt3-heading-locked"
         style="
-          font-size: clamp(
-            {{ section.settings.heading_size_mobile }}px,
-            3vw,
-            {{ section.settings.heading_size }}px
-          );
+          --heading-desktop: {{ section.settings.heading_size_desktop }}px;
+          --heading-mobile: {{ section.settings.heading_size_mobile }}px;
         "
       >
 
@@ -34,12 +34,10 @@
         {% assign after_before_highlight = highlight_split[0] %}
         {% assign highlight_text = highlight_split[1] | split: '[/highlight]' | first %}
 
-        <!-- LINE 1 -->
         <span class="vt3-line">
           {{ before }} –
         </span>
 
-        <!-- LINE 2 -->
         <span class="vt3-line">
           {{ after_before_highlight }}
           <span class="vt3-highlight">
@@ -53,7 +51,7 @@
 
   <div class="vt3-container">
 
-    <!-- VIDEO GRID -->
+    <!-- GRID -->
     <div class="vt3-grid">
 
       {% for block in section.blocks %}
@@ -81,9 +79,6 @@
                     width="800"
                     height="1422"
                   >
-                  <button class="vt3-play-btn" type="button" aria-label="Play video">
-                    {% render 'video-test-play-icon' %}
-                  </button>
                 </div>
               {% endif %}
             {% endif %}
@@ -98,7 +93,7 @@
     <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] mt-[40px] min-990:mt-[65px]">
 
       {% if section.settings.golfer_text != blank %}
-        <a href="{{ section.settings.golfer_url }}" class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[42px] pr-[57px] min-w-[337px]">
+        <a href="{{ section.settings.golfer_url }}" class="golf-app-hero__button ctm-button button-green button-svg gap-[42px] pr-[57px] min-w-[337px]">
           {{ section.settings.golfer_text }}
           <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20">
             <path d="M0 9.88H35M35 9.88L26 0.88M35 9.88L26 18.88" stroke="currentColor" stroke-width="2.5"/>
@@ -107,7 +102,7 @@
       {% endif %}
 
       {% if section.settings.coach_text != blank %}
-        <a href="{{ section.settings.coach_url }}" class="golf-app-hero__button ctm-button button-green button-svg justify-end gap-[42px] pr-[57px] min-w-[337px]">
+        <a href="{{ section.settings.coach_url }}" class="golf-app-hero__button ctm-button button-green button-svg gap-[42px] pr-[57px] min-w-[337px]">
           {{ section.settings.coach_text }}
           <svg xmlns="http://www.w3.org/2000/svg" width="37" height="20">
             <path d="M0 9.88H35M35 9.88L26 0.88M35 9.88L26 18.88" stroke="currentColor" stroke-width="2.5"/>
