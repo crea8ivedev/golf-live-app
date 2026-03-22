@@ -3648,34 +3648,39 @@ details-disclosure > details {
   color: #444;
 }
 
-/* ===============================
-   VIDEO GRID CLEAN V2
-================================ */
+
+
+
+/* ========================================
+   VIDEO GRID CLEAN V2 (FINAL STABLE)
+======================================== */
 
 /* SECTION */
 .vt3-section {
   padding: 60px 20px;
 }
 
+/* HEADING */
 .vt3-heading {
   text-align: center;
   max-width: 900px;
   margin: 0 auto 50px;
 }
 
-/* CONTAINER */
+/* CONTAINER (controls max width + centering) */
 .vt3-container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
-/* GRID */
+/* GRID BASE */
 .vt3-grid {
   display: grid;
   gap: 24px;
+  align-items: stretch;
 }
 
-/* MOBILE */
+/* MOBILE (STACK) */
 .vt3-grid {
   grid-template-columns: 1fr;
 }
@@ -3687,38 +3692,33 @@ details-disclosure > details {
   }
 }
 
-/* DESKTOP */
+/* DESKTOP — FORCE EXACTLY 4 */
 @media (min-width: 990px) {
   .vt3-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-}
-
-/* LARGE DESKTOP */
-@media (min-width: 1200px) {
-  .vt3-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
   }
 }
 
 /* CARD */
 .vt3-card {
   position: relative;
+  width: 100%;
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
 }
 
-/* MEDIA */
+/* MEDIA WRAPPER */
 .vt3-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 9 / 16; /* keeps vertical video shape */
   overflow: hidden;
   border-radius: 24px;
 }
 
+/* IMAGE + VIDEO */
 .vt3-media img,
 .vt3-media video {
   width: 100%;
@@ -3727,7 +3727,7 @@ details-disclosure > details {
   display: block;
 }
 
-/* POSTER */
+/* POSTER OVERLAY */
 .vt3-poster {
   position: absolute;
   inset: 0;
@@ -3755,10 +3755,18 @@ details-disclosure > details {
   justify-content: center;
 }
 
+/* PLAY ICON */
 .vt3-play::after {
   content: '';
   border-left: 14px solid #000;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
   margin-left: 4px;
+}
+
+/* PREVENT ANY GLOBAL SWIPER INTERFERENCE */
+.vt3-section .swiper,
+.vt3-section .swiper-wrapper,
+.vt3-section .swiper-slide {
+  all: unset;
 }
