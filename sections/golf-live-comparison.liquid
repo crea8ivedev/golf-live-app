@@ -1,47 +1,10 @@
 {% comment %}
-  Section: Golf Live Comparison (Upgraded SaaS Version)
+  Section: Golf Live Comparison (FINAL FIXED)
 {% endcomment %}
 
 <style>
 /* =========================
-   BASE STYLES
-========================= */
-
-.glc-heading {
-  font-size: 36px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.glc-subheading {
-  text-align: center;
-  font-size: 18px;
-  max-width: 700px;
-  margin: 0 auto 40px;
-  color: #555;
-}
-
-/* =========================
-   CARD STYLES
-========================= */
-
-.glc-card {
-  border-radius: 28px;
-  padding: 60px 40px;
-}
-
-.glc-green {
-  background: #2f6f3e;
-  color: #fff;
-}
-
-.glc-grey {
-  background: #f4f4f4;
-}
-
-/* =========================
-   FLEX LAYOUT
+   LAYOUT
 ========================= */
 
 .glc-inner {
@@ -50,27 +13,37 @@
   gap: 30px;
 }
 
+/* Reverse layout for grey card */
 .glc-inner.reverse {
   flex-direction: row-reverse;
 }
 
 /* =========================
-   PHONE IMAGE
+   WIDTH CONTROL
+========================= */
+
+.glc-phone {
+  width: 45%;
+}
+
+.glc-content {
+  width: 55%;
+}
+
+/* =========================
+   IMAGE
 ========================= */
 
 .glc-phone img {
   width: 100%;
   max-width: 320px;
   height: auto;
+  display: block;
 }
 
 /* =========================
-   CONTENT
+   TEXT
 ========================= */
-
-.glc-content {
-  flex: 1;
-}
 
 .glc-card-title {
   font-size: 28px;
@@ -80,26 +53,23 @@
 }
 
 /* =========================
-   LIST ITEMS
+   LIST
 ========================= */
 
 .glc-list {
-  list-style: none;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 .glc-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 18px;
-  font-size: 16px;
-  line-height: 1.4;
+  gap: 12px;
+  margin-bottom: 16px;
   text-align: left;
 }
 
-/* ICONS — FIXED SIZE */
 .glc-item-icon {
   width: 22px;
   height: 22px;
@@ -108,34 +78,56 @@
 }
 
 /* =========================
-   MOBILE STYLES
+   COLORS
+========================= */
+
+.glc-green {
+  background: #2f6f3e;
+  color: #fff;
+  border-radius: 28px;
+  padding: 60px 40px;
+}
+
+.glc-grey {
+  background: #f4f4f4;
+  border-radius: 28px;
+  padding: 60px 40px;
+}
+
+/* =========================
+   MOBILE (🔥 FIXED)
 ========================= */
 
 @media (max-width: 749px) {
 
+  /* KEEP SIDE-BY-SIDE */
   .glc-inner {
-    flex-direction: column !important;
-    text-align: center;
+    flex-direction: row !important;
+    gap: 16px;
+  }
+
+  .glc-inner.reverse {
+    flex-direction: row-reverse !important;
+  }
+
+  .glc-phone {
+    width: 45%;
   }
 
   .glc-content {
-    width: 100%;
+    width: 55%;
   }
 
+  /* CENTER + BIGGER TITLE */
   .glc-card-title {
-    text-align: center !important;
-    font-size: 30px;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 14px;
   }
 
   .glc-item {
-    text-align: left;
+    font-size: 14px;
   }
-
-  .glc-phone img {
-    max-width: 260px;
-    margin-bottom: 20px;
-  }
-
 }
 </style>
 
@@ -143,17 +135,21 @@
   <div class="container-136">
 
     {% if section.settings.heading != blank %}
-      <h2 class="glc-heading">{{ section.settings.heading }}</h2>
+      <h2 class="text-center text-[36px] font-bold mb-[10px]">
+        {{ section.settings.heading }}
+      </h2>
     {% endif %}
 
     {% if section.settings.subheading != blank %}
-      <p class="glc-subheading">{{ section.settings.subheading }}</p>
+      <p class="text-center text-[18px] mb-[40px] max-w-[700px] mx-auto text-[#555]">
+        {{ section.settings.subheading }}
+      </p>
     {% endif %}
 
-    <div class="glc-grid flex gap-[40px] max-990:flex-wrap">
+    <div class="flex gap-[40px] max-990:flex-wrap">
 
-      <!-- WITH GOLF LIVE -->
-      <div class="glc-card glc-green w-full 990:w-1/2">
+      <!-- GREEN -->
+      <div class="glc-green w-full 990:w-1/2">
         <div class="glc-inner">
 
           <!-- IMAGE LEFT -->
@@ -171,7 +167,9 @@
 
           <!-- TEXT -->
           <div class="glc-content">
-            <h3 class="glc-card-title">{{ section.settings.green_title }}</h3>
+            <h3 class="glc-card-title">
+              {{ section.settings.green_title }}
+            </h3>
 
             <ul class="glc-list">
               {% for block in section.blocks %}
@@ -196,8 +194,8 @@
         </div>
       </div>
 
-      <!-- WITHOUT GOLF LIVE -->
-      <div class="glc-card glc-grey w-full 990:w-1/2">
+      <!-- GREY -->
+      <div class="glc-grey w-full 990:w-1/2">
         <div class="glc-inner reverse">
 
           <!-- IMAGE RIGHT -->
@@ -215,7 +213,9 @@
 
           <!-- TEXT -->
           <div class="glc-content">
-            <h3 class="glc-card-title">{{ section.settings.grey_title }}</h3>
+            <h3 class="glc-card-title">
+              {{ section.settings.grey_title }}
+            </h3>
 
             <ul class="glc-list">
               {% for block in section.blocks %}
@@ -250,10 +250,8 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading" },
     { "type": "textarea", "id": "subheading", "label": "Subheading" },
-
     { "type": "image_picker", "id": "green_phone", "label": "Green Phone Image" },
     { "type": "text", "id": "green_title", "label": "Green Title", "default": "With Golf Live" },
-
     { "type": "image_picker", "id": "grey_phone", "label": "Grey Phone Image" },
     { "type": "text", "id": "grey_title", "label": "Grey Title", "default": "Without Golf Live" }
   ],
