@@ -6,10 +6,16 @@
   "
 >
 
+  <!-- HEADING -->
   {% if section.settings.heading != blank %}
-    <h2 class="vt3-heading text-center">
-      {{ section.settings.heading | replace: '[highlight]', '<span style="color:' | append: section.settings.highlight_color | append: '">' | replace: '[/highlight]', '</span>' }}
-    </h2>
+    <div class="vt3-heading-wrap">
+      <h2 class="vt3-heading">
+        {{ section.settings.heading 
+          | replace: '[highlight]', '<span class="vt3-highlight">' 
+          | replace: '[/highlight]', '</span>' 
+        }}
+      </h2>
+    </div>
   {% endif %}
 
   <div class="vt3-container">
@@ -61,7 +67,7 @@
 
     </div>
 
-    <!-- BUTTONS (MATCHED STYLE) -->
+    <!-- BUTTONS -->
     <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] mt-[40px] min-990:mt-[65px]">
 
       {% if section.settings.golfer_text != blank %}
@@ -131,13 +137,8 @@ document.addEventListener('DOMContentLoaded', function () {
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading"
-    },
-    {
-      "type": "color",
-      "id": "highlight_color",
-      "label": "Highlight color",
-      "default": "#0A7A28"
+      "label": "Heading",
+      "default": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]"
     },
     {
       "type": "range",
