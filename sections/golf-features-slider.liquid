@@ -43,177 +43,213 @@
       {% endif %}
     </div>
 
-    {% assign desktop_slider = section.settings.enable_slider_desktop %}
-    {% assign mobile_slider = section.settings.enable_slider_mobile %}
+    <!-- GRID -->
+    <div class="golf-features-grid mt-[40px] min-990:mt-[66px]"
+      style="
+        --desktop-cols: {{ section.settings.slides_desktop }};
+        --mobile-cols: {{ section.settings.slides_mobile }};
+      "
+    >
 
-    <!-- SLIDER WRAPPER -->
-    <div class="golf-features-slider-wrapper relative mt-[35px] min-990:mt-[66px]">
+      {% for block in section.blocks %}
+        <div class="golf-feature-card">
 
-      {% if desktop_slider or mobile_slider %}
-        <button class="golf-features-arrow-common golf-features-prev swiper-button-prev !left-[-24px] min-1582:!left-[-70px]" type="button">
-          {% render 'slider-arrow-golf-pre' %}
-        </button>
-
-        <button class="golf-features-arrow-common golf-features-next swiper-button-next !right-[-24px] min-1582:!right-[-70px]" type="button">
-          {% render 'slider-arrow-golf-next' %}
-        </button>
-      {% endif %}
-
-      <div
-        class="{% if desktop_slider or mobile_slider %}golf-features-swiper swiper{% endif %}"
-        data-desktop-slider="{{ desktop_slider }}"
-        data-mobile-slider="{{ mobile_slider }}"
-        data-slides-desktop="{{ section.settings.slides_desktop }}"
-        data-slides-mobile="{{ section.settings.slides_mobile }}"
-      >
-
-        <div class="{% if desktop_slider or mobile_slider %}swiper-wrapper{% else %}grid grid-cols-1 min-990:grid-cols-2 min-1280:grid-cols-3 gap-[30px]{% endif %}">
-
-          {% for block in section.blocks %}
-
-            <div class="{% if desktop_slider or mobile_slider %}swiper-slide !h-auto{% endif %}" {{ block.shopify_attributes }}>
-
-              <div 
-                class="golf-feature-card bg-white rounded-[22px] h-full mx-auto overflow-hidden"
-                style="max-width: {{ section.settings.card_max_width }}px;"
+          <!-- IMAGE -->
+          <div class="golf-feature-image">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 800 }}"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="800"
+                height="600"
               >
+            {% endif %}
+          </div>
 
-                <!-- IMAGE -->
-                <div 
-                  class="golf-feature-image overflow-hidden"
-                  style="
-                    aspect-ratio: {{ section.settings.image_ratio }};
-                    max-height: {{ section.settings.image_max_height }}px;
-                  "
-                >
-                  {% if block.settings.image != blank %}
-                    <img
-                      src="{{ block.settings.image | image_url: width: 800 }}"
-                      alt="{{ block.settings.title | escape }}"
-                      loading="lazy"
-                      width="800"
-                      height="600"
-                      style="width:100%; height:100%; object-fit:cover;"
-                    >
-                  {% endif %}
+          <!-- CONTENT -->
+          <div class="golf-feature-content">
+
+            <div class="pt-[29px] min-990:pt-[43px] pb-0 pl-[28px] pr-[24px] min-990:px-[38px]">
+              {% if block.settings.title != blank %}
+                <h4>{{ block.settings.title }}</h4>
+              {% endif %}
+
+              {% if block.settings.description != blank %}
+                <div class="feature-subtitle">
+                  {{ block.settings.description }}
                 </div>
-
-                <!-- CONTENT -->
-                <div class="golf-feature-content rounded-b-[22px]">
-
-                  <div class="pt-[29px] min-990:pt-[43px] pb-0 pl-[28px] pr-[24px] min-990:px-[38px]">
-                    {% if block.settings.title != blank %}
-                      <h4>{{ block.settings.title }}</h4>
-                    {% endif %}
-
-                    {% if block.settings.description != blank %}
-                      <div class="font-semibold text-[17px] leading-[26px] min-990:text-[19px] min-990:leading-[29px] mt-[6px] min-990:mt-[9px]">
-                        {{ block.settings.description }}
-                      </div>
-                    {% endif %}
-                  </div>
-
-                  <div class="pt-[15px] min-990:pt-[25px] pb-[27px] min-990:pb-[23px] pl-[28px] pr-[24px] min-990:px-[38px] border-b border-[#DFDFDF]">
-                    {% if block.settings.coach_description != blank %}
-                      <span class="golf-pill block w-fit font-bold text-[14px] min-990:text-[17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[5px]">
-                        {{ block.settings.coach_text }}
-                      </span>
-                      <p class="min-990:text-black2">
-                        {{ block.settings.coach_description }}
-                      </p>
-                    {% endif %}
-                  </div>
-
-                  <div class="pt-[21px] min-990:pt-[19px] pb-[32px] min-990:pb-[35px] pl-[28px] pr-[24px] min-990:px-[38px]">
-                    {% if block.settings.golfer_description != blank %}
-                      <span class="golf-pill block w-fit font-bold text-[14px] min-990:text-[17px] text-white py-[2px] px-[12px] rounded-[50px] bg-green3 mb-[8px]">
-                        {{ block.settings.golfer_text }}
-                      </span>
-                      <p class="min-990:text-black2">
-                        {{ block.settings.golfer_description }}
-                      </p>
-                    {% endif %}
-                  </div>
-
-                </div>
-
-              </div>
-
+              {% endif %}
             </div>
 
-          {% endfor %}
+            <div class="feature-divider">
+              {% if block.settings.coach_description != blank %}
+                <span class="golf-pill">
+                  {{ block.settings.coach_text }}
+                </span>
+                <p>{{ block.settings.coach_description }}</p>
+              {% endif %}
+            </div>
+
+            <div class="feature-bottom">
+              {% if block.settings.golfer_description != blank %}
+                <span class="golf-pill">
+                  {{ block.settings.golfer_text }}
+                </span>
+                <p>{{ block.settings.golfer_description }}</p>
+              {% endif %}
+            </div>
+
+          </div>
 
         </div>
-      </div>
+      {% endfor %}
+
     </div>
   </div>
 </div>
 
-{% javascript %}
-(function () {
+{% stylesheet %}
 
-  function initGolfSliders() {
+/* =========================
+   GRID (CLEAN + CENTERED)
+========================= */
+.golf-features-grid {
+  display: grid;
+  gap: 40px;
+  justify-content: center;
+}
 
-    document.querySelectorAll('.golf-features-section').forEach((section) => {
-
-      const swiperEl = section.querySelector('.golf-features-swiper');
-      if (!swiperEl || typeof Swiper === 'undefined') return;
-
-      const enableDesktop = swiperEl.dataset.desktopSlider === 'true';
-      const enableMobile = swiperEl.dataset.mobileSlider === 'true';
-
-      const slidesDesktop = parseFloat(swiperEl.dataset.slidesDesktop) || 1.5;
-      const slidesMobile = parseFloat(swiperEl.dataset.slidesMobile) || 1.1;
-
-      let swiperInstance = swiperEl.swiperInstance || null;
-
-      function setup() {
-        const isMobile = window.matchMedia('(max-width: 989px)').matches;
-        const shouldEnable = (isMobile && enableMobile) || (!isMobile && enableDesktop);
-
-        if (shouldEnable) {
-
-          if (!swiperInstance) {
-            swiperInstance = new Swiper(swiperEl, {
-              spaceBetween: 30,
-              loop: true,
-              loopAdditionalSlides: 2,
-              watchOverflow: true,
-              speed: 600,
-              navigation: {
-                nextEl: section.querySelector('.golf-features-next'),
-                prevEl: section.querySelector('.golf-features-prev'),
-              },
-              breakpoints: {
-                0: { slidesPerView: slidesMobile },
-                990: { slidesPerView: slidesDesktop }
-              }
-            });
-
-            swiperEl.swiperInstance = swiperInstance;
-          }
-
-        } else {
-          if (swiperInstance) {
-            swiperInstance.destroy(true, true);
-            swiperInstance = null;
-            swiperEl.swiperInstance = null;
-          }
-        }
-      }
-
-      setup();
-      window.addEventListener('resize', setup);
-
-    });
-
+/* Desktop */
+@media (min-width: 990px) {
+  .golf-features-grid {
+    grid-template-columns: repeat(var(--desktop-cols), minmax(320px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
   }
+}
 
-  document.addEventListener('DOMContentLoaded', initGolfSliders);
-  document.addEventListener('shopify:section:load', initGolfSliders);
+/* Mobile */
+@media (max-width: 989px) {
+  .golf-features-grid {
+    grid-template-columns: repeat(var(--mobile-cols), 1fr);
+    gap: 24px;
+  }
+}
 
-})();
-{% endjavascript %}
+
+/* =========================
+   CARD
+========================= */
+.golf-feature-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.golf-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+.golf-feature-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.golf-feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+.golf-feature-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+.golf-feature-content h4 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.feature-subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.golf-feature-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+
+
+/* =========================
+   DIVIDERS
+========================= */
+.feature-divider {
+  border-top: 1px solid #DFDFDF;
+  padding: 20px 28px;
+}
+
+.feature-bottom {
+  border-top: 1px solid #DFDFDF;
+  padding: 20px 28px 30px;
+}
+
+
+/* =========================
+   PILLS
+========================= */
+.golf-pill {
+  display: inline-block;
+  background: #2f6f2f;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+
+/* =========================
+   SECTION WIDTH
+========================= */
+.golf-features-section.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.golf-features-section.full-width {
+  max-width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -231,50 +267,21 @@
     },
     {
       "type": "range",
-      "id": "card_max_width",
-      "label": "Card Max Width",
-      "min": 300,
-      "max": 700,
-      "step": 20,
-      "default": 420
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "label": "Image Aspect Ratio",
-      "options": [
-        { "value": "16/10", "label": "Wide" },
-        { "value": "4/3", "label": "Standard" },
-        { "value": "1/1", "label": "Square" }
-      ],
-      "default": "16/10"
-    },
-    {
-      "type": "range",
-      "id": "image_max_height",
-      "label": "Image Max Height",
-      "min": 200,
-      "max": 500,
-      "step": 20,
-      "default": 300
-    },
-    {
-      "type": "range",
       "id": "slides_desktop",
       "label": "Cards per row (Desktop)",
       "min": 1,
       "max": 4,
-      "step": 0.1,
-      "default": 1.5
+      "step": 1,
+      "default": 2
     },
     {
       "type": "range",
       "id": "slides_mobile",
       "label": "Cards per row (Mobile)",
       "min": 1,
-      "max": 2,
-      "step": 0.1,
-      "default": 1.1
+      "max": 3,
+      "step": 1,
+      "default": 1
     },
     {
       "type": "image_picker",
@@ -295,18 +302,6 @@
       "type": "textarea",
       "id": "subheading",
       "label": "Subheading"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_slider_desktop",
-      "label": "Enable slider on desktop",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_slider_mobile",
-      "label": "Enable slider on mobile",
-      "default": true
     }
   ],
   "blocks": [
@@ -317,9 +312,9 @@
         { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "richtext", "id": "description", "label": "Description" },
-        { "type": "text", "id": "coach_text", "label": "Coach label" },
+        { "type": "text", "id": "coach_text", "label": "Coach label", "default": "For Coaches" },
         { "type": "textarea", "id": "coach_description", "label": "Coach description" },
-        { "type": "text", "id": "golfer_text", "label": "Golfer label" },
+        { "type": "text", "id": "golfer_text", "label": "Golfer label", "default": "For Golfers" },
         { "type": "textarea", "id": "golfer_description", "label": "Golfer description" }
       ]
     }
