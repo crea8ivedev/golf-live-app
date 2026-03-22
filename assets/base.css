@@ -3652,7 +3652,7 @@ details-disclosure > details {
 
 
 /* ========================================
-   VIDEO GRID CLEAN V2 (FINAL STABLE)
+   VIDEO GRID CLEAN V2 (FLEX - NO WRAP)
 ======================================== */
 
 /* SECTION */
@@ -3667,53 +3667,35 @@ details-disclosure > details {
   margin: 0 auto 50px;
 }
 
-/* CONTAINER (controls max width + centering) */
+/* CONTAINER */
 .vt3-container {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* GRID BASE */
+/* GRID → FLEX ROW */
 .vt3-grid {
-  display: grid;
+  display: flex;
   gap: 24px;
+  flex-wrap: nowrap; /* 🚨 NEVER WRAP */
   align-items: stretch;
-}
-
-/* MOBILE (STACK) */
-.vt3-grid {
-  grid-template-columns: 1fr;
-}
-
-/* TABLET */
-@media (min-width: 640px) {
-  .vt3-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* DESKTOP — FORCE EXACTLY 4 */
-@media (min-width: 990px) {
-  .vt3-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
-  }
 }
 
 /* CARD */
 .vt3-card {
-  position: relative;
+  flex: 1 1 0;
+  min-width: 180px; /* 👈 prevents cards from getting too tiny */
   width: 100%;
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
 }
 
-/* MEDIA WRAPPER */
+/* MEDIA */
 .vt3-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16; /* keeps vertical video shape */
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   border-radius: 24px;
 }
@@ -3727,7 +3709,7 @@ details-disclosure > details {
   display: block;
 }
 
-/* POSTER OVERLAY */
+/* POSTER */
 .vt3-poster {
   position: absolute;
   inset: 0;
@@ -3755,7 +3737,6 @@ details-disclosure > details {
   justify-content: center;
 }
 
-/* PLAY ICON */
 .vt3-play::after {
   content: '';
   border-left: 14px solid #000;
@@ -3764,55 +3745,24 @@ details-disclosure > details {
   margin-left: 4px;
 }
 
-/* PREVENT ANY GLOBAL SWIPER INTERFERENCE */
-.vt3-section .swiper,
-.vt3-section .swiper-wrapper,
-.vt3-section .swiper-slide {
-  all: unset;
-}
-/* ===============================
-   FORCE CLEAN VIDEO GRID
-================================ */
-
-/* 🔴 KILL ALL SWIPER UI INSIDE THIS SECTION */
-.vt3-section .swiper-button-next,
-.vt3-section .swiper-button-prev,
-.vt3-section .swiper-pagination {
-  display: none !important;
-}
-
-/* 🔴 FORCE GRID (override theme flex) */
-.vt3-grid {
-  display: grid !important;
-}
-
-/* 🔴 FORCE 4-UP NO BREAK */
-@media (min-width: 990px) {
+/* MOBILE → STACK */
+@media (max-width: 989px) {
   .vt3-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
+    flex-direction: column;
+  }
+
+  .vt3-card {
+    min-width: 100%;
   }
 }
 
-/* 🔴 REMOVE ANY WIDTH LIMITS */
-.vt3-card {
-  width: 100% !important;
-  min-width: 0 !important;
-}
-
-/* 🔴 PREVENT FLEX OVERRIDES FROM THEME */
-.vt3-grid > * {
-  flex: unset !important;
-  max-width: none !important;
-}
-
-/* 🔴 ENSURE CONTAINER CAN FIT 4 */
-.vt3-container {
-  max-width: 1400px !important;
-}
-
-/* 🔴 SAFETY: NO SWIPER LAYOUT RULES */
+/* 🔴 KILL ANY SWIPER LEAKS */
 .vt3-section .swiper,
 .vt3-section .swiper-wrapper,
-.vt3-section .swiper-slide {
+.vt3-section .swiper-slide,
+.vt3-section .swiper-button-next,
+.vt3-section .swiper-button-prev,
+.vt3-section .swiper-pagination {
   all: unset !important;
+  display: none !important;
 }

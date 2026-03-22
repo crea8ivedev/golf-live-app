@@ -90,6 +90,63 @@
         "padding_bottom": 60
       }
     },
+    "video_testimonial_flex_gKwJXJ": {
+      "type": "video-testimonial-flex",
+      "blocks": {
+        "slide_ztxCm3": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/Video 1.mp4",
+            "image": "shopify://shop_images/video1-frame.jpg",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_KwLaHP": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/Video 2.mp4",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_8JywFj": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/The journey. If you’re not obsessed with it, you’ll never reach the destination.This path is too.mp4",
+            "name": "",
+            "subtitle": ""
+          }
+        },
+        "slide_EbHC4r": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/Video 4.mp4",
+            "name": "",
+            "subtitle": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ztxCm3",
+        "slide_KwLaHP",
+        "slide_8JywFj",
+        "slide_EbHC4r"
+      ],
+      "name": "Video Testimonials Flex",
+      "settings": {
+        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
+        "highlight_color": "#0a7a28",
+        "show_arrows": false,
+        "enable_slide_clone": false,
+        "golfer_text": "I'M A GOLFER",
+        "golfer_url": "",
+        "coach_text": "I'M A COACH",
+        "coach_url": "",
+        "button_bg": "#0a7a28",
+        "button_text": "#ffffff"
+      }
+    },
     "video_testimonial_LBDcHx": {
       "type": "video-testimonial",
       "blocks": {
@@ -136,6 +193,7 @@
         "slide_tkiG6V",
         "slide_hK9Pgt"
       ],
+      "disabled": true,
       "name": "Video Testimonials",
       "settings": {
         "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
@@ -668,68 +726,12 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 52
       }
-    },
-    "video_testimonial_flex_gKwJXJ": {
-      "type": "video-testimonial-flex",
-      "blocks": {
-        "slide_ztxCm3": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/Video 1.mp4",
-            "image": "shopify://shop_images/video1-frame.jpg",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_KwLaHP": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/Video 2.mp4",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_8JywFj": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/The journey. If you’re not obsessed with it, you’ll never reach the destination.This path is too.mp4",
-            "name": "",
-            "subtitle": ""
-          }
-        },
-        "slide_EbHC4r": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/Video 4.mp4",
-            "name": "",
-            "subtitle": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_ztxCm3",
-        "slide_KwLaHP",
-        "slide_8JywFj",
-        "slide_EbHC4r"
-      ],
-      "name": "Video Testimonials Flex",
-      "settings": {
-        "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
-        "highlight_color": "#0a7a28",
-        "show_arrows": false,
-        "enable_slide_clone": false,
-        "golfer_text": "I'M A GOLFER",
-        "golfer_url": "",
-        "coach_text": "I'M A COACH",
-        "coach_url": "",
-        "button_bg": "#0a7a28",
-        "button_text": "#ffffff"
-      }
     }
   },
   "order": [
     "banner_zY6kBL",
     "trusted_by_coaches_XXTeTG",
+    "video_testimonial_flex_gKwJXJ",
     "video_testimonial_LBDcHx",
     "zigzag_section_9PexWn",
     "dual_audience_cards_TEt37K",
@@ -738,7 +740,6 @@
     "golf_live_comparison_CLjCmx",
     "cta_questions_bar_aypLzc",
     "faq_golfer_coach_rbLhDK",
-    "why_golf_live_thfDCf",
-    "video_testimonial_flex_gKwJXJ"
+    "why_golf_live_thfDCf"
   ]
 }
