@@ -25,18 +25,14 @@
           --heading-mobile: {{ section.settings.heading_size_mobile }}px;
         "
       >
-
         {% assign before = section.settings.heading | split: '[highlight]' | first %}
         {% assign after_split = section.settings.heading | split: '[highlight]' | last | split: '[/highlight]' %}
         {% assign highlight = after_split[0] %}
         {% assign after = after_split[1] %}
 
         {{ before }}
-        <span class="vt3-highlight">
-          {{ highlight }}
-        </span>
+        <span class="vt3-highlight">{{ highlight }}</span>
         {{ after }}
-
       </h2>
     </div>
   {% endif %}
@@ -50,29 +46,31 @@
         <div class="vt3-card" {{ block.shopify_attributes }}>
           <div class="vt3-media">
 
-            {% if block.settings.video != blank %}
-            
+            {% if block.settings.video != blank and block.settings.image != blank %}
 
-        {% if block.settings.image != blank %}
-  <div class="vt3-poster">
-    <img
-      src="{{ block.settings.image | image_url: width: 400 }}"
-      srcset="
-        {{ block.settings.image | image_url: width: 300 }} 300w,
-        {{ block.settings.image | image_url: width: 400 }} 400w,
-        {{ block.settings.image | image_url: width: 600 }} 600w
-      "
-      sizes="(max-width: 768px) 100vw, 372px"
-      alt="{{ block.settings.name | escape }}"
-      loading="lazy"
-      width="372"
-      height="661"
-    >
-    <button class="vt3-play-btn" type="button" aria-label="Play video">
-      {% render 'video-test-play-icon' %}
-    </button>
-  </div>
-{% endif %}
+              <div 
+                class="vt3-poster"
+                data-video-url="{{ block.settings.video.sources[0].url }}"
+              >
+                <img
+                  src="{{ block.settings.image | image_url: width: 400 }}"
+                  srcset="
+                    {{ block.settings.image | image_url: width: 300 }} 300w,
+                    {{ block.settings.image | image_url: width: 400 }} 400w,
+                    {{ block.settings.image | image_url: width: 600 }} 600w
+                  "
+                  sizes="(max-width: 768px) 100vw, 372px"
+                  alt="{{ block.settings.name | escape }}"
+                  loading="lazy"
+                  width="372"
+                  height="661"
+                >
+
+                <button class="vt3-play-btn" type="button" aria-label="Play video">
+                  {% render 'video-test-play-icon' %}
+                </button>
+              </div>
+
             {% endif %}
 
           </div>
@@ -108,25 +106,35 @@
 
 </div>
 
+<!-- VIDEO LOAD SCRIPT -->
 <script>
 document.addEventListener('click', function(e) {
 
   const poster = e.target.closest('.vt3-poster');
   if (!poster) return;
 
-  const card = poster.closest('.vt3-card');
-  const video = card.querySelector('video');
+  const videoUrl = poster.dataset.videoUrl;
 
-  if (!video) return;
+  const video = document.createElement('video');
+  video.src = videoUrl;
+  video.controls = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  video.className = 'vt3-video';
 
-  // Hide poster
-  poster.style.display = 'none';
-
-  // Play video
-  video.play();
+  poster.replaceWith(video);
 
 });
 </script>
+
+<!-- OPTIONAL PERFORMANCE CSS -->
+<style>
+.vt3-poster img {
+  aspect-ratio: 372 / 661;
+  width: 100%;
+  height: auto;
+}
+</style>
 
 {% schema %}
 {
