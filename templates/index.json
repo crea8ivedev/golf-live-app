@@ -106,6 +106,7 @@
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/Video 2.mp4",
+            "image": "shopify://shop_images/video2-frame.jpg",
             "name": "",
             "subtitle": ""
           }
@@ -122,6 +123,7 @@
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/Video 4.mp4",
+            "image": "shopify://shop_images/video4-frame.jpg",
             "name": "",
             "subtitle": ""
           }
