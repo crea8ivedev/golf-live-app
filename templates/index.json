@@ -712,13 +712,12 @@
         "slide_8JywFj",
         "slide_EbHC4r"
       ],
-      "disabled": true,
       "name": "Video Testimonials Flex",
       "settings": {
         "heading": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]",
         "highlight_color": "#0a7a28",
-        "show_arrows": true,
-        "enable_slide_clone": true,
+        "show_arrows": false,
+        "enable_slide_clone": false,
         "golfer_text": "I'M A GOLFER",
         "golfer_url": "",
         "coach_text": "I'M A COACH",
