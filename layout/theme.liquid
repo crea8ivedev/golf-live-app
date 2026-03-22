@@ -51,35 +51,7 @@
     {{ content_for_header }}
 
 
-<!-- 🔥 CRITICAL CSS -->
-<style>
-  .vt3-section { padding: 40px 20px; }
 
-  .vt3-heading {
-    font-size: 28px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .vt3-grid {
-    display: flex;
-    gap: 16px;
-  }
-
-  @media (max-width: 989px) {
-    .vt3-grid {
-      flex-direction: column;
-    }
-  }
-</style>
-
-<!-- 🔥 NON-BLOCKING CSS -->
-<link rel="preload" href="{{ 'base.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>{{ 'base.css' | asset_url | stylesheet_tag }}</noscript>
-
-<link rel="preload" href="{{ 'application.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>{{ 'application.css' | asset_url | stylesheet_tag }}</noscript>
 
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
@@ -283,6 +255,31 @@
             }
     {% endstyle %}
 
+   
+
+<!-- 🔥 CRITICAL CSS -->
+<style>
+  .vt3-section { padding: 40px 20px; }
+
+  .vt3-heading {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .vt3-grid {
+    display: flex;
+    gap: 16px;
+  }
+
+  @media (max-width: 989px) {
+    .vt3-grid {
+      flex-direction: column;
+    }
+  }
+</style>
+
  <!-- 🔥 NON-BLOCKING CSS -->
 <link rel="preload" href="{{ 'base.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>{{ 'base.css' | asset_url | stylesheet_tag }}</noscript>
@@ -331,18 +328,14 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.rel='stylesheet'">
+
 <noscript>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </noscript>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    >
+    
     <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css"
