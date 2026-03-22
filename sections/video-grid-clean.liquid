@@ -62,20 +62,26 @@
                   height: 1422
               }}
 
-              {% if block.settings.image != blank %}
-                <div class="vt3-poster">
-                  <img
-                    src="{{ block.settings.image | image_url: width: 800 }}"
-                    alt="{{ block.settings.name | escape }}"
-                    loading="lazy"
-                    width="800"
-                    height="1422"
-                  >
-                  <button class="vt3-play-btn" type="button" aria-label="Play video">
-                    {% render 'video-test-play-icon' %}
-                  </button>
-                </div>
-              {% endif %}
+        {% if block.settings.image != blank %}
+  <div class="vt3-poster">
+    <img
+      src="{{ block.settings.image | image_url: width: 400 }}"
+      srcset="
+        {{ block.settings.image | image_url: width: 300 }} 300w,
+        {{ block.settings.image | image_url: width: 400 }} 400w,
+        {{ block.settings.image | image_url: width: 600 }} 600w
+      "
+      sizes="(max-width: 768px) 100vw, 372px"
+      alt="{{ block.settings.name | escape }}"
+      loading="lazy"
+      width="372"
+      height="661"
+    >
+    <button class="vt3-play-btn" type="button" aria-label="Play video">
+      {% render 'video-test-play-icon' %}
+    </button>
+  </div>
+{% endif %}
             {% endif %}
 
           </div>
