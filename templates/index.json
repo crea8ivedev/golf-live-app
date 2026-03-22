@@ -403,17 +403,18 @@
       "name": "Golf Features Slider",
       "settings": {
         "section_width": "page-width",
-        "card_max_width": 300,
-        "image_ratio": "16/10",
-        "image_max_height": 260,
-        "slides_desktop": 3,
-        "slides_mobile": 1,
+        "cards_desktop": 3,
+        "cards_mobile": 1,
+        "header_alignment": "center",
+        "header_max_width": 800,
+        "padding_top": 80,
+        "padding_bottom": 100,
+        "header_padding_top": 20,
+        "header_padding_bottom": 50,
         "desktop_bg": "shopify://shop_images/golf-feature-d-bg-lines.png",
         "mobile_bg": "shopify://shop_images/lines-bg-mobile-grey.png",
         "heading": "Everything You Need to Coach or Improve At Golf - All in One App",
-        "subheading": "See how Golf Live makes coaching and learning faster, easier, and more effective.",
-        "enable_slider_desktop": false,
-        "enable_slider_mobile": false
+        "subheading": "See how Golf Live makes coaching and learning faster, easier, and more effective."
       }
     },
     "golf_live_comparison_CLjCmx": {
