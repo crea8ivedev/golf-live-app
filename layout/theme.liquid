@@ -48,7 +48,14 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {{ content_for_header }}
+{{ content_for_header }}
+
+<link 
+  rel="preload" 
+  as="image" 
+  href="{{ 'home-banner-bg-mobile.png' | asset_url }}"
+  fetchpriority="high"
+>
 
 
 
