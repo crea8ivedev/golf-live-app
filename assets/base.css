@@ -3652,19 +3652,13 @@ details-disclosure > details {
 
 
 /* ========================================
-   VIDEO GRID CLEAN V2 (FLEX - NO WRAP)
+   VIDEO GRID CLEAN V2 (FINAL CLEAN)
 ======================================== */
 
 /* SECTION */
 .vt3-section {
-  padding: 60px 20px;
-}
-
-/* HEADING */
-.vt3-heading {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 50px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* CONTAINER */
@@ -3673,18 +3667,18 @@ details-disclosure > details {
   margin: 0 auto;
 }
 
-/* GRID → FLEX ROW */
+/* GRID → FLEX ROW (NO WRAP) */
 .vt3-grid {
   display: flex;
   gap: 24px;
-  flex-wrap: nowrap; /* 🚨 NEVER WRAP */
+  flex-wrap: nowrap;
   align-items: stretch;
 }
 
 /* CARD */
 .vt3-card {
   flex: 1 1 0;
-  min-width: 180px; /* 👈 prevents cards from getting too tiny */
+  min-width: 180px;
   width: 100%;
   border-radius: 24px;
   overflow: hidden;
@@ -3723,29 +3717,28 @@ details-disclosure > details {
   object-fit: cover;
 }
 
-/* PLAY BUTTON */
-.vt3-play {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* HEADING WRAP */
+.vt3-heading-wrap {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
 }
 
-.vt3-play::after {
-  content: '';
-  border-left: 14px solid #000;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  margin-left: 4px;
+/* HEADING */
+.vt3-heading {
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* MOBILE → STACK */
+/* HIGHLIGHT */
+.vt3-highlight {
+  color: #0A7A28;
+}
+
+/* MOBILE STACK */
 @media (max-width: 989px) {
   .vt3-grid {
     flex-direction: column;
@@ -3756,39 +3749,7 @@ details-disclosure > details {
   }
 }
 
-/* 🔴 KILL ANY SWIPER LEAKS */
-.vt3-section .swiper,
-.vt3-section .swiper-wrapper,
-.vt3-section .swiper-slide,
-.vt3-section .swiper-button-next,
-.vt3-section .swiper-button-prev,
-.vt3-section .swiper-pagination {
-  all: unset !important;
-  display: none !important;
-}
-
-/* HEADING WRAP */
-.vt3-heading-wrap {
-  text-align: center;
-  max-width: 1100px;
-  margin: 0 auto 40px;
-  padding: 0 20px;
-}
-
-/* HEADING STYLE */
-.vt3-heading {
-  font-size: clamp(28px, 3vw, 44px);
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-/* HIGHLIGHT TEXT */
-.vt3-highlight {
-  color: #0A7A28; /* fallback */
-}
-
-/* MOBILE TWEAK */
+/* MOBILE TYPOGRAPHY */
 @media (max-width: 768px) {
   .vt3-heading {
     font-size: 26px;
