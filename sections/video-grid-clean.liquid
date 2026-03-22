@@ -111,6 +111,26 @@
 
 </div>
 
+<script>
+document.addEventListener('click', function(e) {
+
+  const poster = e.target.closest('.vt3-poster');
+  if (!poster) return;
+
+  const card = poster.closest('.vt3-card');
+  const video = card.querySelector('video');
+
+  if (!video) return;
+
+  // Hide poster
+  poster.style.display = 'none';
+
+  // Play video
+  video.play();
+
+});
+</script>
+
 {% schema %}
 {
   "name": "Video Grid Clean V2",
