@@ -676,6 +676,7 @@
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/Video 1.mp4",
+            "image": "shopify://shop_images/video1-frame.jpg",
             "name": "",
             "subtitle": ""
           }
@@ -683,6 +684,7 @@
         "slide_KwLaHP": {
           "type": "slide",
           "settings": {
+            "video": "shopify://files/videos/Video 2.mp4",
             "name": "",
             "subtitle": ""
           }
@@ -690,6 +692,7 @@
         "slide_8JywFj": {
           "type": "slide",
           "settings": {
+            "video": "shopify://files/videos/The journey. If you’re not obsessed with it, you’ll never reach the destination.This path is too.mp4",
             "name": "",
             "subtitle": ""
           }
@@ -697,6 +700,7 @@
         "slide_EbHC4r": {
           "type": "slide",
           "settings": {
+            "video": "shopify://files/videos/Video 4.mp4",
             "name": "",
             "subtitle": ""
           }
