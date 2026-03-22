@@ -1,172 +1,206 @@
 <style>
-  /* ===== GRID (REPLACES SWIPER) ===== */
+/* =========================================
+   VIDEO TESTIMONIAL GRID (NO SWIPER)
+========================================= */
+
+/* CONTAINER */
+.vt-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* GRID */
+.vt-grid {
+  display: grid;
+  gap: 24px;
+}
+
+/* Mobile */
+@media (max-width: 639px) {
   .vt-grid {
-    display: grid;
-    gap: 24px;
+    grid-template-columns: 1fr;
   }
+}
 
-  /* Mobile */
-  @media (max-width: 639px) {
-    .vt-grid {
-      grid-template-columns: 1fr;
-    }
+/* Tablet */
+@media (min-width: 640px) {
+  .vt-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  /* Tablet */
-  @media (min-width: 640px) {
-    .vt-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+/* Desktop */
+@media (min-width: 990px) {
+  .vt-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
+}
 
-  /* Desktop */
-  @media (min-width: 990px) {
-    .vt-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
+/* Large desktop */
+@media (min-width: 1280px) {
+  .vt-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
+}
 
-  /* Large */
-  @media (min-width: 1280px) {
-    .vt-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
+/* CARD */
+.vt-slide {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  transition: all 0.25s ease;
+}
 
-  /* CARD */
-  .vt-slide {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-  }
+.vt-slide:hover {
+  transform: translateY(-4px);
+}
 
-  .vt-video-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
+/* VIDEO */
+.vt-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
-  .vt-slide img,
-  .vt-slide video {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 24px;
-  }
+.vt-slide img,
+.vt-slide video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 24px;
+  background: #fff;
+}
 
-  /* POSTER */
-  .vt-poster {
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
-  }
+/* POSTER */
+.vt-poster {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  z-index: 2;
+}
 
-  .vt-poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.vt-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  .vt-play-btn {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    border: none;
-    cursor: pointer;
-  }
+.vt-play-btn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+}
 
-  /* CAPTION */
-  .vt-caption {
-    margin-top: 12px;
-  }
+/* CAPTION */
+.vt-caption {
+  margin-top: 12px;
+}
+
+.vt-caption h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.vt-caption p {
+  font-size: 14px;
+  color: #666;
+}
 </style>
+
 
 <div class="vt-wrapper pt-[43px] min-990:pt-[94px] pb-[72px] min-990:pb-[98px]">
 
   <div class="min-990:px-[42px]">
-    <div class="max-990:px-[28px]">
 
+    <!-- HEADING -->
+    <div class="max-990:px-[28px]">
       {% if section.settings.heading != blank %}
         <h2 class="vt-heading text-center max-w-[300px] min-768:max-w-[700px] min-990:max-w-[700px] min-1440:max-w-[800px] min-1582:max-w-[1069px] mx-auto mb-[31px] min-990:mb-[54px]">
           {{ section.settings.heading | replace: '[highlight]', '<span>' | replace: '[/highlight]', '</span>' }}
         </h2>
       {% endif %}
-
     </div>
 
-    <!-- ✅ GRID INSTEAD OF SWIPER -->
+    <!-- GRID -->
     <div class="relative max-990:px-[28px]">
-      <div class="vt-grid">
+      <div class="vt-grid-container">
+        <div class="vt-grid">
 
-        {% for block in section.blocks %}
+          {% for block in section.blocks %}
 
-          <div class="vt-slide" {{ block.shopify_attributes }}>
+            <div class="vt-slide" {{ block.shopify_attributes }}>
 
-            {% if block.settings.video != blank %}
-              <div class="vt-video-wrapper">
+              {% if block.settings.video != blank %}
+                <div class="vt-video-wrapper">
 
-                {{
-                  block.settings.video
-                  | video_tag:
-                    controls: true,
-                    autoplay: false,
-                    muted: false,
-                    loop: false,
-                    preload: 'metadata',
-                    class: 'vt-video'
-                }}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      controls: true,
+                      autoplay: false,
+                      muted: false,
+                      loop: false,
+                      preload: 'metadata',
+                      class: 'vt-video'
+                  }}
 
-                {% if block.settings.image != blank %}
-                  <div class="vt-poster" data-video-poster>
-                    <img
-                      src="{{ block.settings.image | image_url: width: 800 }}"
-                      alt="{{ block.settings.name | escape }}"
-                      loading="lazy"
-                    >
-                    <button class="vt-play-btn" type="button">
-                      {% render 'video-test-play-icon' %}
-                    </button>
-                  </div>
-                {% endif %}
+                  {% if block.settings.image != blank %}
+                    <div class="vt-poster" data-video-poster>
+                      <img
+                        src="{{ block.settings.image | image_url: width: 800 }}"
+                        alt="{{ block.settings.name | escape }}"
+                        loading="lazy"
+                      >
+                      <button class="vt-play-btn" type="button">
+                        {% render 'video-test-play-icon' %}
+                      </button>
+                    </div>
+                  {% endif %}
 
-              </div>
+                </div>
 
-            {% elsif block.settings.image != blank %}
-              <img
-                src="{{ block.settings.image | image_url: width: 800 }}"
-                alt="{{ block.settings.name | escape }}"
-                loading="lazy"
-              >
-            {% endif %}
+              {% elsif block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 800 }}"
+                  alt="{{ block.settings.name | escape }}"
+                  loading="lazy"
+                >
+              {% endif %}
 
-            {% if block.settings.name != blank %}
-              <div class="vt-caption">
-                <h4>{{ block.settings.name }}</h4>
-                <p>{{ block.settings.subtitle }}</p>
-              </div>
-            {% endif %}
+              {% if block.settings.name != blank %}
+                <div class="vt-caption">
+                  <h4>{{ block.settings.name }}</h4>
+                  <p>{{ block.settings.subtitle }}</p>
+                </div>
+              {% endif %}
 
-          </div>
+            </div>
 
-        {% endfor %}
+          {% endfor %}
 
+        </div>
       </div>
     </div>
 
-    <!-- BUTTONS (UNCHANGED) -->
+    <!-- BUTTONS -->
     <div class="max-990:px-[28px]">
       <div class="vt-buttons flex flex-wrap justify-center items-center gap-x-[66px] gap-y-[16px] mt-[40px] min-990:mt-[65px]">
 
         {% if section.settings.golfer_text != blank %}
-          <a href="{{ section.settings.golfer_url }}" class="golf-app-hero__button button-green min-w-[337px]">
+          <a href="{{ section.settings.golfer_url }}" class="golf-app-hero__button ctm-button button-green min-w-[337px]">
             {{ section.settings.golfer_text }}
           </a>
         {% endif %}
 
         {% if section.settings.coach_text != blank %}
-          <a href="{{ section.settings.coach_url }}" class="golf-app-hero__button button-green min-w-[337px]">
+          <a href="{{ section.settings.coach_url }}" class="golf-app-hero__button ctm-button button-green min-w-[337px]">
             {{ section.settings.coach_text }}
           </a>
         {% endif %}
@@ -176,6 +210,7 @@
 
   </div>
 </div>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
