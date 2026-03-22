@@ -17,42 +17,19 @@
   }
 
   /* =========================
-    FORCE SIDE-BY-SIDE ON MOBILE
+    Reverse Green Layout
   ========================= */
-
-  .glc-reverse {
-    display: flex;
-    align-items: center;
-  }
 
   @media (min-width: 990px) {
     .glc-reverse {
-      flex-direction: row-reverse; /* desktop flip */
+      flex-direction: row-reverse;
     }
   }
 
   @media (max-width: 989px) {
     .glc-reverse {
-      flex-direction: row; /* 🔥 keep side-by-side on mobile */
+      flex-direction: column;
     }
-  }
-
-  /* =========================
-    WIDTH CONTROL
-  ========================= */
-
-  .glc-phone {
-    flex: 0 0 45%;
-  }
-
-  .glc-phone-sibling {
-    flex: 0 0 55%;
-  }
-
-  /* Mobile tweak */
-  @media (max-width: 749px) {
-    .glc-phone { flex: 0 0 40%; }
-    .glc-phone-sibling { flex: 0 0 60%; padding-left: 12px; }
   }
 
   /* Prevent layout shift */
@@ -86,48 +63,49 @@
         style="{% if section.settings.green_bg != blank %}background-image:url({{ section.settings.green_bg | image_url }});{% endif %}"
       >
 
-        <div class="glc-reverse gap-[23px] w-full">
+        <div class="flex items-center gap-[23px] w-full glc-reverse">
 
-          <!-- IMAGE -->
+          <!-- PHONE DESKTOP -->
           {% if section.settings.green_phone != blank %}
-            <div class="glc-phone glc-phone--desktop">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2">
               {{
                 section.settings.green_phone
                 | image_url: width: 600
                 | image_tag:
                   loading: 'lazy',
                   widths: '300,400,600',
-                  sizes: '(max-width: 768px) 40vw, 45vw',
+                  sizes: '(max-width: 768px) 100vw, 45vw',
                   alt: 'With Golf Live App'
               }}
             </div>
           {% endif %}
 
+          <!-- PHONE MOBILE -->
           {% if section.settings.green_phone_mobile != blank %}
-            <div class="glc-phone glc-phone--mobile">
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2">
               {{
                 section.settings.green_phone_mobile
                 | image_url: width: 500
                 | image_tag:
                   loading: 'lazy',
                   widths: '300,400,500',
-                  sizes: '40vw',
+                  sizes: '100vw',
                   alt: 'With Golf Live App'
               }}
             </div>
           {% endif %}
 
           <!-- TEXT -->
-          <div class="glc-phone-sibling text-white">
+          <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-white text-left mt-[80px] max-sm:mt-[20px]">
 
             <h3 class="glc-card-title text-white">
               {{ section.settings.green_title }}
             </h3>
 
-            <ul class="glc-list mt-[24px]">
+            <ul class="glc-list mt-[32px]">
               {% for block in section.blocks %}
                 {% if block.type == 'with_item' %}
-                  <li class="flex gap-3 items-start text-white" {{ block.shopify_attributes }}>
+                  <li class="glc-item glc-item--check text-white flex gap-3 items-start" {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
                       {{
                         block.settings.icon
@@ -160,16 +138,16 @@
         <div class="flex items-center gap-[23px] w-full">
 
           <!-- TEXT -->
-          <div class="glc-phone-sibling text-left">
+          <div class="glc-phone-sibling flex flex-col w-3/5 max-sm:w-1/2 text-left mt-[80px] max-sm:mt-[20px]">
 
             <h3 class="glc-card-title text-black">
               {{ section.settings.grey_title }}
             </h3>
 
-            <ul class="glc-list mt-[24px]">
+            <ul class="glc-list mt-[32px]">
               {% for block in section.blocks %}
                 {% if block.type == 'without_item' %}
-                  <li class="flex gap-3 items-start" {{ block.shopify_attributes }}>
+                  <li class="glc-item glc-item--cross flex gap-3 items-start" {{ block.shopify_attributes }}>
                     {% if block.settings.icon != blank %}
                       {{
                         block.settings.icon
@@ -189,30 +167,31 @@
 
           </div>
 
-          <!-- IMAGE -->
+          <!-- PHONE DESKTOP -->
           {% if section.settings.grey_phone != blank %}
-            <div class="glc-phone glc-phone--desktop">
+            <div class="glc-phone glc-phone--desktop w-[45%] max-sm:w-1/2">
               {{
                 section.settings.grey_phone
                 | image_url: width: 600
                 | image_tag:
                   loading: 'lazy',
                   widths: '300,400,600',
-                  sizes: '(max-width: 768px) 40vw, 45vw',
+                  sizes: '(max-width: 768px) 100vw, 45vw',
                   alt: 'Without Golf Live'
               }}
             </div>
           {% endif %}
 
+          <!-- PHONE MOBILE -->
           {% if section.settings.grey_phone_mobile != blank %}
-            <div class="glc-phone glc-phone--mobile">
+            <div class="glc-phone glc-phone--mobile w-[45%] max-sm:w-1/2">
               {{
                 section.settings.grey_phone_mobile
                 | image_url: width: 500
                 | image_tag:
                   loading: 'lazy',
                   widths: '300,400,500',
-                  sizes: '40vw',
+                  sizes: '100vw',
                   alt: 'Without Golf Live'
               }}
             </div>
