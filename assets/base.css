@@ -3790,3 +3790,9 @@ details-disclosure > details {
 .vt3-section .swiper-pagination {
   display: none !important;
 }
+
+@media (max-width: 768px) {
+  .vt3-heading {
+    font-size: var(--vt3-heading-mobile) !important;
+  }
+}
