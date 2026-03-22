@@ -27,21 +27,8 @@
                   height: 1422
               }}
 
-              {% if block.settings.video.preview_image != blank %}
-                <!-- AUTO VIDEO THUMBNAIL -->
-                <div class="vt3-poster">
-                  <img
-                    src="{{ block.settings.video.preview_image | image_url: width: 800 }}"
-                    alt="{{ block.settings.name | escape }}"
-                    loading="lazy"
-                    width="800"
-                    height="1422"
-                  >
-                  <div class="vt3-play"></div>
-                </div>
-
-              {% elsif block.settings.image != blank %}
-                <!-- FALLBACK IMAGE -->
+              {% if block.settings.image != blank %}
+                <!-- CUSTOM THUMBNAIL (HIGH QUALITY) -->
                 <div class="vt3-poster">
                   <img
                     src="{{ block.settings.image | image_url: width: 800 }}"
@@ -53,16 +40,6 @@
                   <div class="vt3-play"></div>
                 </div>
               {% endif %}
-
-            {% elsif block.settings.image != blank %}
-
-              <img
-                src="{{ block.settings.image | image_url: width: 800 }}"
-                alt="{{ block.settings.name | escape }}"
-                loading="lazy"
-                width="800"
-                height="1422"
-              >
 
             {% endif %}
 
@@ -123,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "name": "Video",
       "settings": [
         { "type": "video", "id": "video", "label": "Video" },
-        { "type": "image_picker", "id": "image", "label": "Fallback image (optional)" },
+        { "type": "image_picker", "id": "image", "label": "Thumbnail image (REQUIRED)" },
         { "type": "text", "id": "name", "label": "Alt text (optional)" }
       ]
     }
