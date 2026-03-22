@@ -3796,3 +3796,9 @@ details-disclosure > details {
 .vt3-section .swiper-pagination {
   display: none !important;
 }
+
+.vt3-poster img {
+  aspect-ratio: 372 / 661;
+  width: 100%;
+  height: auto;
+}
