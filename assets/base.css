@@ -3558,20 +3558,19 @@ details-disclosure > details {
 
 
 /* =========================
-   GRID LAYOUT (FIX ALIGNMENT)
+   GRID (PREMIUM LAYOUT)
 ========================= */
 .golf-features-grid {
   display: grid;
-  gap: 30px;
+  gap: 40px;
   justify-content: center;
-  align-items: stretch;
 }
 
-/* Desktop */
+/* Desktop: force clean layout */
 @media (min-width: 990px) {
   .golf-features-grid {
-    grid-template-columns: repeat(var(--desktop-cols), minmax(320px, 1fr));
-    max-width: 1100px;
+    grid-template-columns: repeat(var(--desktop-cols), minmax(420px, 1fr));
+    max-width: 1000px;
     margin: 0 auto;
   }
 }
@@ -3579,13 +3578,14 @@ details-disclosure > details {
 /* Mobile */
 @media (max-width: 989px) {
   .golf-features-grid {
-    grid-template-columns: repeat(var(--mobile-cols), 1fr);
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }
 
 
 /* =========================
-   CARD STRUCTURE (FIX HEIGHT)
+   CARD (STRUCTURE)
 ========================= */
 .golf-feature-card {
   display: flex;
@@ -3598,15 +3598,15 @@ details-disclosure > details {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover (premium feel) */
+/* Hover = premium feel */
 .golf-feature-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
 }
 
 
 /* =========================
-   IMAGE FIX (CRITICAL)
+   IMAGE (FIX SIZE + CONSISTENCY)
 ========================= */
 .golf-feature-image {
   width: 100%;
@@ -3623,7 +3623,7 @@ details-disclosure > details {
 
 
 /* =========================
-   CONTENT STRUCTURE
+   CONTENT (ALIGNMENT FIX)
 ========================= */
 .golf-feature-content {
   display: flex;
@@ -3633,20 +3633,33 @@ details-disclosure > details {
 
 
 /* =========================
-   TEXT IMPROVEMENTS
+   TYPOGRAPHY FIX (BIG IMPACT)
 ========================= */
 .golf-feature-content h4 {
-  font-weight: 600;
+  font-size: 22px;
   line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
 
 .golf-feature-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+
+/* =========================
+   SUBTITLE FIX
+========================= */
+.golf-feature-content .font-semibold {
+  font-size: 16px;
   line-height: 1.5;
 }
 
 
 /* =========================
-   PILLS
+   PILLS (CLEAN)
 ========================= */
 .golf-pill {
   display: inline-block;
@@ -3654,11 +3667,13 @@ details-disclosure > details {
   border-radius: 999px;
   color: #fff;
   font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
 }
 
 
 /* =========================
-   SECTION WIDTH CONTROL
+   SECTION WIDTH
 ========================= */
 .golf-features-section.full-width {
   max-width: 100%;
@@ -3673,7 +3688,21 @@ details-disclosure > details {
 
 
 /* =========================
-   REMOVE ANY SWIPER LEFTOVERS
+   SPACING CLEANUP
+========================= */
+.golf-features-slider-wrapper {
+  margin-top: 40px;
+}
+
+@media (min-width: 990px) {
+  .golf-features-slider-wrapper {
+    margin-top: 66px;
+  }
+}
+
+
+/* =========================
+   REMOVE SWIPER (SAFETY)
 ========================= */
 .golf-features-swiper,
 .swiper-wrapper,
@@ -3687,18 +3716,4 @@ details-disclosure > details {
 
 .swiper-wrapper {
   display: contents;
-}
-
-
-/* =========================
-   CLEAN SPACING BETWEEN ROWS
-========================= */
-.golf-features-slider-wrapper {
-  margin-top: 40px;
-}
-
-@media (min-width: 990px) {
-  .golf-features-slider-wrapper {
-    margin-top: 66px;
-  }
 }
