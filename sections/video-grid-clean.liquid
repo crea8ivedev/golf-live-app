@@ -10,16 +10,18 @@
   {% if section.settings.heading != blank %}
     <div class="vt3-heading-wrap">
       <h2 class="vt3-heading">
-        {% assign parts = section.settings.heading | split: '[highlight]' %}
-        {% if parts.size > 1 %}
-          {{ parts[0] }}
-          <span style="color: {{ section.settings.highlight_color }};">
-            {{ parts[1] | split: '[/highlight]' | first }}
-          </span>
-          {{ parts[1] | split: '[/highlight]' | last }}
-        {% else %}
-          {{ section.settings.heading }}
-        {% endif %}
+
+        {% assign before = section.settings.heading | split: '[highlight]' | first %}
+        {% assign after_split = section.settings.heading | split: '[highlight]' | last | split: '[/highlight]' %}
+        {% assign highlight = after_split[0] %}
+        {% assign after = after_split[1] %}
+
+        {{ before }}
+        <span class="vt3-highlight">
+          {{ highlight }}
+        </span>
+        {{ after }}
+
       </h2>
     </div>
   {% endif %}
@@ -143,12 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
       "default": "Thousands of Coaches and Golfers Are Already Seeing Results – [highlight]Join Them Today[/highlight]"
     },
     {
-      "type": "color",
-      "id": "highlight_color",
-      "label": "Highlight color",
-      "default": "#0A7A28"
-    },
-    {
       "type": "range",
       "id": "padding_top",
       "label": "Padding Top",
@@ -166,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "step": 10,
       "default": 60
     },
+
     {
       "type": "text",
       "id": "golfer_text",
