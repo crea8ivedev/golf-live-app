@@ -368,22 +368,11 @@
             "designation": "Golf Live Golfer",
             "image": "shopify://shop_images/golfer-d-2.png"
           }
-        },
-        "testimonial_TGKdiz": {
-          "type": "testimonial",
-          "disabled": true,
-          "settings": {
-            "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
-            "name": "Chris Como",
-            "designation": "Golf Digest #2 Ranked Coach",
-            "image": "shopify://shop_images/golfer-d-1.png"
-          }
         }
       },
       "block_order": [
         "testimonial_nD6Tca",
-        "testimonial_gKUgfX",
-        "testimonial_TGKdiz"
+        "testimonial_gKUgfX"
       ],
       "name": "Golfers Testimonials",
       "settings": {
