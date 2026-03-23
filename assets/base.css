@@ -4054,27 +4054,24 @@ details-disclosure > details {
 
 
 /* =========================
-   FIX: MOBILE HEADER BACKGROUND
+   FIX: MOBILE MENU DRAWER BACKGROUND
 ========================= */
-@media (max-width: 989px) {
+.menu-drawer,
+.menu-drawer__inner-container,
+.menu-drawer__navigation,
+.menu-drawer__submenu,
+.js details[open] > .menu-drawer {
+  background: #ffffff !important;
+}
 
-  .header-wrapper,
-  .header,
-  .shopify-section-header,
-  header.header {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
-  }
+/* Fix overlay behind menu */
+.menu-drawer-container {
+  background: #ffffff !important;
+}
 
-  .header-wrapper--border-bottom {
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-
-}@media (max-width: 989px) {
-
-  .shopify-section-header-sticky,
-  .header-wrapper.is-sticky {
-    background: #ffffff !important;
-  }
-
+/* Ensure text is readable */
+.menu-drawer a,
+.menu-drawer summary,
+.menu-drawer__menu-item {
+  color: #000000 !important;
 }
