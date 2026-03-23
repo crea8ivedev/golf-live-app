@@ -4051,3 +4051,23 @@ details-disclosure > details {
   color: #000 !important;
 }
 
+
+
+/* =========================
+   FIX: MOBILE HEADER BACKGROUND
+========================= */
+@media (max-width: 989px) {
+
+  .header-wrapper,
+  .header,
+  .shopify-section-header,
+  header.header {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+  }
+
+  .header-wrapper--border-bottom {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+}
