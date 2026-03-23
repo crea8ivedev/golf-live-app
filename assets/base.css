@@ -3990,20 +3990,24 @@ details-disclosure > details {
 }
 
 /* =========================
-   MOBILE IMAGE SWITCH
+   IMAGE FIX (FINAL)
 ========================= */
 
-.cg-testimonial__image--mobile {
-  display: none;
+.cg-testimonial__image {
+  flex: 0 0 180px;
+}
+
+.cg-testimonial__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
 }
 
 @media (max-width: 768px) {
-  .cg-testimonial__image img:not(.cg-testimonial__image--mobile) {
-    display: none;
-  }
-
-  .cg-testimonial__image--mobile {
-    display: block;
+  .cg-testimonial__image {
+    max-width: 220px;
+    margin: 10px auto 0;
   }
 }
 
