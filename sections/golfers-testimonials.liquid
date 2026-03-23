@@ -1,96 +1,175 @@
-{% style %}
-  .cg-testimonial__image--mobile {
-    display: none;
-  }
+{% comment %}
+  Section: Golfers Testimonials (Fixed + SaaS Clean)
+{% endcomment %}
 
-  @media (max-width: 768px) {
-    .cg-testimonial__image--desktop {
-      display: none;
-    }
+<style>
+/* =========================
+   TEXT FIX (SAFE)
+========================= */
+.cg-testimonial__content,
+.cg-testimonial__quote,
+.cg-testimonial__author,
+.cg-testimonial__author strong,
+.cg-testimonial__author span {
+  color: #ffffff !important;
+}
 
-    .cg-testimonial__image--mobile {
-      display: block;
-    }
-  }
-{% endstyle %}
+/* =========================
+   GRADIENT OVERLAY
+========================= */
+.cg-testimonial-inside {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.cg-testimonial-inside::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0.6) 40%,
+    rgba(0,0,0,0.15) 70%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.cg-testimonial__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   IMAGE FIX
+========================= */
+.cg-testimonial__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   ARROWS FIX
+========================= */
+.golfers-arrow {
+  width: 48px;
+  height: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Arrow SVG colors */
+.golfers-arrow svg circle {
+  fill: #ffffff !important;
+}
+
+.golfers-arrow svg path {
+  stroke: #111111 !important;
+}
+
+/* Position */
+.golfers-prev {
+  left: -20px;
+}
+
+.golfers-next {
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  .golfers-prev { left: 10px; }
+  .golfers-next { right: 10px; }
+}
+
+/* =========================
+   STAR COLOR
+========================= */
+.cg-testimonial__stars svg {
+  fill: #facc15;
+}
+
+/* =========================
+   TYPOGRAPHY POLISH
+========================= */
+.cg-testimonial__quote {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.cg-testimonial__author span {
+  opacity: 0.8;
+}
+</style>
+
 <div
   class="cg-testimonials page-width pt-[45px] min-990:pt-[71px] pb-[59px] min-990:pb-[113px] {{ section.settings.extra_class }} color-{{ section.settings.color_scheme }}"
   data-desktop-slider="{{ section.settings.enable_desktop_slider }}"
   data-mobile-slider="{{ section.settings.enable_mobile_slider }}"
 >
+
   {% if section.settings.heading != blank %}
-    <div class="cg-testimonials__heading h2 text-center mb-[37px] min-990:mb-[68px] scroll-trigger animate--slide-in">
+    <div class="cg-testimonials__heading h2 text-center mb-[37px] min-990:mb-[68px]">
       {{ section.settings.heading }}
     </div>
   {% endif %}
 
   <div class="cg-testimonials__wrapper relative">
+
+    <!-- ARROWS -->
     <button class="golfers-arrow golfers-prev swiper-button-prev" type="button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-        <g>
-          <circle cx="28" cy="28" r="28" transform="matrix(-1 0 0 1 60 0)" fill="white"/>
-        </g>
-        <path d="M37 17L25 29L37 41" stroke="black" stroke-width="2"/>
-        <defs>
-          <filter x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="2"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_328_3049"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_328_3049" result="shape"/>
-          </filter>
-        </defs>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+        <path d="M15 5L7 12L15 19" stroke-width="2"/>
       </svg>
     </button>
+
     <button class="golfers-arrow golfers-next swiper-button-next" type="button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-        <g>
-          <circle cx="32" cy="28" r="28" fill="white"/>
-        </g>
-        <path d="M27 17L39 29L27 41" stroke="black" stroke-width="2"/>
-        <defs>
-          <filter x="0" y="0" width="64" height="64" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset dy="4"/>
-            <feGaussianBlur stdDeviation="2"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_328_3046"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_328_3046" result="shape"/>
-          </filter>
-        </defs>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+        <path d="M9 5L17 12L9 19" stroke-width="2"/>
       </svg>
     </button>
-    <div class="cg-testimonials__grid{% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider == 'true' %} cg-swiper swiper{% endif %}">
+
+    <!-- SLIDER -->
+    <div class="cg-testimonials__grid{% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %} cg-swiper swiper{% endif %}">
+
       {% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %}
         <div class="swiper-wrapper">
       {% endif %}
 
       {% for block in section.blocks %}
-        <div
-          class="cg-testimonial {{ block.settings.extra_class_slide }}{% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %} swiper-slide{% endif %}"
-          {{ block.shopify_attributes }}
-        >
+        <div class="cg-testimonial {% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %} swiper-slide{% endif %}" {{ block.shopify_attributes }}>
+
           <div class="cg-testimonial-inside">
+
+            <!-- CONTENT -->
             <div class="cg-testimonial__content">
+
               <div>
-                <div class="cg-testimonial__stars min-990:hidden scroll-trigger animate--slide-in">
+                <div class="cg-testimonial__stars min-990:hidden">
                   {% render 'golfers-stars' %}
                 </div>
+
                 {% if block.settings.quote != blank %}
-                  <p class="cg-testimonial__quote scroll-trigger animate--slide-in">{{ block.settings.quote }}</p>
+                  <p class="cg-testimonial__quote">{{ block.settings.quote }}</p>
                 {% endif %}
               </div>
 
               <div>
-                <div class="cg-testimonial__stars max-990:hidden scroll-trigger animate--slide-in">
+                <div class="cg-testimonial__stars max-990:hidden">
                   {% render 'golfers-stars' %}
                 </div>
-                <div class="cg-testimonial__author scroll-trigger animate--slide-in">
+
+                <div class="cg-testimonial__author">
                   {% if block.settings.name != blank %}
                     <strong>{{ block.settings.name }}</strong>
                   {% endif %}
@@ -99,30 +178,24 @@
                   {% endif %}
                 </div>
               </div>
+
             </div>
 
+            <!-- IMAGE -->
             {% if block.settings.image != blank %}
-              <div class="cg-testimonial__image cg-testimonial__image--desktop scroll-trigger animate--slide-in">
-                <img
-                  src="{{ block.settings.image | image_url }}"
-                  alt="{{ block.settings.name | escape }}"
-                  loading="lazy"
-                  width="auto"
-                  height="auto"
-                >
+              <div class="cg-testimonial__image">
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '400,600,800',
+                    sizes: '(max-width: 768px) 100vw, 50vw',
+                    alt: block.settings.name
+                }}
               </div>
             {% endif %}
-            {% if block.settings.mobile_image != blank %}
-              <div class="cg-testimonial__image cg-testimonial__image--mobile scroll-trigger animate--slide-in">
-                <img
-                  src="{{ block.settings.mobile_image | image_url }}"
-                  alt="{{ block.settings.name | escape }}"
-                  loading="lazy"
-                  width="auto"
-                  height="auto"
-                >
-              </div>
-            {% endif %}
+
           </div>
         </div>
       {% endfor %}
@@ -130,156 +203,35 @@
       {% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %}
         </div>
       {% endif %}
+
     </div>
   </div>
 </div>
-
-{% if section.settings.enable_desktop_slider or section.settings.enable_mobile_slider %}
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (typeof Swiper === 'undefined') return;
-
-      document.querySelectorAll('.cg-testimonials').forEach(function (section) {
-        const enableDesktop = section.dataset.desktopSlider === 'true';
-        const enableMobile = section.dataset.mobileSlider === 'true';
-
-        let swiperInstance = null;
-
-        function initSwiper() {
-          const isMobile = window.innerWidth <= 989;
-
-          section.classList.remove('is-desktop-grid', 'is-mobile-stack');
-
-          if (isMobile) {
-            if (enableMobile) {
-              if (!swiperInstance) {
-                swiperInstance = new Swiper(section.querySelector('.cg-swiper'), {
-                  slidesPerView: 1.1,
-                  spaceBetween: 23,
-                  loop: true,
-                  navigation: {
-                    nextEl: section.querySelector('.golfers-arrow.golfers-next'),
-                    prevEl: section.querySelector('.golfers-arrow.golfers-prev'),
-                  },
-                });
-              }
-            } else {
-              if (swiperInstance) swiperInstance.destroy(true, true);
-              swiperInstance = null;
-              section.classList.add('is-mobile-stack');
-            }
-          } else {
-            if (enableDesktop) {
-              if (!swiperInstance) {
-                swiperInstance = new Swiper(section.querySelector('.cg-swiper'), {
-                  spaceBetween: 53,
-                  loop: true,
-                  navigation: {
-                    nextEl: section.querySelector('.golfers-arrow.golfers-next'),
-                    prevEl: section.querySelector('.golfers-arrow.golfers-prev'),
-                  },
-                  breakpoints: {
-                    990: {
-                      slidesPerView: 1.5,
-                    },
-                    1440: {
-                      slidesPerView: 2,
-                    },
-                  },
-                });
-              }
-            } else {
-              if (swiperInstance) swiperInstance.destroy(true, true);
-              swiperInstance = null;
-              section.classList.add('is-mobile-stack');
-            }
-          }
-        }
-
-        initSwiper();
-        window.addEventListener('resize', initSwiper);
-      });
-    });
-  </script>
-{% endif %}
 
 {% schema %}
 {
   "name": "Golfers Testimonials",
   "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "extra_class",
-      "label": "Extra Class"
-    },
-    {
-      "type": "richtext",
-      "id": "heading",
-      "label": "Section Heading"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_desktop_slider",
-      "label": "Enable slider on desktop",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_mobile_slider",
-      "label": "Enable slider on mobile",
-      "default": true
-    }
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color Scheme", "default": "scheme-1" },
+    { "type": "text", "id": "extra_class", "label": "Extra Class" },
+    { "type": "richtext", "id": "heading", "label": "Heading" },
+    { "type": "checkbox", "id": "enable_desktop_slider", "label": "Enable desktop slider", "default": false },
+    { "type": "checkbox", "id": "enable_mobile_slider", "label": "Enable mobile slider", "default": true }
   ],
   "blocks": [
     {
       "type": "testimonial",
       "name": "Testimonial",
       "settings": [
-        {
-          "type": "text",
-          "id": "extra_class_slide",
-          "label": "Extra Class"
-        },
-        {
-          "type": "textarea",
-          "id": "quote",
-          "label": "Quote"
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Name"
-        },
-        {
-          "type": "text",
-          "id": "designation",
-          "label": "Designation / Subtitle"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Desktop Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Mobile Image"
-        }
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "designation", "label": "Role" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
       ]
     }
   ],
-  "max_blocks": 6,
   "presets": [
-    {
-      "name": "Golfers Testimonials",
-      "blocks": [{ "type": "testimonial" }, { "type": "testimonial" }]
-    }
+    { "name": "Golfers Testimonials" }
   ]
 }
 {% endschema %}
