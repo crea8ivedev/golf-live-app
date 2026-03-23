@@ -1,41 +1,61 @@
 {% comment %}
-  Section: Trusted by Coaches (CLEAN + FIXED)
+  Section: Trusted by Coaches (FINAL FIX)
 {% endcomment %}
 
 <style>
 /* =========================
-   SECTION SPACING FIX
+   SECTION SPACING
 ========================= */
 .trusted-coaches {
   padding: 80px 20px 60px;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* =========================
-   HEADER FIX (NO ABSOLUTE)
+   HEADER (FIXED)
 ========================= */
 .trusted-coaches-details {
+  text-align: center;
+  margin-bottom: 40px;
   position: relative !important;
   top: auto !important;
   transform: none !important;
-  margin-bottom: 40px;
+}
+
+/* TEXT */
+.trusted-coaches__heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.trusted-coaches__subheading {
+  font-size: 16px;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* =========================
-   TEXT COLOR
-========================= */
-.trusted-coaches__heading,
-.trusted-coaches__subheading,
-.trusted-coaches__name {
-  color: #ffffff !important;
-}
-
-/* =========================
-   GRID FIX
+   GRID
 ========================= */
 .trusted-coaches__grid {
   display: flex;
   flex-wrap: wrap;
+}
+
+/* DESKTOP */
+@media (min-width: 990px) {
+  .trusted-coaches__card {
+    flex: 0 0 20%;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 989px) {
+  .trusted-coaches__card {
+    flex: 0 0 50%;
+  }
 }
 
 /* =========================
@@ -44,20 +64,6 @@
 .trusted-coaches__card {
   position: relative;
   overflow: hidden;
-}
-
-/* Desktop columns */
-@media (min-width: 990px) {
-  .trusted-coaches__card {
-    flex: 0 0 20%;
-  }
-}
-
-/* Tablet */
-@media (max-width: 989px) {
-  .trusted-coaches__card {
-    flex: 0 0 50%;
-  }
 }
 
 /* =========================
@@ -76,9 +82,7 @@
   }
 }
 
-/* =========================
-   IMAGE STABILITY
-========================= */
+/* IMAGE */
 .trusted-coaches__image {
   width: 100%;
   height: auto;
@@ -86,18 +90,18 @@
 }
 
 /* =========================
-   OVERLAY (CLEAN)
+   OVERLAY
 ========================= */
 .trusted-coaches__overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 16px;
+  padding: 14px;
 
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.7),
     rgba(0,0,0,0)
   );
 }
@@ -105,7 +109,6 @@
 .trusted-coaches__name {
   font-weight: 700;
   font-size: 14px;
-  line-height: 1.2;
 }
 </style>
 
@@ -113,10 +116,10 @@
   <div class="rusted-coaches-inside">
 
     <!-- HEADER -->
-    <div class="trusted-coaches-details px-[28px] text-center">
+    <div class="trusted-coaches-details">
 
       {% if section.settings.heading != blank %}
-        <h2 class="trusted-coaches__heading mb-[12px]">
+        <h2 class="trusted-coaches__heading">
           {{ section.settings.heading }}
         </h2>
       {% endif %}
@@ -133,12 +136,9 @@
     <div class="trusted-coaches__grid">
 
       {% for block in section.blocks %}
-        <div
-          class="trusted-coaches__card"
-          {{ block.shopify_attributes }}
-        >
+        <div class="trusted-coaches__card" {{ block.shopify_attributes }}>
 
-          <!-- DESKTOP IMAGE -->
+          <!-- DESKTOP -->
           {% if block.settings.player_image != blank %}
             <div class="trusted-coaches__desktop">
               {{
@@ -154,7 +154,7 @@
             </div>
           {% endif %}
 
-          <!-- MOBILE IMAGE -->
+          <!-- MOBILE -->
           {% if block.settings.player_image_mobile != blank %}
             <div class="trusted-coaches__mobile">
               {{
@@ -185,57 +185,3 @@
     </div>
   </div>
 </section>
-
-{% schema %}
-{
-  "name": "Trusted by Coaches",
-  "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color Scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Trusted by Top Coaches"
-    },
-    {
-      "type": "textarea",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "From PGA Tour coaches to rising instructors – trusted by the best."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "player",
-      "name": "Player",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "player_image",
-          "label": "Desktop Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "player_image_mobile",
-          "label": "Mobile Image"
-        },
-        {
-          "type": "richtext",
-          "id": "player_name",
-          "label": "Player Name"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Trusted by Coaches"
-    }
-  ]
-}
-{% endschema %}
