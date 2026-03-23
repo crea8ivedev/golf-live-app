@@ -1,69 +1,19 @@
 {% comment %}
-  Section: Trusted by Coaches (FINAL FIX)
+  Section: Trusted by Coaches
 {% endcomment %}
 
 <style>
 /* =========================
-   SECTION SPACING
+   TEXT COLOR FIX
 ========================= */
 .trusted-coaches {
-  padding: 80px 20px 60px;
-  color: #fff;
+  color: #ffffff;
 }
 
-/* =========================
-   HEADER (FIXED)
-========================= */
-.trusted-coaches-details {
-  text-align: center;
-  margin-bottom: 40px;
-  position: relative !important;
-  top: auto !important;
-  transform: none !important;
-}
-
-/* TEXT */
-.trusted-coaches__heading {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.trusted-coaches__subheading {
-  font-size: 16px;
-  opacity: 0.8;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* =========================
-   GRID
-========================= */
-.trusted-coaches__grid {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* DESKTOP */
-@media (min-width: 990px) {
-  .trusted-coaches__card {
-    flex: 0 0 20%;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 989px) {
-  .trusted-coaches__card {
-    flex: 0 0 50%;
-  }
-}
-
-/* =========================
-   CARD
-========================= */
-.trusted-coaches__card {
-  position: relative;
-  overflow: hidden;
+.trusted-coaches__heading,
+.trusted-coaches__subheading,
+.trusted-coaches__name {
+  color: #ffffff !important;
 }
 
 /* =========================
@@ -82,50 +32,30 @@
   }
 }
 
-/* IMAGE */
+/* =========================
+   IMAGE STABILITY
+========================= */
 .trusted-coaches__image {
   width: 100%;
   height: auto;
   display: block;
 }
-
-/* =========================
-   OVERLAY
-========================= */
-.trusted-coaches__overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 14px;
-
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.7),
-    rgba(0,0,0,0)
-  );
-}
-
-.trusted-coaches__name {
-  font-weight: 700;
-  font-size: 14px;
-}
 </style>
 
-<section class="trusted-coaches color-{{ section.settings.color_scheme }}">
+<section class="trusted-coaches relative color-{{ section.settings.color_scheme }}">
   <div class="rusted-coaches-inside">
 
     <!-- HEADER -->
-    <div class="trusted-coaches-details">
+    <div class="trusted-coaches-details max-990:pt-[46px] max-990:pb-[38px] px-[28px] text-center min-990:absolute min-990:top-[50px] min-1440:top-[96px] min-990:left-50p min-990:translate-x-50mp min-990:z-1 min-990:w-full min-990:max-w-[925px]">
 
       {% if section.settings.heading != blank %}
-        <h2 class="trusted-coaches__heading">
+        <h2 class="trusted-coaches__heading mb-[11px] min-990:mb-[18px]">
           {{ section.settings.heading }}
         </h2>
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <div class="trusted-coaches__subheading">
+        <div class="trusted-coaches__subheading text-h6 font-medium min-990:font-semibold">
           {{ section.settings.subheading }}
         </div>
       {% endif %}
@@ -133,12 +63,15 @@
     </div>
 
     <!-- GRID -->
-    <div class="trusted-coaches__grid">
+    <div class="trusted-coaches__grid flex flex-wrap">
 
       {% for block in section.blocks %}
-        <div class="trusted-coaches__card" {{ block.shopify_attributes }}>
+        <div
+          class="trusted-coaches__card relative flex-[0_0_50%] min-768:flex-[0_0_33.33%] min-990:flex-[0_0_20%] min-990:flex min-990:flex-col min-990:justify-end min-990:pt-[87px]"
+          {{ block.shopify_attributes }}
+        >
 
-          <!-- DESKTOP -->
+          <!-- DESKTOP IMAGE -->
           {% if block.settings.player_image != blank %}
             <div class="trusted-coaches__desktop">
               {{
@@ -154,7 +87,7 @@
             </div>
           {% endif %}
 
-          <!-- MOBILE -->
+          <!-- MOBILE IMAGE -->
           {% if block.settings.player_image_mobile != blank %}
             <div class="trusted-coaches__mobile">
               {{
@@ -170,11 +103,13 @@
             </div>
           {% endif %}
 
-          <!-- NAME -->
+          <!-- NAME OVERLAY -->
           {% if block.settings.player_name != blank %}
             <div class="trusted-coaches__overlay">
-              <div class="trusted-coaches__name">
-                {{ block.settings.player_name }}
+              <div class="trusted-coaches__overlay-inside">
+                <div class="trusted-coaches__name">
+                  {{ block.settings.player_name }}
+                </div>
               </div>
             </div>
           {% endif %}
@@ -185,3 +120,57 @@
     </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Trusted by Coaches",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by Top Coaches"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "From PGA Tour coaches to rising instructors – trusted by the best."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "player",
+      "name": "Player",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "player_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "player_image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "richtext",
+          "id": "player_name",
+          "label": "Player Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trusted by Coaches"
+    }
+  ]
+}
+{% endschema %}
