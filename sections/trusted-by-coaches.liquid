@@ -1,54 +1,115 @@
 {% comment %}
-  Section: Trusted by Coaches (FIXED MOBILE + CLEAN)
+  Section: Trusted by Coaches
 {% endcomment %}
 
-<section class="trusted-coaches color-{{ section.settings.color_scheme }}">
-  <div class="trusted-coaches__inner">
+<style>
+/* =========================
+   TEXT COLOR FIX
+========================= */
+.trusted-coaches {
+  color: #ffffff;
+}
 
-    <!-- HEADING -->
-    <div class="trusted-coaches__header">
+.trusted-coaches__heading,
+.trusted-coaches__subheading,
+.trusted-coaches__name {
+  color: #ffffff !important;
+}
+
+/* =========================
+   IMAGE CONTROL (NO DUPES)
+========================= */
+.trusted-coaches__mobile {
+  display: none;
+}
+
+@media (max-width: 989px) {
+  .trusted-coaches__desktop {
+    display: none;
+  }
+  .trusted-coaches__mobile {
+    display: block;
+  }
+}
+
+/* =========================
+   IMAGE STABILITY
+========================= */
+.trusted-coaches__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+</style>
+
+<section class="trusted-coaches relative color-{{ section.settings.color_scheme }}">
+  <div class="rusted-coaches-inside">
+
+    <!-- HEADER -->
+    <div class="trusted-coaches-details max-990:pt-[46px] max-990:pb-[38px] px-[28px] text-center min-990:absolute min-990:top-[50px] min-1440:top-[96px] min-990:left-50p min-990:translate-x-50mp min-990:z-1 min-990:w-full min-990:max-w-[925px]">
+
       {% if section.settings.heading != blank %}
-        <h2 class="trusted-coaches__heading">
+        <h2 class="trusted-coaches__heading mb-[11px] min-990:mb-[18px]">
           {{ section.settings.heading }}
         </h2>
       {% endif %}
 
       {% if section.settings.subheading != blank %}
-        <p class="trusted-coaches__subheading">
+        <div class="trusted-coaches__subheading text-h6 font-medium min-990:font-semibold">
           {{ section.settings.subheading }}
-        </p>
+        </div>
       {% endif %}
+
     </div>
 
     <!-- GRID -->
-    <div class="trusted-coaches__grid">
+    <div class="trusted-coaches__grid flex flex-wrap">
 
       {% for block in section.blocks %}
-        <div class="trusted-coaches__card" {{ block.shopify_attributes }}>
+        <div
+          class="trusted-coaches__card relative flex-[0_0_50%] min-768:flex-[0_0_33.33%] min-990:flex-[0_0_20%] min-990:flex min-990:flex-col min-990:justify-end min-990:pt-[87px]"
+          {{ block.shopify_attributes }}
+        >
 
-          {% assign coach_image = block.settings.player_image %}
+          <!-- DESKTOP IMAGE -->
+          {% if block.settings.player_image != blank %}
+            <div class="trusted-coaches__desktop">
+              {{
+                block.settings.player_image
+                | image_url: width: 600
+                | image_tag:
+                  class: 'trusted-coaches__image',
+                  loading: 'lazy',
+                  widths: '300,400,600',
+                  sizes: '(max-width: 768px) 50vw, 20vw',
+                  alt: block.settings.player_name
+              }}
+            </div>
+          {% endif %}
 
+          <!-- MOBILE IMAGE -->
           {% if block.settings.player_image_mobile != blank %}
-            {% assign coach_image = block.settings.player_image_mobile %}
+            <div class="trusted-coaches__mobile">
+              {{
+                block.settings.player_image_mobile
+                | image_url: width: 400
+                | image_tag:
+                  class: 'trusted-coaches__image',
+                  loading: 'lazy',
+                  widths: '200,300,400',
+                  sizes: '50vw',
+                  alt: block.settings.player_name
+              }}
+            </div>
           {% endif %}
 
-          {% if coach_image != blank %}
-            {{
-              coach_image
-              | image_url: width: 600
-              | image_tag:
-                class: 'trusted-coaches__image',
-                loading: 'lazy',
-                widths: '300,400,600',
-                sizes: '(max-width: 768px) 50vw, 20vw',
-                alt: block.settings.player_name
-            }}
-          {% endif %}
-
+          <!-- NAME OVERLAY -->
           {% if block.settings.player_name != blank %}
             <div class="trusted-coaches__overlay">
-              <div class="trusted-coaches__name">
-                {{ block.settings.player_name }}
+              <div class="trusted-coaches__overlay-inside">
+                <div class="trusted-coaches__name">
+                  {{ block.settings.player_name }}
+                </div>
               </div>
             </div>
           {% endif %}
@@ -62,7 +123,7 @@
 
 {% schema %}
 {
-  "name": "Trusted Coaches",
+  "name": "Trusted by Coaches",
   "settings": [
     {
       "type": "color_scheme",
@@ -86,7 +147,7 @@
   "blocks": [
     {
       "type": "player",
-      "name": "Coach",
+      "name": "Player",
       "settings": [
         {
           "type": "image_picker",
@@ -96,25 +157,19 @@
         {
           "type": "image_picker",
           "id": "player_image_mobile",
-          "label": "Optional Mobile Image"
+          "label": "Mobile Image"
         },
         {
           "type": "richtext",
           "id": "player_name",
-          "label": "Coach Name"
+          "label": "Player Name"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Trusted Coaches",
-      "blocks": [
-        { "type": "player" },
-        { "type": "player" },
-        { "type": "player" },
-        { "type": "player" }
-      ]
+      "name": "Trusted by Coaches"
     }
   ]
 }
