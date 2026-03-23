@@ -1,5 +1,5 @@
 {% comment %}
-  Section: Testimonials Grid (With Images)
+  Section: Testimonials Grid (FINAL - FIXED IMAGES)
 {% endcomment %}
 
 <section class="cg-testimonials">
@@ -18,7 +18,7 @@
 
           <div class="cg-testimonial__card">
 
-            <!-- TEXT SIDE -->
+            <!-- TEXT -->
             <div class="cg-testimonial__content">
 
               <div class="cg-testimonial__stars">
@@ -42,30 +42,31 @@
 
             </div>
 
-            <!-- IMAGE SIDE -->
+            <!-- IMAGE (FIXED) -->
             {% if block.settings.image != blank or block.settings.mobile_image != blank %}
               <div class="cg-testimonial__image">
 
-                <!-- Desktop -->
+                <!-- Desktop Image -->
                 {% if block.settings.image != blank %}
                   {{
                     block.settings.image
                     | image_url: width: 500
                     | image_tag:
+                      class: 'cg-testimonial__img cg-testimonial__img--desktop',
                       loading: 'lazy',
                       widths: '300,400,500',
-                      sizes: '(min-width: 768px) 250px, 100vw',
+                      sizes: '(min-width: 768px) 220px, 100vw',
                       alt: block.settings.name
                   }}
                 {% endif %}
 
-                <!-- Mobile override -->
+                <!-- Mobile Image -->
                 {% if block.settings.mobile_image != blank %}
                   {{
                     block.settings.mobile_image
                     | image_url: width: 400
                     | image_tag:
-                      class: 'cg-testimonial__image--mobile',
+                      class: 'cg-testimonial__img cg-testimonial__img--mobile',
                       loading: 'lazy',
                       widths: '300,400',
                       sizes: '100vw',
