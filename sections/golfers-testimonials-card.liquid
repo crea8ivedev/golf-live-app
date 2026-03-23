@@ -1,5 +1,5 @@
 {% comment %}
-  Section: Testimonials Grid (FINAL - FIXED IMAGES)
+  Section: Testimonials Grid (FINAL - NO DUPLICATES)
 {% endcomment %}
 
 <section class="cg-testimonials">
@@ -42,38 +42,24 @@
 
             </div>
 
-            <!-- IMAGE (FIXED) -->
-            {% if block.settings.image != blank or block.settings.mobile_image != blank %}
+            <!-- IMAGE (NO DUPLICATE LOGIC) -->
+            {% assign image_to_use = block.settings.image %}
+
+            {% if block.settings.mobile_image != blank %}
+              {% assign image_to_use = block.settings.mobile_image %}
+            {% endif %}
+
+            {% if image_to_use != blank %}
               <div class="cg-testimonial__image">
-
-                <!-- Desktop Image -->
-                {% if block.settings.image != blank %}
-                  {{
-                    block.settings.image
-                    | image_url: width: 500
-                    | image_tag:
-                      class: 'cg-testimonial__img cg-testimonial__img--desktop',
-                      loading: 'lazy',
-                      widths: '300,400,500',
-                      sizes: '(min-width: 768px) 220px, 100vw',
-                      alt: block.settings.name
-                  }}
-                {% endif %}
-
-                <!-- Mobile Image -->
-                {% if block.settings.mobile_image != blank %}
-                  {{
-                    block.settings.mobile_image
-                    | image_url: width: 400
-                    | image_tag:
-                      class: 'cg-testimonial__img cg-testimonial__img--mobile',
-                      loading: 'lazy',
-                      widths: '300,400',
-                      sizes: '100vw',
-                      alt: block.settings.name
-                  }}
-                {% endif %}
-
+                {{
+                  image_to_use
+                  | image_url: width: 500
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '300,400,500',
+                    sizes: '(max-width: 768px) 100vw, 220px',
+                    alt: block.settings.name
+                }}
               </div>
             {% endif %}
 
@@ -120,12 +106,12 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Desktop Image"
+          "label": "Image"
         },
         {
           "type": "image_picker",
           "id": "mobile_image",
-          "label": "Mobile Image"
+          "label": "Optional Mobile Image"
         }
       ]
     }
