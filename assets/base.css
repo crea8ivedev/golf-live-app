@@ -3802,3 +3802,104 @@ details-disclosure > details {
   width: 100%;
   height: auto;
 }
+
+
+
+/* =========================
+   TESTIMONIALS GRID (SAAS STYLE)
+========================= */
+
+.cg-testimonials {
+  background: #000;
+  padding: 80px 20px;
+}
+
+.cg-testimonials__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* HEADING */
+.cg-testimonials__heading {
+  text-align: center;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .cg-testimonials__heading {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+/* GRID */
+.cg-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .cg-testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CARD */
+.cg-testimonial {
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #000 0%,
+    #000 40%,
+    #0c2f1f 75%,
+    #1f7a43 100%
+  );
+
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.25s ease;
+}
+
+/* HOVER */
+.cg-testimonial:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* STARS */
+.cg-testimonial__stars {
+  margin-bottom: 16px;
+}
+
+.cg-testimonial__stars svg {
+  fill: #facc15;
+}
+
+/* QUOTE */
+.cg-testimonial__quote {
+  color: #e5e5e5;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* AUTHOR */
+.cg-testimonial__author strong {
+  display: block;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.cg-testimonial__author span {
+  color: #a3a3a3;
+  font-size: 15px;
+}
