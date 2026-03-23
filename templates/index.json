@@ -348,6 +348,39 @@
         "button_url_right": "https://plus.golfliveapp.com/en/sign-up"
       }
     },
+    "golfers_testimonials_card_PtJ6ya": {
+      "type": "golfers-testimonials-card",
+      "blocks": {
+        "testimonial_BPb4T8": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
+            "name": "Chris Como",
+            "designation": "Golf Digest #2 Ranked Coach",
+            "image": "shopify://shop_images/freepik__background__68165_1.png",
+            "mobile_image": "shopify://shop_images/freepik__background__68165_1.png"
+          }
+        },
+        "testimonial_Qi8ND7": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"My swing has improved tremendously in just a couple months. You can even review your lessons anytime since they're all recorded.\"",
+            "name": "Greg",
+            "designation": "Golf Live Golfer",
+            "image": "shopify://shop_images/freepik__background__68165_1_1.png",
+            "mobile_image": "shopify://shop_images/freepik__background__68165_1_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_BPb4T8",
+        "testimonial_Qi8ND7"
+      ],
+      "name": "Testimonials Grid",
+      "settings": {
+        "heading": "What Coaches and Golfers Are Saying"
+      }
+    },
     "golfers_testimonials_dVxtgK": {
       "type": "golfers-testimonials",
       "blocks": {
@@ -712,37 +745,6 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 52
       }
-    },
-    "golfers_testimonials_card_PtJ6ya": {
-      "type": "golfers-testimonials-card",
-      "blocks": {
-        "testimonial_BPb4T8": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
-            "name": "Chris Como",
-            "designation": "Golf Digest #2 Ranked Coach",
-            "image": "shopify://shop_images/freepik__background__68165_1.png"
-          }
-        },
-        "testimonial_Qi8ND7": {
-          "type": "testimonial",
-          "settings": {
-            "quote": "\"My swing has improved tremendously in just a couple months. You can even review your lessons anytime since they're all recorded.\"",
-            "name": "Greg",
-            "designation": "Golf Live Golfer",
-            "image": "shopify://shop_images/freepik__background__68165_1_1.png"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_BPb4T8",
-        "testimonial_Qi8ND7"
-      ],
-      "name": "Testimonials Grid",
-      "settings": {
-        "heading": "What Coaches and Golfers Are Saying"
-      }
     }
   },
   "order": [
@@ -752,12 +754,12 @@
     "video_testimonial_LBDcHx",
     "zigzag_section_9PexWn",
     "dual_audience_cards_TEt37K",
+    "golfers_testimonials_card_PtJ6ya",
     "golfers_testimonials_dVxtgK",
     "golf_features_slider_tACrW6",
     "golf_live_comparison_CLjCmx",
     "cta_questions_bar_aypLzc",
     "faq_golfer_coach_rbLhDK",
-    "why_golf_live_thfDCf",
-    "golfers_testimonials_card_PtJ6ya"
+    "why_golf_live_thfDCf"
   ]
 }
