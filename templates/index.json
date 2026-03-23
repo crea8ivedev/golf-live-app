@@ -354,6 +354,7 @@
         "testimonial_nD6Tca": {
           "type": "testimonial",
           "settings": {
+            "extra_class_slide": "",
             "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
             "name": "Chris Como",
             "designation": "Golf Digest #2 Ranked Coach",
@@ -363,6 +364,7 @@
         "testimonial_gKUgfX": {
           "type": "testimonial",
           "settings": {
+            "extra_class_slide": "",
             "quote": "\"My swing has improved tremendously in just a couple months. You can even review your lessons anytime since they're all recorded.\"",
             "name": "Greg",
             "designation": "Golf Live Golfer",
@@ -374,6 +376,7 @@
         "testimonial_nD6Tca",
         "testimonial_gKUgfX"
       ],
+      "disabled": true,
       "name": "Golfers Testimonials",
       "settings": {
         "color_scheme": "scheme-e6ce27fb-3b70-459a-a970-22e47e138a2e",
