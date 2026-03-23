@@ -85,9 +85,7 @@
       "settings": {
         "color_scheme": "scheme-d3babac5-047a-4696-a270-d66a4d5c303e",
         "heading": "Trusted by Top Coaches",
-        "subheading": "From PGA Tour coaches to rising instructors – trusted by the best to deliver world-class instruction.",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "subheading": "From PGA Tour coaches to rising instructors – trusted by the best to deliver world-class instruction."
       }
     },
     "video_grid_clean_HznWgy": {
@@ -356,35 +354,29 @@
         "testimonial_nD6Tca": {
           "type": "testimonial",
           "settings": {
-            "extra_class_slide": "test-gradient-1",
             "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
             "name": "Chris Como",
             "designation": "Golf Digest #2 Ranked Coach",
-            "image": "shopify://shop_images/golfer-d-1.png",
-            "mobile_image": "shopify://shop_images/freepik__background__68165_1.png"
+            "image": "shopify://shop_images/golfer-d-1.png"
           }
         },
         "testimonial_gKUgfX": {
           "type": "testimonial",
           "settings": {
-            "extra_class_slide": "test-gradient-2",
             "quote": "\"My swing has improved tremendously in just a couple months. You can even review your lessons anytime since they're all recorded.\"",
             "name": "Greg",
             "designation": "Golf Live Golfer",
-            "image": "shopify://shop_images/golfer-d-2.png",
-            "mobile_image": "shopify://shop_images/freepik__background__68165_1_1.png"
+            "image": "shopify://shop_images/golfer-d-2.png"
           }
         },
         "testimonial_TGKdiz": {
           "type": "testimonial",
           "disabled": true,
           "settings": {
-            "extra_class_slide": "test-gradient-1",
             "quote": "\"As a coach, I'm always seeking partnerships that optimize my coaching skills. Golf Live aligns with this vision.\"",
             "name": "Chris Como",
             "designation": "Golf Digest #2 Ranked Coach",
-            "image": "shopify://shop_images/golfer-d-1.png",
-            "mobile_image": "shopify://shop_images/freepik__background__68165_1.png"
+            "image": "shopify://shop_images/golfer-d-1.png"
           }
         }
       },
@@ -398,7 +390,7 @@
         "color_scheme": "scheme-e6ce27fb-3b70-459a-a970-22e47e138a2e",
         "extra_class": "",
         "heading": "<p>What Coaches <br/>and Golfers Are Saying</p>",
-        "enable_desktop_slider": true,
+        "enable_desktop_slider": false,
         "enable_mobile_slider": false
       }
     },
