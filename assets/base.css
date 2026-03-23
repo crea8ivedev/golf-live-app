@@ -4026,3 +4026,27 @@ details-disclosure > details {
 .footer a:hover {
   opacity: 1;
 }
+
+
+/* =========================
+   FIX STICKY HEADER
+========================= */
+
+.header-wrapper,
+.header,
+.shopify-section-header,
+.header-wrapper--sticky {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  backdrop-filter: none !important;
+}
+
+/* Optional: subtle shadow like SaaS sites */
+.header-wrapper {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* Ensure nav text stays visible */
+.header * {
+  color: #000 !important;
+}
