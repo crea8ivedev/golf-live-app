@@ -4006,3 +4006,23 @@ details-disclosure > details {
     display: block;
   }
 }
+
+
+
+/* =========================
+   FOOTER TEXT FIX
+========================= */
+
+.footer,
+.footer * {
+  color: #ffffff !important;
+}
+
+.footer a {
+  color: #ffffff !important;
+  opacity: 0.8;
+}
+
+.footer a:hover {
+  opacity: 1;
+}
