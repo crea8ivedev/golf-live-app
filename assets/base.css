@@ -4051,35 +4051,3 @@ details-disclosure > details {
   color: #000 !important;
 }
 
-
-/* =========================
-   HARD MOBILE RESET (REAL FIX)
-========================= */
-@media (max-width: 989px) {
-
-  /* Kill ALL absolute positioning */
-  .trusted-coaches-details {
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    max-width: 100% !important;
-  }
-
-  /* Remove phantom spacing from parent */
-  .rusted-coaches-inside {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* Force section to collapse properly */
-  .trusted-coaches {
-    padding-top: 20px !important;
-  }
-
-  /* Ensure grid sits directly under header */
-  .trusted-coaches__grid {
-    margin-top: 0 !important;
-  }
-
-}
