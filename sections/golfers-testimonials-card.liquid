@@ -1,0 +1,93 @@
+{% comment %}
+  Section: Testimonials Grid (Clean)
+{% endcomment %}
+
+<section class="cg-testimonials">
+  <div class="cg-testimonials__inner">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="cg-testimonials__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="cg-testimonials__grid">
+
+      {% for block in section.blocks %}
+        <div class="cg-testimonial" {{ block.shopify_attributes }}>
+
+          <!-- STARS -->
+          <div class="cg-testimonial__stars">
+            {% render 'golfers-stars' %}
+          </div>
+
+          <!-- QUOTE -->
+          {% if block.settings.quote != blank %}
+            <p class="cg-testimonial__quote">
+              "{{ block.settings.quote }}"
+            </p>
+          {% endif %}
+
+          <!-- AUTHOR -->
+          <div class="cg-testimonial__author">
+            {% if block.settings.name != blank %}
+              <strong>{{ block.settings.name }}</strong>
+            {% endif %}
+            {% if block.settings.designation != blank %}
+              <span>{{ block.settings.designation }}</span>
+            {% endif %}
+          </div>
+
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Coaches and Golfers Are Saying"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "designation",
+          "label": "Role"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Testimonials Grid",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}
