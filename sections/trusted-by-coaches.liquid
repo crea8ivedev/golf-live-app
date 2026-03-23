@@ -4,7 +4,7 @@
 
 <style>
 /* =========================
-   TEXT COLOR FIX
+   DEFAULT TEXT (DESKTOP)
 ========================= */
 .trusted-coaches {
   color: #ffffff;
@@ -14,6 +14,18 @@
 .trusted-coaches__subheading,
 .trusted-coaches__name {
   color: #ffffff !important;
+}
+
+/* =========================
+   MOBILE TEXT FIX (KEY)
+========================= */
+@media (max-width: 989px) {
+
+  .trusted-coaches__heading,
+  .trusted-coaches__subheading {
+    color: #000000 !important;
+  }
+
 }
 
 /* =========================
@@ -39,26 +51,6 @@
   width: 100%;
   height: auto;
   display: block;
-}
-
-/* =========================
-   ✅ MOBILE HEADER FIX (KEY)
-========================= */
-@media (max-width: 989px) {
-
-  .trusted-coaches-details {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-
-    margin-bottom: 20px;
-  }
-
-  .trusted-coaches {
-    padding-top: 20px;
-  }
-
 }
 </style>
 
