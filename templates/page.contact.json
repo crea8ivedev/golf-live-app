@@ -22,7 +22,7 @@
         "text_7fcxTz": {
           "type": "text",
           "settings": {
-            "text": "<p><br/><strong>Sales: </strong><a href=\"mailto:sales@golfliveapp.com\">sales@golfliveapp.com</a><br/><br/><strong>General Inquiry and Press:</strong><br/><a href=\"mailto:contact@golfliveapp.com\">contact@golfliveapp.com</a><br/><br/><strong>Golf Live Caddie</strong><br/><a href=\"https://golflivehelp.zendesk.com/hc/en-us\" target=\"_blank\">Message Support</a><br/></p>"
+            "text": "<p><br/><strong>Sales: </strong><a href=\"mailto:sales@golfliveapp.com\">sales@golfliveapp.com</a><br/><br/><strong>General Inquiry and Press:</strong><br/><a href=\"mailto:contact@golfliveapp.com\">support@golfliveapp.com</a><br/><br/><strong>Golf Live Caddie</strong><br/><a href=\"https://golflivehelp.zendesk.com/hc/en-us\" target=\"_blank\">Message Support</a><br/></p>"
           }
         }
       },
